@@ -15,6 +15,12 @@ from config import POSTS_PER_PAGE, MAX_SEARCH_RESULTS, LANGUAGES, \
     DATABASE_QUERY_TIMEOUT
 
 
+@app.route('/', methods=['GET', 'POST'])
+def home(page=1):
+    return render_template('home.html',
+                           title='Home')
+
+
 @lm.user_loader
 def load_user(id):
     return User.query.get(int(id))
@@ -58,7 +64,6 @@ def internal_error(error):
     return render_template('500.html'), 500
 
 
-@app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 @app.route('/index/<int:page>', methods=['GET', 'POST'])
 @login_required

@@ -2,7 +2,7 @@
 <html>
   <head>
     {% if title %}
-    <title>{{ title }} - Finance Hub</title>
+    <title>{{ title }} - microblog</title>
     {% else %}
     <title>microblog</title>
     {% endif %}
@@ -47,7 +47,6 @@
           <a class="brand" href="/">microblog</a>
             <ul class="nav">
               <li><a href="{{ url_for('index') }}">{{ _('Home') }}</a></li>
-              <li>{{ 'Equity Screener' }}</li>
               {% if g.user.is_authenticated %}
               <li><a href="{{ url_for('user', nickname=g.user.nickname) }}">{{ _('Your Profile') }}</a></li>
               <li><a href="{{ url_for('logout') }}">{{ _('Logout') }}</a></li>
