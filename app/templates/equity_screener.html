@@ -2,7 +2,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/static/css/equity_screener.css" rel="stylesheet" type="text/css">
     <script src="/static/js/equity_screener.js"></script>
-    <button onclick="run_screening()"></button>
+    <div><button id="run_screen_button" onclick="run_screening(event, '{{ SECRET_KEY }}');">Run Screener</button></div>
+    {% for val in num_screen_vals %}
+        <span class='num_screen'>
+            <label class='num_screen'>{{ val }}</label>
+            <select class='num_screen'>
+              <option value="=">=</option>
+              <option value="<"><</option>
+              <option value=">">></option>
+            </select>
+            <input type="text" class='num_screen' value =""/>
+        </span>
+        <div></div>
+    {% endfor %}
 {% endblock %}

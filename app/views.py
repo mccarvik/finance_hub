@@ -11,6 +11,7 @@ from .forms import LoginForm, EditForm, PostForm, SearchForm
 from .models import User, Post
 from .emails import follower_notification
 from .translate import microsoft_translate
+from .equity_screener.equity_screener import post
 from config import POSTS_PER_PAGE, MAX_SEARCH_RESULTS, LANGUAGES, \
     DATABASE_QUERY_TIMEOUT
 
@@ -20,11 +21,14 @@ def home(page=1):
     return render_template('home.html',
                            title='Home')
 
-@app.route('/equity_screener')
+@app.route('/equity_screener', methods=['GET', 'POST'])
 def equity_screener():
-    # import pdb; pdb.set_trace()
+    num_screen_vals = ['PE', 'Div Yield']
+    if request.method == 'POST':
+        post(request)
     return render_template('equity_screener.html',
-                           title='Equity Screener')
+                           title='Equity Screener',
+                           num_screen_vals=num_screen_vals)
 
 
 @lm.user_loader
