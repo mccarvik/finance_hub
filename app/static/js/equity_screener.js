@@ -8,7 +8,7 @@ function run_screening(event, token) {
         action: "run_screening" },
         success: function()
         {
-            console.log('here 3')
+            console.log('here')
         }
     });
 }
