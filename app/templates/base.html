@@ -11,29 +11,7 @@
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
     <script src="/static/js/moment.min.js"></script>
-    {% if g.locale != 'en' %}
-    <script src="/static/js/moment-{{g.locale}}.min.js"></script>
-    {% endif %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script>
-    function translate(sourceLang, destLang, sourceId, destId, loadingId) {
-        $(destId).hide();
-        $(loadingId).show();
-        $.post('/translate', {
-            text: $(sourceId).text(),
-            sourceLang: sourceLang,
-            destLang: destLang
-        }).done(function(translated) {
-            $(destId).text(translated['text'])
-            $(loadingId).hide();
-            $(destId).show();
-        }).fail(function() {
-            $(destId).text("{{ _('Error: Could not contact server.') }}");
-            $(loadingId).hide();
-            $(destId).show();
-        });
-    }
-    </script>
   </head>
   <body>
     <div class="container">
@@ -49,11 +27,6 @@
               <li><a href="{{ url_for('equity_screener') }}">Equity Screener</a></li>
               <li><a href="{{ url_for('bond') }}">Bond</a></li>
             </ul>
-          <div class="nav-collapse collapse">
-            {% if g.user.is_authenticated %}
-            <form class="navbar-search pull-right" action="{{ url_for('search') }}" method="post" name="search">{{ g.search_form.hidden_tag() }}{{ g.search_form.search(size=20, placeholder=_('Search'), class="search-query")}}</form>
-            {% endif %}
-          </div>
         </div>
       </div>
       <div class="row">
