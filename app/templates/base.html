@@ -46,8 +46,8 @@
           </a>
           <a class="brand" href="/">Finance Hub</a>
             <ul class="nav">
-              <li><a href="{{ url_for('index') }}">{{ _('Home') }}</a></li>
-              <li><a href="{{ url_for('equity_screener') }}">{{ 'Equity Screener' }}</a></li>
+              <li><a href="{{ url_for('equity_screener') }}">Equity Screener</a></li>
+              <li><a href="{{ url_for('bond') }}">Bond</a></li>
             </ul>
           <div class="nav-collapse collapse">
             {% if g.user.is_authenticated %}

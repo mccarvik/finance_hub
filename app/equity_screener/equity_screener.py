@@ -1,13 +1,15 @@
-import create_symbols
-from equity_stats import EquityStats
+from .create_symbols import create_symbols
+from .equity_stats import EquityStats
 import pandas as pd
 
 def post(request):
     # import pdb; pdb.set_trace()
     if request.form['action'] == 'run_screening':
-        run_screening(request)
+        # Should probably set up the filters here instead of
+        # in run_screening
+        run_screening(filters=request)
 
-def run_screening(request=request, sim=False):
+def run_screening(filters=None, sim=False):
     # Go thru the file, read each ticker and try to collect data
     print("RUN SCREENING")
     import pdb; pdb.set_trace()
@@ -74,4 +76,4 @@ def getFilters(sim):
 #create_symbols.create_symbols()
 
 if __name__ == '__main__':
-    run_screening(request=None, sim=True)
+    run_screening(sim=True)
