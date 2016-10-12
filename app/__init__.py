@@ -8,7 +8,6 @@ from flask_mail import Mail
 from flask_babel import Babel, lazy_gettext
 from config import basedir, ADMINS, MAIL_SERVER, MAIL_PORT, MAIL_USERNAME, \
     MAIL_PASSWORD
-from .momentjs import momentjs
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -59,7 +58,5 @@ if not app.debug:
     app.logger.addHandler(file_handler)
     app.logger.setLevel(logging.INFO)
     app.logger.info('microblog startup')
-
-app.jinja_env.globals['momentjs'] = momentjs
 
 from app import views, models
