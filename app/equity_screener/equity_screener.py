@@ -1,6 +1,7 @@
 from .create_symbols import create_symbols
 from .equity_stats import EquityStats
 import pandas as pd
+import os
 
 def post(request):
     if request.form['action'] == 'run_screening':
@@ -11,13 +12,14 @@ def post(request):
 def run_screening(filters=None, sim=False):
     # Go thru the file, read each ticker and try to collect data
     print("RUN SCREENING")
-    import pdb; pdb.set_trace()
     if sim:
         filters = getFilters(req=None)
-    reader = open("memb_list.txt", "r")
+        
     eqs = []
     EquityStats.setColumns()
-    with open("memb_list.txt", "r") as f:
+    # import pdb; pdb.set_trace()
+    cwd = os.path.dirname(os.path.realpath(__file__))
+    with open(cwd + "/memb_list.txt", "r") as f:
         ct = 0
         for line in f:
             eqs.append(EquityStats(line.strip()))
