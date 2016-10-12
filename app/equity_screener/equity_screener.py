@@ -3,16 +3,17 @@ from .equity_stats import EquityStats
 import pandas as pd
 
 def post(request):
-    # import pdb; pdb.set_trace()
     if request.form['action'] == 'run_screening':
-        # Should probably set up the filters here instead of
-        # in run_screening
-        run_screening(filters=request)
+        # filters = getFilters(req=request)
+        filters = getFilters(req=None)
+        run_screening(filters=filters, sim=False)
 
 def run_screening(filters=None, sim=False):
     # Go thru the file, read each ticker and try to collect data
     print("RUN SCREENING")
     import pdb; pdb.set_trace()
+    if sim:
+        filters = getFilters(req=None)
     reader = open("memb_list.txt", "r")
     eqs = []
     EquityStats.setColumns()
@@ -50,22 +51,23 @@ def run_screening(filters=None, sim=False):
             df = df[df[f[0]] < f[2]]
         print(df.to_string())
 
-def getFilters(sim):
+def getFilters(req=None):
     filters = []
-    
-    if not sim:
-        while True:
-            print("Select satistic:")
-            [print(i + ",  ", end="") for i in EquityStats.cols]
-            stat = input()
-            if not stat:
-                break
-            print('Select conditon:')
-            print('< or >')
-            condition = input()
-            print('Select value:')
-            val = input()
-            filters.append((stat, condition, val))
+    # if not sim:
+    #     while True:
+    #         print("Select satistic:")
+    #         [print(i + ",  ", end="") for i in EquityStats.cols]
+    #         stat = input()
+    #         if not stat:
+    #             break
+    #         print('Select conditon:')
+    #         print('< or >')
+    #         condition = input()
+    #         print('Select value:')
+    #         val = input()
+    #         filters.append((stat, condition, val))
+    if req:
+        pass
     else:
         filters.append(("P/E", "<", 20))
         filters.append(("Beta", "<", 2))
