@@ -2,7 +2,6 @@ import os
 from flask import Flask
 from flask.json import JSONEncoder
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager
 from flask_openid import OpenID
 from flask_mail import Mail
 from flask_babel import Babel, lazy_gettext
@@ -12,10 +11,6 @@ from config import basedir, ADMINS, MAIL_SERVER, MAIL_PORT, MAIL_USERNAME, \
 app = Flask(__name__)
 app.config.from_object('config')
 db = SQLAlchemy(app)
-lm = LoginManager()
-lm.init_app(app)
-lm.login_view = 'login'
-lm.login_message = lazy_gettext('Please log in to access this page.')
 oid = OpenID(app, os.path.join(basedir, 'tmp'))
 mail = Mail(app)
 babel = Babel(app)
