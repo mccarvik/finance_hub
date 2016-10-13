@@ -106,6 +106,5 @@ class Post(db.Model):
     def __repr__(self):  # pragma: no cover
         return '<Post %r>' % (self.body)
 
-
-if enable_search:
-    whooshalchemy.whoosh_index(app, Post)
+# class Equity(db.Model)
+    
