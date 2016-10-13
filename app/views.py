@@ -1,12 +1,10 @@
 from flask import render_template, flash, redirect, session, url_for, request, \
     g, jsonify
-from flask_sqlalchemy import get_debug_queries
 from flask_babel import gettext
 from datetime import datetime
 from guess_language import guessLanguage
-from app import app, db, oid, babel
+from app import app, oid, babel
 from .forms import EditForm, PostForm, SearchForm
-from .models import User, Post
 from .emails import follower_notification
 from config import POSTS_PER_PAGE, MAX_SEARCH_RESULTS, LANGUAGES, \
     DATABASE_QUERY_TIMEOUT
