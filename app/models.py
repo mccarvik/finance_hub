@@ -5,7 +5,5 @@ from app import app
 import sys
 
 
-
-
 # class Equity(db.Model)
     

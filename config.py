@@ -41,3 +41,11 @@ ADMINS = ['you@example.com']
 # pagination
 POSTS_PER_PAGE = 50
 MAX_SEARCH_RESULTS = 50
+
+
+DBUSER = 'root'
+DBPASSWORD = ''
+DB = 'finance'
+DBHOST = 'mccarvik-playground-2305615'
+# DBPASSWORD = 'kmac7272'
+# DBHOST = 'localhost'

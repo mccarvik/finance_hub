@@ -1,17 +1,13 @@
 import os
 from flask import Flask
 from flask.json import JSONEncoder
-from flask_openid import OpenID
 from flask_mail import Mail
-from flask_babel import Babel, lazy_gettext
 from config import basedir, ADMINS, MAIL_SERVER, MAIL_PORT, MAIL_USERNAME, \
     MAIL_PASSWORD
 
 app = Flask(__name__)
 app.config.from_object('config')
-oid = OpenID(app, os.path.join(basedir, 'tmp'))
 mail = Mail(app)
-babel = Babel(app)
 
 
 class CustomJSONEncoder(JSONEncoder):
@@ -43,13 +39,13 @@ if not app.debug:
 if not app.debug:
     import logging
     from logging.handlers import RotatingFileHandler
-    file_handler = RotatingFileHandler('tmp/microblog.log', 'a',
+    file_handler = RotatingFileHandler('/home/ubuntu/workspace/finance/tmp/finance.log', 'a',
                                        1 * 1024 * 1024, 10)
     file_handler.setLevel(logging.INFO)
     file_handler.setFormatter(logging.Formatter(
         '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
     app.logger.addHandler(file_handler)
     app.logger.setLevel(logging.INFO)
-    app.logger.info('microblog startup')
+    app.logger.info('finance hub startup')
 
 from app import views, models

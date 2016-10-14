@@ -3,7 +3,7 @@ from flask import render_template, flash, redirect, session, url_for, request, \
 from flask_babel import gettext
 from datetime import datetime
 from guess_language import guessLanguage
-from app import app, oid, babel
+from app import app 
 from .forms import EditForm, PostForm, SearchForm
 from .emails import follower_notification
 from config import POSTS_PER_PAGE, MAX_SEARCH_RESULTS, LANGUAGES, \
