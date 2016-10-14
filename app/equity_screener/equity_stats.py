@@ -1,6 +1,7 @@
 import datetime
 import urllib.request
 import re
+import os
 
 column_opts = []
 
@@ -22,17 +23,13 @@ class EquityStats():
     
     @staticmethod
     def setColumns():
-        #could pick any, just setting a standard set of columns
-        symbol = "FLWS"
-        url = 'https://www.google.com/finance?q=NASDAQ%3A' + symbol + '&ei=kdenV4HtL5WmeavUg5AL'
-        htmlFile = urllib.request.urlopen(url)
-        html_text = htmlFile.read()
-        fields_re = 'data-snapfield(.+?)>(.+?)</td>(.+?)<td class="val">(.+?)</td>'
-        data = re.findall(re.compile(fields_re), str(html_text))
-        cols = []
-        for i in data:
-            cols.append(str(i[1]).replace("\\n",""))
-        cols = EquityStats._cleanCols(cols)
+        column_map = {}
+        with open("/home/ubuntu/workspace/finance/app/static/docs/yahoo_api_notes.txt", "r") as f:
+            for line in f:
+                if line == 'EOF'
+                    break
+                t_tup = line.split('\t')
+                column_map[t_tup[0]] = t_tup[1]
         EquityStats.cols = cols
     
     def _cleanCols(cols):

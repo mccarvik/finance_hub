@@ -2,22 +2,25 @@ from .create_symbols import create_symbols
 from .equity_stats import EquityStats
 import pandas as pd
 import os
+from app import app
 
 def post(request):
     if request.form['action'] == 'run_screening':
         # filters = getFilters(req=request)
         filters = getFilters(req=None)
         run_screening(filters=filters, sim=False)
+    
+    if request.form['action'] == 'get_data':
+        get_data(reset_ticks=False)
 
-def run_screening(filters=None, sim=False):
-    # Go thru the file, read each ticker and try to collect data
-    print("RUN SCREENING")
-    if sim:
-        filters = getFilters(req=None)
-        
+def get_data(reset_ticks=False):
+    if reset_ticks:
+        create_symbols.create_symbols()
+    
+    # Need to make this multi threaded with async
+    import pdb; pdb.set_trace()
     eqs = []
     EquityStats.setColumns()
-    # import pdb; pdb.set_trace()
     cwd = os.path.dirname(os.path.realpath(__file__))
     with open(cwd + "/memb_list.txt", "r") as f:
         ct = 0
@@ -27,8 +30,15 @@ def run_screening(filters=None, sim=False):
             #TEMP
             ct += 1
             if ct==10: break
-            
     
+    
+
+def run_screening(filters=None, sim=False):
+    # Go thru the file, read each ticker and try to collect data
+    print("RUN SCREENING")
+    if sim:
+        filters = getFilters(req=None)
+        
     #build dataframe
     arr_2d = []
     for e in eqs:
@@ -75,9 +85,6 @@ def getFilters(req=None):
         filters.append(("Beta", "<", 2))
         filters.append(('Div yield', '>', 1))
     return filters
-
-
-#create_symbols.create_symbols()
 
 if __name__ == '__main__':
     run_screening(sim=True)
