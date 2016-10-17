@@ -582,3 +582,167 @@ Traceback (most recent call last):
   File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 32, in setColumns
     column_map[t_tup[0]] = t_tup[1]
 IndexError: list index out of range
+2016-10-17 13:23:47,792 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-17 13:25:11,339 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 25, in equity_screener
+    eqsc_post(request)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 15, in post
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 17, in get_data
+    if reset_ticks:
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 50, in trace_dispatch
+    return self.dispatch_call(frame, arg)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 83, in dispatch_call
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-10-17 13:25:12,628 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 25, in equity_screener
+    eqsc_post(request)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 9, in post
+    # filters = getFilters(req=request)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 9, in post
+    # filters = getFilters(req=request)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-10-17 13:29:21,404 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-17 13:29:43,224 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 25, in equity_screener
+    eqsc_post(request)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 14, in post
+    get_data(reset_ticks=False)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 22, in get_data
+    EquityStats.setColumns()
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 22, in get_data
+    EquityStats.setColumns()
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-10-17 13:29:46,187 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-17 13:30:34,031 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 25, in equity_screener
+    eqsc_post(request)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 14, in post
+    get_data(reset_ticks=False)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 22, in get_data
+    EquityStats.setColumns()
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 29, in setColumns
+    for line in f:
+IndexError: list index out of range
+2016-10-17 13:32:19,945 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-17 13:33:14,070 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-17 13:33:20,256 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-17 13:35:29,289 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 25, in equity_screener
+    eqsc_post(request)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 14, in post
+    get_data(reset_ticks=False)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 22, in get_data
+    EquityStats.setColumns()
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 36, in setColumns
+    final_cols = ["Symbol"]
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 36, in setColumns
+    final_cols = ["Symbol"]
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-10-17 13:42:37,605 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-17 13:46:18,830 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 25, in equity_screener
+    eqsc_post(request)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 14, in post
+    get_data(reset_ticks=False)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 22, in get_data
+    EquityStats.setColumns()
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 35, in setColumns
+    EquityStats.cols = column_map
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 35, in setColumns
+    EquityStats.cols = column_map
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 66, in dispatch_line
+    self.user_line(frame)
+bdb.BdbQuit

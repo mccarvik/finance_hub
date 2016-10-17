@@ -5,7 +5,6 @@ import os
 from app import app
 
 def post(request):
-    import pdb; pdb.set_trace()
     if request.form['action'] == 'run_screening':
         # filters = getFilters(req=request)
         filters = getFilters(req=None)
@@ -19,7 +18,6 @@ def get_data(reset_ticks=False):
         create_symbols.create_symbols()
     
     # Need to make this multi threaded with async
-    import pdb; pdb.set_trace()
     eqs = []
     EquityStats.setColumns()
     cwd = os.path.dirname(os.path.realpath(__file__))

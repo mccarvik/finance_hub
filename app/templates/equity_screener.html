@@ -5,7 +5,7 @@
     <link href="/static/css/equity_screener.css" rel="stylesheet" type="text/css">
     <script src="/static/js/equity_screener.js"></script>
     <div>
-        <button id="run_screen_button" onclick="run_screening(event, '{{ SECRET_KEY }}');">Run Screener</button></div>
+        <button id="run_screen_button" onclick="run_screening(event, '{{ SECRET_KEY }}');">Run Screener</button>
         <button id="get_data_button" onclick="get_data(event, '{{ SECRET_KEY }}');">Get Data</button>
     </div>
     {% for val in num_screen_vals %}
