@@ -4,7 +4,9 @@ from app.equity_screener.create_symbols import create_symbols
 from app.equity_screener.equity_stats import EquityStats
 import pandas as pd
 import os
+import csv
 import requests
+import asyncio
 from app import app
 
 def post(request):
@@ -15,6 +17,7 @@ def post(request):
     
     if request.form['action'] == 'get_data':
         get_data(reset_ticks=False)
+
 
 def get_data(reset_ticks=False):
     if reset_ticks:
@@ -33,25 +36,32 @@ def get_data(reset_ticks=False):
             if ct == 10:
                 tickers = tickers[:-1]
                 makeAPICall(tickers)
-                # eqs.append(EquityStats(line.strip()))
-                print("finished {0}".format(tickers))
+                app.logger.info("finished {0}".format(tickers))
                 tickers = ""
                 ct = 0
                 #temp
                 break
 
 
-def makeAPICall(tickers):
-    import pdb; pdb.set_trace()
-    cols = "".join(list(EquityStats.cols.keys()))
+async def makeAPICall(tickers):
+    col_list = list(EquityStats.cols.keys())
+    cols = "".join(col_list)
     url = "http://finance.yahoo.com/d/quotes.csv?s=" + tickers + "&f=" + cols
     try:
         req = requests.get(url)
         app.logger.info("request to {0} successful".format(url))
     except:
         app.logger.info("request to {0} failed".format(url))
+        return None
+    import pdb; pdb.set_trace()
+    content = req.content.decode('utf-8')
+    cr = csv.reader(content.splitlines(), delimiter=',')
+    eqs = []
+    for row in list(cr):
+        es = EquityStats(row, col_list)
+        eqs.append(es)
+    return eqs
     
-    pass
         
     
 
