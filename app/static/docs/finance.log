@@ -746,3 +746,11 @@ Traceback (most recent call last):
   File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 66, in dispatch_line
     self.user_line(frame)
 bdb.BdbQuit
+2016-10-17 19:45:35,030 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-17 19:46:26,492 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-17 19:46:45,168 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-17 19:46:53,708 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-17 19:53:59,143 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-17 19:54:22,306 INFO: request to http://finance.yahoo.com/d/quotes.csv?s=FLWS+SRCE+FOXA+FOX+TWOU+DDD+MMM+SIXD+EGHT+AVHI&f=jp6wm6w1j5lc8e7cp1v7pd1j6k4mrdk5b4c6sm8k3p2l2g1j1vj3s7g4eb2r1bym2e9ng3p5k2t1l1g6f6s1m7e1har6or2i5t8m4e8r7l3d2g5xa2n4qb3b6w4k1c3t7kj4r5m5t6gc1v1ia5 successful [in equity_screener.py:50]
+2016-10-17 19:55:08,768 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-17 19:55:29,169 INFO: request to http://finance.yahoo.com/d/quotes.csv?s=FLWS+SRCE+FOXA+FOX+TWOU+DDD+MMM+SIXD+EGHT+AVHI&f=d2m7pj6j5g3j4i5t8w1b6r2p5k2s7f6s1m8ob4c6dv1ye7p2d1lxr5l2wep6c3p1mr7g6sj1nj3m2c8k3k5t7bjrg1m6e1t1a5c1cl1k1r1l3m5t6n4k4g4v7e8g5ia2qr6ke9b3w4b2gvhm4a successful [in equity_screener.py:50]

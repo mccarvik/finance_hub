@@ -1,7 +1,10 @@
-from .create_symbols import create_symbols
-from .equity_stats import EquityStats
+import sys
+sys.path.append("/home/ubuntu/workspace/finance")
+from app.equity_screener.create_symbols import create_symbols
+from app.equity_screener.equity_stats import EquityStats
 import pandas as pd
 import os
+import requests
 from app import app
 
 def post(request):
@@ -23,14 +26,35 @@ def get_data(reset_ticks=False):
     cwd = os.path.dirname(os.path.realpath(__file__))
     with open(cwd + "/memb_list.txt", "r") as f:
         ct = 0
+        tickers = ""
         for line in f:
-            eqs.append(EquityStats(line.strip()))
-            print("finished {0}".format(line.strip()))
-            #TEMP
+            tickers += line.strip() + "+"
             ct += 1
-            if ct==10: break
+            if ct == 10:
+                tickers = tickers[:-1]
+                makeAPICall(tickers)
+                # eqs.append(EquityStats(line.strip()))
+                print("finished {0}".format(tickers))
+                tickers = ""
+                ct = 0
+                #temp
+                break
+
+
+def makeAPICall(tickers):
+    import pdb; pdb.set_trace()
+    cols = "".join(list(EquityStats.cols.keys()))
+    url = "http://finance.yahoo.com/d/quotes.csv?s=" + tickers + "&f=" + cols
+    try:
+        req = requests.get(url)
+        app.logger.info("request to {0} successful".format(url))
+    except:
+        app.logger.info("request to {0} failed".format(url))
     
+    pass
+        
     
+
 
 def run_screening(filters=None, sim=False):
     # Go thru the file, read each ticker and try to collect data
@@ -86,4 +110,5 @@ def getFilters(req=None):
     return filters
 
 if __name__ == '__main__':
-    run_screening(sim=True)
+    # run_screening(sim=True)
+    get_data()

@@ -30,7 +30,6 @@ class EquityStats():
                     break
                 t_tup = line.split('\t')
                 column_map[t_tup[0]] = t_tup[1]
-        import pdb; pdb.set_trace()
         EquityStats.cols = column_map
     
     def _cleanCols(cols):
