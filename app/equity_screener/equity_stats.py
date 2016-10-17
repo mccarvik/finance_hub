@@ -26,11 +26,12 @@ class EquityStats():
         column_map = {}
         with open("/home/ubuntu/workspace/finance/app/static/docs/yahoo_api_notes.txt", "r") as f:
             for line in f:
-                if line == 'EOF'
+                if line == 'EOF':
                     break
                 t_tup = line.split('\t')
                 column_map[t_tup[0]] = t_tup[1]
-        EquityStats.cols = cols
+        EquityStats.cols = column_map
+        import pdb; pdb.set_trace()
     
     def _cleanCols(cols):
         final_cols = ["Symbol"]

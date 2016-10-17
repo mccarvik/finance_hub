@@ -5,6 +5,7 @@ import os
 from app import app
 
 def post(request):
+    import pdb; pdb.set_trace()
     if request.form['action'] == 'run_screening':
         # filters = getFilters(req=request)
         filters = getFilters(req=None)
