@@ -30,6 +30,7 @@ def get_data(reset_ticks=False):
     with open(cwd + "/memb_list.txt", "r") as f:
         ct = 0
         tickers = ""
+        loop = asyncio.get_event_loop()
         for line in f:
             tickers += line.strip() + "+"
             ct += 1
@@ -60,10 +61,9 @@ async def makeAPICall(tickers):
     for row in list(cr):
         es = EquityStats(row, col_list)
         eqs.append(es)
-    return eqs
+    yield from eqs
     
         
-    
 
 
 def run_screening(filters=None, sim=False):
