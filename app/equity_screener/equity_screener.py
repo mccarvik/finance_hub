@@ -33,30 +33,36 @@ def get_data(reset_ticks=False):
         for line in f:
             tickers += line.strip() + "+"
             ct += 1
-            if ct == 50:
+            if ct == 100:
                 tickers = tickers[:-1]
-                tasks.append(makeAPICall(tickers))
+                tasks.append(tickers)
                 tickers = ""
                 ct = 0
+    
+    #tasks has all the list of tickers, now need to make asynchronous calls to makeAPICall
     eqs = []
     loop = asyncio.get_event_loop()
+    for t in tasks:
+        asyncio.ensure_future(api_helper(t))
+    
+    import pdb; pdb.set_trace()
     try:
-        eqs = loop.run_until_complete(asyncio.wait(tasks))
-        
+        loop.run_forever()
     except Exception as e:
         exc_type, exc_obj, exc_tb = sys.exc_info()
-        app.logger.info("Error in async loop: {0} {1} {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
-    loop.close()
+        app.logger.info("Error in async loop: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
+    finally:
+        loop.close()
     import pdb; pdb.set_trace()
     pass
-    
 
-#async def makeAPICall(tickers):
-@asyncio.coroutine
+#@asyncio.coroutine    
+async def api_helper(tickers):
+    print("starting {0}".format(tickers[0:4]))
+    return await makeAPICall(tickers)
+
 def makeAPICall(tickers):
     col_list = list(EquityStats.cols.keys())
-    print("starting {0}".format(tickers[0]))
-    yield from asyncio.sleep(0)
     cols = "".join(col_list)
     url = "http://finance.yahoo.com/d/quotes.csv?s=" + tickers + "&f=" + cols
     try:
@@ -73,7 +79,7 @@ def makeAPICall(tickers):
         es = EquityStats(row, col_list)
         eqs.append(es)
     app.logger.info("finished {0}".format(tickers))
-    print("finished {0}".format(tickers[0]))
+    print("finished {0}".format(tickers[0:4]))
     return eqs
     
         
