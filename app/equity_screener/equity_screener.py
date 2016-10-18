@@ -24,28 +24,39 @@ def get_data(reset_ticks=False):
         create_symbols.create_symbols()
     
     # Need to make this multi threaded with async
-    eqs = []
+    tasks = []
     EquityStats.setColumns()
     cwd = os.path.dirname(os.path.realpath(__file__))
     with open(cwd + "/memb_list.txt", "r") as f:
         ct = 0
         tickers = ""
-        loop = asyncio.get_event_loop()
         for line in f:
             tickers += line.strip() + "+"
             ct += 1
-            if ct == 10:
+            if ct == 50:
                 tickers = tickers[:-1]
-                makeAPICall(tickers)
-                app.logger.info("finished {0}".format(tickers))
+                tasks.append(makeAPICall(tickers))
                 tickers = ""
                 ct = 0
-                #temp
-                break
+    eqs = []
+    loop = asyncio.get_event_loop()
+    try:
+        eqs = loop.run_until_complete(asyncio.wait(tasks))
+        
+    except Exception as e:
+        exc_type, exc_obj, exc_tb = sys.exc_info()
+        app.logger.info("Error in async loop: {0} {1} {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
+    loop.close()
+    import pdb; pdb.set_trace()
+    pass
+    
 
-
-async def makeAPICall(tickers):
+#async def makeAPICall(tickers):
+@asyncio.coroutine
+def makeAPICall(tickers):
     col_list = list(EquityStats.cols.keys())
+    print("starting {0}".format(tickers[0]))
+    yield from asyncio.sleep(0)
     cols = "".join(col_list)
     url = "http://finance.yahoo.com/d/quotes.csv?s=" + tickers + "&f=" + cols
     try:
@@ -54,14 +65,16 @@ async def makeAPICall(tickers):
     except:
         app.logger.info("request to {0} failed".format(url))
         return None
-    import pdb; pdb.set_trace()
+        
     content = req.content.decode('utf-8')
     cr = csv.reader(content.splitlines(), delimiter=',')
     eqs = []
     for row in list(cr):
         es = EquityStats(row, col_list)
         eqs.append(es)
-    yield from eqs
+    app.logger.info("finished {0}".format(tickers))
+    print("finished {0}".format(tickers[0]))
+    return eqs
     
         
 
