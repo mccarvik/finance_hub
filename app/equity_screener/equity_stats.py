@@ -10,9 +10,11 @@ class EquityStats():
     like P/E, dividend yield, etc.
     """
     
-    def __init__(self, stats, col_list):
+    def __init__(self, stats, col_list, write=True):
         self._stats = dict(zip(col_list, stats))
         self._ticker = self._stats['s']
+        if write:
+            self.write_to_db()
     
     def write_to_db(self):
         pass

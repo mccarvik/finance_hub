@@ -3,10 +3,8 @@ sys.path.append("/home/ubuntu/workspace/finance")
 from app.equity_screener.create_symbols import create_symbols
 from app.equity_screener.equity_stats import EquityStats
 import pandas as pd
-import os
-import csv
-import requests
-import asyncio
+import os, csv, requests, asyncio
+import _thread as thread
 from app import app
 
 def post(request):
@@ -18,12 +16,10 @@ def post(request):
     if request.form['action'] == 'get_data':
         get_data(reset_ticks=False)
 
-
 def get_data(reset_ticks=False):
     if reset_ticks:
         create_symbols.create_symbols()
-    
-    # Need to make this multi threaded with async
+        
     tasks = []
     EquityStats.setColumns()
     cwd = os.path.dirname(os.path.realpath(__file__))
@@ -38,28 +34,15 @@ def get_data(reset_ticks=False):
                 tasks.append(tickers)
                 tickers = ""
                 ct = 0
-    
-    #tasks has all the list of tickers, now need to make asynchronous calls to makeAPICall
     eqs = []
-    loop = asyncio.get_event_loop()
-    for t in tasks:
-        asyncio.ensure_future(api_helper(t))
-    
-    import pdb; pdb.set_trace()
     try:
-        loop.run_forever()
+        for t in tasks:
+            e = thread.start_new_thread(makeAPICall, (t,))
+            eqs.append(e)
     except Exception as e:
         exc_type, exc_obj, exc_tb = sys.exc_info()
         app.logger.info("Error in async loop: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
-    finally:
-        loop.close()
-    import pdb; pdb.set_trace()
-    pass
 
-#@asyncio.coroutine    
-async def api_helper(tickers):
-    print("starting {0}".format(tickers[0:4]))
-    return await makeAPICall(tickers)
 
 def makeAPICall(tickers):
     col_list = list(EquityStats.cols.keys())
@@ -79,7 +62,6 @@ def makeAPICall(tickers):
         es = EquityStats(row, col_list)
         eqs.append(es)
     app.logger.info("finished {0}".format(tickers))
-    print("finished {0}".format(tickers[0:4]))
     return eqs
     
         
