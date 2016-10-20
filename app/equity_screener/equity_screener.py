@@ -42,6 +42,8 @@ def get_data(reset_ticks=False):
     except Exception as e:
         exc_type, exc_obj, exc_tb = sys.exc_info()
         app.logger.info("Error in async loop: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
+    
+    
 
 
 def makeAPICall(tickers):
@@ -61,6 +63,7 @@ def makeAPICall(tickers):
     for row in list(cr):
         es = EquityStats(row, col_list)
         eqs.append(es)
+        es.write_to_db()
     app.logger.info("finished {0}".format(tickers))
     return eqs
     

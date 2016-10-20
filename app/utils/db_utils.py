@@ -36,6 +36,12 @@ class DBHelper:
                 print(row)
         except Exception as e:
             app.logger.info("DB SELECT ERROR:" + str(e))
+    
+    def update(self, table, cols, vals, where=None):
+        pass
+    
+    def insert_into(self, table, cols, vals):
+        pass
 
     
 if __name__ == '__main__':

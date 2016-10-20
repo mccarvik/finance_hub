@@ -1,7 +1,7 @@
 import datetime
-import urllib.request
 import re
 import os
+from app.utils.db_utils import DBHelper
 
 column_opts = []
 
@@ -17,6 +17,8 @@ class EquityStats():
             self.write_to_db()
     
     def write_to_db(self):
+        db = DBHelper()
+        db.connect()
         pass
     
     @staticmethod
