@@ -1,3 +1,5 @@
+import sys
+sys.path.append("/home/ubuntu/workspace/finance")
 import datetime
 import re
 import os
@@ -17,9 +19,10 @@ class EquityStats():
             self.write_to_db()
     
     def write_to_db(self):
-        db = DBHelper()
-        db.connect()
-        db.upsert()
+        import pdb; pdb.set_trace()
+        with DBHelper() as db:
+            db.connect()
+        
     
     @staticmethod
     def setColumns():
@@ -31,3 +34,6 @@ class EquityStats():
                 t_tup = line.split('\t')
                 column_map[t_tup[0]] = t_tup[1]
         EquityStats.cols = column_map
+
+if __name__ == '__main__':
+    es = EquityStats(['test'], ['s'])

@@ -14,6 +14,15 @@ class DBHelper:
     def __init__(self):
         self.cnx = None
         self.cursor = None
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        if self.cursor:
+            self.cursor.close()
+        if self.cnx:
+            self.cnx.close()
     
     def connect(self, database=DB, db_user=DBUSER, db_password=DBPASSWORD, db_host=DBHOST):
         try:
@@ -33,6 +42,7 @@ class DBHelper:
         if where:
             exec_string += "WHERE {0}".format(where)
         try:
+            import pdb; pdb.set_trace()
             self.cursor.execute(exec_string)
             for row in self.cursor:
                 print(row)
@@ -49,6 +59,7 @@ class DBHelper:
             exec_string += "WHERE {0}".format(where)
         
         try:
+            import pdb; pdb.set_trace()
             self.cursor.execute(exec_string)
             for row in self.cursor:
                 print(row)
@@ -56,20 +67,17 @@ class DBHelper:
             app.logger.info("DB UPDATE ERROR:" + str(e))
     
     def insert_into(self, table, cols, vals):
-        import pdb; pdb.set_trace()
-        cols = stringify(cols)
         vals = stringify(vals)
         exec_string = 'INSERT INTO {0} '.format(table)
         col_string = "(" + ",".join(cols) + ")"
         val_string = "VALUES (" + ",".join(vals) + ")"
         exec_string += """
                         {0}
-                        {1}
-                        """.format(col_string, val_string)
+                        {1}""".format(col_string, val_string)
         try:
+            import pdb; pdb.set_trace()
             self.cursor.execute(exec_string)
-            for row in self.cursor:
-                print(row)
+            self.cnx.commit()
         except Exception as e:
             app.logger.info("DB UPDATE ERROR:" + str(e))
     
@@ -79,6 +87,4 @@ class DBHelper:
 if __name__ == '__main__':
     a = DBHelper()
     a.connect(db_host='localhost')
-    d = datetime.datetime.now().strftime('%x')
-    a.insert_into('eq_screener', ['date', 's'], [d,'test'])
-    # db_connect()
+    a.insert_into('eq_screener', ['date', 's'], ['2016-10-20','test'])
