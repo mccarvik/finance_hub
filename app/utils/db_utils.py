@@ -42,29 +42,30 @@ class DBHelper:
         if where:
             exec_string += "WHERE {0}".format(where)
         try:
-            import pdb; pdb.set_trace()
             self.cursor.execute(exec_string)
             for row in self.cursor:
                 print(row)
         except Exception as e:
-            app.logger.info("DB SELECT ERROR:" + str(e))
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            app.logger.info("DB SELECT ERROR: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
     
-    def update(self, table, cols, vals, where=None):
+    def update(self, table, cols, vals, where):
+        import pdb; pdb.set_trace()
         exec_string = 'UPDATE {0}'.format(table)
-        set_string = 'SET '
-        for c,v in cols, vals:
+        set_string = ' SET '
+        vals =stringify(vals)
+        for c,v in zip(cols, vals):
             set_string += '{0}={1}, '.format(c,v)
-        set_string = set_string[:-1]
-        if where:
-            exec_string += "WHERE {0}".format(where)
+        set_string = set_string[:-2]
+        exec_string += set_string
+        exec_string += " WHERE {0}".format(where)
         
         try:
-            import pdb; pdb.set_trace()
             self.cursor.execute(exec_string)
-            for row in self.cursor:
-                print(row)
+            self.cnx.commit()
         except Exception as e:
-            app.logger.info("DB UPDATE ERROR:" + str(e))
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            app.logger.info("DB UPDATE ERROR: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
     
     def insert_into(self, table, cols, vals):
         vals = stringify(vals)
@@ -75,16 +76,39 @@ class DBHelper:
                         {0}
                         {1}""".format(col_string, val_string)
         try:
-            import pdb; pdb.set_trace()
             self.cursor.execute(exec_string)
             self.cnx.commit()
+            return {'status': 200}
         except Exception as e:
-            app.logger.info("DB UPDATE ERROR:" + str(e))
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            app.logger.info("DB INSERT INTO ERROR: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
+            return {'status': 500}
+            
     
-    def upsert(self, table, cols, vals, where=None):
-        pass
-    
+    def upsert(self, table, cols_vals, prim_keys):
+        # first try an insert
+        try:
+            ret = self.insert_into(table, cols_vals.keys(), cols_vals.values())
+            if ret['status'] == 200:
+                self.cnx.commit()
+            else:
+                raise Exception('Error in insert statement (Probably a duplicate')
+        except:
+            try:
+                # if error try update (need to build where clause first)
+                w_c = ""
+                for pk in prim_keys:
+                    w_c += pk + "=" + stringify(cols_vals[pk]) + " AND "
+                w_c = w_c[:-5]
+                self.update(table, cols_vals.keys(), list(cols_vals.values()), w_c)
+                self.cnx.commit()
+            except Exception as e:
+                exc_type, exc_obj, exc_tb = sys.exc_info()
+                app.logger.info("DB UPSERT ERROR: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
+                
+            
+            
 if __name__ == '__main__':
     a = DBHelper()
     a.connect(db_host='localhost')
-    a.insert_into('eq_screener', ['date', 's'], ['2016-10-20','test'])
+    a.upsert('eq_screener', {'date':'2015-10-20', 's':'test2', 'n':'test22'}, ['date', 's'])
