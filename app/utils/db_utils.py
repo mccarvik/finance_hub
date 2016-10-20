@@ -1,8 +1,10 @@
 import pymysql.cursors
 import pymysql
+import datetime
 import sys
 sys.path.append("/home/ubuntu/workspace/finance")
 from app import app
+from app.utils.helper_funcs import stringify
 
 
 from config import DBUSER, DBPASSWORD, DB, DBHOST
@@ -38,14 +40,45 @@ class DBHelper:
             app.logger.info("DB SELECT ERROR:" + str(e))
     
     def update(self, table, cols, vals, where=None):
-        pass
+        exec_string = 'UPDATE {0}'.format(table)
+        set_string = 'SET '
+        for c,v in cols, vals:
+            set_string += '{0}={1}, '.format(c,v)
+        set_string = set_string[:-1]
+        if where:
+            exec_string += "WHERE {0}".format(where)
+        
+        try:
+            self.cursor.execute(exec_string)
+            for row in self.cursor:
+                print(row)
+        except Exception as e:
+            app.logger.info("DB UPDATE ERROR:" + str(e))
     
     def insert_into(self, table, cols, vals):
+        import pdb; pdb.set_trace()
+        cols = stringify(cols)
+        vals = stringify(vals)
+        exec_string = 'INSERT INTO {0} '.format(table)
+        col_string = "(" + ",".join(cols) + ")"
+        val_string = "VALUES (" + ",".join(vals) + ")"
+        exec_string += """
+                        {0}
+                        {1}
+                        """.format(col_string, val_string)
+        try:
+            self.cursor.execute(exec_string)
+            for row in self.cursor:
+                print(row)
+        except Exception as e:
+            app.logger.info("DB UPDATE ERROR:" + str(e))
+    
+    def upsert(self, table, cols, vals, where=None):
         pass
-
     
 if __name__ == '__main__':
     a = DBHelper()
     a.connect(db_host='localhost')
-    a.select('eq_screener')
+    d = datetime.datetime.now().strftime('%x')
+    a.insert_into('eq_screener', ['date', 's'], [d,'test'])
     # db_connect()

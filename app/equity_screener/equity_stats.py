@@ -19,7 +19,7 @@ class EquityStats():
     def write_to_db(self):
         db = DBHelper()
         db.connect()
-        pass
+        db.upsert()
     
     @staticmethod
     def setColumns():

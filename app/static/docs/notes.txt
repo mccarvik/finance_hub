@@ -2,3 +2,4 @@ access mysql: mysql -u root
 hostname of mysql: mccarvik-playground-2305615
 socket: /var/run/mysqld/mysqld.soc
 restarting mysql: sudo /etc/init.d/mysql restart
+place a python debugger breakpoint: import pdb; pdb.set_trace()
