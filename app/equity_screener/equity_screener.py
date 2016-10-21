@@ -3,7 +3,7 @@ sys.path.append("/home/ubuntu/workspace/finance")
 from app.equity_screener.create_symbols import create_symbols
 from app.equity_screener.equity_stats import EquityStats
 import pandas as pd
-import os, csv, requests, asyncio
+import os, csv, requests, asyncio, time
 import _thread as thread
 from app import app
 
@@ -29,22 +29,25 @@ def get_data(reset_ticks=False):
         for line in f:
             tickers += line.strip() + "+"
             ct += 1
-            if ct == 100:
+            if ct == 50:
                 tickers = tickers[:-1]
                 tasks.append(tickers)
                 tickers = ""
                 ct = 0
+                
+    
     eqs = []
     try:
         for t in tasks:
-            e = thread.start_new_thread(makeAPICall, (t,))
-            eqs.append(e)
+            # import pdb; pdb.set_trace()
+            time.sleep(.05)
+            thread.start_new_thread(makeAPICall, (t,))
+            # makeAPICall(t)
     except Exception as e:
         exc_type, exc_obj, exc_tb = sys.exc_info()
         app.logger.info("Error in async loop: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
+    app.logger.info("Done Retrieving data")
     
-    
-
 
 def makeAPICall(tickers):
     col_list = list(EquityStats.cols.keys())
@@ -61,9 +64,8 @@ def makeAPICall(tickers):
     cr = csv.reader(content.splitlines(), delimiter=',')
     eqs = []
     for row in list(cr):
-        es = EquityStats(row, col_list)
+        es = EquityStats(row, col_list, write=True)
         eqs.append(es)
-        es.write_to_db()
     app.logger.info("finished {0}".format(tickers))
     return eqs
     

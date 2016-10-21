@@ -12,16 +12,18 @@ class EquityStats():
     like P/E, dividend yield, etc.
     """
     
-    def __init__(self, stats, col_list, write=True):
+    def __init__(self, stats, col_list, write=False):
         self._stats = dict(zip(col_list, stats))
         self._ticker = self._stats['s']
+        self._date = datetime.datetime.now().strftime('%Y-%m-%d')
+        self._stats['date'] = self._date
         if write:
             self.write_to_db()
     
     def write_to_db(self):
-        import pdb; pdb.set_trace()
         with DBHelper() as db:
             db.connect()
+            db.upsert('eq_screener', self._stats, ['date', 's'])
         
     
     @staticmethod

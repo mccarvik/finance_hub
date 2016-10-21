@@ -29,8 +29,7 @@ class DBHelper:
             self.cnx = pymysql.connect(user=db_user, password=db_password,
                                   host=db_host,database=database)
             self.cursor = self.cnx.cursor()
-            # import pdb; pdb.set_trace()
-            app.logger.info('Successfully connected to ' + database)
+            # app.logger.info('Successfully connected to ' + database)
         except Exception as e:
             app.logger.info('COULD NOT CONNECT TO ' + database)
             app.logger.info("DB ERROR:" + str(e))
@@ -50,7 +49,6 @@ class DBHelper:
             app.logger.info("DB SELECT ERROR: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
     
     def update(self, table, cols, vals, where):
-        import pdb; pdb.set_trace()
         exec_string = 'UPDATE {0}'.format(table)
         set_string = ' SET '
         vals =stringify(vals)
@@ -65,6 +63,7 @@ class DBHelper:
             self.cnx.commit()
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            # import pdb; pdb.set_trace()
             app.logger.info("DB UPDATE ERROR: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
     
     def insert_into(self, table, cols, vals):
@@ -81,6 +80,7 @@ class DBHelper:
             return {'status': 200}
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            # import pdb; pdb.set_trace()
             app.logger.info("DB INSERT INTO ERROR: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
             return {'status': 500}
             
@@ -88,7 +88,7 @@ class DBHelper:
     def upsert(self, table, cols_vals, prim_keys):
         # first try an insert
         try:
-            ret = self.insert_into(table, cols_vals.keys(), cols_vals.values())
+            ret = self.insert_into(table, cols_vals.keys(), list(cols_vals.values()))
             if ret['status'] == 200:
                 self.cnx.commit()
             else:
