@@ -47,6 +47,7 @@ class DBHelper:
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
             app.logger.info("DB SELECT ERROR: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
+            return {'status': 500}
     
     def update(self, table, cols, vals, where):
         exec_string = 'UPDATE {0}'.format(table)
@@ -61,10 +62,12 @@ class DBHelper:
         try:
             self.cursor.execute(exec_string)
             self.cnx.commit()
+            return {'status': 200}
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
-            # import pdb; pdb.set_trace()
+            import pdb; pdb.set_trace()
             app.logger.info("DB UPDATE ERROR: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
+            return {'status': 500}
     
     def insert_into(self, table, cols, vals):
         vals = stringify(vals)
@@ -78,9 +81,12 @@ class DBHelper:
             self.cursor.execute(exec_string)
             self.cnx.commit()
             return {'status': 200}
+        except pymysql.err.IntegrityError as e:
+            # Duplicate entry for this insert
+            return {'status': 500}
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
-            # import pdb; pdb.set_trace()
+            import pdb; pdb.set_trace()
             app.logger.info("DB INSERT INTO ERROR: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
             return {'status': 500}
             
@@ -102,9 +108,11 @@ class DBHelper:
                 w_c = w_c[:-5]
                 self.update(table, cols_vals.keys(), list(cols_vals.values()), w_c)
                 self.cnx.commit()
+                return {'status': 200}
             except Exception as e:
                 exc_type, exc_obj, exc_tb = sys.exc_info()
                 app.logger.info("DB UPSERT ERROR: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
+                return {'status': 500}
                 
             
             

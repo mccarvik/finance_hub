@@ -4,7 +4,7 @@ from app.equity_screener.create_symbols import create_symbols
 from app.equity_screener.equity_stats import EquityStats
 import pandas as pd
 import os, csv, requests, asyncio, time
-import _thread as thread
+from threading import Thread
 from app import app
 
 def post(request):
@@ -29,23 +29,26 @@ def get_data(reset_ticks=False):
         for line in f:
             tickers += line.strip() + "+"
             ct += 1
-            if ct == 50:
+            if ct == 100:
                 tickers = tickers[:-1]
                 tasks.append(tickers)
                 tickers = ""
                 ct = 0
-                
     
-    eqs = []
+    import pdb; pdb.set_trace()
     try:
         for t in tasks:
+            # time.sleep(1)
             # import pdb; pdb.set_trace()
-            time.sleep(.05)
-            thread.start_new_thread(makeAPICall, (t,))
+            t_thread = Thread(target=makeAPICall, args=(t,))
+            # starts the thread and 'joins it' so we will wait for all to finish
+            t_thread.start()
+            t_thread.join()
             # makeAPICall(t)
     except Exception as e:
         exc_type, exc_obj, exc_tb = sys.exc_info()
         app.logger.info("Error in async loop: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
+    
     app.logger.info("Done Retrieving data")
     
 
@@ -64,14 +67,18 @@ def makeAPICall(tickers):
     cr = csv.reader(content.splitlines(), delimiter=',')
     eqs = []
     for row in list(cr):
-        es = EquityStats(row, col_list, write=True)
-        eqs.append(es)
+        try:
+            es = EquityStats(row, col_list, write=True)
+            eqs.append(es)
+        except Exception as e:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            import pdb; pdb.set_trace()
+            app.logger.info("DB INSERT INTO ERROR: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
+        
     app.logger.info("finished {0}".format(tickers))
     return eqs
     
         
-
-
 def run_screening(filters=None, sim=False):
     # Go thru the file, read each ticker and try to collect data
     print("RUN SCREENING")

@@ -23,6 +23,7 @@ class EquityStats():
     def write_to_db(self):
         with DBHelper() as db:
             db.connect()
+            self._stats['n'] = self._stats['n'].replace("'", "''")
             db.upsert('eq_screener', self._stats, ['date', 's'])
         
     
