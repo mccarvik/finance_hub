@@ -1,6 +1,7 @@
 import pymysql.cursors
 import pymysql
 import datetime
+import pandas as pd
 import sys
 sys.path.append("/home/ubuntu/workspace/finance")
 from app import app
@@ -42,8 +43,12 @@ class DBHelper:
             exec_string += "WHERE {0}".format(where)
         try:
             self.cursor.execute(exec_string)
+            rows = []
+            headers = [h[0] for h in self.cursor.description]
             for row in self.cursor:
-                print(row)
+                rows.append(row)
+            return pd.DataFrame(rows, columns=headers)
+            
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
             app.logger.info("DB SELECT ERROR: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
