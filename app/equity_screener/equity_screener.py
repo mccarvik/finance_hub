@@ -43,6 +43,7 @@ def get_data(reset_ticks=False):
     try:
         for t in tasks:
             threads.append(Thread(target=makeAPICall, args=(t,)))
+            
         # starts the thread and 'joins it' so we will wait for all to finish
         [t.start() for t in threads]
         [t.join() for t in threads]
@@ -60,7 +61,7 @@ def makeAPICall(tickers):
     url = "http://finance.yahoo.com/d/quotes.csv?s=" + tickers + "&f=" + cols
     try:
         req = requests.get(url)
-        app.logger.info("request to {0} successful".format(url))
+        # app.logger.info("request to {0} successful".format(url))
     except:
         app.logger.info("request to {0} failed".format(url))
         return None
