@@ -29,13 +29,15 @@ def get_data(reset_ticks=False):
         for line in f:
             tickers += line.strip() + "+"
             ct += 1
-            if ct == 100:
+            if ct == 50:
                 tickers = tickers[:-1]
                 tasks.append(tickers)
                 tickers = ""
                 ct = 0
-    
-    # TODO not saving the last API call thread to the DB, not sure why
+        else:
+            tickers = tickers[:-1]
+            tasks.append(tickers)
+            
     t0 = time.time()
     threads = []
     try:
