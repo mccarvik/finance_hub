@@ -20,6 +20,8 @@ def home(page=1):
 
 @app.route('/equity_screener', methods=['GET', 'POST'])
 def equity_screener():
+    column_map = {}
+    
     num_screen_vals = ['PE', 'Div Yield']
     if request.method == 'POST':
         eqsc_post(request)
