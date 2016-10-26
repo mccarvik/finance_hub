@@ -19,7 +19,6 @@ def post(request):
 def get_data(reset_ticks=False):
     if reset_ticks:
         create_symbols.create_symbols()
-        
     tasks = []
     EquityStats.setColumns()
     cwd = os.path.dirname(os.path.realpath(__file__))
