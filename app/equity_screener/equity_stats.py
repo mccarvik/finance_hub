@@ -62,12 +62,12 @@ class ES_Dataframe:
         self._df = self.read_from_db()
         self.write_static_info()
         self.clean_data()
+        self.apply_filters()
     
     def read_from_db(self):
         with DBHelper() as db:
             db.connect()
             return db.select('eq_screener', where="date='{0}'".format(self._date))
-        
         
     @staticmethod
     def setColumns():
@@ -89,7 +89,6 @@ class ES_Dataframe:
     
     def clean_data(self):
         """moves around data in the dataframe for screening purposes"""
-        import pdb; pdb.set_trace()
         self.removePunctuation()
         self.numberfy()
     
@@ -110,9 +109,10 @@ class ES_Dataframe:
     
     def numberfy(self):
         """sets all the numeric columns to numbers"""
+        import pdb; pdb.set_trace()
         df = self._df
         for col in ES_Dataframe.to_numeric_list:
-            df[col] = df.apply(pd.to_numeric, args=('coerce',))
+            df[col] = df[col].apply(pd.to_numeric, errors='coerce')
         import pdb; pdb.set_trace()
         self._df = df
 
