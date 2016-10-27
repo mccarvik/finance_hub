@@ -136,5 +136,5 @@ def getFilters(req=None):
     return filters
 
 if __name__ == '__main__':
-    run_screening(sim=True)
-    # get_data()
+    # run_screening(sim=True)
+    get_data()

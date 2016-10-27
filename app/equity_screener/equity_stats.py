@@ -31,7 +31,7 @@ class EquityStats():
     @staticmethod
     def setColumns():
         column_map = {}
-        with open("/home/ubuntu/workspace/finance/app/static/docs/yahoo_api_notes.txt", "r") as f:
+        with open("/home/ubuntu/workspace/finance/app/equity_screener/yahoo_api_notes.txt", "r") as f:
             for line in f:
                 if line.strip() == 'EOF':
                     break
@@ -53,10 +53,11 @@ class ES_Dataframe:
     fav_list = ['a', 'a2', 'a5', 'b', 'b4', 'b6', 'd', 'e', 'e7', 'e8', 'e9', 'f6', 'j', 'k', 'j1', 'j4',
                 'j5', 'j6', 'k4', 'k5', 'l1', 'm3', 'm4', 'm5', 'm6', 'm7', 'm8', 'p', 'p5', 'p6', 'r', 'r5'
                 'r6', 'r7', 's7', 't8', 'v', 'w1', 'y']
+    test_filters = [('r', '<', 20),  ('y', '>', 1)]
     
     def __init__(self, date=None, filters=None, favs=False):
         self._favs = favs
-        self._filters = filters
+        self._filters = filters or ES_Dataframe.test_filters
         self._colmap = self.setColumns()
         self._date = date or datetime.datetime.now().strftime('%Y-%m-%d')
         self._df = self.read_from_db()
@@ -72,7 +73,7 @@ class ES_Dataframe:
     @staticmethod
     def setColumns():
         column_map = {}
-        with open("/home/ubuntu/workspace/finance/app/static/docs/yahoo_api_notes.txt", "r") as f:
+        with open("/home/ubuntu/workspace/finance/app/equity_screener/yahoo_api_notes.txt", "r") as f:
             for line in f:
                 if line.strip() == 'EOF':
                     break
@@ -86,11 +87,13 @@ class ES_Dataframe:
         with open('/home/ubuntu/workspace/finance/app/equity_screener/screen_info.csv', 'w') as f:
             f.write("columns," + ",".join(cols) + '\n')
             f.write("favorites," + ",".join(ES_Dataframe.fav_list) + '\n')
+        app.logger.info("Static info written")
     
     def clean_data(self):
         """moves around data in the dataframe for screening purposes"""
         self.removePunctuation()
         self.numberfy()
+        app.logger.info("Done cleaning data")
     
     def removePunctuation(self):
         """replacing punctiation in all the columns"""
@@ -109,13 +112,23 @@ class ES_Dataframe:
     
     def numberfy(self):
         """sets all the numeric columns to numbers"""
-        import pdb; pdb.set_trace()
         df = self._df
         for col in ES_Dataframe.to_numeric_list:
             df[col] = df[col].apply(pd.to_numeric, errors='coerce')
-        import pdb; pdb.set_trace()
         self._df = df
-
+        
+    def apply_filters(self):
+        df = self._df
+        for filt in self._filters:
+            if filt[1] == "=":
+                df = df[df[filt[0]] == filt[2]]
+            elif filt[1] == ">":
+                df = df[df[filt[0]] > filt[2]]
+            elif filt[1] == "<":
+                df = df[df[filt[0]] < filt[2]]
+        self._df = df
+        import pdb; pdb.set_trace()
+        app.logger.info("Filters applied")
 
 if __name__ == '__main__':
     d = datetime.datetime(2016, 10, 25).strftime('%Y-%m-%d')
