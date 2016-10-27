@@ -10,7 +10,7 @@ from app import app
 def post(request):
     if request.form['action'] == 'run_screening':
         # filters = getFilters(req=request)
-        filters = getFilters(req=None)
+        filters = getFilters(req)
         run_screening(filters=filters, sim=False)
     
     if request.form['action'] == 'get_data':
@@ -82,58 +82,13 @@ def makeAPICall(tickers):
 def run_screening(filters=None, sim=False):
     # Go thru the file, read each ticker and try to collect data
     print("RUN SCREENING")
-    df = ES_Dataframe()
-    
+    df = ES_Dataframe(filters)
     sys.exit()
-    if sim:
-        filters = getFilters(req=None)
-        
-    #build dataframe
-    arr_2d = []
-    for e in eqs:
-        lyst = e.key_stats
-        arr_2d.append(lyst)
-    df = pd.DataFrame(data=arr_2d, columns=EquityStats.cols)
-    filters = getFilters(sim)
-
-    print(df.to_string())
-    for f in filters:
-        print(f)
-        try:
-            df[f[0]] = df[f[0]].astype(float)
-        except Exception as e:
-            print(e, " filter not applied")
-            continue
-        if f[1] == "=":
-            df = df[df[f[0]] == f[2]]
-        elif f[1] == ">":
-            df = df[df[f[0]] > f[2]]
-        elif f[1] == "<":
-            df = df[df[f[0]] < f[2]]
-        print(df.to_string())
 
 def getFilters(req=None):
     filters = []
-    # if not sim:
-    #     while True:
-    #         print("Select satistic:")
-    #         [print(i + ",  ", end="") for i in EquityStats.cols]
-    #         stat = input()
-    #         if not stat:
-    #             break
-    #         print('Select conditon:')
-    #         print('< or >')
-    #         condition = input()
-    #         print('Select value:')
-    #         val = input()
-    #         filters.append((stat, condition, val))
-    if req:
-        pass
-    else:
-        filters.append(("P/E", "<", 20))
-        filters.append(("Beta", "<", 2))
-        filters.append(('Div yield', '>', 1))
-    return filters
+    if not req:
+        return None
 
 if __name__ == '__main__':
     # run_screening(sim=True)

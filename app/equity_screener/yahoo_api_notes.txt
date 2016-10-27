@@ -46,7 +46,8 @@ l1	Last Trade (Price Only)
 l2	High Limit	
 l3	Low Limit	
 m	Day’s Range
-m2	Day’s Range (Real-time)	m3	50-day Moving Average	
+m2	Day’s Range (Real-time)	
+m3	50-day Moving Average	
 m4	200-day Moving Average
 m5	Change From 200-day Moving Average	
 m6	Percent Change From 200-day Moving Average	

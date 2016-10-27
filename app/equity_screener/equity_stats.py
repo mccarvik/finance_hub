@@ -51,7 +51,7 @@ class ES_Dataframe:
                         'm6', 'm7', 'o', 'p', 'p1', 'p2', 'p5', 'p6', 'r', 'r2', 'r5', 'r6', 'r7', 's1', 's7',
                         't6', 't7', 't8', 'v', 'v1', 'v7', 'w1', 'w4', 'y']
     fav_list = ['a', 'a2', 'a5', 'b', 'b4', 'b6', 'd', 'e', 'e7', 'e8', 'e9', 'f6', 'j', 'k', 'j1', 'j4',
-                'j5', 'j6', 'k4', 'k5', 'l1', 'm3', 'm4', 'm5', 'm6', 'm7', 'm8', 'p', 'p5', 'p6', 'r', 'r5'
+                'j5', 'j6', 'k4', 'k5', 'l1', 'm3', 'm4', 'm5', 'm6', 'm7', 'm8', 'p', 'p5', 'p6', 'r', 'r5',
                 'r6', 'r7', 's7', 't8', 'v', 'w1', 'y']
     test_filters = [('r', '<', 20),  ('y', '>', 1)]
     
@@ -84,9 +84,13 @@ class ES_Dataframe:
     def write_static_info(self):
         # columns that arent conducive to screenng
         cols = list(set(self._colmap.keys()) - set(ES_Dataframe.exempt_list))
+        cols_desc = [self._colmap[k].strip() for k in cols]
+        cols_favs_desc = [self._colmap[k].strip() for k in ES_Dataframe.fav_list]
         with open('/home/ubuntu/workspace/finance/app/equity_screener/screen_info.csv', 'w') as f:
             f.write("columns," + ",".join(cols) + '\n')
+            f.write("columns description," + ",".join(cols_desc) + '\n')
             f.write("favorites," + ",".join(ES_Dataframe.fav_list) + '\n')
+            f.write("favorites description," + ",".join(cols_favs_desc) + '\n')
         app.logger.info("Static info written")
     
     def clean_data(self):
@@ -127,10 +131,9 @@ class ES_Dataframe:
             elif filt[1] == "<":
                 df = df[df[filt[0]] < filt[2]]
         self._df = df
-        import pdb; pdb.set_trace()
         app.logger.info("Filters applied")
 
 if __name__ == '__main__':
     d = datetime.datetime(2016, 10, 25).strftime('%Y-%m-%d')
-    # es = EquityStats(['test'], ['s'])
+    # import pdb; pdb.set_trace()
     es_df = ES_Dataframe(date=d)

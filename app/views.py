@@ -19,10 +19,20 @@ def home(page=1):
                            title='Home')
 
 @app.route('/equity_screener', methods=['GET', 'POST'])
-def equity_screener():
+def equity_screener(favs=True):
     column_map = {}
+    with open("/home/ubuntu/workspace/finance/app/equity_screener/yahoo_api_notes.txt", "r") as f:
+            for line in f:
+                if line.strip() == 'EOF':
+                    break
+                t_tup = line.split('\t')
+                column_map[t_tup[0]] = t_tup[1]
     
-    num_screen_vals = ['PE', 'Div Yield']
+    favs = []
+    with open("/home/ubuntu/workspace/finance/app/equity_screener/screen info.csv", "r") as f:
+        cols = f.readline()
+    
+    
     if request.method == 'POST':
         eqsc_post(request)
     return render_template('equity_screener.html',
