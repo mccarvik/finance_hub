@@ -3,8 +3,10 @@ sys.path.append("/home/ubuntu/workspace/finance")
 import datetime
 import re, os, string
 import pandas as pd
+import requests
 from app import app
 from app.utils.db_utils import DBHelper
+from bs4 import BeautifulSoup
 
 column_opts = []
 
@@ -26,7 +28,12 @@ class EquityStats():
             db.connect()
             self._stats['n'] = self._stats['n'].replace("'", "''")
             db.upsert('eq_screener', self._stats, ['date', 's'])
-        
+    
+    def add_scraped_columns(self):
+        with open("/home/ubuntu/workspace/finance/app/equity_screener/yahoo_scrape_notes.txt", "r") as f:
+            url = f.readline().replace('$$$$', self._ticker)
+        data = requests.get(url).text
+        soup = BeautifulSoup(data)
     
     @staticmethod
     def setColumns():

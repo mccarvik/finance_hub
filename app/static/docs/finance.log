@@ -2660,3 +2660,7 @@
 2016-10-27 23:26:25,694 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
 2016-10-27 23:26:26,347 INFO: Static info written [in equity_stats.py:95]
 2016-10-27 23:26:32,940 INFO: Done cleaning data [in equity_stats.py:101]
+2016-10-28 01:56:57,766 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-28 01:58:20,122 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-28 01:58:21,222 INFO: Static info written [in equity_stats.py:95]
+2016-10-28 01:58:28,841 INFO: Done cleaning data [in equity_stats.py:101]
