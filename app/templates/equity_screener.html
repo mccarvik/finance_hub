@@ -8,16 +8,18 @@
         <button id="run_screen_button" onclick="run_screening(event, '{{ SECRET_KEY }}');">Run Screener</button>
         <button id="get_data_button" onclick="get_data(event, '{{ SECRET_KEY }}');">Get Data</button>
     </div>
-    {% for val in num_screen_vals %}
-        <span class='num_screen'>
-            <label class='num_screen'>{{ val }}</label>
-            <select class='num_screen'>
-              <option value="=">=</option>
-              <option value="<"><</option>
-              <option value=">">></option>
-            </select>
-            <input type="text" class='num_screen' value =""/>
-        </span>
-        <div></div>
-    {% endfor %}
+    <div id='filters'>
+        {% for key, val in num_screen_vals.items() %}
+            <span class='num_screen' id='{{ key }}'>
+                <label class='num_screen'>{{ val }}</label>
+                <select class='num_screen' id='{{ key }}'>
+                  <option value="=">=</option>
+                  <option value="<"><</option>
+                  <option value=">">></option>
+                </select>
+                <input type="text" class='num_screen' id='{{ key }}' value =""/>
+            </span>
+            <div></div>
+        {% endfor %}
+    </div>
 {% endblock %}

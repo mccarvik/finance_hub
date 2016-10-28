@@ -2664,3 +2664,210 @@
 2016-10-28 01:58:20,122 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
 2016-10-28 01:58:21,222 INFO: Static info written [in equity_stats.py:95]
 2016-10-28 01:58:28,841 INFO: Done cleaning data [in equity_stats.py:101]
+2016-10-28 18:55:00,482 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-28 18:55:07,789 ERROR: Exception on /equity_screener [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 43, in equity_screener
+    num_screen_vals=ns_vals)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/ubuntu/workspace/finance/app/templates/equity_screener.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "/home/ubuntu/workspace/finance/app/templates/base.html", line 34, in top-level template code
+    {% block content %}{% endblock %}
+  File "/home/ubuntu/workspace/finance/app/templates/equity_screener.html", line 11, in block "content"
+    {% for key, val in num_screen_vals.iteritems() %}
+jinja2.exceptions.UndefinedError: 'dict object' has no attribute 'iteritems'
+2016-10-28 18:55:52,764 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-28 18:56:51,916 ERROR: Exception on /equity_screener [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 42, in equity_screener
+    return render_template('equity_screener.html',
+  File "/home/ubuntu/workspace/finance/app/views.py", line 42, in equity_screener
+    return render_template('equity_screener.html',
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-10-28 18:56:53,796 ERROR: Exception on /equity_screener [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 24, in equity_screener
+    column_map = {}
+  File "/home/ubuntu/workspace/finance/app/views.py", line 24, in equity_screener
+    column_map = {}
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-10-28 18:56:56,822 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-28 18:57:35,844 ERROR: Exception on /equity_screener [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 42, in equity_screener
+    return render_template('equity_screener.html',
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/ubuntu/workspace/finance/app/templates/equity_screener.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "/home/ubuntu/workspace/finance/app/templates/base.html", line 34, in top-level template code
+    {% block content %}{% endblock %}
+  File "/home/ubuntu/workspace/finance/app/templates/equity_screener.html", line 11, in block "content"
+    {% for key, val in num_screen_vals.iteritems() %}
+jinja2.exceptions.UndefinedError: 'dict object' has no attribute 'iteritems'
+2016-10-28 18:57:38,087 ERROR: Exception on /equity_screener [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 24, in equity_screener
+    column_map = {}
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/ubuntu/workspace/finance/app/templates/equity_screener.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "/home/ubuntu/workspace/finance/app/templates/base.html", line 34, in top-level template code
+    {% block content %}{% endblock %}
+  File "/home/ubuntu/workspace/finance/app/templates/equity_screener.html", line 11, in block "content"
+    {% for key, val in num_screen_vals.iteritems() %}
+jinja2.exceptions.UndefinedError: 'dict object' has no attribute 'iteritems'
+2016-10-28 18:57:45,301 ERROR: Exception on /equity_screener [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 24, in equity_screener
+    column_map = {}
+  File "/home/ubuntu/workspace/finance/app/views.py", line 24, in equity_screener
+    column_map = {}
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-10-28 18:57:56,275 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-28 18:58:03,259 ERROR: Exception on /equity_screener [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 44, in equity_screener
+    num_screen_vals=ns_vals)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/ubuntu/workspace/finance/app/templates/equity_screener.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "/home/ubuntu/workspace/finance/app/templates/base.html", line 34, in top-level template code
+    {% block content %}{% endblock %}
+  File "/home/ubuntu/workspace/finance/app/templates/equity_screener.html", line 11, in block "content"
+    {% for key, val in num_screen_vals.iteritems() %}
+jinja2.exceptions.UndefinedError: 'dict object' has no attribute 'iteritems'
+2016-10-28 18:59:58,501 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-28 19:05:28,771 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]

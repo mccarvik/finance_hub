@@ -1,11 +1,23 @@
 input.num_screen, select.num_screen {
     width: 50px;
+    /*float: right;*/
 }
 
 label.num_screen {
     display:inline-block;
 }
 
+/*span.num_screen {
+    margin-top:80px;
+    margin-botto:80px;
+}*/
+
 #run_screen_button {
     margin: 10px;
 }
+
+div#filters {
+    -webkit-column-count: 2;
+    -webkit-column-gap: 20px;
+}
+

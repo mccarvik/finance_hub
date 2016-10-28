@@ -130,7 +130,6 @@ class ES_Dataframe:
         self._df = df
         
     def apply_filters(self):
-        import pdb; pdb.set_trace()
         df = self._df
         for filt in self._filters:
             try:
