@@ -2871,3 +2871,106 @@ Traceback (most recent call last):
 jinja2.exceptions.UndefinedError: 'dict object' has no attribute 'iteritems'
 2016-10-28 18:59:58,501 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
 2016-10-28 19:05:28,771 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-28 19:59:54,950 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-28 20:00:18,073 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:00:18,983 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:00:19,647 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:00:20,315 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:00:22,690 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:00:23,440 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:00:23,761 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:00:24,048 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:00:24,303 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:00:24,519 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:00:24,735 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:00:24,950 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:00:25,183 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:00:25,423 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:00:25,656 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:00:25,872 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:00:26,104 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:00:26,352 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:00:26,792 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:00:33,650 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:00:41,579 INFO: COULD NOT CONNECT TO finance [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:35]
+2016-10-28 20:00:41,579 INFO: DB ERROR:(2003, "Can't connect to MySQL server on 'localhost' ([Errno 111] Connection refused)") [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:36]
+2016-10-28 20:04:07,317 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-28 20:08:36,741 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:08:37,517 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:08:37,941 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:08:38,196 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:08:38,397 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:08:38,604 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:08:38,829 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:08:39,069 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:08:39,333 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:08:59,117 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:08:59,869 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:09:00,205 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:09:00,501 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:13:13,551 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-28 20:13:14,296 INFO: Static info written [in equity_stats.py:106]
+2016-10-28 20:13:21,435 INFO: Done cleaning data [in equity_stats.py:112]
+2016-10-28 20:13:21,461 INFO: Filters applied [in equity_stats.py:150]
+2016-10-28 20:13:55,199 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-28 20:14:45,337 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:14:46,328 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:14:56,481 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:15:17,362 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-28 20:15:31,739 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-28 20:17:05,527 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 76,  [in equity_screener.py:76]
+2016-10-28 20:17:06,282 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 76,  [in equity_screener.py:76]
+2016-10-28 20:17:07,009 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 76,  [in equity_screener.py:76]
+2016-10-28 20:17:07,284 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 76,  [in equity_screener.py:76]
+2016-10-28 20:17:07,712 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 76,  [in equity_screener.py:76]
+2016-10-28 20:17:08,210 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 76,  [in equity_screener.py:76]
+2016-10-28 20:17:22,035 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 76,  [in equity_screener.py:76]
+2016-10-28 21:37:19,661 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-28 21:37:24,047 ERROR: Exception on / [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 19, in home
+    title='Home')
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/ubuntu/workspace/finance/app/templates/home.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "/home/ubuntu/workspace/finance/app/templates/base.html", line 29, in top-level template code
+    <li><a href="{{ url_for('/option/vanilla') }}">Options</a></li>
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/helpers.py", line 332, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1811, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/helpers.py", line 322, in url_for
+    force_external=external)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/werkzeug/routing.py", line 1758, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint '/option/vanilla'. Did you mean 'opt_vanilla' instead?
+2016-10-28 21:37:59,724 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-28 21:39:10,671 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-28 21:45:47,232 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-28 21:57:19,402 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-28 21:59:54,635 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-28 22:00:38,586 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-28 22:00:47,825 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]

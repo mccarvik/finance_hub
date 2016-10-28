@@ -51,7 +51,13 @@ def bond():
     return render_template('bond.html',
                            title='Bond Calculator')
 
-
+@app.route('/option/vanilla', methods=['GET', 'POST'])
+def opt_vanilla():
+    if request.method == 'POST':
+        opt_vanilla_post(request)
+    return render_template('opt_vanilla.html',
+                           title='Options - Vanilla')
+                           
 @app.errorhandler(404)
 def not_found_error(error):
     return render_template('404.html'), 404

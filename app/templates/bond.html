@@ -1,7 +1,9 @@
 <!-- extend base layout -->
 {% extends "base.html" %}
-<link href="/static/css/bond.css" rel="stylesheet" type="text/css">
-<script src="/static/js/bond.js"></script>
-<div>
-    <button id="bond_calc_button" onclick="bond_calc(event, '{{ SECRET_KEY }}');">Calculate</button>
-</div>
+{% block content %}
+    <link href="/static/css/bond.css" rel="stylesheet" type="text/css">
+    <script src="/static/js/bond.js"></script>
+    <div>
+        <button id="bond_calc_button" onclick="bond_calc(event, '{{ SECRET_KEY }}');">Calculate</button>
+    </div>
+{% endblock %}

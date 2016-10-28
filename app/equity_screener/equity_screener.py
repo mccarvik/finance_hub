@@ -40,13 +40,15 @@ def get_data(reset_ticks=False):
     t0 = time.time()
     threads = []
     try:
-        for t in tasks:
-            threads.append(Thread(target=makeAPICall, args=(t,)))
-            
         # starts the thread and 'joins it' so we will wait for all to finish
-        [t.start() for t in threads]
-        [t.join() for t in threads]
-        # makeAPICall(tasks[-1])
+        # for t in tasks:
+        #     threads.append(Thread(target=makeAPICall, args=(t,)))
+        # [t.start() for t in threads]
+        # [t.join() for t in threads]
+        
+        # for running single threaded
+        for t in tasks:
+            makeAPICall(t)
     except Exception as e:
         exc_type, exc_obj, exc_tb = sys.exc_info()
         app.logger.info("Error in async loop: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
@@ -83,7 +85,6 @@ def run_screening(filters=None, sim=False):
     # Go thru the file, read each ticker and try to collect data
     print("RUN SCREENING")
     df = ES_Dataframe(filters)
-    sys.exit()
 
 def getFilters(req=None):
     filters = []

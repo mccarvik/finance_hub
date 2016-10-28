@@ -1,0 +1,9 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+{% block content %}
+    <link href="/static/css/opt_vanilla.css" rel="stylesheet" type="text/css">
+    <script src="/static/js/opt_vanilla.js"></script>
+    <div>
+        <button id="opt_vanilla_calc_button" onclick="opt_vanilla_calc(event, '{{ SECRET_KEY }}');">Calculate</button>
+    </div>
+{% endblock %}

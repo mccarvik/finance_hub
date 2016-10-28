@@ -26,6 +26,10 @@
             <ul class="nav">
               <li><a href="{{ url_for('equity_screener') }}">Equity Screener</a></li>
               <li><a href="{{ url_for('bond') }}">Bond</a></li>
+              <li><a role="button" data-toggle="dropdown" href="{{ url_for('opt_vanilla') }}">
+                  Options<span class="caret"></span>
+                </a>
+              </li>
             </ul>
         </div>
       </div>
