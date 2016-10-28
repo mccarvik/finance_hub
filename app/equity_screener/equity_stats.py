@@ -48,12 +48,13 @@ class ES_Dataframe:
     to_numeric_list = ['a', 'a2', 'a5', 'b', 'b2', 'b3', 'b4', 'b6', 'c', 'c1', 'c3', 'c6', 'c8', 'd', 'e',
                         'e7', 'e8', 'e9', 'f6', 'g', 'h', 'j', 'k', 'g1', 'g3', 'g4', 'g5', 'g6', 'j1', 'j3', 
                         'j4', 'j5', 'j6', 'k1', 'k2', 'k3', 'k4', 'k5', 'l1', 'l2', 'l3', 'm3', 'm4', 'm5',
-                        'm6', 'm7', 'o', 'p', 'p1', 'p2', 'p5', 'p6', 'r', 'r2', 'r5', 'r6', 'r7', 's1', 's7',
-                        't6', 't7', 't8', 'v', 'v1', 'v7', 'w1', 'w4', 'y']
+                        'm6', 'm7', 'm8', 'o', 'p', 'p1', 'p2', 'p5', 'p6', 'r', 'r2', 'r5', 'r6', 'r7', 's1',
+                        's7', 't6', 't7', 't8', 'v', 'v1', 'v7', 'w1', 'w4', 'y']
     fav_list = ['a', 'a2', 'a5', 'b', 'b4', 'b6', 'd', 'e', 'e7', 'e8', 'e9', 'f6', 'j', 'k', 'j1', 'j4',
                 'j5', 'j6', 'k4', 'k5', 'l1', 'm3', 'm4', 'm5', 'm6', 'm7', 'm8', 'p', 'p5', 'p6', 'r', 'r5',
                 'r6', 'r7', 's7', 't8', 'v', 'w1', 'y']
-    test_filters = [('r', '<', 20),  ('y', '>', 1)]
+                
+    test_filters = [('r', '<', 15),  ('y', '>', 2), ('m6', '<', 0), ('m8', '<', 0), ('r5', '<', 1)]
     
     def __init__(self, date=None, filters=None, favs=False):
         self._favs = favs
@@ -122,14 +123,19 @@ class ES_Dataframe:
         self._df = df
         
     def apply_filters(self):
+        import pdb; pdb.set_trace()
         df = self._df
         for filt in self._filters:
-            if filt[1] == "=":
-                df = df[df[filt[0]] == filt[2]]
-            elif filt[1] == ">":
-                df = df[df[filt[0]] > filt[2]]
-            elif filt[1] == "<":
-                df = df[df[filt[0]] < filt[2]]
+            try:
+                if filt[1] == "=":
+                    df = df[df[filt[0]] == filt[2]]
+                elif filt[1] == ">":
+                    df = df[df[filt[0]] > filt[2]]
+                elif filt[1] == "<":
+                    df = df[df[filt[0]] < filt[2]]
+            except Exception as e:
+                exc_type, exc_obj, exc_tb = sys.exc_info()
+                app.logger.info("COULD NOT APPLY FILTER: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
         self._df = df
         app.logger.info("Filters applied")
 

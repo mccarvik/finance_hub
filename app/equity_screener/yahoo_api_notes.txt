@@ -53,7 +53,7 @@ m5	Change From 200-day Moving Average
 m6	Percent Change From 200-day Moving Average	
 m7	Change From 50-day Moving Average
 m8	Percent Change From 50-day Moving Average	
-n	Name	
+n	Name
 n4	Notes
 o	Open	
 p	Previous Close	

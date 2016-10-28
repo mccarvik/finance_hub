@@ -21,23 +21,27 @@ def home(page=1):
 @app.route('/equity_screener', methods=['GET', 'POST'])
 def equity_screener(favs=True):
     column_map = {}
-    with open("/home/ubuntu/workspace/finance/app/equity_screener/yahoo_api_notes.txt", "r") as f:
-            for line in f:
-                if line.strip() == 'EOF':
-                    break
-                t_tup = line.split('\t')
-                column_map[t_tup[0]] = t_tup[1]
-    
-    favs = []
-    with open("/home/ubuntu/workspace/finance/app/equity_screener/screen info.csv", "r") as f:
-        cols = f.readline()
-    
+    with open("/home/ubuntu/workspace/finance/app/equity_screener/screen_info.csv", "r") as f:
+        cols = str.split(f.read(), ",")[1:]
+        cols_desc = str.split(f.read(), ",")[1:]
+        favs_list = str.split(f.read(), ",")[1:]
+        favs_list_desc = str.split(f.read(), ",")[1:]
     
     if request.method == 'POST':
         eqsc_post(request)
+    
+    if favs:
+        ns_vals = favs_list
+        ns_desc = favs_list_desc
+    else:
+        ns_vals = cols
+        ns_desc = cols_desc
+    
     return render_template('equity_screener.html',
-                           title='Equity Screener',
-                           num_screen_vals=num_screen_vals)
+                               title='Equity Screener',
+                               num_screen_vals=ns_vals,
+                               num_screen_desc=ns_desc)
+        
                            
 @app.route('/bond', methods=['GET', 'POST'])
 def bond():
