@@ -31,14 +31,9 @@ class EquityStats():
             db.upsert('eq_screener', self._stats, ['date', 's'])
     
     def add_scraped_columns(self):
-        import pdb; pdb.set_trace()
         with open("/home/ubuntu/workspace/finance/app/equity_screener/yahoo_scrape_notes.txt", "r") as f:
             url = f.readline().replace('$$$$', self._ticker)
         data = requests.get(url).text
-        soup = BeautifulSoup(data, 'lxml')
-        for tag in soup.find_all('td', {'class':"Fz(s) Fw(500) Ta(end)"}):
-            pass
-        import pdb; pdb.set_trace()
         sys.exit()
     
     @staticmethod

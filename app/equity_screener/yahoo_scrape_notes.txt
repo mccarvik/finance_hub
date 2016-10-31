@@ -1,1 +1,1 @@
-http://finance.yahoo.com/quote/$$$$/key-statistics?p=$$$$
+https://query2.finance.yahoo.com/v10/finance/quoteSummary/$$$$?formatted=true&crumb=T7kld941Rnm&lang=en-US&region=US&modules=defaultKeyStatistics%2CfinancialData%2CcalendarEvents&corsDomain=finance.yahoo.com
