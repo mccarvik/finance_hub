@@ -4,26 +4,38 @@
     <link href="/static/css/opt_vanilla.css" rel="stylesheet" type="text/css">
     <script src="/static/js/opt_vanilla.js"></script>
     <div>
-        <button id="opt_vanilla_calc_button" onclick="opt_vanilla_calc(event, '{{ SECRET_KEY }}');">Calculate</button>
+        <button id="opt_vanilla_calc_prem" class='vanilla_buttons' onclick="opt_vanilla_calc_prem(event, '{{ SECRET_KEY }}');">Calculate Premium</button>
+        <button id="opt_vanilla_calc_vol" class='vanilla_buttons' onclick="opt_vanilla_calc_vol(event, '{{ SECRET_KEY }}');">Calculate Volatility</button>
     </div>
     <div>
-        <label>Option Type</label>
-        <input type="text" value =""/>
+        <label class='opt_fields'>Option Type</label>
+        <select class='opt_fields' id='call_put'>
+            <option value="C">Call</option>
+            <option value="P">Put</option>
+        </select>
     </div>
     <div>
-        <label>Underlying</label>
+        <label class='opt_fields'>Underlying</label>
         <input type="text" value =""/>    
     </div>
     <div>
-        <label>Strike</label>
+        <label class='opt_fields'>Strike</label>
         <input type="text" value =""/>
     </div>
     <div>
-        <label>Interest Rate</label>
+        <label class='opt_fields'>Interest Rate</label>
         <input type="text" value =""/>
     </div>
     <div>
-        <label>Tenor</label>
+        <label class='opt_fields'>Tenor</label>
+        <input type="text" value =""/>
+    </div>
+    <div>
+        <label class='opt_fields'>Volatility</label>
+        <input type="text" value =""/>
+    </div>
+    <div>
+        <label class='opt_fields'>Premium</label>
         <input type="text" value =""/>
     </div>
     

@@ -1,3 +1,11 @@
 #option_vanilla_calc_button {
     margin: 10px;
 }
+
+label.opt_fields { 
+    display:inline-block;
+}
+
+.vanilla_buttons {
+    margin-bottom: 20px;
+}
