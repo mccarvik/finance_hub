@@ -2,6 +2,13 @@ import numpy as np
 import scipy.stats as ss
 import time
 
+def post(request):
+    if request.form['action'] == 'prem_calc':
+        print("prem calc")
+        
+    if request.form['action'] == 'vol_calc':
+        print("vol valc")
+
 class OptionVanilla:
     
     def __init__(self, otype, underlying, strike, ir, tenor, vol=None, premium=None):
@@ -31,7 +38,7 @@ class OptionVanilla:
  
 
 def main():
-    opt = Option("C", 100, 130, 0.1, 1, vol=0.3)
+    opt = OptionVanilla("C", 100, 130, 0.1, 1, vol=0.3)
     print(opt.premium)
     
 if __name__ == "__main__":
