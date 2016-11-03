@@ -1,3 +1,5 @@
+jQuery(function($){});
+
 function opt_vanilla_calc_prem(event, token) {
     var overlay = $('<div id="waiting"> </div>');
     overlay.appendTo(document.body);
@@ -6,6 +8,7 @@ function opt_vanilla_calc_prem(event, token) {
     var k = $("#strike_val").val();
     var t = $("#tenor_val").val();
     var v = $("#vol_val").val();
+    console.log('und:' + und);
     
     $.ajax({
         type: 'POST',
