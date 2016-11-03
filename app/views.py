@@ -53,7 +53,6 @@ def bond():
 
 @app.route('/option/vanilla', methods=['GET', 'POST'])
 def opt_vanilla():
-    import pdb; pdb.set_trace()
     if request.method == 'POST':
         opt_vanilla_post(request)
     return render_template('opt_vanilla.html',

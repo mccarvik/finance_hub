@@ -1,12 +1,32 @@
 import numpy as np
 import scipy.stats as ss
-import time
+import time, sys
+from app import app
 
 def post(request):
+    import pdb; pdb.set_trace()
+    try:
+        otype = request.form.get('otype', 'C')
+        und = request.form.get('underlying', 100)
+        k = request.form.get('strike', 100)
+        r = request.form.get('ir', 0.02)
+        t = request.form.get('tenor', 1)
+        v = request.form.get('vol', 0.3)
+        p = request.form.get('prem', 12)
+    except Exception as e:
+        exc_type, exc_obj, exc_tb = sys.exc_info()
+        app.logger.info("Error in option vanilla vars {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
+        return
+    
     if request.form['action'] == 'prem_calc':
+        p = None
+        opt_van = OptionVanilla(otype, und, k, r, t, vol=v, premium=p)
+        print(opt_van.premium)
         print("prem calc")
         
     if request.form['action'] == 'vol_calc':
+        v = None
+        opt_van = OptionVanilla(otype, und, k, r, t, vol=v, premium=p)
         print("vol valc")
 
 class OptionVanilla:
@@ -37,9 +57,8 @@ class OptionVanilla:
         return (np.log(self.underlying / self.strike) + (self.ir - self.vol**2 / 2) * self.tenor) / (self.vol * np.sqrt(self.tenor))
  
 
-def main():
-    opt = OptionVanilla("C", 100, 130, 0.1, 1, vol=0.3)
-    print(opt.premium)
+
     
 if __name__ == "__main__":
-    main()
+    opt = OptionVanilla("C", 100, 130, 0.1, 1, vol=0.3)
+    print(opt.premium)
