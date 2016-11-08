@@ -2981,3 +2981,296 @@ werkzeug.routing.BuildError: Could not build url for endpoint '/option/vanilla'.
 2016-10-31 20:02:26,019 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
 2016-10-31 20:02:38,400 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
 2016-10-31 20:05:45,008 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-31 20:11:52,815 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-31 20:12:49,774 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-31 20:12:50,636 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-31 20:12:51,325 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-31 20:12:59,900 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-31 20:13:01,797 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-31 20:13:04,485 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-31 20:13:10,200 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-31 20:13:11,742 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-31 20:13:46,927 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-31 20:16:26,720 INFO: API GRAB ERROR: <class 'bdb.BdbQuit'>, 75,  [in equity_screener.py:75]
+2016-10-31 20:16:31,787 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-31 20:33:27,462 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-10-31 20:37:11,666 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-02 01:34:46,705 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-02 01:36:36,444 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-02 01:47:39,193 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-02 01:51:11,096 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-02 01:58:54,580 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-03 02:44:39,104 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-03 02:58:09,004 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-03 03:00:52,188 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-03 03:02:06,671 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-03 03:02:58,655 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-03 03:03:33,124 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-03 03:04:58,713 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-03 03:09:33,581 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-03 03:19:44,409 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-03 03:20:29,046 ERROR: Exception on /option/vanilla [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 57, in opt_vanilla
+    if request.method == 'POST':
+  File "/home/ubuntu/workspace/finance/app/views.py", line 57, in opt_vanilla
+    if request.method == 'POST':
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-03 03:20:37,393 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-03 18:54:35,809 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-03 19:09:38,536 ERROR: Exception on /option/vanilla [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 57, in opt_vanilla
+    opt_vanilla_post(request)
+  File "/home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py", line 8, in post
+    try:
+  File "/home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py", line 8, in post
+    try:
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-03 19:09:45,339 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-03 19:19:08,675 ERROR: Exception on /option/vanilla [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 57, in opt_vanilla
+    opt_vanilla_post(request)
+  File "/home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py", line 25, in post
+    print("prem calc")
+  File "/home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py", line 25, in post
+    print("prem calc")
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-03 19:19:09,634 ERROR: Exception on /option/vanilla [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 57, in opt_vanilla
+    opt_vanilla_post(request)
+  File "/home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py", line 8, in post
+    try:
+  File "/home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py", line 8, in post
+    try:
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-03 19:19:18,709 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-03 19:27:57,497 ERROR: Exception on /option/vanilla [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 57, in opt_vanilla
+    opt_vanilla_post(request)
+  File "/home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py", line 21, in post
+    if request.form['action'] == 'prem_calc':
+  File "/home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py", line 21, in post
+    if request.form['action'] == 'prem_calc':
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-03 19:28:01,584 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-03 19:28:23,971 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-03 19:37:29,207 INFO: Error in option vanilla vars <class 'bdb.BdbQuit'>, 14,  [in /home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py:18]
+2016-11-03 19:41:21,534 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-03 19:41:40,483 INFO: Error in option vanilla vars <class 'bdb.BdbQuit'>, 11,  [in /home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py:18]
+2016-11-03 19:42:15,168 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-03 19:42:27,148 ERROR: Exception on /option/vanilla [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 57, in opt_vanilla
+    opt_vanilla_post(request)
+  File "/home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py", line 8, in post
+    try:
+AttributeError: 'OptionVanilla' object has no attribute 'premium'
+2016-11-03 19:43:06,784 ERROR: Exception on /option/vanilla [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 57, in opt_vanilla
+    opt_vanilla_post(request)
+  File "/home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py", line 8, in post
+    try:
+  File "/home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py", line 8, in post
+    try:
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-03 19:43:12,061 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-03 19:43:28,662 ERROR: Exception on /option/vanilla [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 57, in opt_vanilla
+    opt_vanilla_post(request)
+  File "/home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py", line 8, in post
+    try:
+AttributeError: 'OptionVanilla' object has no attribute 'premium'
+2016-11-03 19:43:49,857 ERROR: Exception on /option/vanilla [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 57, in opt_vanilla
+    opt_vanilla_post(request)
+  File "/home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py", line 8, in post
+    try:
+AttributeError: 'OptionVanilla' object has no attribute 'premium'
+2016-11-03 19:44:19,535 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-03 19:44:38,612 ERROR: Exception on /option/vanilla [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 57, in opt_vanilla
+    opt_vanilla_post(request)
+  File "/home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py", line 8, in post
+    try:
+AttributeError: 'OptionVanilla' object has no attribute 'premium'
+2016-11-03 19:48:22,861 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-03 19:48:52,848 ERROR: Exception on /option/vanilla [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 57, in opt_vanilla
+    opt_vanilla_post(request)
+  File "/home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py", line 24, in post
+    print(opt_van.premium)
+AttributeError: 'OptionVanilla' object has no attribute 'premium'
+2016-11-03 19:49:40,537 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-03 20:32:03,252 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-03 21:04:05,923 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-03 21:12:23,849 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-08 03:04:47,264 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-08 03:08:26,067 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-08 03:09:40,743 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-08 03:10:07,524 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-08 03:13:08,402 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]

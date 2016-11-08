@@ -1,4 +1,13 @@
-jQuery(function($){});
+$(document).ready(function () {
+    console.log('h1')
+    if (window.jQuery) {  
+        // jQuery is loaded
+        console.log('jq')
+    } else {
+        // jQuery is not loaded
+        console.log('no jq')
+    }
+});
 
 function opt_vanilla_calc_prem(event, token) {
     var overlay = $('<div id="waiting"> </div>');

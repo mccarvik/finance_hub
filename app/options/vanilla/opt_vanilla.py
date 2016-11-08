@@ -4,7 +4,7 @@ import time, sys
 from app import app
 
 def post(request):
-    import pdb; pdb.set_trace()
+    # import pdb; pdb.set_trace()
     try:
         otype = request.form.get('otype', 'C')
         und = request.form.get('underlying', 100)
@@ -18,16 +18,19 @@ def post(request):
         app.logger.info("Error in option vanilla vars {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
         return
     
-    if request.form['action'] == 'prem_calc':
-        p = None
-        opt_van = OptionVanilla(otype, und, k, r, t, vol=v, premium=p)
-        print(opt_van.premium)
-        print("prem calc")
-        
-    if request.form['action'] == 'vol_calc':
-        v = None
-        opt_van = OptionVanilla(otype, und, k, r, t, vol=v, premium=p)
-        print("vol valc")
+    try:
+        if request.form['action'] == 'prem_calc':
+            p = None
+            opt_van = OptionVanilla(otype, und, k, r, t, vol=v, premium=p)
+            print(opt_van.premium)
+            print("prem calc")
+            
+        if request.form['action'] == 'vol_calc':
+            v = None
+            opt_van = OptionVanilla(otype, und, k, r, t, vol=v, premium=p)
+            print("vol valc")
+    except:
+        print('here')
 
 class OptionVanilla:
     
