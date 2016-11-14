@@ -41,6 +41,7 @@ def get_data(reset_ticks=False):
     threads = []
     try:
         # starts the thread and 'joins it' so we will wait for all to finish
+        
         # for t in tasks:
         #     threads.append(Thread(target=makeAPICall, args=(t,)))
         # [t.start() for t in threads]
@@ -73,8 +74,11 @@ def makeAPICall(tickers):
     for row in list(cr):
         try:
             es = EquityStats(row, col_list, write=True)
+            import pdb; pdb.set_trace()
+            sys.exit()
             eqs.append(es)
         except Exception as e:
+            sys.exit()
             exc_type, exc_obj, exc_tb = sys.exc_info()
             app.logger.info("API GRAB ERROR: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
     app.logger.info("finished {0}".format(tickers))

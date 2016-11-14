@@ -1,7 +1,7 @@
 import sys
 sys.path.append("/home/ubuntu/workspace/finance")
 import datetime
-import re, os, string
+import re, os, string, json
 import pandas as pd
 import requests
 from app import app
@@ -33,8 +33,28 @@ class EquityStats():
     def add_scraped_columns(self):
         with open("/home/ubuntu/workspace/finance/app/equity_screener/yahoo_scrape_notes.txt", "r") as f:
             url = f.readline().replace('$$$$', self._ticker)
-        data = requests.get(url).text
+        data = requests.get(url).json()['quoteSummary']['result'][0]
+        scraped_data = {}
+        import pdb; pdb.set_trace()
+        for main_key in data.keys():
+            d = data[main_key]
+            if main_key == 'calendarEvents':
+                scraped_data = self.scraped_col_helper(scraped_data)
+                continue
+            for sub_key in d.keys():
+                try:
+                    scraped_data[sub_key] = d[sub_key]['raw']
+                except:
+                    try:
+                        scraped_data[sub_key] = d[sub_key]
+                    except:
+                        scraped_data[sub_key] = ""
+                        print("data is fucked, setting the val to an empty string {0}".format(d[sub_key]))
+        import pdb; pdb.set_trace()
         sys.exit()
+        
+    def scraped_col_helper(self, scraped_data):
+        pass
     
     @staticmethod
     def setColumns():
@@ -147,6 +167,6 @@ class ES_Dataframe:
         app.logger.info("Filters applied")
 
 if __name__ == '__main__':
-    d = datetime.datetime(2016, 10, 25).strftime('%Y-%m-%d')
     # import pdb; pdb.set_trace()
+    d = datetime.datetime(2016, 10, 25).strftime('%Y-%m-%d')
     es_df = ES_Dataframe(date=d)
