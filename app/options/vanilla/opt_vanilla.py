@@ -4,8 +4,9 @@ import time, sys
 from app import app
 
 def post(request):
-    # import pdb; pdb.set_trace()
+    import pdb; pdb.set_trace()
     try:
+        vol_prem = request.form.get('calc_type', 'prem')
         otype = request.form.get('otype', 'C')
         und = request.form.get('underlying', 100)
         k = request.form.get('strike', 100)
@@ -19,32 +20,33 @@ def post(request):
         return
     
     try:
-        if request.form['action'] == 'prem_calc':
-            p = None
-            opt_van = OptionVanilla(otype, und, k, r, t, vol=v, premium=p)
-            print(opt_van.premium)
-            print("prem calc")
-            
-        if request.form['action'] == 'vol_calc':
-            v = None
-            opt_van = OptionVanilla(otype, und, k, r, t, vol=v, premium=p)
-            print("vol valc")
+        if request.form['action'] == 'calc':
+            if request.form['calc_type'] == 'prem':
+                p = None
+                opt_van = OptionVanilla(otype, und, k, r, t, vol=v, prem=p)
+                print(opt_van.premium)
+                print("prem calc")
+            elif request.form['calc_type'] == 'vol':
+                v = None
+                opt_van = OptionVanilla(otype, und, k, r, t, vol=v, prem=p)
+                print(opt_van.premium)
+                print("vol valc")
     except:
         print('here')
 
 class OptionVanilla:
     
-    def __init__(self, otype, underlying, strike, ir, tenor, vol=None, premium=None):
+    def __init__(self, otype, underlying, strike, ir, tenor, vol=None, prem=None):
         self.otype = otype
-        self.underlying = underlying
-        self.strike = strike
-        self.ir = ir
-        self.tenor  = tenor
+        self.underlying = float(underlying)
+        self.strike = float(strike)
+        self.ir = float(ir)
+        self.tenor = float(tenor)
         if (vol):
-            self.vol = vol
+            self.vol = float(vol)
             self.premium = self.priceFromVolBS()
         elif (premium):
-            self.premium = premium
+            self.premium = float(premium)
             #self.vol = volFromPriceBS()
     
     def priceFromVolBS(self):

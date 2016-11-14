@@ -3274,3 +3274,81 @@ AttributeError: 'OptionVanilla' object has no attribute 'premium'
 2016-11-08 03:09:40,743 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
 2016-11-08 03:10:07,524 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
 2016-11-08 03:13:08,402 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-10 00:36:43,548 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-10 00:48:22,958 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-10 00:53:37,408 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-10 00:54:20,466 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-10 00:56:32,939 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-11 01:53:46,057 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-12 22:00:41,671 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-12 22:32:41,977 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-12 22:40:13,909 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-12 22:40:47,754 INFO: Error in option vanilla vars <class 'bdb.BdbQuit'>, 9,  [in /home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py:19]
+2016-11-12 22:40:53,756 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-12 22:45:13,820 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-12 22:49:05,105 INFO: Error in option vanilla vars <class 'bdb.BdbQuit'>, 14,  [in /home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py:19]
+2016-11-12 22:49:07,620 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-12 22:52:29,967 INFO: Error in option vanilla vars <class 'bdb.BdbQuit'>, 10,  [in /home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py:19]
+2016-11-12 22:52:36,961 ERROR: Exception on /option/vanilla [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 57, in opt_vanilla
+    opt_vanilla_post(request)
+  File "/home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py", line 8, in post
+    try:
+  File "/home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py", line 8, in post
+    try:
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-12 22:52:40,311 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-12 22:54:12,821 INFO: Error in option vanilla vars <class 'bdb.BdbQuit'>, 9,  [in /home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py:19]
+2016-11-12 22:54:14,619 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-12 22:55:01,093 INFO: Error in option vanilla vars <class 'bdb.BdbQuit'>, 10,  [in /home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py:19]
+2016-11-12 22:55:02,098 ERROR: Exception on /option/vanilla [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 57, in opt_vanilla
+    opt_vanilla_post(request)
+  File "/home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py", line 8, in post
+    try:
+  File "/home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py", line 8, in post
+    try:
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-12 22:55:08,780 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-14 01:40:25,673 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-14 01:49:29,911 INFO: Error in option vanilla vars <class 'bdb.BdbQuit'>, 9,  [in /home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py:19]
+2016-11-14 01:49:38,489 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-14 01:53:27,815 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-14 01:55:01,887 INFO: Error in option vanilla vars <class 'bdb.BdbQuit'>, 9,  [in /home/ubuntu/workspace/finance/app/options/vanilla/opt_vanilla.py:19]
+2016-11-14 02:05:56,297 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-14 02:06:48,665 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-14 02:18:55,857 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]

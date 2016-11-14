@@ -2,10 +2,15 @@
     margin: 10px;
 }
 
-label.opt_fields { 
+label.opt_labels { 
     display:inline-block;
+}
+
+div.opt_inputs {
+    width: 900px;
 }
 
 .vanilla_buttons {
     margin-bottom: 20px;
 }
+

@@ -9,26 +9,33 @@ $(document).ready(function () {
     }
 });
 
-function opt_vanilla_calc_prem(event, token) {
+function opt_vanilla_calc(event, token) {
     var overlay = $('<div id="waiting"> </div>');
     overlay.appendTo(document.body);
-    var typ = "P";
+    // var vol_prem = ""
+    // $("input:radio[name=calc]").click(function() {
+    //    vol_prem = $(this).val();
+    // });
+    var vol_prem = $('input[name=calc]:checked').val();
+    var typ = $("#call_put").val();
     var und = $("#underlying_val").val();
     var k = $("#strike_val").val();
     var t = $("#tenor_val").val();
     var v = $("#vol_val").val();
-    console.log('und:' + und);
+    var p = $("#prem_val").val();
     
     $.ajax({
         type: 'POST',
         url: '/option/vanilla',
         data: {
-            action: "prem_calc",
+            action: "calc",
+            calc_type: vol_prem,
             otype: typ,
             underlying: und,
             strike: k,
             tenor: t,
-            vol: v
+            vol: v,
+            prem: p 
         },
         success: function()
         {

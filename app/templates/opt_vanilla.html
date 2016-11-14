@@ -4,39 +4,42 @@
     <link href="/static/css/opt_vanilla.css" rel="stylesheet" type="text/css">
     <script src="/static/js/opt_vanilla.js"></script>
     <div>
-        <button id="opt_vanilla_calc_prem" class='vanilla_buttons' onclick="opt_vanilla_calc_prem(event, '{{ SECRET_KEY }}');">Calculate Premium</button>
-        <button id="opt_vanilla_calc_vol" class='vanilla_buttons' onclick="opt_vanilla_calc_vol(event, '{{ SECRET_KEY }}');">Calculate Volatility</button>
+        <button id="opt_vanilla_calc" class='vanilla_buttons' onclick="opt_vanilla_calc(event, '{{ SECRET_KEY }}');">Calculate</button>
     </div>
     <div>
-        <label class='opt_fields'>Option Type</label>
+        <input type="radio" name="calc" value="prem" checked> Calc Prem<br>
+        <input type="radio" name="calc" value="vol"> Calc Vol<br>
+    </div>
+    <div class='opt_input_div'>
+        <label class='opt_labels'>Option Type</label>
         <select class='opt_fields' id='call_put'>
             <option value="C">Call</option>
             <option value="P">Put</option>
         </select>
     </div>
-    <div>
-        <label>Underlying</label>
-        <input class='opt_fields' id='underlying_val' type="text" value =""/>    
+    <div class='opt_input_div'>
+        <label class='opt_labels'>Underlying</label>
+        <input class='opt_fields' type="text" id='underlying_val' value ="100"/>    
     </div>
-    <div>
-        <label class='opt_fields' id='strike_val'>Strike</label>
-        <input type="text" value =""/>
+    <div class='opt_input_div'>
+        <label class='opt_labels'>Strike</label>
+        <input class='opt_fields' type="text" id='strike_val' value ="100"/>
     </div>
-    <div>
-        <label class='opt_fields' id='ir_val'>Interest Rate</label>
-        <input type="text" value =""/>
+    <div class='opt_input_div'>
+        <label class='opt_labels'>Interest Rate</label>
+        <input class='opt_fields' type="text" id='ir_val' value ="0.02"/>
     </div>
-    <div>
-        <label class='opt_fields' id='tenor_val'>Tenor</label>
-        <input type="text" value =""/>
+    <div class='opt_input_div'>
+        <label class='opt_labels'>Tenor</label>
+        <input class='opt_fields' type="text" id='tenor_val' value ="1"/>
     </div>
-    <div>
-        <label class='opt_fields' id='vol_val'>Volatility</label>
-        <input type="text" value =""/>
+    <div class='opt_input_div'>
+        <label class='opt_labels'>Volatility</label>
+        <input class='opt_fields' type="text" id='vol_val' value ="0.3"/>
     </div>
-    <div>
-        <label class='opt_fields' id=prem_val>Premium</label>
-        <input type="text" value =""/>
+    <div class='opt_input_div'>
+        <label class='opt_labels'>Premium</label>
+        <input class='opt_fields' type="text" id=prem_val />
     </div>
     
 {% endblock %}
