@@ -40,8 +40,7 @@ def get_data(reset_ticks=False):
     t0 = time.time()
     threads = []
     try:
-        # starts the thread and 'joins it' so we will wait for all to finish
-        
+        # for running multithreaded: starts the thread and 'joins it' so we will wait for all to finish
         # for t in tasks:
         #     threads.append(Thread(target=makeAPICall, args=(t,)))
         # [t.start() for t in threads]

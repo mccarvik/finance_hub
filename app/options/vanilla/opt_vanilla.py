@@ -5,7 +5,6 @@ from app import app
 from math import sqrt, pi, log, e
 
 def post(request):
-    import pdb; pdb.set_trace()
     try:
         vol_prem = request.form.get('calc_type', 'prem')
         otype = request.form.get('otype', 'C')
@@ -78,5 +77,6 @@ class OptionVanilla:
  
     
 if __name__ == "__main__":
+    # import pdb; pdb.set_trace()
     opt = OptionVanilla("C", 100, 130, 0.1, 1, 0, vol=0.3)
     print(opt.premium)
