@@ -36,42 +36,6 @@ class EquityStats():
             self._stats['n'] = self._stats['n'].replace("'", "''")
             db.upsert('eq_screener', self._stats, ['date', 's'])
     
-    def add_scraped_columns(self):
-        with open("/home/ubuntu/workspace/finance/app/equity_screener/yahoo_scrape_notes.txt", "r") as f:
-            url = f.readline().replace('$$$$', self._ticker)
-        data = requests.get(url).json()['quoteSummary']['result'][0]
-        import pdb; pdb.set_trace()
-        scraped_data = {}
-        for main_key in data.keys():
-            scraped_data = self.scraped_col_helper_recursive(scraped_data, data, main_key)
-            import pdb; pdb.set_trace()
-        sys.exit()
-    
-        
-    def scraped_col_helper_recursive(self, scraped_data, data, key):
-        import pdb; pdb.set_trace()
-        try:
-            scraped_data[key] = data[key]['raw']
-        except:
-            try:
-                t_data = data[key]
-                if isinstance(t_data, dict) and t_data:
-                    for key2 in t_data.keys():
-                        scraped_data = self.scraped_col_helper_recursive(scraped_data, t_data, key2)
-                elif isinstance(t_data, list) and t_data:
-                    # might need to adjust this
-                    import pdb; pdb.set_trace()
-                    scraped_data[key] = t_data[0]['raw']
-                elif t_data:
-                    scraped_data[key] = t_data
-                else:
-                    print("data is fucked or empty, setting the val to an empty string {0}".format(key))
-                    scraped_data[key] = ""
-            except:
-                print("SUM TING WONG")
-        return scraped_data
-
-    
     @staticmethod
     def setColumns(source):
         # TODO set the columns and set the favorites here from the file, lets get them out of the code
