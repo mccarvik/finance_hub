@@ -1,87 +1,88 @@
-enterpriseValue enterpriseValue
-forwardPE forwardPE
-profitMargins profitMargins
-floatShares floatShares
-sharesOutstanding sharesOutstanding
-sharesShort sharesShort
-sharesShortPriorMonth sharesShortPriorMonth
-heldPercentInsiders heldPercentInsiders
-heldPercentInstitutions heldPercentInstitutions
-shortRatio shortRatio
-shortPercentOfFloat shortPercentOfFloat
-beta beta
-morningStarOverallRating morningStarOverallRating
-morningStarRiskRating morningStarRiskRating
-category category
-bookValue bookValue
-priceToBook priceToBook
-annualReportExpenseRatio annualReportExpenseRatio
-ytdReturn ytdReturn
-beta3Year beta3Year
-totalAssets totalAssets
-yield yield
-fundFamily fundFamily
-fundInceptionDate fundInceptionDate
-legalType legalType
-threeYearAverageReturn threeYearAverageReturn
-fiveYearAverageReturn fiveYearAverageReturn
-priceToSalesTrailing12Months priceToSalesTrailing12Months
-lastFiscalYearEnd lastFiscalYearEnd
-nextFiscalYearEnd nextFiscalYearEnd
-mostRecentQuarter mostRecentQuarter
-earningsQuarterlyGrowth earningsQuarterlyGrowth
-revenueQuarterlyGrowth revenueQuarterlyGrowth
-netIncomeToCommon netIncomeToCommon
-trailingEps trailingEps
-forwardEps forwardEps
-pegRatio pegRatio
-lastSplitFactor lastSplitFactor
-lastSplitDate lastSplitDate
-enterpriseToRevenue enterpriseToRevenue
-enterpriseToEbitda enterpriseToEbitda
-52WeekChange 52WeekChange
-SandP52WeekChange SandP52WeekChange
-lastDividendValue lastDividendValue
-annualHoldingsTurnover annualHoldingsTurnover
-maxAge maxAge
-earningsDate earningsDate
-earningsAverage earningsAverage
-earningsLow earningsLow
-earningsHigh earningsHigh
-revenueAverage revenueAverage
-revenueLow revenueLow
-revenueHigh revenueHigh
-exDividendDate exDividendDate
-dividendDate dividendDate
-currentPrice currentPrice
-targetHighPrice targetHighPrice
-targetLowPrice targetLowPrice
-targetMeanPrice targetMeanPrice
-targetMedianPrice targetMedianPrice
-recommendationMean recommendationMean
-recommendationKey recommendationKey
-numberOfAnalystOpinions numberOfAnalystOpinions
-totalCashPerShare totalCashPerShare
+enterpriseValue Enterprise Value
+forwardPE Forward PE
+profitMargins Profit Margins
+floatShares Float Shares
+sharesOutstanding Shares Outstanding
+sharesShort Shares Short
+sharesShortPriorMonth Shares Short Prior Month
+heldPercentInsiders Held Percent Insiders
+heldPercentInstitutions Held Percent Institutions
+shortRatio Short Ratio
+shortPercentOfFloat Short Percent Of Float
+beta Beta
+morningStarOverallRating MorningStar Overall Rating
+morningStarRiskRating MorningStar Risk Rating
+category Category
+bookValue Book Value
+priceToBook Price To Book
+annualReportExpenseRatio Annual Report Expense Ratio
+ytdReturn YTD Return
+beta3Year Beta 3 Year
+totalAssets Total Assets
+yield Yield
+fundFamily Fund Family
+fundInceptionDate Fund Inception Date
+legalType Legal Type
+threeYearAverageReturn Three Year Average Return
+fiveYearAverageReturn Five Year Average Return
+priceToSalesTrailing12Months Price To Sales Trailing 12 Months
+lastFiscalYearEnd Last Fiscal Year End
+nextFiscalYearEnd Next Fiscal Year End
+mostRecentQuarter Most Recent Quarter
+earningsQuarterlyGrowth Earnings Quarterly Growth
+revenueQuarterlyGrowth Revenue Quarterly Growth
+netIncomeToCommon Net Income To Common
+trailingEps Trailing EPS
+forwardEps Forward EPS
+pegRatio  Peg Ratio
+lastSplitFactor Last Split Factor
+lastSplitDate Last Split Date
+enterpriseToRevenue Enterprise To Revenue
+enterpriseToEbitda Enterprise To Ebitda
+52WeekChange 52 Week Change
+SandP52WeekChange S&P 52 Week Change
+lastDividendValue Last Dividend Value
+annualHoldingsTurnover Annual Holdings Turnover
+maxAge Max Age
+earningsDate Earnings Date
+earningsAverage Earnings Average
+earningsLow Earnings Low
+earningsHigh Earnings High
+revenueAverage Revenue Average
+revenueLow Revenue Low
+revenueHigh Revenue High
+exDividendDate Ex-Dividend Date
+dividendDate Dividend Date
+currentPrice Current Price
+targetHighPrice Target High Price
+targetLowPrice Target Low Price
+targetMeanPrice Target Mean Price
+targetMedianPrice Target Median Price
+recommendationMean Recommendation Mean
+recommendationKey Recommendation Key
+numberOfAnalystOpinions Number Of Analyst Opinions
+totalCashPerShare Total Cash Per Share
 ebitda ebitda
-totalDebt totalDebt
-quickRatio quickRatio
-currentRatio currentRatio
-totalRevenue totalRevenue
-debtToEquity debtToEquity
-revenuePerShare revenuePerShare
-returnOnAssets returnOnAssets
-returnOnEquity returnOnEquity
-grossProfits grossProfits
-freeCashflow freeCashflow
-operatingCashflow operatingCashflow
-earningsGrowth earningsGrowth
-revenueGrowth revenueGrowth
-grossMargins grossMargins
-ebitdaMargins ebitdaMargins
-operatingMargins operatingMargins
-profitMargins profitMargins
-
+totalDebt Total Debt
+quickRatio Quick Ratio
+currentRatio Current Ratio
+totalRevenue Total Revenue
+debtToEquity Debt To Equity
+revenuePerShare Revenue Per Share
+returnOnAssets Return On Assets
+returnOnEquity Return On Equity
+grossProfits Gross Profits
+freeCashflow Free Cash flow
+operatingCashflow Operating Cash flow
+earningsGrowth Earnings Growth
+revenueGrowth Revenue Growth
+grossMargins Gross Margins
+ebitdaMargins Ebitda Margins
+operatingMargins Operating Margins
+profitMargins Profit Margins
 EOF
 
+favorites
+forwardPE,profitMargins,heldPercentInsiders,heldPercentInstitutions,shortRatio,shortPercentOfFloat,beta,priceToBook,ytdReturn,beta3Year,yield,threeYearAverageReturn,fiveYearAverageReturn,priceToSalesTrailing12Months,earningsQuarterlyGrowth,revenueQuarterlyGrowth,trailingEps,forwardEps,pegRatio,enterpriseToRevenue,enterpriseToEbitda,52WeekChange,earningsAverage,recommendationKey,totalCashPerShare,quickRatio,currentRatio,debtToEquity,revenuePerShare,returnOnAssets,returnOnEquity,earningsGrowth,revenueGrowth,grossMargins,ebitdaMargins,operatingMargins,profitMargins
 
 https://query2.finance.yahoo.com/v10/finance/quoteSummary/$$$$?formatted=true&crumb=T7kld941Rnm&lang=en-US&region=US&modules=defaultKeyStatistics%2CfinancialData%2CcalendarEvents&corsDomain=finance.yahoo.com

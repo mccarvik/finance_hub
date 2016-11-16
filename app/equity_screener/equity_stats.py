@@ -49,8 +49,10 @@ class EquityStats():
             for line in f:
                 if line.strip() == 'EOF':
                     break
-                t_tup = line.split('\t')
-                column_map[t_tup[0]] = t_tup[1]
+                import pdb; pdb.set_trace()
+                t_tup = line.split(' ')
+                column_map[t_tup[0]] = "".join(t_tup[1:]).strip()
+        import pdb; pdb.set_trace()
         EquityStats.cols = column_map
             
 
