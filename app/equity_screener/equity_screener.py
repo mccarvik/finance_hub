@@ -16,7 +16,7 @@ def post(request):
     if request.form['action'] == 'get_data':
         get_data(reset_ticks=False)
 
-def get_data(reset_ticks=False, source="SCRAPE"):
+def get_data(reset_ticks=False, source="API2"):
     if reset_ticks:
         create_symbols.create_symbols()
     tasks = []
@@ -48,9 +48,9 @@ def get_data(reset_ticks=False, source="SCRAPE"):
         
         # for running single threaded
         for t in tasks:
-            if source == "API":
+            if source == "API1":
                 makeAPICall(t, source)
-            elif source == "SCRAPE":
+            elif source == "API2":
                 makeScrapeAPICall(t, source)
     except Exception as e:
         exc_type, exc_obj, exc_tb = sys.exc_info()
@@ -87,6 +87,7 @@ def makeAPICall(tickers, source):
     return eqs
 
 def makeScrapeAPICall(t, source):
+    import pdb; pdb.set_trace()
     col_list = list(EquityStats.cols.keys())
     cols = "".join(col_list)
     url = "https://query2.finance.yahoo.com/v10/finance/quoteSummary/$$$$?formatted=true&crumb=T7kld941Rnm&lang=en-US&region=US&modules=defaultKeyStatistics%2CfinancialData%2CcalendarEvents&corsDomain=finance.yahoo.com"
@@ -94,10 +95,10 @@ def makeScrapeAPICall(t, source):
         u = url.replace('$$$$', ticker)
         data = requests.get(url).json()['quoteSummary']['result'][0]
         scraped_data = {}
-         for main_key in data.keys():
-            scraped_data = self.scrapedAPIHelperRecursive(scraped_data, data, main_key)
+        for main_key in data.keys():
+            scraped_data = scrapedAPIHelperRecursive(scraped_data, data, main_key)
 
-def scrapedAPIHelperRecursive(self, scraped_data, data, key):
+def scrapedAPIHelperRecursive(scraped_data, data, key):
         try:
             scraped_data[key] = data[key]['raw']
         except:
@@ -105,7 +106,7 @@ def scrapedAPIHelperRecursive(self, scraped_data, data, key):
                 t_data = data[key]
                 if isinstance(t_data, dict) and t_data:
                     for key2 in t_data.keys():
-                        scraped_data = self.scraped_col_helper_recursive(scraped_data, t_data, key2)
+                        scraped_data = scrapedAPIHelperRecursive(scraped_data, t_data, key2)
                 elif isinstance(t_data, list) and t_data:
                     # might need to adjust this
                     import pdb; pdb.set_trace()
@@ -131,5 +132,6 @@ def getFilters(req=None):
         return None
 
 if __name__ == '__main__':
+    # import pdb; pdb.set_trace()
     # run_screening(sim=True)
     get_data()

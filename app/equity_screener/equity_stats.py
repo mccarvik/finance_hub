@@ -19,11 +19,12 @@ class EquityStats():
         self._date = date or datetime.datetime.now().strftime('%Y-%m-%d')
         self._source = source
         
-        if self._source == "API"
+        if self._source == "API1":
             self._stats = dict(zip(col_list, stats))
             self._ticker = self._stats['s']
             self._stats['date'] = self._date
-        elif self._source == "SCRAPE":
+        elif self._source == "API2":
+            pass
             
         # self.add_scraped_columns()
         
@@ -40,16 +41,18 @@ class EquityStats():
     def setColumns(source):
         # TODO set the columns and set the favorites here from the file, lets get them out of the code
         column_map = {}
-        if source == "API"
-            with open("/home/ubuntu/workspace/finance/app/equity_screener/yahoo_api_notes.txt", "r") as f:
-                for line in f:
-                    if line.strip() == 'EOF':
-                        break
-                    t_tup = line.split('\t')
-                    column_map[t_tup[0]] = t_tup[1]
-            EquityStats.cols = column_map
-        elif source == "SCRAPE":
-            pass
+        if source == "API1":
+            file = "/home/ubuntu/workspace/finance/app/equity_screener/yahoo_api1_notes.txt"
+        elif source == "API2":
+            file = "/home/ubuntu/workspace/finance/app/equity_screener/yahoo_api2_notes.txt"
+        with open(file, "r") as f:
+            for line in f:
+                if line.strip() == 'EOF':
+                    break
+                t_tup = line.split('\t')
+                column_map[t_tup[0]] = t_tup[1]
+        EquityStats.cols = column_map
+            
 
 
 class ES_Dataframe:
