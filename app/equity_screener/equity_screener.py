@@ -28,7 +28,7 @@ def get_data(reset_ticks=False, source="API2"):
         for line in f:
             tickers += line.strip() + "+"
             ct += 1
-            if ct == 50:
+            if ct == 10:
                 tickers = tickers[:-1]
                 tasks.append(tickers)
                 tickers = ""
@@ -87,38 +87,37 @@ def makeAPICall(tickers, source):
     return eqs
 
 def makeScrapeAPICall(t, source):
-    import pdb; pdb.set_trace()
     col_list = list(EquityStats.cols.keys())
     cols = "".join(col_list)
     url = "https://query2.finance.yahoo.com/v10/finance/quoteSummary/$$$$?formatted=true&crumb=T7kld941Rnm&lang=en-US&region=US&modules=defaultKeyStatistics%2CfinancialData%2CcalendarEvents&corsDomain=finance.yahoo.com"
+    import pdb; pdb.set_trace()
     for ticker in t.split("+"):
         u = url.replace('$$$$', ticker)
-        data = requests.get(url).json()['quoteSummary']['result'][0]
+        data = requests.get(u).json()['quoteSummary']['result'][0]
         scraped_data = {}
         for main_key in data.keys():
             scraped_data = scrapedAPIHelperRecursive(scraped_data, data, main_key)
 
 def scrapedAPIHelperRecursive(scraped_data, data, key):
+    try:
+        scraped_data[key] = data[key]['raw']
+    except:
         try:
-            scraped_data[key] = data[key]['raw']
+            t_data = data[key]
+            if isinstance(t_data, dict) and t_data:
+                for key2 in t_data.keys():
+                    scraped_data = scrapedAPIHelperRecursive(scraped_data, t_data, key2)
+            elif isinstance(t_data, list) and t_data:
+                # might need to adjust this
+                scraped_data[key] = t_data[0]['raw']
+            elif t_data:
+                scraped_data[key] = t_data
+            else:
+                print("data is fucked or empty, setting the val to an empty string {0}".format(key))
+                scraped_data[key] = ""
         except:
-            try:
-                t_data = data[key]
-                if isinstance(t_data, dict) and t_data:
-                    for key2 in t_data.keys():
-                        scraped_data = scrapedAPIHelperRecursive(scraped_data, t_data, key2)
-                elif isinstance(t_data, list) and t_data:
-                    # might need to adjust this
-                    import pdb; pdb.set_trace()
-                    scraped_data[key] = t_data[0]['raw']
-                elif t_data:
-                    scraped_data[key] = t_data
-                else:
-                    print("data is fucked or empty, setting the val to an empty string {0}".format(key))
-                    scraped_data[key] = ""
-            except:
-                print("SUM TING WONG")
-        return scraped_data
+            print("SUM TING WONG")
+    return scraped_data
     
         
 def run_screening(filters=None, sim=False):
