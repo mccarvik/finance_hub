@@ -86,17 +86,33 @@ def makeAPICall(tickers, source):
     app.logger.info("finished {0}".format(tickers))
     return eqs
 
-def makeScrapeAPICall(t, source):
+def makeScrapeAPICall(tickers, source):
     col_list = list(EquityStats.cols.keys())
     cols = "".join(col_list)
     url = "https://query2.finance.yahoo.com/v10/finance/quoteSummary/$$$$?formatted=true&crumb=T7kld941Rnm&lang=en-US&region=US&modules=defaultKeyStatistics%2CfinancialData%2CcalendarEvents&corsDomain=finance.yahoo.com"
-    import pdb; pdb.set_trace()
-    for ticker in t.split("+"):
+
+    eqs = []
+    for ticker in tickers.split("+"):
         u = url.replace('$$$$', ticker)
         data = requests.get(u).json()['quoteSummary']['result'][0]
         scraped_data = {}
         for main_key in data.keys():
             scraped_data = scrapedAPIHelperRecursive(scraped_data, data, main_key)
+        try:
+            import pdb; pdb.set_trace()
+            scraped_data['ticker'] = ticker
+            es = EquityStats(scraped_data, col_list, source, write=True)
+            import pdb; pdb.set_trace()
+            sys.exit()
+            eqs.append(es)
+        except Exception as e:
+            sys.exit()
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            app.logger.info("API GRAB ERROR: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
+    app.logger.info("finished {0}".format(tickers))
+    return eqs
+        
+        
 
 def scrapedAPIHelperRecursive(scraped_data, data, key):
     try:
@@ -113,12 +129,32 @@ def scrapedAPIHelperRecursive(scraped_data, data, key):
             elif t_data:
                 scraped_data[key] = t_data
             else:
-                print("data is fucked or empty, setting the val to an empty string {0}".format(key))
+                # app.logger.info("data is fucked or empty, setting the val to an empty string {0}".format(key))
                 scraped_data[key] = ""
         except:
             print("SUM TING WONG")
     return scraped_data
-    
+
+
+def writeScreenInfo(source):
+    if source == "API1":
+        file = "/home/ubuntu/workspace/finance/app/equity_screener/yahoo_api1_notes.txt"
+    elif source == "API2":
+        file = "/home/ubuntu/workspace/finance/app/equity_screener/yahoo_api2_notes.txt"
+        fav = False
+    with open(file, "r") as f:
+        for line in f:
+            if fav:
+                wr = line.strip
+                break
+            if line.strip() == 'favorites':
+                fav = True
+    file_screen_info = "/home/ubuntu/workspace/finance/app/equity_screener/yahoo_api2_notes.txt"
+    with open(file_screen_info, 'w') as f:
+        f.write("cols"+wr)
+
+
+
         
 def run_screening(filters=None, sim=False):
     # Go thru the file, read each ticker and try to collect data

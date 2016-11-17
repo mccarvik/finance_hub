@@ -24,18 +24,23 @@ class EquityStats():
             self._ticker = self._stats['s']
             self._stats['date'] = self._date
         elif self._source == "API2":
-            pass
-            
-        # self.add_scraped_columns()
+            self._stats = stats
+            self._ticker = self._stats['ticker']
+            self._stats['date'] = self._date
         
+        import pdb; pdb.set_trace()
         if write:
             self.write_to_db()
     
     def write_to_db(self):
         with DBHelper() as db:
             db.connect()
+            if self._source == "API1":
+                table = 'eq_screener'
+            elif self._source == "API2"
+                table = 'eq_screener2'
             self._stats['n'] = self._stats['n'].replace("'", "''")
-            db.upsert('eq_screener', self._stats, ['date', 's'])
+            db.upsert(table, self._stats, ['date', 's'])
     
     @staticmethod
     def setColumns(source):

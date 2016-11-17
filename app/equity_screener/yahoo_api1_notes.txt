@@ -85,4 +85,7 @@ x Stock Exchange
 y Dividend Yield
 EOF
 
+favorites
+a,a2,a5,b,b4,b6,d,e,e7,e8,e9,f6,j,k,j1,j4,j5,j6,k4,k5,l1,m3,m4,m5,m6,m7,m8,p,p5,p6,r,r5,r6,r7,s7,t8,v,w1,y
+
 https://greenido.wordpress.com/2009/12/22/work-like-a-pro-with-yahoo-finance-hidden-api/ 
