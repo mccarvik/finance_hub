@@ -5,7 +5,7 @@ restarting mysql: sudo /etc/init.d/mysql restart
 place a python debugger breakpoint: import pdb; pdb.set_trace()
 
 load to github:
-    1. git remote add origin git@github.com/mccarvik/finance_hub.git
+    1. git remote add origin https://github.com/mccarvik/finance_hub.git
     Sets the new remote
     2. git remote -v
     Verifies the new remote URL
