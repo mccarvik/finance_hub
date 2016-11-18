@@ -79,7 +79,6 @@ revenueGrowth Revenue Growth
 grossMargins Gross Margins
 ebitdaMargins Ebitda Margins
 operatingMargins Operating Margins
-profitMargins Profit Margins
 EOF
 
 favorites
