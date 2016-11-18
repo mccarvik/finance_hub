@@ -28,7 +28,6 @@ class EquityStats():
             self._ticker = self._stats['ticker']
             self._stats['date'] = self._date
         
-        import pdb; pdb.set_trace()
         if write:
             self.write_to_db()
     
@@ -37,9 +36,10 @@ class EquityStats():
             db.connect()
             if self._source == "API1":
                 table = 'eq_screener'
-            elif self._source == "API2"
+                self._stats['n'] = self._stats['n'].replace("'", "''")
+            elif self._source == "API2":
                 table = 'eq_screener2'
-            self._stats['n'] = self._stats['n'].replace("'", "''")
+                self._stats['ticker'] = self._stats['ticker'].replace("'", "''")
             db.upsert(table, self._stats, ['date', 's'])
     
     @staticmethod
