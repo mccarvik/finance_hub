@@ -967,3 +967,85 @@
 2016-11-22 16:37:13,279 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
 2016-11-22 16:37:32,950 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
 2016-11-22 16:37:58,155 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-22 16:40:43,388 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-22 16:42:00,169 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-22 16:42:54,699 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-22 16:43:30,905 ERROR: Exception on /equity_screener [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 28, in equity_screener
+    favs_list = str.split(f.readline(), ",")[1:]
+  File "/home/ubuntu/workspace/finance/app/views.py", line 28, in equity_screener
+    favs_list = str.split(f.readline(), ",")[1:]
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-22 16:50:42,452 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-22 16:51:49,001 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-22 16:52:15,019 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-22 16:52:37,128 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-22 16:53:10,636 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-22 16:53:59,547 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-22 16:54:33,805 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-22 16:54:57,620 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-22 16:55:41,167 ERROR: Exception on /equity_screener [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 29, in equity_screener
+    if request.method == 'POST':
+  File "/home/ubuntu/workspace/finance/app/views.py", line 29, in equity_screener
+    if request.method == 'POST':
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-22 16:55:42,055 ERROR: Exception on /equity_screener [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 24, in equity_screener
+    column_map = {}
+  File "/home/ubuntu/workspace/finance/app/views.py", line 24, in equity_screener
+    column_map = {}
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-22 16:55:44,450 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-22 16:56:16,991 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]

@@ -20,23 +20,17 @@ def home(page=1):
 
 @app.route('/equity_screener', methods=['GET', 'POST'])
 def equity_screener(favs=True):
-    # import pdb; pdb.set_trace()
+    import pdb; pdb.set_trace()
     column_map = {}
     with open("/home/ubuntu/workspace/finance/app/equity_screener/screen_info.csv", "r") as f:
         cols = str.split(f.readline(), ",")[1:]
         cols_desc = str.split(f.readline(), ",")[1:]
-        favs_list = str.split(f.readline(), ",")[1:]
-        favs_list_desc = str.split(f.readline(), ",")[1:]
     
     if request.method == 'POST':
         eqsc_post(request)
     
-    if favs:
-        ns_vals = favs_list
-        ns_desc = favs_list_desc
-    else:
-        ns_vals = cols
-        ns_desc = cols_desc
+    ns_vals = cols
+    ns_desc = cols_desc
     
     ns_vals = dict(zip(ns_vals, ns_desc))
     return render_template('equity_screener.html',

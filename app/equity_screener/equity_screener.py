@@ -158,12 +158,16 @@ def writeScreenInfo(source,favorites=True):
             for line in f:
                 if fav:
                     wr = line.strip()
+                    desc = f.readline().strip()
                     break
                 if line.strip() == 'favorites':
                     fav = True
-        file_screen_info = "/home/ubuntu/workspace/finance/app/equity_screener/screen_info.txt"
+        file_screen_info = "/home/ubuntu/workspace/finance/app/equity_screener/screen_info.csv"
         with open(file_screen_info, 'w') as f:
+            import pdb; pdb.set_trace()
             f.write("cols,"+wr)
+            f.write("\n")
+            f.write("desc,"+desc)
     else:
         #TODO need to do something to get all columns and not just favorites
         pass
