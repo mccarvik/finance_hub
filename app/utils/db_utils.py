@@ -99,7 +99,6 @@ class DBHelper:
     def upsert(self, table, cols_vals, prim_keys):
         # first try an insert
         try:
-            import pdb; pdb.set_trace()
             ret = self.insert_into(table, cols_vals.keys(), list(cols_vals.values()))
             if ret['status'] == 200:
                 self.cnx.commit()

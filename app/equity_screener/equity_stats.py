@@ -37,10 +37,12 @@ class EquityStats():
             if self._source == "API1":
                 table = 'eq_screener'
                 self._stats['n'] = self._stats['n'].replace("'", "''")
+                prim_keys = ['date', 's']
             elif self._source == "API2":
                 table = 'eq_screener2'
                 self._stats['ticker'] = self._stats['ticker'].replace("'", "''")
-            db.upsert(table, self._stats, ['date', 's'])
+                prim_keys = ['date', 'ticker']
+            db.upsert(table, self._stats, prim_keys)
     
     @staticmethod
     def setColumns(source):
