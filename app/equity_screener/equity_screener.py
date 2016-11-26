@@ -3,20 +3,28 @@ sys.path.append("/home/ubuntu/workspace/finance")
 from app.equity_screener.create_symbols import create_symbols
 from app.equity_screener.equity_stats import EquityStats, ES_Dataframe
 import pandas as pd
-import os, csv, requests, asyncio, time
+import os, csv, requests, asyncio, time, json
 from threading import Thread
 from app import app
 
 def post(request):
     if request.form['action'] == 'run_screening':
-        # filters = getFilters(req=request)
-        filters = getFilters(req)
-        run_screening(filters=filters, sim=False)
+        t_filts = dict(eval(request.form['filters']))['filts']
+        run_screening(filters=t_filts, sim=False)
+        return
     
     if request.form['action'] == 'get_data':
         get_data(reset_ticks=False, source="API2")
         writeScreenInfo(source="API2")
-        
+        return
+
+def getFilters(request):
+    filts = request.form['filters']
+    if filts:
+        return filts
+    else:
+        return None
+
 
 def get_data(reset_ticks=False, source="API2"):
     if reset_ticks:
@@ -122,8 +130,7 @@ def makeScrapeAPICall(tickers, source):
             
     app.logger.info("finished {0}".format(tickers))
     return eqs
-        
-        
+    
 
 def scrapedAPIHelperRecursive(scraped_data, data, key):
     try:
@@ -164,7 +171,6 @@ def writeScreenInfo(source,favorites=True):
                     fav = True
         file_screen_info = "/home/ubuntu/workspace/finance/app/equity_screener/screen_info.csv"
         with open(file_screen_info, 'w') as f:
-            import pdb; pdb.set_trace()
             f.write("cols,"+wr)
             f.write("\n")
             f.write("desc,"+desc)
@@ -172,18 +178,12 @@ def writeScreenInfo(source,favorites=True):
         #TODO need to do something to get all columns and not just favorites
         pass
 
-
-
-        
+    
 def run_screening(filters=None, sim=False):
     # Go thru the file, read each ticker and try to collect data
     print("RUN SCREENING")
-    df = ES_Dataframe(filters)
+    df = ES_Dataframe(filters=filters)
 
-def getFilters(req=None):
-    filters = []
-    if not req:
-        return None
 
 if __name__ == '__main__':
     # import pdb; pdb.set_trace()

@@ -20,7 +20,7 @@ def home(page=1):
 
 @app.route('/equity_screener', methods=['GET', 'POST'])
 def equity_screener(favs=True):
-    import pdb; pdb.set_trace()
+    # import pdb; pdb.set_trace()
     column_map = {}
     with open("/home/ubuntu/workspace/finance/app/equity_screener/screen_info.csv", "r") as f:
         cols = str.split(f.readline(), ",")[1:]

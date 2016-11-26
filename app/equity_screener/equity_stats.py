@@ -80,6 +80,7 @@ class ES_Dataframe:
     
     def __init__(self, date=None, filters=None, favs=False):
         self._favs = favs
+        import pdb; pdb.set_trace()
         self._filters = filters or ES_Dataframe.test_filters
         self._colmap = self.setColumns()
         self._date = date or datetime.datetime.now().strftime('%Y-%m-%d')
