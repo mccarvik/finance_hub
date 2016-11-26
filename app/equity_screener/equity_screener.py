@@ -177,11 +177,13 @@ def writeScreenInfo(source,favorites=True):
     else:
         #TODO need to do something to get all columns and not just favorites
         pass
-
+    app.logger.info("Static info written")
     
 def run_screening(filters=None, sim=False):
     # Go thru the file, read each ticker and try to collect data
     print("RUN SCREENING")
+    # set each val to a float
+    filters = [[x[0],x[1],float(x[2])] for x in filters]
     df = ES_Dataframe(filters=filters)
 
 

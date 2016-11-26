@@ -66,65 +66,53 @@ class ES_Dataframe:
     """HOlds the dataframe of a call to the eq_screener DB
     and preforms all the filters"""
     
-    exempt_list = ['l', 'i', 's', 'n', 'w', 'e1', 'm', 'm2', 'n4', 'x']
-    to_numeric_list = ['a', 'a2', 'a5', 'b', 'b2', 'b3', 'b4', 'b6', 'c', 'c1', 'c3', 'c6', 'c8', 'd', 'e',
-                        'e7', 'e8', 'e9', 'f6', 'g', 'h', 'j', 'k', 'g1', 'g3', 'g4', 'g5', 'g6', 'j1', 'j3', 
-                        'j4', 'j5', 'j6', 'k1', 'k2', 'k3', 'k4', 'k5', 'l1', 'l2', 'l3', 'm3', 'm4', 'm5',
-                        'm6', 'm7', 'm8', 'o', 'p', 'p1', 'p2', 'p5', 'p6', 'r', 'r2', 'r5', 'r6', 'r7', 's1',
-                        's7', 't6', 't7', 't8', 'v', 'v1', 'v7', 'w1', 'w4', 'y']
-    fav_list = ['a', 'a2', 'a5', 'b', 'b4', 'b6', 'd', 'e', 'e7', 'e8', 'e9', 'f6', 'j', 'k', 'j1', 'j4',
-                'j5', 'j6', 'k4', 'k5', 'l1', 'm3', 'm4', 'm5', 'm6', 'm7', 'm8', 'p', 'p5', 'p6', 'r', 'r5',
-                'r6', 'r7', 's7', 't8', 'v', 'w1', 'y']
-                
     test_filters = [('r', '<', 15),  ('y', '>', 2), ('m6', '<', 0), ('m8', '<', 0), ('r5', '<', 1)]
     
     def __init__(self, date=None, filters=None, favs=False):
         self._favs = favs
-        import pdb; pdb.set_trace()
         self._filters = filters or ES_Dataframe.test_filters
         self._colmap = self.setColumns()
         self._date = date or datetime.datetime.now().strftime('%Y-%m-%d')
-        self._df = self.read_from_db()
-        self.write_static_info()
+        self._df = self.read_from_db(table='eq_screener2')
+        self._nonnumeric = self.readNonNumeric()
         self.clean_data()
         self.apply_filters()
+        
+    def readNonNumeric(self):
+        file = "/home/ubuntu/workspace/finance/app/equity_screener/yahoo_api2_notes.txt"
+        nonnumber = False
+        with open(file, "r") as f:
+            for line in f:
+                if nonnumber:
+                    nn = line.strip()
+                    break
+                if line.strip() == 'Non-Numeric':
+                    nonnumber = True
+        return nn.split(",")
     
-    def read_from_db(self):
+    def read_from_db(self, table):
         with DBHelper() as db:
             db.connect()
-            return db.select('eq_screener', where="date='{0}'".format(self._date))
+            return db.select(table, where="date='{0}'".format(self._date))
         
     @staticmethod
     def setColumns():
         column_map = {}
-        with open("/home/ubuntu/workspace/finance/app/equity_screener/yahoo_api_notes.txt", "r") as f:
-            for line in f:
-                if line.strip() == 'EOF':
-                    break
-                t_tup = line.split('\t')
-                column_map[t_tup[0]] = t_tup[1]
-        return column_map
-    
-    def write_static_info(self):
-        # columns that arent conducive to screenng
-        cols = list(set(self._colmap.keys()) - set(ES_Dataframe.exempt_list))
-        cols_desc = [self._colmap[k].strip() for k in cols]
-        cols_favs_desc = [self._colmap[k].strip() for k in ES_Dataframe.fav_list]
-        with open('/home/ubuntu/workspace/finance/app/equity_screener/screen_info.csv', 'w') as f:
-            f.write("columns," + ",".join(cols) + '\n')
-            f.write("columns description," + ",".join(cols_desc) + '\n')
-            f.write("favorites," + ",".join(ES_Dataframe.fav_list) + '\n')
-            f.write("favorites description," + ",".join(cols_favs_desc) + '\n')
-        app.logger.info("Static info written")
+        with open("/home/ubuntu/workspace/finance/app/equity_screener/screen_info.csv", "r") as f:
+            cols = str.split(f.readline(), ",")[1:]
+            cols_desc = str.split(f.readline(), ",")[1:]
+        return dict(zip(cols, cols_desc))    
     
     def clean_data(self):
         """moves around data in the dataframe for screening purposes"""
-        self.removePunctuation()
+        # self.removePunctuation()
         self.numberfy()
         app.logger.info("Done cleaning data")
     
     def removePunctuation(self):
         """replacing punctiation in all the columns"""
+        # Doesnt really work, lot of errors on None values
+        # Also might not be necessary
         df = self._df
         for col in df.columns:
             if not isinstance(df[col][0], str):
@@ -134,6 +122,7 @@ class ES_Dataframe:
                     df[col] = df[col].apply(lambda x: x.replace(pct,""))
                 except Exception as e:
                     print("column prob doesnt need punctiation cleaning" + e)
+                    break
                     # exc_type, exc_obj, exc_tb = sys.exc_info()
                     # app.logger.info("PANDAS DATA CLEAN ERROR: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
         self._df = df
@@ -141,12 +130,14 @@ class ES_Dataframe:
     def numberfy(self):
         """sets all the numeric columns to numbers"""
         df = self._df
-        for col in ES_Dataframe.to_numeric_list:
-            df[col] = df[col].apply(pd.to_numeric, errors='coerce')
+        for col in df.columns:
+            if col not in self._nonnumeric:
+                df[col] = df[col].apply(pd.to_numeric, errors='coerce')
         self._df = df
         
     def apply_filters(self):
         df = self._df
+        import pdb; pdb.set_trace()
         for filt in self._filters:
             try:
                 if filt[1] == "=":
