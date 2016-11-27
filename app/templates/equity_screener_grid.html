@@ -1,0 +1,9 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+{% block content %}
+    <link href="/static/css/equity_screener_grid.css" rel="stylesheet" type="text/css">
+    <script src="/static/js/equity_screener_grid.js"></script>
+    <div>
+        <button id="back_to_screener_button" onclick="back_to_screener(event, '{{ SECRET_KEY }}');">Back To Screener</button>
+    </div>
+{% endblock %}
