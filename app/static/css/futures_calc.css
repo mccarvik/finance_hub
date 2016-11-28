@@ -1,0 +1,15 @@
+#fut_calc_button {
+    margin: 10px;
+}
+
+label.fut_labels { 
+    display:inline-block;
+}
+
+div.fut_inputs {
+    width: 900px;
+}
+
+.fut_buttons {
+    margin-bottom: 20px;
+}

@@ -4,10 +4,18 @@
     <link href="/static/css/futures_calc.css" rel="stylesheet" type="text/css">
     <script src="/static/js/futures_calc.js"></script>
     <div>
-        <button id="fut_calc_button" onclick="fut_calc(event, '{{ SECRET_KEY }}');">Calculate</button>
+        <button id="fut_calc_button" class='fut_buttons' onclick="fut_calc(event, '{{ SECRET_KEY }}');">Calculate</button>
     </div>
     <div>
         <input type="radio" name="calc" value="fut" checked> Future<br>
         <input type="radio" name="calc" value="for"> Forward<br>
+    </div>
+    <div class='fut_input_div'>
+        <label class='fut_labels'>Underlying</label>
+        <input class='fut_fields' type="text" id='underlying_val' value ="100"/>    
+    </div>
+    <div class='fut_input_div'>
+        <label class='fut_labels'>Interes Rate</label>
+        <input class='fut_fields' type="text" id='ir_val' value ="0.02"/>   
     </div>
 {% endblock %}
