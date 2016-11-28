@@ -11,6 +11,7 @@ def post(request):
     if request.form['action'] == 'run_screening':
         t_filts = dict(eval(request.form['filters']))['filts']
         df = run_screening(filters=t_filts, sim=False)
+        import pdb; pdb.set_trace()
         return df
     
     if request.form['action'] == 'get_data':
