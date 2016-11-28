@@ -10,21 +10,13 @@ from app import app
 def post(request):
     if request.form['action'] == 'run_screening':
         t_filts = dict(eval(request.form['filters']))['filts']
-        df = run_screening(filters=t_filts, sim=False)
-        import pdb; pdb.set_trace()
-        return df
+        ES = run_screening(filters=t_filts, sim=False)
+        return ES._df.values.tolist()
     
     if request.form['action'] == 'get_data':
         get_data(reset_ticks=False, source="API2")
         writeScreenInfo(source="API2")
         return
-
-def getFilters(request):
-    filts = request.form['filters']
-    if filts:
-        return filts
-    else:
-        return None
 
 
 def get_data(reset_ticks=False, source="API2"):

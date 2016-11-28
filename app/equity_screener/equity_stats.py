@@ -137,7 +137,6 @@ class ES_Dataframe:
         
     def apply_filters(self):
         df = self._df
-        import pdb; pdb.set_trace()
         for filt in self._filters:
             try:
                 if filt[1] == "=":

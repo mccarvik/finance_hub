@@ -1,5 +1,4 @@
-from flask import render_template, flash, redirect, session, url_for, request, \
-    g, jsonify
+from flask import render_template, flash, redirect, session, url_for, request, g, jsonify
 from flask_babel import gettext
 from datetime import datetime
 from guess_language import guessLanguage
@@ -8,7 +7,6 @@ from .forms import EditForm, PostForm, SearchForm
 from .emails import follower_notification
 from config import POSTS_PER_PAGE, MAX_SEARCH_RESULTS, LANGUAGES, \
     DATABASE_QUERY_TIMEOUT
-
 from .equity_screener.equity_screener import post as eqsc_post
 from .bond.bond import post as bond_post
 from .options.vanilla.opt_vanilla import post as opt_vanilla_post
@@ -19,24 +17,26 @@ def home(page=1):
                            title='Home')
 
 @app.route('/equity_screener', methods=['GET', 'POST'])
-def equity_screener(favs=True):
-    # import pdb; pdb.set_trace()
+def equity_screener():
     column_map = {}
     with open("/home/ubuntu/workspace/finance/app/equity_screener/screen_info.csv", "r") as f:
         cols = str.split(f.readline(), ",")[1:]
         cols_desc = str.split(f.readline(), ",")[1:]
+    ns_vals = dict(zip(cols, cols_desc))
     
     if request.method == 'POST':
-        eqsc_post(request)
-    
-    ns_vals = cols
-    ns_desc = cols_desc
-    
-    ns_vals = dict(zip(ns_vals, ns_desc))
+        ret = eqsc_post(request)
+        if request.form['action'] == 'run_screening':
+            import pdb; pdb.set_trace()
+            return render_template('equity_screener.html',
+                                    title='Equity Screener',
+                                    num_screen_vals=ns_vals,
+                                    data=ret)
+                                    
     return render_template('equity_screener.html',
-                               title='Equity Screener',
-                               num_screen_vals=ns_vals)
-        
+                            title='Equity Screener',
+                            num_screen_vals=ns_vals,
+                            data=None)
                            
 @app.route('/bond', methods=['GET', 'POST'])
 def bond():
