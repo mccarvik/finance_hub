@@ -1,0 +1,13 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+{% block content %}
+    <link href="/static/css/futures_calc.css" rel="stylesheet" type="text/css">
+    <script src="/static/js/futures_calc.js"></script>
+    <div>
+        <button id="fut_calc_button" onclick="fut_calc(event, '{{ SECRET_KEY }}');">Calculate</button>
+    </div>
+    <div>
+        <input type="radio" name="calc" value="fut" checked> Future<br>
+        <input type="radio" name="calc" value="for"> Forward<br>
+    </div>
+{% endblock %}

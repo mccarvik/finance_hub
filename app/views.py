@@ -45,6 +45,13 @@ def bond():
     return render_template('bond.html',
                            title='Bond Calculator')
 
+@app.route('/futures_calc', methods=['GET', 'POST'])
+def futures_calc():
+    if request.method == 'POST':
+        bond_post(request)
+    return render_template('futures_calc.html',
+                           title='Futures Calculator')
+
 @app.route('/option/vanilla', methods=['GET', 'POST'])
 def opt_vanilla():
     if request.method == 'POST':

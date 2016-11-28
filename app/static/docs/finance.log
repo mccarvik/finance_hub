@@ -2689,3 +2689,1274 @@ bdb.BdbQuit
 2016-11-28 14:53:42,138 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
 2016-11-28 14:54:16,539 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:141]
 2016-11-28 16:33:28,933 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 17:56:10,615 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 17:56:57,772 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 17:57:11,656 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:141]
+2016-11-28 18:12:29,914 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 30, in equity_screener
+    rets = eqsc_post(request)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 30, in equity_screener
+    rets = eqsc_post(request)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-28 18:12:33,061 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 18:12:41,012 ERROR: Exception on /equity_screener [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 39, in equity_screener
+    num_screen_vals=cols)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/ubuntu/workspace/finance/app/templates/equity_screener.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "/home/ubuntu/workspace/finance/app/templates/base.html", line 67, in top-level template code
+    {% block content %}{% endblock %}
+  File "/home/ubuntu/workspace/finance/app/templates/equity_screener.html", line 12, in block "content"
+    {% for key, val in num_screen_vals.items() %}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'items'
+2016-11-28 18:12:56,566 ERROR: Exception on /equity_screener [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 39, in equity_screener
+    num_screen_vals=cols)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/ubuntu/workspace/finance/app/templates/equity_screener.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "/home/ubuntu/workspace/finance/app/templates/base.html", line 67, in top-level template code
+    {% block content %}{% endblock %}
+  File "/home/ubuntu/workspace/finance/app/templates/equity_screener.html", line 12, in block "content"
+    {% for key, val in num_screen_vals.items() %}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'items'
+2016-11-28 18:13:16,067 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 18:14:19,711 ERROR: Exception on /equity_screener [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 39, in equity_screener
+    num_screen_vals=cols)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/ubuntu/workspace/finance/app/templates/equity_screener.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "/home/ubuntu/workspace/finance/app/templates/base.html", line 67, in top-level template code
+    {% block content %}{% endblock %}
+  File "/home/ubuntu/workspace/finance/app/templates/equity_screener.html", line 12, in block "content"
+    {% for key, val in num_screen_vals.items() %}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'items'
+2016-11-28 18:14:26,752 ERROR: Exception on /equity_screener [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 24, in equity_screener
+    column_map = {}
+  File "/home/ubuntu/workspace/finance/app/views.py", line 24, in equity_screener
+    column_map = {}
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-28 18:14:31,006 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 18:15:13,556 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 18:15:13,556 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:15:13,557 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:15:13,557 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:15:13,558 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:15:13,558 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:15:13,559 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 18:16:48,081 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 31, in equity_screener
+    if request.form['action'] == 'run_screening':
+  File "/home/ubuntu/workspace/finance/app/views.py", line 31, in equity_screener
+    if request.form['action'] == 'run_screening':
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-28 18:17:27,720 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 18:17:27,721 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:17:27,721 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:17:27,722 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:17:27,722 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:17:27,723 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:17:27,723 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 18:20:52,998 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 18:20:52,999 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:20:52,999 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:20:52,999 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:20:53,000 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:20:53,000 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:20:53,000 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 18:21:28,276 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 24, in equity_screener
+    column_map = {}
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 15, in post
+    return ES._df.values.tolist()
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 15, in post
+    return ES._df.values.tolist()
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-28 18:21:31,024 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 18:23:48,221 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 18:23:48,222 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:23:48,222 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:23:48,222 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:23:48,222 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:23:48,222 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:23:48,222 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 18:26:15,329 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 18:27:07,205 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 18:27:07,205 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:27:07,206 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:27:07,206 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:27:07,206 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:27:07,206 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:27:07,206 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 18:29:49,613 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 18:30:58,367 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 18:30:58,368 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:30:58,368 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:30:58,368 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:30:58,368 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:30:58,369 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:30:58,369 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 18:34:03,772 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 18:34:03,772 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:34:03,773 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:34:03,773 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:34:03,773 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:34:03,773 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:34:03,773 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 18:34:35,724 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 31, in equity_screener
+    return render_template('equity_screener_grid.html',
+  File "/home/ubuntu/workspace/finance/app/views.py", line 31, in equity_screener
+    return render_template('equity_screener_grid.html',
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-28 18:34:38,675 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 18:36:13,652 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 18:36:13,652 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:36:13,652 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:36:13,652 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:36:13,653 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:36:13,653 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:36:13,653 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 18:39:33,777 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 18:39:53,426 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 18:39:53,426 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:39:53,426 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:39:53,426 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:39:53,427 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:39:53,427 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:39:53,427 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 18:40:54,832 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 18:41:21,527 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 18:41:21,527 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:41:21,527 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:41:21,527 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:41:21,528 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:41:21,528 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:41:21,528 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 18:41:39,753 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 18:42:26,170 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 18:42:26,171 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:42:26,171 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:42:26,171 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:42:26,171 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:42:26,172 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:42:26,172 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 18:43:15,564 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1642, in full_dispatch_request
+    response = self.make_response(rv)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1731, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response
+2016-11-28 18:43:52,243 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 18:44:15,595 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 18:44:15,596 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:44:15,596 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:44:15,596 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:44:15,596 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:44:15,596 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 18:44:15,596 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 18:44:36,454 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 19:10:35,364 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 19:10:35,365 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:10:35,365 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:10:35,365 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:10:35,365 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:10:35,365 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:10:35,365 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 19:10:57,308 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 31, in equity_screener
+    scr = equity_screener_grid(rets)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 31, in equity_screener
+    scr = equity_screener_grid(rets)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-28 19:10:59,716 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 19:12:51,532 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 19:12:51,532 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:12:51,533 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:12:51,533 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:12:51,533 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:12:51,533 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:12:51,533 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 19:13:27,214 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 19:13:27,214 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:13:27,214 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:13:27,214 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:13:27,214 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:13:27,215 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:13:27,215 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 19:14:52,159 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 19:14:52,159 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:14:52,159 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:14:52,160 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:14:52,160 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:14:52,160 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:14:52,160 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 19:30:15,786 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 31, in equity_screener
+  File "/home/ubuntu/workspace/finance/app/views.py", line 31, in equity_screener
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-28 19:30:20,010 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 19:31:02,225 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 19:31:02,225 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:31:02,225 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:31:02,225 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:31:02,226 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:31:02,226 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:31:02,226 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 19:31:25,539 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 30, in equity_screener
+    import pdb; pdb.set_trace()
+  File "/home/ubuntu/workspace/finance/app/views.py", line 42, in equity_screener_grid
+    return render_template('equity_screener_grid.html',
+  File "/home/ubuntu/workspace/finance/app/views.py", line 42, in equity_screener_grid
+    return render_template('equity_screener_grid.html',
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-28 19:31:29,869 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 19:32:30,560 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 19:32:30,561 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:32:30,561 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:32:30,561 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:32:30,561 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:32:30,561 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:32:30,562 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 19:33:14,779 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 19:33:14,780 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:33:14,780 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:33:14,780 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:33:14,780 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:33:14,780 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:33:14,780 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 19:34:56,194 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 19:35:17,708 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 19:35:17,708 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:35:17,708 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:35:17,709 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:35:17,709 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:35:17,709 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:35:17,709 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 19:37:43,322 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 19:37:58,936 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 19:37:58,936 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:37:58,936 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:37:58,936 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:37:58,937 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:37:58,937 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 19:37:58,937 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 20:12:28,721 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 20:13:14,592 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 20:13:14,593 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:13:14,593 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:13:14,593 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:13:14,593 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:13:14,594 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:13:14,594 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 20:14:10,843 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 20:15:18,230 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 20:15:18,230 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:15:18,231 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:15:18,231 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:15:18,231 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:15:18,231 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:15:18,231 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 20:16:39,599 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 20:16:39,599 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:16:39,599 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:16:39,599 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:16:39,600 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:16:39,600 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:16:39,600 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 20:17:41,913 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 31, in equity_screener
+    return equity_screener_grid(rets)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 42, in equity_screener_grid
+    return render_template('equity_screener_grid.html',
+  File "/home/ubuntu/workspace/finance/app/views.py", line 42, in equity_screener_grid
+    return render_template('equity_screener_grid.html',
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-28 20:17:45,112 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 20:18:08,765 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 20:18:08,766 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:18:08,766 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:18:08,766 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:18:08,766 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:18:08,766 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:18:08,766 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 20:21:11,990 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 20:24:35,607 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 20:26:05,874 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 20:36:40,934 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 20:36:40,935 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:36:40,935 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:36:40,935 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:36:40,935 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:36:40,935 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:36:40,936 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 20:39:52,987 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 20:42:08,852 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 20:42:08,852 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:42:08,852 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:42:08,852 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:42:08,852 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:42:08,853 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:42:08,853 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 20:42:10,116 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 31, in equity_screener
+    return redirect(url_for('/equity_screener_grid'))
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/helpers.py", line 332, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1811, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/helpers.py", line 322, in url_for
+    force_external=external)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/werkzeug/routing.py", line 1758, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint '/equity_screener_grid'. Did you mean 'equity_screener_grid' instead?
+2016-11-28 20:42:46,226 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 20:43:09,146 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 20:43:09,146 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:43:09,146 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:43:09,147 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:43:09,147 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:43:09,147 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:43:09,147 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 20:43:41,034 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 20:43:41,035 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:43:41,035 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:43:41,035 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:43:41,035 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:43:41,035 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:43:41,036 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 20:44:11,913 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 20:44:11,913 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:44:11,913 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:44:11,914 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:44:11,914 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:44:11,914 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:44:11,914 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 20:45:47,869 ERROR: Exception on /equity_screener_grid [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 42, in equity_screener_grid
+    return render_template('equity_screener_grid.html',
+  File "/home/ubuntu/workspace/finance/app/views.py", line 42, in equity_screener_grid
+    return render_template('equity_screener_grid.html',
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-28 20:45:49,245 ERROR: Exception on /equity_screener_grid [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 42, in equity_screener_grid
+    return render_template('equity_screener_grid.html',
+  File "/home/ubuntu/workspace/finance/app/views.py", line 42, in equity_screener_grid
+    return render_template('equity_screener_grid.html',
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-28 20:45:53,911 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 20:46:12,030 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 20:47:33,230 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 20:50:09,416 ERROR: Exception on /equity_screener_grid [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 42, in equity_screener_grid
+    return render_template('equity_screener_grid.html',
+  File "/home/ubuntu/workspace/finance/app/views.py", line 42, in equity_screener_grid
+    return render_template('equity_screener_grid.html',
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-28 20:50:10,320 ERROR: Exception on /equity_screener_grid [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 42, in equity_screener_grid
+    return render_template('equity_screener_grid.html',
+  File "/home/ubuntu/workspace/finance/app/views.py", line 42, in equity_screener_grid
+    return render_template('equity_screener_grid.html',
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-28 20:50:16,531 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 20:50:41,696 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 20:50:41,697 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:50:41,697 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:50:41,697 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:50:41,698 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:50:41,698 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:50:41,698 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 20:52:23,076 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 20:52:55,936 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 20:52:55,937 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:52:55,937 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:52:55,937 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:52:55,937 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:52:55,937 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:52:55,937 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 20:53:28,703 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 20:53:28,703 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:53:28,703 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:53:28,704 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:53:28,704 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:53:28,704 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:53:28,704 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 20:57:37,314 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 20:57:58,032 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 20:57:58,032 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:57:58,032 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:57:58,032 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:57:58,032 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:57:58,033 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:57:58,033 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 20:58:21,744 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 20:58:36,713 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 20:58:36,714 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:58:36,714 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:58:36,714 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:58:36,714 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:58:36,714 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 20:58:36,714 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 21:01:13,135 ERROR: Exception on /equity_screener_grid [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 43, in equity_screener_grid
+    data = request.args['data']
+  File "/home/ubuntu/workspace/finance/app/views.py", line 43, in equity_screener_grid
+    data = request.args['data']
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-28 21:01:14,119 ERROR: Exception on /equity_screener_grid [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 43, in equity_screener_grid
+    data = request.args['data']
+  File "/home/ubuntu/workspace/finance/app/views.py", line 43, in equity_screener_grid
+    data = request.args['data']
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-28 21:01:17,535 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 21:01:35,788 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 21:01:35,788 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:01:35,788 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:01:35,788 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:01:35,789 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:01:35,789 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:01:35,789 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 21:01:37,669 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 32, in equity_screener
+    return redirect(url_for('equity_screener_grid'), data=rets)
+TypeError: redirect() got an unexpected keyword argument 'data'
+2016-11-28 21:03:18,571 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 21:03:38,197 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 21:03:38,197 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:03:38,198 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:03:38,198 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:03:38,198 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:03:38,198 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:03:38,198 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 21:03:40,483 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 32, in equity_screener
+    return redirect(url_for('equity_screener_grid'), data=rets)
+TypeError: redirect() got an unexpected keyword argument 'data'
+2016-11-28 21:09:30,464 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 21:09:50,534 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 21:09:50,534 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:09:50,534 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:09:50,534 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:09:50,534 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:09:50,535 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:09:50,535 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 21:10:20,878 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 32, in equity_screener
+    return redirect(url_for('equity_screener_grid'), data=rets)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 32, in equity_screener
+    return redirect(url_for('equity_screener_grid'), data=rets)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-28 21:10:31,795 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 21:11:04,897 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 21:11:04,898 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:11:04,898 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:11:04,898 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:11:04,899 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:11:04,899 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:11:04,899 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 21:11:08,593 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 32, in equity_screener
+    return redirect(url_for('equity_screener_grid'), data=rets)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 32, in equity_screener
+    return redirect(url_for('equity_screener_grid'), data=rets)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-28 21:11:11,442 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 21:11:54,652 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 21:11:54,653 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:11:54,653 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:11:54,654 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:11:54,655 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:11:54,655 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:11:54,656 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 21:12:46,856 ERROR: Exception on /equity_screener_grid [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 44, in equity_screener_grid
+  File "/home/ubuntu/workspace/finance/app/views.py", line 44, in equity_screener_grid
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-28 21:12:47,791 ERROR: Exception on /equity_screener_grid [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 43, in equity_screener_grid
+  File "/home/ubuntu/workspace/finance/app/views.py", line 43, in equity_screener_grid
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-28 21:12:50,946 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 21:13:12,386 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 21:13:12,386 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:13:12,386 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:13:12,386 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:13:12,387 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:13:12,387 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:13:12,387 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 21:14:01,433 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 30, in equity_screener
+    rets = eqsc_post(request)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 30, in equity_screener
+    rets = eqsc_post(request)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-28 21:14:34,599 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 21:15:37,922 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 21:15:37,922 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:15:37,922 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:15:37,923 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:15:37,923 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:15:37,923 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:15:37,923 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 21:17:09,636 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 21:17:38,919 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 21:17:38,919 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:17:38,919 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:17:38,919 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:17:38,920 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:17:38,920 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:17:38,920 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 21:19:02,308 ERROR: Exception on /equity_screener_grid [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 39, in equity_screener_grid
+    if request.method == 'POST':
+  File "/home/ubuntu/workspace/finance/app/views.py", line 39, in equity_screener_grid
+    if request.method == 'POST':
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-28 21:19:05,597 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 21:19:42,508 ERROR: Exception on /equity_screener_grid [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 43, in equity_screener_grid
+    data=rets)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 54, in trace_dispatch
+    return self.dispatch_exception(frame, arg)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 110, in dispatch_exception
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-28 21:19:45,184 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 21:20:53,568 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 21:21:51,726 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 21:21:51,726 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:21:51,726 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:21:51,726 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:21:51,727 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:21:51,727 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:21:51,727 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 21:22:10,060 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 21:22:57,881 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 21:22:57,882 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:22:57,882 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:22:57,883 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:22:57,883 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:22:57,883 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:22:57,884 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 21:24:07,034 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 21:24:07,034 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:24:07,035 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:24:07,035 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:24:07,035 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:24:07,036 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:24:07,036 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 21:42:02,638 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 21:42:42,094 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 21:42:42,094 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:42:42,094 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:42:42,094 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:42:42,095 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:42:42,095 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:42:42,095 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 21:44:25,895 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 21:45:15,305 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 21:45:15,306 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:45:15,306 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:45:15,307 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:45:15,307 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:45:15,308 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:45:15,308 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 21:45:35,133 ERROR: Exception on /equity_screener_grid [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 39, in equity_screener_grid
+    if request.method == 'POST':
+  File "/home/ubuntu/workspace/finance/app/views.py", line 39, in equity_screener_grid
+    if request.method == 'POST':
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-28 21:49:17,689 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 21:49:33,977 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 21:52:39,586 ERROR: Exception on /equity_screener_grid [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 41, in equity_screener_grid
+    return render_template('equity_screener_grid.html',
+  File "/home/ubuntu/workspace/finance/app/views.py", line 41, in equity_screener_grid
+    return render_template('equity_screener_grid.html',
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-28 21:52:42,498 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 21:53:07,441 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 21:53:07,441 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:53:07,442 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:53:07,442 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:53:07,442 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:53:07,442 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:53:07,442 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 21:53:07,930 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1643, in full_dispatch_request
+    response = self.process_response(response)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1864, in process_response
+    self.save_session(ctx.session, response)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 926, in save_session
+    return self.session_interface.save_session(self, session, response)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/sessions.py", line 359, in save_session
+    val = self.get_signing_serializer(app).dumps(dict(session))
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/itsdangerous.py", line 565, in dumps
+    payload = want_bytes(self.dump_payload(obj))
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/itsdangerous.py", line 847, in dump_payload
+    json = super(URLSafeSerializerMixin, self).dump_payload(obj)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/itsdangerous.py", line 550, in dump_payload
+    return want_bytes(self.serializer.dumps(obj))
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/sessions.py", line 85, in dumps
+    return json.dumps(_tag(value), separators=(',', ':'))
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/json.py", line 126, in dumps
+    rv = _json.dumps(obj, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.5/json/__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "/home/ubuntu/miniconda3/lib/python3.5/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/home/ubuntu/miniconda3/lib/python3.5/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/home/ubuntu/workspace/finance/app/__init__.py", line 17, in default
+    from speaklater import is_lazy_string
+ImportError: No module named 'speaklater'
+2016-11-28 21:53:43,939 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 21:55:22,639 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 21:55:22,640 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:55:22,640 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:55:22,640 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:55:22,640 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:55:22,640 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 21:55:22,640 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 21:55:49,585 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1643, in full_dispatch_request
+    response = self.process_response(response)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1864, in process_response
+    self.save_session(ctx.session, response)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 926, in save_session
+    return self.session_interface.save_session(self, session, response)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/sessions.py", line 359, in save_session
+    val = self.get_signing_serializer(app).dumps(dict(session))
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/itsdangerous.py", line 565, in dumps
+    payload = want_bytes(self.dump_payload(obj))
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/itsdangerous.py", line 847, in dump_payload
+    json = super(URLSafeSerializerMixin, self).dump_payload(obj)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/itsdangerous.py", line 550, in dump_payload
+    return want_bytes(self.serializer.dumps(obj))
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/sessions.py", line 85, in dumps
+    return json.dumps(_tag(value), separators=(',', ':'))
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/json.py", line 126, in dumps
+    rv = _json.dumps(obj, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.5/json/__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "/home/ubuntu/miniconda3/lib/python3.5/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/home/ubuntu/miniconda3/lib/python3.5/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/home/ubuntu/workspace/finance/app/__init__.py", line 17, in default
+    from speaklater import is_lazy_string
+ImportError: No module named 'speaklater'
+2016-11-28 22:05:22,648 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 22:05:44,786 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 22:05:44,787 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 22:05:44,787 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 22:05:44,787 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 22:05:44,787 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 22:05:44,787 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 22:05:44,787 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 22:05:46,630 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 30, in equity_screener
+    return render_template('equity_screener.html',
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/ubuntu/workspace/finance/app/templates/equity_screener.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "/home/ubuntu/workspace/finance/app/templates/base.html", line 68, in top-level template code
+    {% block content %}{% endblock %}
+  File "/home/ubuntu/workspace/finance/app/templates/equity_screener.html", line 12, in block "content"
+    {% for key, val in num_screen_vals.items() %}
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 408, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'num_screen_vals' is undefined
+2016-11-28 22:07:00,926 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 22:07:18,534 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 22:07:18,535 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 22:07:18,535 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 22:07:18,535 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 22:07:18,535 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 22:07:18,535 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 22:07:18,536 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 22:07:24,804 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 30, in equity_screener
+    import pdb; pdb.set_trace()
+  File "/home/ubuntu/workspace/finance/app/views.py", line 30, in equity_screener
+    import pdb; pdb.set_trace()
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-28 22:07:26,913 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 22:07:43,143 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-28 22:07:43,143 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 22:07:43,143 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 22:07:43,143 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 22:07:43,143 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 22:07:43,144 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-28 22:07:43,144 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-28 22:10:25,920 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 22:14:18,684 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 22:18:03,404 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 22:22:30,084 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 22:23:28,073 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
