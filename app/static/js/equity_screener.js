@@ -23,22 +23,24 @@ function update_grid(data, id) {
     });
 }
 
-function run_screening(event, token) {
+function run_screening(event, num_screen_vals) {
     var overlay = $('<div id="waiting"> </div>');
-    overlay.appendTo(document.body)
+    overlay.appendTo(document.body);
     var filts = [];
     $("span.num_screen").each( function(index) {
-        var t_val = $( this ).find('input').val()
+        var t_val = $( this ).find('input').val();
         if (t_val != "") {
-            var t_id = this.id;
-            var t_cond = $( this ).find('select').val();
+            var t_id = find_key(num_screen_vals, $( this ).find('select.num_screen_opts').val());
+            // var t_id = this.id;
+            var t_cond = $( this ).find('select.num_screen_conds').val();
             var f = [t_id, t_cond, t_val];
             filts.push(f);
         };
     });
-    filter_obj = {filts: filts}
-    filts = JSON.stringify(filter_obj)
-    console.log(filts)
+    filter_obj = {filts: filts};
+    filts = JSON.stringify(filter_obj);
+    console.log(filts);
+    console.log("RUNNING SCREENING")
     
     $.ajax({
         type: 'POST',
@@ -47,15 +49,16 @@ function run_screening(event, token) {
             action: "run_screening",
             filters: filts
         },
-        success: function()
+        success: function(results)
         {
             console.log('Ran Screening')
+            console.log(results)
             return;
         }
     });
 }
 
-function get_data(event, token) {
+function get_data(event) {
     var overlay = $('<div id="waiting"> </div>');
     overlay.appendTo(document.body)
     console.log('grabbing data - begin')
@@ -71,3 +74,44 @@ function get_data(event, token) {
         }
     });
 }
+
+function add_filter(event, num_screen_vals) {
+    var filters = "";
+    num_screen_vals = dict_helper(num_screen_vals);
+    for (i=0; i < num_screen_vals.length; i++) {
+        filters = filters + "<option value='" + num_screen_vals[i] + "'>" + num_screen_vals[i] + "</option>\n";
+    };
+    $('div.num_screen').last().after("\
+        <div class='num_screen'> \
+            <span class='num_screen'> \
+                <select class='num_screen_opts'>\n" +
+                filters +
+                "</select> \
+                <select class='num_screen_conds'> \
+                    <option value='='>=</option> \
+                    <option value='<'><</option> \
+                    <option value='>'>></option> \
+                </select> \
+                <input type='text' class='num_screen' value =''/> \
+            </span> \
+        </div>"
+    );
+};
+
+function dict_helper(dict) {
+    var i, arr = [];
+    for(i in dict) {
+        arr.push(dict[i]);
+    };
+    return arr;
+};
+
+function find_key(dict, item) {
+    var i, arr = [];
+    for(i in dict) {
+        if (dict[i] === item) {
+            return i;
+        };
+    };
+    return;
+};

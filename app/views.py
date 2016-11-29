@@ -1,7 +1,6 @@
+import json
 from flask import render_template, flash, redirect, session, url_for, request, g, jsonify
-from flask_babel import gettext
 from datetime import datetime
-from guess_language import guessLanguage
 from app import app
 from .forms import EditForm, PostForm, SearchForm
 from .emails import follower_notification
@@ -27,11 +26,13 @@ def equity_screener():
     if request.method == 'POST':
         ret = eqsc_post(request)
         if request.form['action'] == 'run_screening':
+            # return render_template('equity_screener.html',
+            #                         title='Equity Screener',
+            #                         num_screen_vals=ns_vals,
+            #                         data=ret)
+            # return json.dumps({'status':'OK','data':ret})
             import pdb; pdb.set_trace()
-            return render_template('equity_screener.html',
-                                    title='Equity Screener',
-                                    num_screen_vals=ns_vals,
-                                    data=ret)
+            return json.dumps({'status':'OK', 'data': ret})
                                     
     return render_template('equity_screener.html',
                             title='Equity Screener',

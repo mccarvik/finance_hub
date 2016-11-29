@@ -74,21 +74,23 @@ class ES_Dataframe:
         self._colmap = self.setColumns()
         self._date = date or datetime.datetime.now().strftime('%Y-%m-%d')
         self._df = self.read_from_db(table='eq_screener2')
-        self._nonnumeric = self.readNonNumeric()
+        self.readOther()
         self.clean_data()
         self.apply_filters()
         
-    def readNonNumeric(self):
+    def readOther(self):
         file = "/home/ubuntu/workspace/finance/app/equity_screener/yahoo_api2_notes.txt"
-        nonnumber = False
+        other = False
         with open(file, "r") as f:
             for line in f:
-                if nonnumber:
+                if other:
                     nn = line.strip()
+                    date_to_string = f.readline().strip()
                     break
-                if line.strip() == 'Non-Numeric':
-                    nonnumber = True
-        return nn.split(",")
+                if line.strip() == 'Other':
+                    other = True
+        self._nonnumeric = nn.split(",")
+        self._date_to_string = date_to_string.split(",")
     
     def read_from_db(self, table):
         with DBHelper() as db:
@@ -133,6 +135,10 @@ class ES_Dataframe:
         for col in df.columns:
             if col not in self._nonnumeric:
                 df[col] = df[col].apply(pd.to_numeric, errors='coerce')
+            if col in self._date_to_string:
+                # Need this to convert certain datetimes to strings
+                import pdb; pdb.set_trace()
+                df[col] = df[col].apply(lambda x: x.strftime("%Y%m%d"))
         self._df = df
         
     def apply_filters(self):

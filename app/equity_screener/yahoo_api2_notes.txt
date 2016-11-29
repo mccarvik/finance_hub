@@ -85,7 +85,8 @@ favorites
 forwardPE,profitMargins,heldPercentInsiders,heldPercentInstitutions,shortRatio,shortPercentOfFloat,beta,priceToBook,ytdReturn,beta3Year,yield,threeYearAverageReturn,fiveYearAverageReturn,priceToSalesTrailing12Months,earningsQuarterlyGrowth,revenueQuarterlyGrowth,trailingEps,forwardEps,pegRatio,enterpriseToRevenue,enterpriseToEbitda,52WeekChange,earningsAverage,recommendationKey,totalCashPerShare,quickRatio,currentRatio,debtToEquity,revenuePerShare,returnOnAssets,returnOnEquity,earningsGrowth,revenueGrowth,grossMargins,ebitdaMargins,operatingMargins,profitMargins
 Forward PE,Profit Margins,Held Percent Insiders,Held Percent Institutions,Short Ratio,Short Percent Of Float,Beta,Price To Book,YTD Return,Beta 3 Year,Yield,Three Year Average Return,Five Year Average Return,Price To Sales Trailing 12 Months,Earnings Quarterly Growth,Revenue Quarterly Growth,Trailing EPS,Forward EPS,Peg Ratio,Enterprise To Revenue,Enterprise To Ebitda,52 Week Change,Earnings Average,Recommendation Key,Total Cash Per Share,Quick Ratio,Current Ratio,Debt To Equity,Revenue Per Share,Return On Assets,Return On Equity,Earnings Growth,Revenue Growth,Gross Margins,Ebitda Margins,Operating Margins
 
-Non-Numeric
+Other
 ticker,date,lastCapGain,recommendationKey,legalType,fundInceptionDate,fundFamily,morningStarOverallRating,morningStarRiskRating,category
+date
 
 https://query2.finance.yahoo.com/v10/finance/quoteSummary/$$$$?formatted=true&crumb=T7kld941Rnm&lang=en-US&region=US&modules=defaultKeyStatistics%2CfinancialData%2CcalendarEvents&corsDomain=finance.yahoo.com

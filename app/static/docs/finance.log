@@ -3960,3 +3960,1039 @@ bdb.BdbQuit
 2016-11-28 22:18:03,404 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
 2016-11-28 22:22:30,084 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
 2016-11-28 22:23:28,073 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 22:56:20,263 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-28 22:57:39,541 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 14:06:36,583 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 14:07:48,427 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 14:09:19,526 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 14:10:11,208 INFO: API READ ERROR on ANIP: <class 'json.decoder.JSONDecodeError'>, 103, Expecting value: line 1 column 1 (char 0) [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:106]
+2016-11-29 14:10:20,575 INFO: finished ANIP+ANIK+AXE+ANN+NLY [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:20,994 INFO: finished AEIS+AMD+ADXS+ADVS+ABCO [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:21,161 INFO: finished AMC+AMCX+DOX+AMED+APEI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:21,610 INFO: finished AAPL+AGTC+AIT+AMAT+AMCC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:21,653 INFO: finished AGIO+GAS+ADC+AL+AIRM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:22,359 INFO: finished AIG+ANAT+AMNB+ARII+ARCP [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:22,368 INFO: finished ADT+ADTN+ADRO+AAP+WMS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:22,370 INFO: finished CHRW+CJES+BNK+CA+CAB [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:22,460 INFO: finished ADMS+AE+ADUS+ADPT+ADBE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:22,461 INFO: finished ANF+ABMD+ABM+AXAS+ACTG [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:22,610 INFO: finished ATEN+AAC+AAON+AIR+AAN [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:22,637 INFO: finished ACHC+ACAD+AKR+AXDX+XLRN [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:22,664 INFO: finished APD+ATSG+AYR+ARG+AKS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:22,823 INFO: finished BWLD+BBW+BLDR+BG+BURL [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:22,984 INFO: finished ACM+AEGR+AEGN+AEPI+AERI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:23,056 INFO: finished ACN+ANCX+ACCO+ARAY+ACW [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:23,155 INFO: finished APOG+ARI+APOL+AMTG+APLE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:23,168 INFO: finished ASH+AHL+AZPN+ASMB+ASB [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:23,174 INFO: finished CVC+CBT+CCMP+COG+CACI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:23,195 INFO: finished UHAL+AEE+AMRC+AAL+AAT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:23,200 INFO: finished AAVL+AVB+AVY+AVG+AVID [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:23,221 INFO: finished KMX+CKEC+CCL+CRS+CSV [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:23,245 INFO: finished AXL+ACC+MTGE+AGNC+AEO [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:23,377 INFO: finished AMAG+AMZN+AMBC+AMBA+AMBR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:23,388 INFO: API READ ERROR on BF.A: <class 'TypeError'>, 103, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:106]
+2016-11-29 14:10:23,557 INFO: finished AAOI+AREX+ATR+WTR+ARMK [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:23,597 INFO: finished CDNS+CACQ+CZR+CAP+CALM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:23,754 INFO: finished AMSG+AFSI+ANAC+APC+ADI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:23,760 INFO: finished AMWD+AWK+CRMT+AMP+ABCB [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:23,768 INFO: finished FLWS+SRCE+FOXA+FOX+TWOU [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:23,769 INFO: finished CALD+CPE+CPN+ABCD+CBM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:23,805 INFO: finished AMG+AFMD+AFFX+AFL+MITT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:23,848 INFO: finished ARPI+ASEI+AWR+AMT+AVD [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:23,855 INFO: finished CSU+CFFN+CMO+CARA+CRR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:23,856 INFO: finished CRZO+TAST+CRI+CACB+CSCD [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:23,862 INFO: finished ALOG+ABCW+ANDE+ANGI+ANGO [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:23,866 INFO: finished AIN+AMRI+ALB+AA+ALDR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:23,959 INFO: finished ABAX+ABT+ABBV+ABY+ABEO [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:24,024 INFO: finished AGCO+AGEN+AGRX+A+AGYS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:24,038 INFO: finished AMSF+ABC+ATLO+AME+AMGN [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:24,154 INFO: finished BMR+BIO+BRLI+BIOS+BSTC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:24,162 INFO: finished CLMS+CAMP+CVGW+CAL+CCC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:24,166 INFO: finished CAC+CPT+CAM+CPB+CCG [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:24,172 INFO: finished ATVI+ACTA+ATU+AYI+ACXM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:24,187 INFO: finished DDD+MMM+SIXD+EGHT+AVHI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:24,218 INFO: finished ACRE+AGX+AGII+ARIA+AI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:24,234 INFO: finished HIVE+AJRD+AVAV+AES+AET [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:24,353 INFO: finished ANH+AON+APA+AIV+APIC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:24,381 INFO: finished AEP+AEL+AXP+AFG+AMH [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:24,389 INFO: finished AWH+ALSN+MDRX+ALL+ALLY [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:24,403 INFO: finished CSLT+CTLT+CPRX+CTRX+CTT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:24,403 INFO: finished CATM+CRCM+CECO+CTRE+CSL [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:24,422 INFO: finished BOOT+BAH+BWA+SAM+BPFH [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:24,427 INFO: finished ALCO+ALGN+ALIM+ALKS+Y [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:24,594 INFO: finished BNCL+BNFT+WRB+BHLB+BERY [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:24,606 INFO: finished CARB+CBYL+CFNL+CAH+CSII [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:24,611 INFO: finished CAR+AVA+AVT+AVP+AVX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:24,759 INFO: finished CDI+CDK+CDW+CEB+CECE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:24,766 INFO: finished ALR+ALEX+ALX+ARE+ALXN [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:24,803 INFO: finished AFAM+ALNY+ALJ+AOSL+ALTR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:24,806 INFO: finished BGS+BWC+BMI+BHI+BCPC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:24,806 INFO: finished BANR+BHB+BKS+B+CUDA [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:24,990 INFO: finished AAMC+ASPS+RESI+AIMC+MO [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:25,005 INFO: finished BBT+BBCN+BBX+BEAV+BECN [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:25,019 INFO: finished ACE+ACET+ACHN+ACIW+ACOR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:25,184 INFO: finished BLK+HRB+BLMN+BLT+BCOR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:25,199 INFO: finished ADSK+ADP+AN+AZO+AVGO [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:25,203 INFO: finished FOLD+AMKR+AHS+AMPH+APH [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:25,236 INFO: finished AT+ATNI+AAWW+AFH+ATML [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:25,239 INFO: finished CRC+CWT+CALA+CALX+ELY [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:25,241 INFO: finished ATO+ATRC+ATRI+ATW+LIFE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:25,257 INFO: finished WIFI+BCC+BOJA+BOKF+BCEI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:25,260 INFO: finished ADS+AFOP+AIQ+LNT+AMOT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:25,267 INFO: finished CMN+CPLA+CBF+CCBG+COF [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:25,352 INFO: finished TECH+BEAT+BTX+BJRI+BBOX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:25,367 INFO: finished ABG+ASNA+AHP+AHT+AINC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:25,372 INFO: finished CPHD+CERN+CERS+CEVA+CF [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:25,394 INFO: finished CWST+CASY+CSH+CASS+ROX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:25,432 INFO: finished AKAM+AKBA+AKRX+ALG+ALK [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:25,445 INFO: finished CDR+CGI+CE+CELG+CLDX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:25,583 INFO: finished BXS+BKMU+BAC+BOH+BMRC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:25,639 INFO: finished AF+ATRO+T+ATRA+ATHN [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:25,659 INFO: finished BDC+BLCM+BEL+BMS+BHE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:25,769 INFO: finished ATI+ALGT+ALLE+AGN+ALE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:25,813 INFO: finished BK+OZRK+BFIN+RATE+BKU [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:25,847 INFO: finished CSG+ECOM+CRL+GTLS+CHTR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:25,858 INFO: finished PETX+ARC+RKDA+ARCB+ACGL [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:25,990 INFO: finished BLL+BANC+BANF+BLX+TBBK [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,002 INFO: finished ADM+ACAT+ARDX+ASC+ARNA [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,020 INFO: finished BDE+BKH+BKFS+BLKB+HAWK [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,041 INFO: finished ARW+AROW+ARWR+APAM+ANET [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,152 INFO: finished AEC+AIZ+AGO+ASTE+AST [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,162 INFO: finished BBY+BGCP+BGFV+BIG+BH [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,181 INFO: finished BBSI+BAS+BSET+BAX+BV [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,183 INFO: finished BYD+BRC+BDN+BBRG+BDGE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,188 INFO: finished BBG+BCRX+BDSI+BIIB+BMRN [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,192 INFO: finished CHMT+LNG+CHKE+CHK+CHSP [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,208 INFO: finished CBZ+CBL+CBOE+CBG+CBS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,228 INFO: finished CIM+CMRX+CMG+CHH+CBK [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,230 INFO: finished BXP+BSX+EPAY+BDBD+BOX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,247 INFO: finished AXTA+ACLS+AXLL+AXS+AZZ [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,258 INFO: finished BSF+BZH+BEBE+BDX+BBBY [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,263 INFO: finished CDTX+CIEN+CIFC+CI+XEC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,361 INFO: finished CAT+CATY+CATO+CVCO+CAVM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,407 INFO: finished BLBD+BHBK+NILE+BLUE+BPMC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,409 INFO: finished CPK+CVX+CBI+CHS+PLCE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,442 INFO: finished AHH+ARR+AWI+ARRY+ARRS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,447 INFO: API READ ERROR on BF.B: <class 'TypeError'>, 103, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:106]
+2016-11-29 14:10:26,582 INFO: finished BRCM+BR+BSFT+BRCD+BKD [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,590 INFO: finished BBNK+BPI+BGG+BFAM+BCOV [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,630 INFO: finished CETV+CPF+CENX+CCS+CTL [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,638 INFO: finished BRKR+BC+BMTC+BLMT+BKE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,641 INFO: finished CMCO+CMA+FIX+CSAL+CBSH [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,770 INFO: finished CBMG+CEMP+CNC+CNP+CSFL [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,790 INFO: finished CNL+CLF+CSBK+CLX+CLD [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,974 INFO: finished CHEF+CHGG+CHE+CHFC+CCXI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:26,998 INFO: API READ ERROR on CYNI: <class 'json.decoder.JSONDecodeError'>, 103, Expecting value: line 1 column 1 (char 0) [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:106]
+2016-11-29 14:10:27,003 INFO: finished ANSS+ATRS+AR+ANTM+ANTH [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:27,017 INFO: finished COKE+KO+CCE+CDRB+CDE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:27,050 INFO: finished BRG+BNCN+BOBE+BA+BOFI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:27,227 INFO: finished CHFN+CCF+CLDT+CKP+CAKE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:27,230 INFO: finished CHCO+CYN+CVEO+CIVI+CLC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:27,554 INFO: finished CB+CHD+CHDN+CHUY+CBR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:27,609 INFO: finished CLNE+CLH+CCO+CLFD+CLW [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:27,634 INFO: finished CMPR+CBB+CINF+CNK+CTAS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:27,767 INFO: finished CMC+CVGI+COMM+CBU+CYH [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:27,774 INFO: finished CLVS+MYCC+CME+CMS+CNA [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:27,803 INFO: finished COLL+CLNY+COLB+CXP+COLM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:27,808 INFO: finished CNXR+CONN+COP+CNX+CNSL [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:27,825 INFO: finished CNCE+CXO+CNMD+CTWS+CNOB [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:27,840 INFO: finished CIR+CRUS+CSCO+CIT+CTRN [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:27,982 INFO: finished CTBI+COB+CVLT+CMP+CPSI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:27,983 INFO: finished CCOI+CGNX+CTSH+CNS+COHR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:28,004 INFO: finished CSOD+GLW+OFC+CXW+CRVL [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:28,014 INFO: finished CNW+COO+CPS+CTB+CPA [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:28,029 INFO: finished CORR+COR+CVRS+CORI+CRMD [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:28,172 INFO: finished EAT+BCO+BMY+BRS+BRX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:28,199 INFO: finished CSC+SCOR+CMTL+CNSI+CAG [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:28,361 INFO: finished CSX+CTIC+CTS+CUNB+CUBE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:28,594 INFO: finished CCNE+CNO+COH+CIE+COBZ [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:28,617 INFO: finished ED+CTO+CWCO+CTCT+STZ [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:28,633 INFO: finished CYTK+CYTR+DHI+DJCO+DAKT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:28,801 INFO: finished CHRS+COHU+CFX+CL+CLCT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:28,982 INFO: finished CRWN+CRY+CSGS+CSS+CST [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:29,036 INFO: finished MCF+CBPX+CLR+CTRL+CVG [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:29,267 INFO: finished DNR+DENN+XRAY+DEPO+DERM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:29,270 INFO: finished CBRL+BREW+CR+CRAY+CACC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:29,354 INFO: finished DF+DECK+DE+DFRG+DK [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:29,372 INFO: finished CRIS+CW+CUBI+CUTR+CVBF [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:29,390 INFO: finished C+CZNC+CFG+CIA+CTXS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:29,408 INFO: finished CUB+CFR+CFI+CMI+CMLS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:29,553 INFO: finished CYNO+CY+CONE+CYS+CYT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:29,557 INFO: finished CSGP+COST+COTY+COUP+CUZ [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:29,567 INFO: finished CPRT+CORT+CORE+CMT+CLGX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:29,587 INFO: finished CREE+CROX+CCRN+CCI+CCK [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:29,806 INFO: finished DLPH+DAL+DEL+DLX+DWRE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:29,842 INFO: finished CVA+CVTI+COWN+BCR+CRAI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:29,969 INFO: finished DG+DLTR+D+DPZ+UFS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:30,039 INFO: finished DAN+DHR+DRI+DAR+DTLK [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:30,208 INFO: finished DXLG+DVN+DV+DXCM+DHX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:30,367 INFO: finished DHT+DMND+DHIL+DO+DRII [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:30,391 INFO: finished DCI+RRD+LPG+DORM+HILL [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:30,608 INFO: finished DTV+DFS+DISH+DIS+DLB [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:30,612 INFO: finished FANG+DRH+DRNA+DKS+DBD [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:31,005 INFO: finished DGII+DMRC+DLR+APPS+DGI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:31,190 INFO: finished DST+DSW+DTE+DTSI+DD [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:31,213 INFO: finished BRKL+BRKS+BRO+BF.A+BF.B [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:31,230 INFO: finished DDS+DCOM+DIN+DIOD+DPLO [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:31,373 INFO: finished EIG+ENTA+ECPG+WIRE+ENDP [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:31,428 INFO: finished PLOW+DEI+DOV+DOW+DPS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:31,758 INFO: finished PLAY+DVA+DCT+DDR+TRAK [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:31,981 INFO: finished EBS+EMR+EDE+NYNY+ESRT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:31,982 INFO: finished EWBC+DEA+EGP+EMN+KODK [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:32,400 INFO: finished DWA+DRC+DW+DRQ+DSPG [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:32,411 INFO: finished ECYT+ELGX+EIGI+ENH+EGN [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:32,426 INFO: finished SATS+ECR+ECL+EIX+EDR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:32,451 INFO: finished ESV+ENSG+ESGR+ENTG+ENTL [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:32,561 INFO: finished DFT+DRRX+DXPE+DYAX+DY [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:32,582 INFO: finished EGL+EBF+ENVA+ENPH+NPO [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:32,596 INFO: finished DCO+DUK+DRE+DNB+DNKN [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:32,610 INFO: finished PERY+EMC+EMCI+EME+EMKR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:32,782 INFO: finished ENR+UUUU+EXXI+ENOC+ENS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:32,810 INFO: finished DVAX+DYN+DX+ETFC+EGBN [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:32,842 INFO: finished ESS+EL+ESL+ETH+ETSY [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:32,994 INFO: finished EW+EHTH+EE+LOCO+ERI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:32,998 INFO: finished EGLE+EXP+EGRX+ELNK+ESTE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:33,036 INFO: finished ELRC+EA+EFII+RDEN+ELLI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:33,217 INFO: finished ETM+ETR+EBTC+EFSC+EVC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:33,218 INFO: finished EQR+ERA+ERIE+ERN+EROS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:33,222 INFO: finished CVT+CVI+CVS+CYNI+CYBX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:33,234 INFO: finished ESCA+ESE+ESPR+ESND+ESNT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:33,365 INFO: finished EFX+EQIX+EQC+ELS+EQY [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:33,446 INFO: API READ ERROR on HCN: <class 'json.decoder.JSONDecodeError'>, 103, Expecting value: line 1 column 1 (char 0) [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:106]
+2016-11-29 14:10:33,569 INFO: finished ENV+EVHC+EOG+EPE+EPAM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:33,603 INFO: finished EEFT+EVER+EVR+RE+ES [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:33,629 INFO: finished ETN+EV+EBAY+EBIX+ECHO [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:33,662 INFO: finished EPIQ+EPZM+PLUS+EPR+EQT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:33,963 INFO: finished FCS+FRP+FWM+FDO+FARM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:34,013 INFO: finished FFIV+FN+FB+FDS+FICO [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:34,035 INFO: finished EVTC+EVDY+EVLV+EPM+EXAS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:34,037 INFO: finished EXAC+EXAM+EXAR+EXL+XCO [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:34,161 INFO: finished EXPD+EXPO+EXPR+ESRX+STAY [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:34,210 INFO: finished FOE+FCSC+FGEN+FGL+FIS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:34,432 INFO: finished EXEL+EXC+EXLS+XONE+EXPE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:34,452 INFO: finished EXH+EXR+EXTR+XOM+EZPW [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:34,479 INFO: finished FCFS+FCBC+FCF+FBNK+FDEF [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:34,660 INFO: finished LION+FRGI+FSAM+FITB+FNGN [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:34,765 INFO: finished FOMX+FL+F+FOR+FORM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:34,787 INFO: finished AGM+FDML+FRT+FSS+FII [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:35,001 INFO: finished FNLC+FBNC+FBP+BUSE+FBIZ [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:35,023 INFO: finished FTI+FMSA+FNB+FNF+FNFV [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:35,028 INFO: finished FIVN+FBC+FLT+FLTX+FLKS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:35,435 INFO: finished FNFG+FPO+FRC+FSLR+FE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:35,577 INFO: finished FISI+FNSR+FINL+FEYE+FAF [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:35,599 INFO: finished FLS+FLDM+FLR+FFIC+FMC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:35,657 INFO: finished FSP+FI+FRED+FCX+FSL [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:35,795 INFO: finished FMER+FISV+FIVE+FPRX+FVE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:35,816 INFO: finished FIBK+FLIC+FRME+FMBI+FNBC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:35,830 INFO: finished GALE+AJG+GBL+GME+GLPI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:35,858 INFO: finished FNHC+FDX+FEIC+FCH+FENX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:35,972 INFO: finished FFKT+FARO+FAST+FFG+FCB [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:36,036 INFO: finished FFBC+THFF+FFIN+FHN+FR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:36,178 INFO: finished FLXN+FLXS+FLIR+FTK+FLO [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:36,227 INFO: finished FULT+FRM+FF+GK+GCAP [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:36,363 INFO: finished FOSL+FSTR+FMI+FXCB+FOXF [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:36,372 INFO: finished FRAN+FC+FELE+FSB+BEN [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:36,379 INFO: finished FORR+FTNT+FBHS+FET+FWRD [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:36,976 INFO: finished FRO+FRPH+FTD+FCN+FCEL [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:37,030 INFO: finished GE+GGP+GIS+GM+GCO [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:37,040 INFO: finished GHDX+G+GNTX+THRM+GPC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:37,167 INFO: finished GWR+GEN+GNE+GNMK+GNCA [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:37,367 INFO: finished GNW+GEO+GEOS+GABC+GERN [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:37,592 INFO: finished GCI+GPS+GRMN+IT+GLOG [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:37,609 INFO: finished ENT+GBLI+GPN+GSAT+GLOB [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:37,800 INFO: finished GSM+GMED+GLUU+GNC+GDDY [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:37,823 INFO: finished GOOG+GPRO+GRC+GOV+GPX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:37,959 INFO: finished GBCI+GOOD+GLT+BRSS+GCA [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:37,984 INFO: finished GST+GMT+GNRC+BGC+GD [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:38,005 INFO: finished GTY+ROCK+GIMO+GIII+GILD [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:38,239 INFO: finished GOGO+GLNG+GOGL+GS+GT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:38,466 INFO: finished GPRE+GBX+GHL+GLRE+GEF [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:38,565 INFO: finished RAIL+FDP+TFM+FRPT+FTR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:38,755 INFO: finished GRA+GGG+GTI+GHM+GHC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:39,032 INFO: finished GWW+GPT+LOPE+GVA+GPK [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:39,042 INFO: finished GTN+AJX+GLDD+GXP+GSBC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:39,177 INFO: finished GWB+GB+GNBC+GRBK+GDOT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:39,236 INFO: finished HALL+HALO+HYH+HMPR+HBHC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:39,447 INFO: finished GLF+GPOR+HEES+HABT+HCKT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:39,558 INFO: finished THG+HOG+HAR+HLIT+HRS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:39,616 INFO: finished GTT+GBNK+GES+GUID+GWRE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:39,788 INFO: finished HNH+HBI+HGR+HAFC+HASI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:39,802 INFO: finished HTS+HVT+HE+HA+HCOM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:39,810 INFO: finished HWKN+HAYN+FUL+HCHC+HCA [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:40,024 INFO: finished HAE+HAIN+HK+HNRG+HAL [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:40,040 INFO: finished HIFS+HMSY+HNI+HFC+HOLX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:40,185 INFO: finished HSC+HHS+HIG+HBIO+HAS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:40,219 INFO: finished HQY+HLS+HSTM+HWAY+HTLD [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:40,229 INFO: finished HTLF+HPY+HTWR+HL+HEI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:40,246 INFO: finished GFF+GPI+GRPN+GRUB+GSIG [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:40,379 INFO: finished HPP+HVB+HUM+HBAN+HII [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:40,400 INFO: finished HCC+HCI+HCP+HDS+HW [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:40,428 INFO: finished JKHY+HLF+HTBK+HCCI+HFWA [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:40,450 INFO: finished HIL+HI+HRC+HTH+HLT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:40,467 INFO: finished HBOS+HRTG+HEOP+MLHR+HRTX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:40,632 INFO: finished HPT+HST+HMHC+HOV+HHC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:40,838 INFO: finished HRL+HOS+ZINC+HDP+HSP [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:41,056 INFO: finished HUN+HURC+HURN+H+HY [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:41,192 INFO: finished HOMB+HD+HME+AWAY+HMST [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:41,352 INFO: finished HSII+HELE+HLX+HP+HMTV [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:41,430 INFO: finished HRG+HSNI+HUBG+HUBS+HCBK [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:41,431 INFO: finished IDA+IDRA+IEX+IDXX+IDT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:41,442 INFO: API READ ERROR on ICUI: <class 'json.decoder.JSONDecodeError'>, 103, Expecting value: line 1 column 123 (char 122) [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:106]
+2016-11-29 14:10:41,444 INFO: finished HPQ+HXL+HF+HIBB+HIW [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:41,609 INFO: finished INCY+ICD+IHC+IRT+IBCP [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:41,610 INFO: finished HTBI+HON+HOFT+HMN+HBNC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:41,649 INFO: finished HT+HSY+HTZ+HSKA+HES [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:42,027 INFO: finished IPI+XON+INTU+ISRG+IVC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:42,233 INFO: finished INGR+IRC+INWK+IPHS+IOSP [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:42,420 INFO: finished INSM+NSP+IBP+IIIN+PODD [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:42,463 INFO: finished BLOX+INFA+HIFR+IR+IM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:42,582 INFO: finished IPCM+IPGP+IRMD+IRDM+IRBT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:42,592 INFO: finished INAP+IBOC+IGT+IP+ISCA [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:42,609 INFO: finished IMDZ+IMGN+IMMU+IMH+IPXL [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:42,783 INFO: finished INGN+INOV+INO+IPHI+NSIT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:43,036 INFO: finished INTC+IQNT+I+IPAR+IBKR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:43,036 INFO: finished STAR+ITC+ITRI+ITT+XXIA [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:43,155 INFO: finished INDB+IBTX+INFN+INFI+IPCC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:43,189 INFO: finished IGTE+IG+RXDX+IHS+IIVI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:43,200 INFO: finished IRM+IRWD+ISIS+ISLE+ISRL [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:43,216 INFO: finished ININ+ICPT+ICE+IDCC+TILE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:43,234 INFO: finished JPM+JNPR+JUNO+LRN+KTWO [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:43,240 INFO: finished HCN+HNT+HR+HCSG+HTA [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:43,245 INFO: finished INVN+SNAK+IVZ+IVR+ITG [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:43,353 INFO: finished IACI+IBKC+ICFI+ICON+ICUI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:43,359 INFO: finished INSY+IART+IDTI+ISSI+TEG [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:43,401 INFO: finished IMPV+IMPR+IMS+INCR+SAAS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:43,426 INFO: finished ITW+ILMN+IMN+IMAX+IMMR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:43,457 INFO: finished INTL+IFF+ITCI+IL+SNOW [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:43,641 INFO: finished JOUT+JONE+JLL+JMG+JOY [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:43,660 INFO: finished JGW+JIVE+JBT+JNJ+JCI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:43,760 INFO: finished ISBC+IRET+NVTA+NVIV+IO [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:43,848 INFO: finished IPG+XENT+ISIL+IILG+IBM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:44,032 INFO: finished KBR+KCG+KRNY+K+KMPR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:44,061 INFO: finished JEC+JAKK+JMBA+JRVR+JNS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:44,195 INFO: finished KS+KAR+KPTI+KATE+KBH [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:44,425 INFO: finished KEY+KEYS+KEYW+KFRC+KRC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:44,651 INFO: finished KMT+KW+KERX+GMCR+KEG [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:44,660 INFO: finished IXYS+JJSF+JCOM+JBL+JACK [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:44,964 INFO: finished KAI+KALU+KAMN+KCLI+KSU [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:45,041 INFO: finished KND+KING+KEX+KIRK+KITE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:45,042 INFO: finished JAH+JAZZ+JBHT+JDSU+JBLU [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:45,620 INFO: finished LAZ+LDRH+LEA+LTXB+LM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:45,638 INFO: finished KYTH+LB+LLL+LJPC+LQ [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:45,656 INFO: finished KE+KBAL+KMB+KIM+KMI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:45,660 INFO: finished LEG+LDOS+LMAT+LC+TREE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:46,003 INFO: finished KNL+KN+KSS+KONA+KOPN [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:46,007 INFO: finished KTOS+KKD+KR+KRO+KVHI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:46,048 INFO: finished LGF+LQDT+LAD+LFUS+LYV [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:46,055 INFO: finished LBAI+LKFN+LRCX+LAMR+LANC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:46,179 INFO: finished KRG+KLAC+KLXI+KMG+KNX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:46,255 INFO: finished LZB+LH+LG+LADR+LTS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:46,388 INFO: finished LOCK+LPNT+LCUT+LWAY+LGND [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:46,462 INFO: finished KOP+KFY+KOS+KRFT+KRA [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:46,806 INFO: finished LEN+LII+LUK+LVLT+LXRX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:46,817 INFO: finished LPI+LVS+LHO+LSCC+LAWS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:47,025 INFO: finished LXU+LYTS+LTC+LULU+LL [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:47,188 INFO: finished MTDR+MTRN+MTRX+MATX+MAT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:47,215 INFO: finished LDR+LNDC+LE+LSTR+LCI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:47,380 INFO: finished LMNX+LMOS+LXFT+LDL+LYB [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:47,440 INFO: finished QVCA+LMCA+LMCK+LPT+TAX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:47,563 INFO: finished MIC+MGNX+M+SHOO+MSG [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:47,625 INFO: finished MKTX+MKTO+MRLN+MAR+VAC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:47,770 INFO: finished MTB+MHO+MTSI+MAC+CLI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:47,773 INFO: finished LORL+LPX+LOW+LOXO+LPLA [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:47,964 INFO: finished MANT+MRO+MPC+MCHX+MMI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:48,173 INFO: finished MAS+MASI+DOOR+MTZ+MA [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:48,178 INFO: finished MMC+MRTN+MSO+MLM+MRVL [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:48,194 INFO: finished MNK+MANH+MTW+MNKD+MAN [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:48,206 INFO: finished LPSN+LKQ+LMT+L+LOGM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:48,211 INFO: finished MATW+MFRM+MTSN+MXIM+MMS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:48,217 INFO: finished LLY+LLNW+LMNR+LECO+LNC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:48,374 INFO: finished MDCA+MDC+MDU+MJN+MIG [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:48,400 INFO: finished MWV+MDAS+MDGN+MEG+MPW [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:48,413 INFO: finished MDP+MRGE+EBSB+VIVO+MMSI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:48,422 INFO: finished MBWM+MBVT+MRK+MCY+MRCY [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:48,609 INFO: finished MXL+MXPT+MBFI+MBI+MKC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:48,635 INFO: finished MCS+MRIN+MPX+HZO+MKL [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:48,763 INFO: finished LNN+LLTC+LNKD+LBIO+LIOX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:48,842 INFO: finished MGLN+MHR+MHLD+MSFG+MBUU [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:49,244 INFO: finished MDR+MCD+MGRC+MHFI+MCK [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:49,373 INFO: finished MPG+MEI+MET+METR+MTD [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:49,384 INFO: finished MFA+MGEE+MTG+MGM+MGPI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:49,415 INFO: finished MHK+MOH+TAP+MNTA+MCRI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:49,429 INFO: finished MSEX+MOFG+MM+MLR+MDXG [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:49,604 INFO: finished MOBL+MODN+MOD+MLNK+MC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:49,752 INFO: finished MDCO+MDSO+MED+MDVN+MDLY [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:49,771 INFO: finished KORS+MIK+MCRL+MCHP+MU [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:49,785 INFO: finished MOS+MPAA+MSI+MOV+MRC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:49,813 INFO: finished MTH+MTOR+MACK+MLAB+CASH [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:50,035 INFO: finished MD+MDT+MRD+MW+MENT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:50,043 INFO: finished MDLZ+MGI+MNR+MORE+MPWR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:50,043 INFO: finished LXP+LXK+LGIH+LHCG+LBY [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:50,048 INFO: finished NC+NANO+NSTG+NDAQ+NBHC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:50,171 INFO: finished NKSH+FIZZ+NCMI+NCOM+NFG [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:50,186 INFO: finished MTX+MRTX+MG+MKSI+MINI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:50,192 INFO: API READ ERROR on OCAT: <class 'TypeError'>, 103, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:106]
+2016-11-29 14:10:50,225 INFO: finished MYE+MYL+MYRG+MYGN+NBR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:50,353 INFO: finished NGHC+NHI+NHC+NATI+NATL [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:50,563 INFO: finished NOV+NPBC+NPK+NNN+NSA [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:50,596 INFO: finished NCI+NAVG+NNA+NM+NAV [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:50,649 INFO: finished MRH+MCO+MS+MHGC+MORN [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:50,878 INFO: finished NBTB+NCS+NCR+NP+NEFF [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:51,033 INFO: finished NXST+NEE+EGOV+NLSN+NKE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:51,042 INFO: finished MSA+MSM+MSCI+MTSC+MLI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:51,051 INFO: finished NWLI+NSM+NGS+NGVC+NHTC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:51,192 INFO: finished TYPE+MNRO+MON+MNST+MWW [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:51,199 INFO: finished NSAM+NRF+NWBI+NWBO+NWN [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:51,199 INFO: finished NBIX+NSR+NVRO+NWHM+NJR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:51,213 INFO: finished NATR+BABY+NLS+NAVB+NAVI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:51,392 INFO: finished NADL+NOG+NTRS+NFBK+NOC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:51,415 INFO: finished MWA+LABL+MFLX+MUR+MUSA [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:51,618 INFO: finished NTAP+NFLX+NTGR+NTCT+N [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:51,819 INFO: finished NKTR+NNI+NEOG+NEO+NPTN [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:52,022 INFO: finished NEWM+NEWR+NRZ+SNR+NYCB [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:52,161 INFO: finished ORC+TIS+OREX+ONVO+ORN [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:52,615 INFO: finished NWPX+NWE+NCLH+MIFI+NVAX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:52,661 INFO: finished NFX+NLNK+NEU+NEM+NR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:52,780 INFO: finished NYMT+NYRT+NYT+NBBC+NWL [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:52,810 INFO: finished NVEE+NVEC+NVDA+NVR+NXTM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:52,815 INFO: finished NEWP+NWSA+NWS+NEWS+NXRT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:52,829 INFO: finished NMBL+NI+NL+NMIH+NNBR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:52,998 INFO: finished OCFC+OCLR+OCUL+OCN+ODP [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:53,003 INFO: finished HLTH+NE+NBL+NDLS+NAO [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:53,013 INFO: finished NAT+NDSN+JWN+NSC+NTK [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:53,173 INFO: finished NUAN+NUE+NUTR+NTRI+NUVA [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:53,556 INFO: finished OMAM+OMG+OFLX+OHI+OME [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:53,622 INFO: finished ONB+ORI+OSBC+OLN+ZEUS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:53,777 INFO: finished OFG+OGE+ODC+OIS+ODFL [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:53,797 INFO: finished DNOW+NRG+NYLD+NTLS+NUS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:53,808 INFO: finished ORLY+OAS+OCAT+OXY+OII [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:53,969 INFO: finished OPHT+OPK+OPWR+OPY+OPB [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:54,199 INFO: finished ORCL+OSUR+ORBC+OA+OWW [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:54,202 INFO: finished ORIT+ORA+OFIX+OSK+OSIS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:54,230 INFO: finished OMER+OCR+OMCL+OMC+OVTI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:54,395 INFO: finished PANW+P+PNRA+PHX+PZZA [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:54,553 INFO: finished FRSH+PARR+PGRE+PRTK+PRXL [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:54,593 INFO: finished OMN+ASGN+ONDK+ON+OMED [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:54,963 INFO: finished OSIR+OTIC+OTTR+OUTR+OUT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:55,012 INFO: finished PTEN+PAYX+PAYC+PCTY+PBF [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:55,196 INFO: finished PEB+PEGA+PCO+PENN+PVA [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:55,567 INFO: finished PRTY+PATK+PN+PEGI+PDCO [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:55,603 INFO: finished PKD+PH+PKY+PE+PRE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:55,606 INFO: finished OVAS+OSTK+OMI+OC+OI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:55,765 INFO: finished PAG+PNR+PEBO+PFIS+PBCT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:55,818 INFO: finished PETS+PFNX+PFE+PFSW+PCG [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:55,833 INFO: finished PACB+PCBK+PDVW+PEIX+PPBI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:55,852 INFO: finished OXFD+OXM+PTSI+PCCC+PCAR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:55,982 INFO: finished PCYG+PKE+PRK+PKOH+PSTB [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:56,033 INFO: finished PGTI+PMC+PHH+PAHC+PM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:56,158 INFO: finished PDM+PIR+PPC+PNK+PNFP [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:56,231 INFO: finished PBI+PLT+PAH+PLXS+PLUG [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:56,235 INFO: finished PBY+POM+PEP+PPHM+PRFT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:56,377 INFO: finished PCRX+PKG+PACW+PLL+PLMT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:56,423 INFO: finished PRAA+PRAH+PX+PCP+APTS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:56,754 INFO: finished PLKI+BPOP+POR+PTLA+POST [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:56,983 INFO: finished PSG+PSEM+PKI+PTX+PRGO [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:56,984 INFO: finished JCP+PWOD+PEI+PFSI+PMT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:56,995 INFO: finished PSX+PLAB+DOC+PICO+PNY [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:57,034 INFO: finished PDCE+PDFS+PDLI+BTU+PGC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:57,425 INFO: finished PCL+PGEM+PMCS+PNC+PNM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:57,770 INFO: finished ONTY+OGS+OLP+OB+OKE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:57,782 INFO: finished MSCC+MSFT+MSTR+MAA+MIDD [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:58,016 INFO: finished PB+PRTO+PRTA+PRLB+PRSC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:58,024 INFO: finished QGEN+QLIK+QLGC+QRVO+QTS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:58,049 INFO: finished PPS+PBPB+PCH+POWL+POWI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:58,153 INFO: finished PFG+PVTB+PRA+PG+PGNX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:58,196 INFO: finished PFBC+PLPC+PINC+PGI+PGND [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:58,197 INFO: finished PSA+PEG+PHM+PBYI+PVH [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:58,390 INFO: finished PII+PLCM+POL+PPO+POOL [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:58,395 INFO: finished PFS+PRU+PSB+PTC+PTCT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:58,585 INFO: finished PRGS+PGR+PLD+PFPT+PRO [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:58,814 INFO: finished RNST+REGI+RCII+RTK+RENT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:58,955 INFO: finished PBH+TROW+PSMT+PRI+PRIM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:59,374 INFO: finished PSIX+POWR+POZN+PPG+PPL [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:59,610 INFO: finished RRC+RPTP+RAVN+RJF+RYAM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:59,629 INFO: finished REIS+RS+RLYP+REMY+RNR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:59,775 INFO: finished STR+QDEL+ZQK+QNST+Q [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:59,842 INFO: finished RYN+RTN+ROLL+RCAP+RMAX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:59,845 INFO: finished RAX+RDN+RLGT+RDUS+RDNT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:10:59,960 INFO: finished QUAD+KWR+QCOM+QLTY+QSII [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:00,173 INFO: finished RSO+RECN+RH+ROIC+RPAI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:00,188 INFO: finished RES+RPM+RPXC+RSPP+RTI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:00,212 INFO: finished QLYS+NX+PWR+QTM+DGX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:00,216 INFO: finished RIGL+RNET+REI+RNG+RAD [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:00,223 INFO: finished PZN+QTWO+QADA+QCRH+QEP [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:00,238 INFO: finished RDI+RELY+RLD+RNWK+RLGY [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:00,240 INFO: finished SALE+RTRX+RVNC+REV+REX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:00,623 INFO: finished RAS+RALY+RL+RMBS+RPT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:00,633 INFO: finished RLI+RLJ+RRTS+RHI+FUEL [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:00,770 INFO: finished ROG+ROL+ROP+ROSE+ROST [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:00,793 INFO: finished RKT+ROK+COL+RMTI+RSTI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:00,824 INFO: finished RM+RF+RGS+RGLS+RGA [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:00,988 INFO: finished RWT+RBC+RGC+REG+REGN [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:01,162 INFO: finished SC+SPNS+SRPT+BFS+SBAC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:01,179 INFO: finished CRM+SBH+SN+SAFM+SNDK [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:01,210 INFO: finished RP+O+RCPT+RHT+RRGB [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:01,216 INFO: finished SSTK+SIEN+BSRR+SIAL+SIGM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:01,241 INFO: finished REXX+REXR+RXN+RAI+RICE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:01,360 INFO: finished STBA+SBRA+SABR+SB+SFE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:01,363 INFO: finished RSE+ROVI+RDC+RCL+RGLD [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:01,433 INFO: finished SBCF+CKH+SDRL+SEE+SHLD [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:01,558 INFO: finished SCG+SCSC+HSIC+SLB+SCHN [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:01,774 INFO: finished RUTH+R+RYI+RYL+RHP [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:01,817 INFO: finished SFBS+SSE+SFXE+SHAK+SHEN [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:02,008 INFO: finished SD+SASR+JBSS+SGMO+SANM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:02,036 INFO: finished RGEN+RJET+RSG+RMD+REXI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:02,161 INFO: finished SGEN+SEAS+EYES+SEIC+SCSS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:02,194 INFO: finished SAIC+SGMS+SQI+SALT+STNG [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:02,351 INFO: finished SCHL+SHLM+SCHW+SWM+SCLN [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:02,422 INFO: finished SBNY+SIG+SLGN+SGI+SLAB [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:02,600 INFO: finished SLG+SLM+SM+SFS+SWHC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:02,777 INFO: finished SMG+SSP+SNI+SEB+SEAC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:02,783 INFO: finished SMTC+SNH+SNMX+SXT+SQNM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:02,809 INFO: finished RTIX+RUBI+RT+RKUS+RTEC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:02,959 INFO: finished SAFT+SGA+SAGE+SGNT+SAIA [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:02,984 INFO: finished SQBG+SCI+SERV+NOW+SREV [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:03,026 INFO: finished SPNC+SPB+SPPI+TRK+SPR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:03,174 INFO: finished OKSB+SWX+SWN+SSS+SP [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:03,214 INFO: finished SIR+SEM+SIGI+SEMG+SRE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:03,218 INFO: finished LEAF+S+SFM+SPSC+SPW [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:03,229 INFO: finished AOS+SJM+SNA+LNCE+SCTY [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:03,363 INFO: finished SBY+SSNI+SFNC+SPG+SSD [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:03,413 INFO: finished HOT+STWD+SWAY+STFC+STBZ [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:03,562 INFO: finished SPKE+ONCE+SPTN+SPA+SE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:03,586 INFO: finished SWI+SZYM+SLH+SAH+SONC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:03,612 INFO: finished SSB+SO+SCCO+SBSI+LUV [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:03,795 INFO: finished SON+SONS+SRNE+BID+SJI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:03,802 INFO: finished STNR+STML+SCL+SRCL+STE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:03,836 INFO: finished SBGI+SIRI+SIRO+SIX+SZMK [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:04,013 INFO: finished SJW+SKX+SKUL+SKYW+SWKS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:04,040 INFO: finished SPF+SXI+SWK+SPLS+SBUX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:04,041 INFO: finished SHW+SFL+SCVL+SHOR+SFLY [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:04,196 INFO: finished SAVE+SRC+SPLK+SPOK+SPWH [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:04,232 INFO: finished SNC+STT+STLD+SCS+SMRT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:04,593 INFO: finished STOR+STRP+SSYS+BEE+STRT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:04,797 INFO: finished STL+STC+SF+SWC+STCK [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:04,814 INFO: finished SQBK+SSNC+JOE+STJ+STAA [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:04,998 INFO: finished STAG+SSI+STMP+SFG+SMP [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:05,022 INFO: finished SNPS+SNV+SNTA+SYNT+SYUT [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:05,042 INFO: finished SNCR+SYF+SGYP+SYRG+SNX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:05,170 INFO: finished TTWO+TAL+TLN+TLMR+TNDM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:05,225 INFO: finished INN+SUM+SNBC+SUI+SNHY [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:05,390 INFO: finished SWFT+SYKE+SYMC+SYA+SYNA [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:05,411 INFO: finished SVU+SCAI+SRDX+SUSQ+SIVB [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:05,579 INFO: finished SXC+SUNE+SPWR+SHO+STI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:05,590 INFO: finished SYBT+SGY+SGBK+SGM+SRI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:05,780 INFO: finished SYY+SYX+TTOO+DATA+TAHO [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:05,820 INFO: finished STRA+SYK+RGR+SCMP+SUBK [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:05,859 INFO: finished SMCI+SPN+SUP+SGC+SUPN [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:05,993 INFO: API READ ERROR on JW.A: <class 'TypeError'>, 103, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:106]
+2016-11-29 14:11:06,007 INFO: finished TNAV+TDS+TTEC+TPX+THC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:06,176 INFO: finished TCO+TMHC+TCB+AMTD+TMH [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:06,193 INFO: finished TERP+TRNO+TBNK+TSRO+TESO [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:06,373 INFO: finished TISI+TECD+TTGT+TE+TK [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:06,405 INFO: finished TTPH+TCBI+TXN+TXRH+TGH [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:06,558 INFO: finished SKT+TNGO+TRGP+TGT+TASR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:06,798 INFO: finished PCLN+WEN+TXMD+TBPH+THRX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:06,806 INFO: finished TNC+TEN+TDC+TER+TEX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:07,058 INFO: finished TMO+THR+TPRE+TRI+THO [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:07,177 INFO: finished TNK+TRC+TSYS+TDY+TFX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:07,177 INFO: finished TMST+TIPT+TWI+TITN+TIVO [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:07,263 INFO: finished TSS+TOWR+TW+TOWN+TSQ [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:07,370 INFO: API READ ERROR on EMEA: <class 'TypeError'>, 103, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:106]
+2016-11-29 14:11:07,426 INFO: finished TXT+TXTR+TFSL+TGTX+TCS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:07,609 INFO: finished TMP+TR+TMK+TRNX+TTC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:07,634 INFO: finished TG+THS+TRVN+TREX+TPH [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:07,640 INFO: finished TSLA+TSO+TSRA+TTEK+TTI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:07,791 INFO: finished TRMK+TTMI+TUBE+TUES+TUMI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:07,809 INFO: finished TRV+TVPT+TZOO+TRR+TREC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:07,812 INFO: finished TSCO+TSRE+TAT+TDG+TRXC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:07,819 INFO: finished THOR+THLD+TDW+TIF+TTS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:07,826 INFO: finished TJX+TMUS+TBRA+TKAI+TOL [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:07,831 INFO: finished UIL+ULTA+ULTI+UCTT+UPL [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:07,959 INFO: finished TLYS+TIME+TWC+TWX+TKR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:07,994 INFO: finished UCFC+UCBI+UAL+UDF+UBNK [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:08,006 INFO: finished TRMB+TNET+TRN+TSE+TRIP [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:08,008 INFO: finished TPLM+TRCO+TPUB+TCBK+TRS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:08,042 INFO: finished TYC+TYL+TSN+USCR+USG [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:08,166 INFO: finished EMEA [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:08,232 INFO: finished GTS+TSC+TBK+TGI+TROX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:08,401 INFO: finished TUP+TPC+TWIN+TWTR+TWO [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:08,417 INFO: finished USPH+SLCA+UBNT+UDR+UGI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:08,456 INFO: finished RARE+ULTR+UTEK+UMBF+UMH [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:08,595 INFO: finished TROV+TBI+TRUE+TRUP+TRST [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:08,607 INFO: finished UMPQ+UA+UFI+UNF+UNIS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:08,633 INFO: finished UTHR+UNH+UTL+UAM+UVV [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:08,641 INFO: finished UFCS+UIHC+UNFI+UNTD+UPS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:08,647 INFO: finished VLY+VMI+VAL+VNDA+VNTV [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:08,668 INFO: finished UVE+UTI+UACL+UVSP+UNM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:08,674 INFO: finished VGR+VVC+VEC+VECO+VEEV [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:08,766 INFO: finished ECOL+USAK+USNA+UTMD+UTIW [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:08,773 INFO: finished OLED+UEIC+UFPI+UHT+UHS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:08,781 INFO: finished UBSH+UNP+UIS+UNT+UBSI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:08,814 INFO: finished VFC+MTN+VLO+VHI+VR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:08,832 INFO: finished URI+USM+USLM+X+UTX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:08,855 INFO: finished UEC+UE+URBN+UBA+USB [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:08,972 INFO: finished VTR+VRA+VCYT+VSTM+PAY [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:08,975 INFO: finished VRNT+VRSN+VRSK+VRTV+VZ [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,019 INFO: finished VAR+VRNS+VDSI+VASC+WOOF [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,023 INFO: finished VSAR+VRTX+VIA+VIAB+VVI [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,216 INFO: finished VSH+VPG+VSTO+VC+VTAE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,258 INFO: finished WTI+WNC+WBC+WAB+WDR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,271 INFO: finished VTL+VSI+VSLR+VVUS+VMW [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,373 INFO: finished WAFD+WRE+WASH+WCN+WM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,377 INFO: finished VOYA+VSEC+VMC+VWR+WPC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,379 INFO: finished W+WCIC+WDFC+WFT+WWWW [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,383 INFO: finished VHC+VIRT+VRTS+VRTU+V [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,413 INFO: finished VSAT+VICR+VNCE+VMEM+VA [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,414 INFO: finished WCC+WTBA+WSTC+WMAR+WST [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,445 INFO: finished WBMD+WBS+WTW+WRI+WMK [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,446 INFO: finished WABC+WR+WAL+WMC+WDC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,756 INFO: finished VCRA+VISI+VG+VNO+VOXX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,774 INFO: API READ ERROR on ICB.: <class 'TypeError'>, 103, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:106]
+2016-11-29 14:11:09,859 INFO: finished WCG+WFC+WERN+WSBC+WAIR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,878 INFO: finished WYN+WYNN+XBIT+XEL+XCRA [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,879 INFO: finished XNCR+XHR+XNPT+XRM+XRX [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,885 INFO: finished WAT+WSBF+WSO+WTS+WPP [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,887 INFO: finished WTM+WSR+WWAV+WLL+WFM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,888 INFO: finished WAGE+WMT+WBA+WD+WAC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,889 INFO: finished WNR+WU+WLK+WLB+WHG [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,903 INFO: finished YDLE+YORW+YRCW+YUM+ZFGN [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,904 INFO: finished JW.A+WLH+CWEI+WMB+WSM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,904 INFO: finished WEC+WETF+WIX+WWW+WWD [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,906 INFO: finished WDAY+WK+WRLD+INT+WWE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,907 INFO: finished ZIXI+ZOES+ZTS+ZGNX+ZSPH [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,907 INFO: finished WIBC+WIN+WINA+WGO+WTFC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,908 INFO: finished WEX+WEYS+WY+WGL+WHR [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,917 INFO: API READ ERROR on FTSE: <class 'TypeError'>, 103, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:106]
+2016-11-29 14:11:09,917 INFO: finished ZU+ZUMZ+ZNGA+ICB.+FTSE [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,979 INFO: finished XPO+XYL+YDKN+YHOO+YELP [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,992 INFO: finished XLNX+XL+XOXO+XOMA+XOOM [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:09,995 INFO: finished ZEN+Z+ZMH+ZION+ZIOP [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:10,017 INFO: finished ZAGG+ZAIS+ZAYO+ZBRA+ZLTQ [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:15,653 INFO: finished PF+PNW+PES+PXD+PJC [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:18,341 INFO: finished WOR+WPG+WPX+WMGI+WSFS [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:124]
+2016-11-29 14:11:18,342 INFO: Done Retrieving data, took 68.58101558685303 seconds [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:66]
+2016-11-29 14:11:18,343 INFO: Static info written [in /home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py:173]
+2016-11-29 14:12:49,636 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 14:14:00,765 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 14:14:07,702 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 14:14:13,157 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 14:58:45,266 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 14:59:44,493 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 15:21:02,870 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 15:23:35,824 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 15:25:43,077 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 15:26:55,299 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 15:29:57,240 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 15:32:08,042 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 15:33:14,658 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 15:34:57,539 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 16:03:16,048 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 16:03:25,780 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 16:03:31,426 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 16:08:10,825 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 16:09:33,596 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 16:11:17,786 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 16:11:50,133 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 16:13:10,279 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 16:18:00,984 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 16:23:59,663 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 16:28:29,492 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-29 16:28:29,492 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-29 16:28:29,493 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 145, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-29 16:28:29,493 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-29 16:28:29,493 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-29 16:28:29,493 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 147, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:150]
+2016-11-29 16:28:29,494 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-29 16:29:21,732 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 16:29:39,704 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-29 16:29:39,719 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-29 16:30:34,437 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 16:31:10,026 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-29 16:31:10,033 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-29 16:44:51,314 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 28, in equity_screener
+    ret = eqsc_post(request)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 15, in post
+    return ES._df.values.tolist()
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 15, in post
+    return ES._df.values.tolist()
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-29 16:44:53,376 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 16:45:41,219 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-29 16:45:41,224 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-29 16:47:27,590 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-29 16:47:27,596 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-29 16:48:44,468 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 16:49:06,996 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-29 16:49:07,000 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-29 16:49:07,006 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 32, in equity_screener
+    num_screen_vals=ns_vals), data]
+NameError: name 'data' is not defined
+2016-11-29 16:49:38,370 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 16:50:48,343 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-29 16:50:48,347 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-29 16:50:48,359 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1642, in full_dispatch_request
+    response = self.make_response(rv)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1746, in make_response
+    rv = self.response_class.force_type(rv, request.environ)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/werkzeug/wrappers.py", line 847, in force_type
+    response = BaseResponse(*_run_wsgi_app(response, environ))
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/werkzeug/wrappers.py", line 57, in _run_wsgi_app
+    return _run_wsgi_app(*args)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/werkzeug/test.py", line 871, in run_wsgi_app
+    app_rv = app(environ, start_response)
+TypeError: 'list' object is not callable
+2016-11-29 16:52:05,726 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 16:53:38,675 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-29 16:53:38,680 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-29 16:54:54,100 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 16:55:27,652 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-29 16:55:27,656 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-29 16:55:27,658 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1642, in full_dispatch_request
+    response = self.make_response(rv)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1746, in make_response
+    rv = self.response_class.force_type(rv, request.environ)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/werkzeug/wrappers.py", line 847, in force_type
+    response = BaseResponse(*_run_wsgi_app(response, environ))
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/werkzeug/wrappers.py", line 57, in _run_wsgi_app
+    return _run_wsgi_app(*args)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/werkzeug/test.py", line 871, in run_wsgi_app
+    app_rv = app(environ, start_response)
+TypeError: 'list' object is not callable
+2016-11-29 17:00:13,374 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 17:00:45,734 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-29 17:00:45,738 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-29 17:00:45,745 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 33, in equity_screener
+    return json.dumps({'status':'OK','data':ret})
+  File "/home/ubuntu/miniconda3/lib/python3.5/json/__init__.py", line 230, in dumps
+    return _default_encoder.encode(obj)
+  File "/home/ubuntu/miniconda3/lib/python3.5/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/home/ubuntu/miniconda3/lib/python3.5/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/home/ubuntu/miniconda3/lib/python3.5/json/encoder.py", line 180, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: datetime.date(2016, 11, 29) is not JSON serializable
+2016-11-29 17:02:08,922 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 17:02:35,991 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-29 17:02:35,994 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-29 17:03:10,444 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-29 17:03:10,450 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-29 17:04:17,614 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 17:05:08,916 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:110]
+2016-11-29 17:05:08,920 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:152]
+2016-11-29 17:05:29,616 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 35, in equity_screener
+    return json.dumps({'status':'OK', 'data': ret})
+  File "/home/ubuntu/miniconda3/lib/python3.5/json/__init__.py", line 230, in dumps
+    return _default_encoder.encode(obj)
+  File "/home/ubuntu/miniconda3/lib/python3.5/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/home/ubuntu/miniconda3/lib/python3.5/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/home/ubuntu/miniconda3/lib/python3.5/json/encoder.py", line 180, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: datetime.date(2016, 11, 29) is not JSON serializable
+2016-11-29 17:11:48,160 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 17:12:05,568 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 27, in equity_screener
+    ret = eqsc_post(request)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 13, in post
+    ES = run_screening(filters=t_filts, sim=False)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 180, in run_screening
+    df = ES_Dataframe(filters=filters)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 77, in __init__
+    self.readOther()
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 86, in readOther
+    if nonnumber:
+NameError: name 'nonnumber' is not defined
+2016-11-29 17:13:14,309 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 17:14:35,110 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 27, in equity_screener
+    ret = eqsc_post(request)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 13, in post
+    ES = run_screening(filters=t_filts, sim=False)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 180, in run_screening
+    df = ES_Dataframe(filters=filters)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 78, in __init__
+    self.clean_data()
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 111, in clean_data
+    self.numberfy()
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 141, in numberfy
+    df[col] = df[col].apply(lambda x: x.strftime("%Y%m%d"))
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 141, in numberfy
+    df[col] = df[col].apply(lambda x: x.strftime("%Y%m%d"))
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-29 17:14:37,576 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 17:14:42,856 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 17:14:53,434 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 27, in equity_screener
+    ret = eqsc_post(request)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 13, in post
+    ES = run_screening(filters=t_filts, sim=False)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 180, in run_screening
+    df = ES_Dataframe(filters=filters)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 77, in __init__
+    self.readOther()
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 88, in readOther
+    date_to_string = f.readLine().strip()
+AttributeError: '_io.TextIOWrapper' object has no attribute 'readLine'
+2016-11-29 17:15:55,391 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 17:16:26,615 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 27, in equity_screener
+    ret = eqsc_post(request)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 13, in post
+    ES = run_screening(filters=t_filts, sim=False)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 180, in run_screening
+    df = ES_Dataframe(filters=filters)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 77, in __init__
+    self.readOther()
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 89, in readOther
+    date_to_string = f.readline().strip()
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 89, in readOther
+    date_to_string = f.readline().strip()
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-29 17:16:30,386 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 17:18:30,127 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 27, in equity_screener
+    ret = eqsc_post(request)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 13, in post
+    ES = run_screening(filters=t_filts, sim=False)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 180, in run_screening
+    df = ES_Dataframe(filters=filters)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 78, in __init__
+    self.clean_data()
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 112, in clean_data
+    app.logger.info("Done cleaning data")
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 142, in numberfy
+    self._df = df
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/pandas/core/series.py", line 2220, in apply
+    mapped = lib.map_infer(values, f, convert=convert_dtype)
+  File "pandas/src/inference.pyx", line 1088, in pandas.lib.map_infer (pandas/lib.c:62658)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 142, in <lambda>
+    self._df = df
+AttributeError: 'str' object has no attribute 'strftime'
+2016-11-29 17:18:57,616 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 27, in equity_screener
+    ret = eqsc_post(request)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 13, in post
+    ES = run_screening(filters=t_filts, sim=False)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 180, in run_screening
+    df = ES_Dataframe(filters=filters)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 78, in __init__
+    self.clean_data()
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 112, in clean_data
+    app.logger.info("Done cleaning data")
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 138, in numberfy
+    if col in self._date_to_string:
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/pandas/core/frame.py", line 2357, in __setitem__
+    self._set_item(key, value)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/pandas/core/frame.py", line 2424, in _set_item
+    NDFrame._set_item(self, key, value)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/pandas/core/generic.py", line 1464, in _set_item
+    self._data.set(key, value)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/pandas/core/internals.py", line 3445, in set
+    blk.delete(blk_locs)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/pandas/core/internals.py", line 318, in delete
+    self.values = np.delete(self.values, loc, 0)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/numpy/lib/function_base.py", line 4304, in delete
+    new = arr[slobj]
+  File "/home/ubuntu/miniconda3/lib/python3.5/pdb.py", line 191, in sigint_handler
+    signal.signal(signal.SIGINT, self._previous_sigint_handler)
+  File "/home/ubuntu/miniconda3/lib/python3.5/signal.py", line 45, in signal
+    @_wraps(_signal.signal)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 50, in trace_dispatch
+    return self.dispatch_call(frame, arg)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 83, in dispatch_call
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-29 17:19:02,613 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 17:19:23,808 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 27, in equity_screener
+    ret = eqsc_post(request)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 13, in post
+    ES = run_screening(filters=t_filts, sim=False)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 180, in run_screening
+    df = ES_Dataframe(filters=filters)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 78, in __init__
+    self.clean_data()
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 111, in clean_data
+    self.numberfy()
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 141, in numberfy
+    df[col] = df[col].apply(lambda x: x.strftime("%Y%m%d"))
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 141, in numberfy
+    df[col] = df[col].apply(lambda x: x.strftime("%Y%m%d"))
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-29 17:19:26,010 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 17:20:00,221 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:112]
+2016-11-29 17:20:00,226 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:158]

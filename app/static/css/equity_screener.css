@@ -1,5 +1,10 @@
-input.num_screen, select.num_screen {
+input.num_screen, select.num_screen_conds {
     width: 50px;
+    /*float: right;*/
+}
+
+select.num_screen_opts {
+    width: 150px;
     /*float: right;*/
 }
 
@@ -7,12 +12,18 @@ label.num_screen {
     display:inline-block;
 }
 
-/*span.num_screen {
-    margin-top:80px;
-    margin-botto:80px;
-}*/
+#num_screen_buts {
+    vertical-align:top;
+    margin: 10px;
+}
 
 #run_screen_button {
+    vertical-align:top;
+    margin: 10px;
+}
+
+#get_data_button {
+    vertical-align:top;
     margin: 10px;
 }
 
