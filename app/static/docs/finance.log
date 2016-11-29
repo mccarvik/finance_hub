@@ -5291,3 +5291,265 @@ TypeError: 'dict' object is not callable
 2016-11-29 21:23:04,527 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:162]
 2016-11-29 21:23:59,518 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:117]
 2016-11-29 21:23:59,523 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:162]
+2016-11-29 22:30:31,189 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 22:31:19,534 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:124]
+2016-11-29 22:31:19,534 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 164, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:167]
+2016-11-29 22:31:19,535 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 162, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:167]
+2016-11-29 22:31:19,535 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 164, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:167]
+2016-11-29 22:31:19,535 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 164, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:167]
+2016-11-29 22:31:19,535 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 164, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:167]
+2016-11-29 22:31:19,535 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:169]
+2016-11-29 22:35:22,185 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 27, in equity_screener
+    ns_vals = dict(ns_vals)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 13, in post
+    ES = run_screening(filters=t_filts, sim=False)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 180, in run_screening
+    filters = [[x[0],x[1],float(x[2])] for x in filters]
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 81, in __init__
+    self.cleanForPresentation()
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 91, in cleanForPresentation
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py", line 91, in cleanForPresentation
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-29 22:35:24,652 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 22:38:18,411 ERROR: Exception on /equity_screener [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 27, in equity_screener
+    ns_vals = OrderedDict(zip(cols, cols_desc))
+  File "/home/ubuntu/workspace/finance/app/views.py", line 27, in equity_screener
+    ns_vals = OrderedDict(zip(cols, cols_desc))
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-29 22:38:22,513 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 22:38:57,748 ERROR: Exception on /equity_screener [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 27, in equity_screener
+    ns_vals = OrderedDict(cols)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 27, in equity_screener
+    ns_vals = OrderedDict(cols)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-29 22:39:00,153 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 22:40:03,177 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 22:42:33,069 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 22:43:30,810 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 22:47:22,632 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 22:47:38,868 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 31, in equity_screener
+    ret = eqsc_post(request)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 12, in post
+    t_filts = dict(eval(request.form['filters']))['filts']
+  File "<string>", line 1, in <module>
+NameError: name 'null' is not defined
+2016-11-29 22:48:52,427 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 31, in equity_screener
+    ret = eqsc_post(request)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 12, in post
+    t_filts = dict(eval(request.form['filters']))['filts']
+  File "<string>", line 1, in <module>
+NameError: name 'null' is not defined
+2016-11-29 22:50:34,765 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 22:50:59,839 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 31, in equity_screener
+    ret = eqsc_post(request)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 12, in post
+    t_filts = dict(eval(request.form['filters']))['filts']
+  File "<string>", line 1, in <module>
+NameError: name 'null' is not defined
+2016-11-29 22:52:24,593 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 31, in equity_screener
+    ret = eqsc_post(request)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 12, in post
+    t_filts = dict(eval(request.form['filters']))['filts']
+  File "<string>", line 1, in <module>
+NameError: name 'null' is not defined
+2016-11-29 22:53:38,320 INFO: Done cleaning data [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:123]
+2016-11-29 22:53:38,320 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 163, 'r' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:166]
+2016-11-29 22:53:38,320 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 161, 'y' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:166]
+2016-11-29 22:53:38,321 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 163, 'm6' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:166]
+2016-11-29 22:53:38,321 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 163, 'm8' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:166]
+2016-11-29 22:53:38,321 INFO: COULD NOT APPLY FILTER: <class 'KeyError'>, 163, 'r5' [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:166]
+2016-11-29 22:53:38,321 INFO: Filters applied [in /home/ubuntu/workspace/finance/app/equity_screener/equity_stats.py:168]
+2016-11-29 22:53:48,885 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 31, in equity_screener
+    ret = eqsc_post(request)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 15, in post
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 15, in post
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2016-11-29 22:53:51,526 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2016-11-29 22:54:05,775 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 31, in equity_screener
+    ret = eqsc_post(request)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 12, in post
+    t_filts = dict(eval(request.form['filters']))['filts']
+  File "<string>", line 1, in <module>
+NameError: name 'null' is not defined
+2016-11-29 22:55:00,348 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 31, in equity_screener
+    ret = eqsc_post(request)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 12, in post
+    t_filts = dict(eval(request.form['filters']))['filts']
+  File "<string>", line 1, in <module>
+NameError: name 'null' is not defined
+2016-11-29 22:55:55,564 ERROR: Exception on /equity_screener [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 31, in equity_screener
+    ret = eqsc_post(request)
+  File "/home/ubuntu/workspace/finance/app/equity_screener/equity_screener.py", line 12, in post
+    t_filts = dict(eval(request.form['filters']))['filts']
+  File "<string>", line 1, in <module>
+NameError: name 'null' is not defined

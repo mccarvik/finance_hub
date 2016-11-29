@@ -5,15 +5,15 @@
     <link href="/static/css/equity_screener.css" rel="stylesheet" type="text/css">
     <script src="/static/js/equity_screener.js"></script>
     <div>
-        <button id="run_screen_button" onclick="run_screening(event, {{num_screen_vals }});">Run Screener</button>
+        <button id="run_screen_button" onclick="run_screening(event, {{ num_screen_vals }});">Run Screener</button>
         <button id="get_data_button" onclick="get_data(event);">Get Data</button>
         <button id="num_screen_buts" onclick="add_filter(event, {{ num_screen_vals }});">Add Filter</button>
     </div>
     <div class='num_screen'>
         <span class='num_screen'>
             <select class='num_screen_opts'>
-                {% for key, val in num_screen_vals.items() %}
-                    <option value="{{ val }}">{{ val }}</option>
+                {% for val in num_screen_vals %}
+                    <option value="{{ val }}">{{ val[1] }}</option>
                 {% endfor %}
             </select>
             <select class='num_screen_conds'>

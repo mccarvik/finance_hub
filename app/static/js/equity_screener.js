@@ -25,6 +25,7 @@ function update_grid(data) {
 }
 
 function run_screening(event, num_screen_vals) {
+    console.log(num_screen_vals)
     var overlay = $('<div id="waiting"> </div>');
     overlay.appendTo(document.body);
     var filts = [];
@@ -108,11 +109,12 @@ function dict_helper(dict) {
     return arr;
 };
 
-function find_key(dict, item) {
+function find_key(tuples, item) {
     var i, arr = [];
-    for(i in dict) {
-        if (dict[i] === item) {
-            return i;
+    console.log(item)
+    for (i=0; i < tuples.length; i++) {
+        if (tuples[i] === item[1]) {
+            return tuples[i];
         };
     };
     return;

@@ -1,4 +1,5 @@
 import json
+from collections import OrderedDict
 from flask import render_template, flash, redirect, session, url_for, request, g, jsonify
 from datetime import datetime
 from app import app
@@ -21,7 +22,10 @@ def equity_screener():
     with open("/home/ubuntu/workspace/finance/app/equity_screener/screen_info.csv", "r") as f:
         cols = str.split(f.readline(), ",")[1:]
         cols_desc = str.split(f.readline(), ",")[1:]
-    ns_vals = dict(zip(cols, cols_desc))
+    ns_vals = sorted(zip(cols, cols_desc))
+    # ns_vals = OrderedDict(cols)
+    
+    # ns_vals = dict(zip(cols, cols_desc))
     
     if request.method == 'POST':
         ret = eqsc_post(request)

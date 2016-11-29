@@ -81,8 +81,13 @@ class ES_Dataframe:
         self.cleanForPresentation()
         
     def cleanForPresentation(self):
+        df = self._df
         # Removing NaNs so it can be put in a JSON
-        self._df = self._df.replace(np.nan,' ', regex=True)
+        df = df.replace(np.nan,' ', regex=True)
+        # order columns
+        df = df.reindex_axis(sorted(df.columns), axis=1)
+        
+        self._df = df
         
     def readOther(self):
         file = "/home/ubuntu/workspace/finance/app/equity_screener/yahoo_api2_notes.txt"
