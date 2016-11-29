@@ -11,7 +11,7 @@ def post(request):
     if request.form['action'] == 'run_screening':
         t_filts = dict(eval(request.form['filters']))['filts']
         ES = run_screening(filters=t_filts, sim=False)
-        return ES._df.values.tolist()
+        return [ES._df.columns.tolist()] + ES._df.values.tolist()
     
     if request.form['action'] == 'get_data':
         get_data(reset_ticks=False, source="API2")

@@ -1,5 +1,6 @@
-function update_grid(data, id) {
-    console.log("got here")
+function update_grid(data) {
+    data = JSON.parse(data)
+    console.log(data[0])
     var source =
     {
         localdata: data,
@@ -51,10 +52,11 @@ function run_screening(event, num_screen_vals) {
         },
         success: function(results)
         {
-            console.log('Ran Screening')
-            console.log(results)
+            console.log('Ran Screening');
+            console.log(results);
+            update_grid(results);
             return;
-        }
+        },
     });
 }
 

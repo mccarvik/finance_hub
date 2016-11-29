@@ -26,13 +26,8 @@ def equity_screener():
     if request.method == 'POST':
         ret = eqsc_post(request)
         if request.form['action'] == 'run_screening':
-            # return render_template('equity_screener.html',
-            #                         title='Equity Screener',
-            #                         num_screen_vals=ns_vals,
-            #                         data=ret)
-            # return json.dumps({'status':'OK','data':ret})
-            import pdb; pdb.set_trace()
-            return json.dumps({'status':'OK', 'data': ret})
+            # return json.dumps({'status':'OK','data': ret})
+            return json.dumps(ret)
                                     
     return render_template('equity_screener.html',
                             title='Equity Screener',

@@ -3,6 +3,7 @@ sys.path.append("/home/ubuntu/workspace/finance")
 import datetime
 import re, os, string, json, types
 import pandas as pd
+import numpy as np
 import requests
 from app import app
 from app.utils.db_utils import DBHelper
@@ -77,6 +78,11 @@ class ES_Dataframe:
         self.readOther()
         self.clean_data()
         self.apply_filters()
+        self.cleanForPresentation()
+        
+    def cleanForPresentation(self):
+        # Removing NaNs so it can be put in a JSON
+        self._df = self._df.replace(np.nan,' ', regex=True)
         
     def readOther(self):
         file = "/home/ubuntu/workspace/finance/app/equity_screener/yahoo_api2_notes.txt"
@@ -137,7 +143,6 @@ class ES_Dataframe:
                 df[col] = df[col].apply(pd.to_numeric, errors='coerce')
             if col in self._date_to_string:
                 # Need this to convert certain datetimes to strings
-                import pdb; pdb.set_trace()
                 df[col] = df[col].apply(lambda x: x.strftime("%Y%m%d"))
         self._df = df
         
