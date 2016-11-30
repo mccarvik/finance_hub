@@ -9,6 +9,7 @@ from config import POSTS_PER_PAGE, MAX_SEARCH_RESULTS, LANGUAGES, \
     DATABASE_QUERY_TIMEOUT
 from .equity_screener.equity_screener import post as eqsc_post
 from .bond.bond import post as bond_post
+from .futures.futures import post as fut_post
 from .options.vanilla.opt_vanilla import post as opt_vanilla_post
 
 @app.route('/', methods=['GET', 'POST'])
@@ -48,7 +49,7 @@ def bond():
 @app.route('/futures_calc', methods=['GET', 'POST'])
 def futures_calc():
     if request.method == 'POST':
-        bond_post(request)
+        fut_post(request)
     return render_template('futures_calc.html',
                            title='Futures Calculator')
 

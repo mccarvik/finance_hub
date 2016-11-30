@@ -7,15 +7,32 @@
         <button id="fut_calc_button" class='fut_buttons' onclick="fut_calc(event, '{{ SECRET_KEY }}');">Calculate</button>
     </div>
     <div>
-        <input type="radio" name="calc" value="fut" checked> Future<br>
-        <input type="radio" name="calc" value="for"> Forward<br>
+        <input type="radio" name="calc" value="fut"> Future<br>
+        <input type="radio" name="calc" value="for" checked> Forward<br>
     </div>
     <div class='fut_input_div'>
-        <label class='fut_labels'>Underlying</label>
-        <input class='fut_fields' type="text" id='underlying_val' value ="100"/>    
+        <label class='fut_labels'>Underlying (or exchange rate)</label>
+        <input class='fut_fields' type="text" id='underlying' value ="100"/>    
     </div>
     <div class='fut_input_div'>
-        <label class='fut_labels'>Interes Rate</label>
+        <label class='fut_labels'>Tenor</label>
+        <input class='fut_fields' type="text" id='tenor' value ="1"/>    
+    </div>
+    <div class='fut_input_div'>
+        <label class='fut_labels'>Interes Rate (or domestic interest rate for FX) </label>
         <input class='fut_fields' type="text" id='ir_val' value ="0.02"/>   
     </div>
+    <div class='fut_input_div'>
+        <label class='fut_labels'>Income or Dividend Yield (or foreign interest rate for FX)</label>
+        <input class='fut_fields' type="text" id='inc_yld' value ="0.00"/>   
+    </div>
+    <div class='fut_input_div'>
+        <label class='fut_labels'>Convenience Yield</label>
+        <input class='fut_fields' type="text" id='conv_yld' value ="0.00"/>   
+    </div>
+    <div class='fut_input_div'>
+        <label class='fut_labels'>Cost of Carry (ex: storage costs)</label>
+        <input class='fut_fields' type="text" id='cst_cry' value ="0.00"/>   
+    </div>
 {% endblock %}
+
