@@ -1,6 +1,34 @@
 function update_grid(data) {
-    data = JSON.parse(data)
-    console.log(data)
+    var data = new Array();
+    var firstNames =
+    [
+        "Andrew", "Nancy", "Shelley", "Regina", "Yoshi", "Antoni", "Mayumi", "Ian", "Peter", "Lars", "Petra", "Martin", "Sven", "Elio", "Beate", "Cheryl", "Michael", "Guylene"
+    ];
+    var lastNames =
+    [
+        "Fuller", "Davolio", "Burke", "Murphy", "Nagase", "Saavedra", "Ohno", "Devling", "Wilson", "Peterson", "Winkler", "Bein", "Petersen", "Rossi", "Vileid", "Saylor", "Bjorn", "Nodier"
+    ];
+    var productNames =
+    [
+        "Black Tea", "Green Tea", "Caffe Espresso", "Doubleshot Espresso", "Caffe Latte", "White Chocolate Mocha", "Cramel Latte", "Caffe Americano", "Cappuccino", "Espresso Truffle", "Espresso con Panna", "Peppermint Mocha Twist"
+    ];
+    var priceValues =
+    [
+        "2.25", "1.5", "3.0", "3.3", "4.5", "3.6", "3.8", "2.5", "5.0", "1.75", "3.25", "4.0"
+    ];
+    for (var i = 0; i < 1000; i++) {
+        var row = {};
+        var productindex = Math.floor(Math.random() * productNames.length);
+        var price = parseFloat(priceValues[productindex]);
+        var quantity = 1 + Math.round(Math.random() * 10);
+        row["firstname"] = firstNames[Math.floor(Math.random() * firstNames.length)];
+        row["lastname"] = lastNames[Math.floor(Math.random() * lastNames.length)];
+        row["productname"] = productNames[productindex];
+        row["price"] = price;
+        row["quantity"] = quantity;
+        row["total"] = price * quantity;
+        data[i] = row;
+    }
     var source =
     {
         localdata: data,
@@ -23,6 +51,38 @@ function update_grid(data) {
         ]
     });
 }
+
+
+// function update_grid(d) {
+//     console.log("got to grid")
+//     data = JSON.parse(d)
+//     console.log(data)
+//     data_array = new Array()
+//     for (i=0; i<data.length; i++) {
+//         data_array[i] = data[i];
+//     }
+    
+//     console.log(data_array)
+//     var source = new $.jqx.dataAdapter({
+//             localdata: data_array,
+//             datatype: 'array',
+//             datafields: data_array[0]})
+//     console.log(source)
+//     var options = {
+//             source: source,
+//             columns: data.columns,
+//             width: '98%',
+//             height: '98%',
+//             filterable:true,
+//             showfilterrow:true,
+//             columnsresize: true,
+//             selectionmode: 'multiplerows',
+//     }
+//     _options = $.extend( {}, options );
+//     $( '#jqxgrid' ).jqxGrid( _options );
+//     // $( '#jqxgrid' ).jqxGrid( 'expandallgroups' );
+// }
+
 
 function run_screening(event, num_screen_vals) {
     var overlay = $('<div id="waiting"> </div>');
