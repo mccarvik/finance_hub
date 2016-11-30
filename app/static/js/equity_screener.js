@@ -1,6 +1,6 @@
 function update_grid(data) {
     data = JSON.parse(data)
-    console.log(data[0])
+    console.log(data)
     var source =
     {
         localdata: data,
@@ -25,14 +25,13 @@ function update_grid(data) {
 }
 
 function run_screening(event, num_screen_vals) {
-    console.log(num_screen_vals)
     var overlay = $('<div id="waiting"> </div>');
     overlay.appendTo(document.body);
     var filts = [];
     $("span.num_screen").each( function(index) {
         var t_val = $( this ).find('input').val();
         if (t_val != "") {
-            var t_id = find_key(num_screen_vals, $( this ).find('select.num_screen_opts').val());
+            var t_id = $( this ).find('select.num_screen_opts').val();
             // var t_id = this.id;
             var t_cond = $( this ).find('select.num_screen_conds').val();
             var f = [t_id, t_cond, t_val];
@@ -54,7 +53,6 @@ function run_screening(event, num_screen_vals) {
         success: function(results)
         {
             console.log('Ran Screening');
-            console.log(results);
             update_grid(results);
             return;
         },
@@ -107,15 +105,4 @@ function dict_helper(dict) {
         arr.push(dict[i]);
     };
     return arr;
-};
-
-function find_key(tuples, item) {
-    var i, arr = [];
-    console.log(item)
-    for (i=0; i < tuples.length; i++) {
-        if (tuples[i] === item[1]) {
-            return tuples[i];
-        };
-    };
-    return;
 };
