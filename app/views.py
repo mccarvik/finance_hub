@@ -33,7 +33,7 @@ def equity_screener():
         if request.form['action'] == 'run_screening':
             # return json.dumps({'status':'OK','data': ret})
             return json.dumps(ret)
-                                    
+    
     return render_template('equity_screener.html',
                             title='Equity Screener',
                             num_screen_vals=ns_vals,
