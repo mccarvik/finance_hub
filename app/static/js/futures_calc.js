@@ -12,6 +12,7 @@ function fut_calc(event, token) {
     var conv_yld = $("#conv_yld").val();
     var cst_cry = $("#cst_cry").val();
     var tenor = $("#tenor").val();
+    var price = $("#price").val();
     
     $.ajax({
         type: 'POST',
@@ -24,7 +25,8 @@ function fut_calc(event, token) {
             inc_yld: inc_yld,
             conv_yld: conv_yld,
             cst_cry: cst_cry,
-            tenor: tenor
+            tenor: tenor,
+            price: price
         },
         success: function()
         {
