@@ -15,16 +15,6 @@ function update_grid(d) {
         localdata: final_data,
         datatype: "array"
     };
-    // var options = {
-    //         source: source,
-    //         columns: data.columns,
-    //         width: '98%',
-    //         height: '98%',
-    //         filterable:true,
-    //         showfilterrow:true,
-    //         columnsresize: true,
-    //         selectionmode: 'multiplerows',
-    // }
     var dataAdapter = new $.jqx.dataAdapter(source, {
         loadComplete: function (final_data) { },
         loadError: function (xhr, status, error) { }    
@@ -40,7 +30,13 @@ function update_grid(d) {
             // { text: 'Quantity', datafield: 'quantity', width: 80, cellsalign: 'right' },
             // { text: 'Unit Price', datafield: 'price', width: 90, cellsalign: 'right', cellsformat: 'c2' },
             // { text: 'Total', datafield: 'total', width: 100, cellsalign: 'right', cellsformat: 'c2' }
-        ]
+        ],
+        width: '98%',
+        height: '98%',
+        filterable:true,
+        showfilterrow:true,
+        columnsresize: true,
+        selectionmode: 'multiplerows',
     });
 }
 
