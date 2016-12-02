@@ -2,7 +2,7 @@ import sys
 sys.path.append("/home/ubuntu/workspace/finance")
 import datetime
 from app import app
-from app.utils.helper_funcs import cumPresentValue, createCashFlows
+from app.utils.fi_funcs import *
 
 class FixedRateBond():
     """This class will hold all the variables associated with a fixed rate bond"""
@@ -17,26 +17,54 @@ class FixedRateBond():
         self._cpn = cpn or 0            # expressed in percent terms, ex: 0.02 = 2%
         self._pay_freq = freq or "0.5"  # expressed in fractional terms of 1 year
         self._par = par or 100
-        if price:
-            self._price = price
-            # self._ytm = self.calcYTMFromPrice()
-        else:
-            self._ytm = ytm
-            # self._price = self.calcPriceFromYTM()
-        
         self._cash_flows = createCashFlows(self._issue_dt, self._pay_freq, self._tenor, self._cpn, self._par)
+        self._pv, self._ytm = self.calcPVandYTM(price, ytm)
+        
         self._conv_factor = self.calcConversionFactor()
+        self._dur_mod = self.calcDurationModified()
+        self._dur_mac = self.calcDurationMacauley()
+    
+    def calcPVandYTM(self, price, ytm):
+        if price:
+            return (price, calcYieldToDate())
+        else:
+            pv = cumPresentValue(self._trade_dt, ytm, self._cash_flows, self._pay_freq, cont=True)
+            return (pv, ytm)
     
     def calcConversionFactor(self):
         # Assumptions: 20 yrs to maturity, 6% annual disc rate, semi-annual compounding, first cpn payment in 6 months
         cfs = createCashFlows(self._issue_dt, 0.5, 20, self._cpn, 100)
         return cumPresentValue(self._trade_dt, 0.06, cfs, 0.5) / self._par
-        
-        
+    
+    def calcDurationModified(self):
+        dur = 0
+        for cf in self._cash_flows:
+            # assuming trade_dt = today, might wanna modify this later
+            t = (cf[0] - self._trade_dt).days / 365
+            # get present valye of cash flow * how many years away it is
+            d_temp =  t * (calcPV(cf[1], (self._ytm * self._pay_freq), (t / self._pay_freq)))
+            # divide by Bond price
+            dur += (d_temp / self._pv)
+        return dur
+    
+    def calcDurationMacauley(self):
+        dur = 0
+        cum_pv = 0
+        for cf in self._cash_flows:
+            # assuming trade_dt = today, might wanna modify this later
+            t = (cf[0] - self._trade_dt).days / 365
+            # get present valye of cash flow * how many years away it is
+            d_temp = t * (calcPVContinuous(cf[1], (self._ytm * self._pay_freq), (t / self._pay_freq)))
+            # divide by Bond price
+            dur += (d_temp / self._pv)
+        return dur
         
 
 if __name__ == "__main__":
     # import pdb; pdb.set_trace()
-    bond = FixedRateBond(2, datetime.date(2016,3,1), 0.5, 0.10, "ACT/ACT", 100, 98)
+    bond = FixedRateBond(3, datetime.date(2016,3,1), 0.5, 0.10, "ACT/ACT", 100, ytm=0.12)
     print(bond._conv_factor)
+    print(bond._pv)
+    print(bond._dur_mod)
+    # print(bond._dur_mac)
     
