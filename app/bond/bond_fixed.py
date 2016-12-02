@@ -28,7 +28,7 @@ class FixedRateBond():
         if price:
             return (price, calcYieldToDate())
         else:
-            pv = cumPresentValue(self._trade_dt, ytm, self._cash_flows, self._pay_freq, cont=True)
+            pv = cumPresentValue(self._trade_dt, ytm, self._cash_flows, self._pay_freq, cont=False)
             return (pv, ytm)
     
     def calcConversionFactor(self):
@@ -62,7 +62,7 @@ class FixedRateBond():
 
 if __name__ == "__main__":
     # import pdb; pdb.set_trace()
-    bond = FixedRateBond(3, datetime.date(2016,3,1), 0.5, 0.10, "ACT/ACT", 100, ytm=0.12)
+    bond = FixedRateBond(3, datetime.date(2016,3,1), 0.5, 0.10, "ACT/ACT", 100, ytm=0.123673)
     print(bond._conv_factor)
     print(bond._pv)
     print(bond._dur_mod)
