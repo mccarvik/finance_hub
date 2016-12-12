@@ -26,7 +26,7 @@ class FixedRateBond():
     
     def calcPVandYTM(self, price, ytm):
         if price:
-            return (price, calcYieldToDate())
+            return (price, calcYieldToDate(price, self._par, self._tenor, self._cpn, self._pay_freq))
         else:
             pv = cumPresentValue(self._trade_dt, ytm, self._cash_flows, self._pay_freq, cont=False)
             return (pv, ytm)

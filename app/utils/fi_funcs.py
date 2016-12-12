@@ -1,5 +1,7 @@
 import datetime
+from scipy import optimize
 from math import sqrt, pi, log, e
+
 
 def bootstrap(first_zero_rate, first_mat, bs_rate_mats):
     """
@@ -46,11 +48,23 @@ def createCashFlows(start_date, freq, tenor, cpn, par):
     cfs[-1] = (cfs[-1][0], cfs[-1][-1] + par)
     return cfs
 
-def calcYieldToDate(end_date):
-    pass
+def calcYieldToDate(price, par, tenor, cpn, freq=0.5, guess=None, start_date=datetime.datetime.today()):
+    freq = float(freq)
+    # guess ytm = coupon rate, will get us in the ball park
+    guess = cpn / par
+    cfs = createCashFlows(start_date, freq, tenor, cpn, par)
+    # convert cpn from annual rate to actual coupon
+    coupon = cpn * freq
+    dts = [(i[0] - datetime.datetime.today()).days / 365 for i in cfs]
+    ytm_func = lambda y: \
+        sum([coupon/(1+y*freq)**(t/freq) for t in dts]) + \
+        par/(1+y*freq)**(tenor/freq) - price
         
+    return optimize.newton(ytm_func, guess)
     
     
 if __name__ == "__main__":
     # import pdb; pdb.set_trace()
-    print(bootstrap(0.048, 400, [(0.053, 91), (0.055, 98)]))
+    # print(bootstrap(0.048, 400, [(0.053, 91), (0.055, 98)]))
+    # print(calcYieldToDate(95.0428, 100, 1.5, 5.75))
+    print(calcYieldToDate(100, 100, 2, 6))
