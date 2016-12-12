@@ -59,6 +59,12 @@ class FixedRateBond():
             dur += (d_temp / self._pv)
         return dur
         
+    def calcParYield(self):
+        # This means that given a list of forward rates, we can calculate what the coupon rate 
+        # needs to be to have the bond equal par
+        # similar to yield to maturity calc, needs a newton Raphson approximation
+        pass
+        
 
 if __name__ == "__main__":
     # import pdb; pdb.set_trace()

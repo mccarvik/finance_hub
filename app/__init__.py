@@ -48,4 +48,4 @@ if not app.debug:
     app.logger.setLevel(logging.INFO)
     app.logger.info('finance hub startup')
 
-from app import views, models
+from app import views
