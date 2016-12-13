@@ -59,11 +59,22 @@ class FixedRateBond():
             dur += (d_temp / self._pv)
         return dur
         
-    def calcParYield(self):
-        # This means that given a list of forward rates, we can calculate what the coupon rate 
-        # needs to be to have the bond equal par
-        # similar to yield to maturity calc, needs a newton Raphson approximation
-        pass
+    def calcParYield(self, price, par, tenor, fwd_rates, freq=0.5, guess=None, start_date=datetime.datetime.today()):
+        """
+        This means that given a list of forward rates, we can calculate what the coupon rate 
+        needs to be to have the bond equal par
+        similar to yield to maturity calc, needs a newton Raphson approximation
+        """
+        
+        freq = float(freq)
+        # guess ytm = last fwd rate, will get us in the ball park
+        guess = fwd_rates[-1][1]
+        py_func = lambda y: \
+            sum([y/(1+y*freq)**(t/freq) for f in fwd_rates]) + \
+            par/(1+y*freq)**(tenor/freq) - par
+        
+        return optimize.newton(py, guess)
+        
         
 
 if __name__ == "__main__":
