@@ -59,29 +59,48 @@ class FixedRateBond():
             dur += (d_temp / self._pv)
         return dur
         
-    def calcParYield(self, price, par, tenor, fwd_rates, freq=0.5, guess=None, start_date=datetime.datetime.today()):
+    def calcParYield(self, fwd_rates, guess=None, start_date=datetime.datetime.today().date(), cont_comp=False):
         """
         This means that given a list of forward rates, we can calculate what the coupon rate 
         needs to be to have the bond equal par
         similar to yield to maturity calc, needs a newton Raphson approximation
+        
+        assume rates are forward rates and they line up with coupon dates
+        
+        Need the "- self._par" at the end to optimize for = 100 not 0
         """
+        freq = self._pay_freq
+        # guess cpn = last fwd rate * 100 as a coupon, will get us in the ball park
+        guess = fwd_rates[-1][1] * 100
         
-        freq = float(freq)
-        # guess ytm = last fwd rate, will get us in the ball park
-        guess = fwd_rates[-1][1]
-        py_func = lambda y: \
-            sum([y/(1+y*freq)**(t/freq) for f in fwd_rates]) + \
-            par/(1+y*freq)**(tenor/freq) - par
+        fwd_rates = [((f[0] - start_date).days / 365, f[1]) for f in fwd_rates]
         
-        return optimize.newton(py, guess)
+        if cont_comp:
+            py_func = lambda y: \
+                sum([(y*freq)*e**(-1*f[1]) for f in fwd_rates]) + \
+                (self._par) * e**(-1*fwd_rates[-1][1]) - self._par
+        else:
+            import pdb; pdb.set_trace()
+            py_func = lambda y: \
+                sum([(y*freq) / (1+f[1]) for f in fwd_rates]) + \
+                (self._par) / (1+fwd_rates[-1][1]) - self._par
+        
+        # need to divide by freq to get the annual coupon rate
+        return optimize.newton(py_func, guess) / freq
         
         
 
 if __name__ == "__main__":
     # import pdb; pdb.set_trace()
-    bond = FixedRateBond(3, datetime.date(2016,3,1), 0.5, 0.10, "ACT/ACT", 100, ytm=0.123673)
-    print(bond._conv_factor)
-    print(bond._pv)
-    print(bond._dur_mod)
+    bond = FixedRateBond(3, datetime.date(2016,12,13), 0.5, 0.10, "ACT/ACT", 100, ytm=0.123673)
+    # fwd_rates = [.05, .058, .064, .068]
+    # cf = [cf[0] for cf in bond._cash_flows]
+    # fwd_rates = list(zip(cf,fwd_rates))
+    # print(bond.calcParYield(fwd_rates,cont_comp=True))
+    # print(bond._conv_factor)
+    # print(bond._pv)
+    # print(bond._dur_mod)
     # print(bond._dur_mac)
+    
+    
     
