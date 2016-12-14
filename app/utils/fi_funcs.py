@@ -60,11 +60,28 @@ def calcYieldToDate(price, par, tenor, cpn, freq=0.5, guess=None, start_date=dat
         sum([coupon/(1+y*freq)**(t/freq) for t in dts]) + \
         par/(1+y*freq)**(tenor/freq) - price
         
-    return optimize.newton(ytm_func, guess)
+    # return optimize.newton(ytm_func, guess)
+    return newton_raphson(ytm_func, guess)
+
+def derivative(f, x, h):
+      return (f(x+h) - f(x-h)) / (2.0*h)  # might want to return a small non-zero if ==0
+
+def newton_raphson(func, guess, rng=0.0001):
+    lastX = guess
+    nextX = lastX + 10* rng  # "different than lastX so loop starts OK
+    while (abs(lastX - nextX) > rng):  # this is how you terminate the loop - note use of abs()
+        newY = func(nextX)                     # just for debug... see what happens
+        print("f(", nextX, ") = ", newY)     # print out progress... again just debug
+        lastX = nextX
+        nextX = lastX - newY / derivative(func, lastX, rng)  # update estimate using N-R
+    return nextX
     
     
 if __name__ == "__main__":
     # import pdb; pdb.set_trace()
+    pass
     # print(bootstrap(0.048, 400, [(0.053, 91), (0.055, 98)]))
     # print(calcYieldToDate(95.0428, 100, 1.5, 5.75))
-    print(calcYieldToDate(100, 100, 2, 6))
+    # print(calcYieldToDate(100, 100, 2, 6))
+    # xFound = newton_raphson(quadratic, 5, 0.01)    # call the solver
+    # print("solution: x = ", xFound)

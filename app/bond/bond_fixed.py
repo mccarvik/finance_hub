@@ -86,17 +86,16 @@ class FixedRateBond():
                 (self._par) / (1+fwd_rates[-1][1]) - self._par
         
         # need to divide by freq to get the annual coupon rate
-        return optimize.newton(py_func, guess) / freq
-        
+        return newton_raphson(py_func, guess) / freq
         
 
 if __name__ == "__main__":
     # import pdb; pdb.set_trace()
     bond = FixedRateBond(3, datetime.date(2016,12,13), 0.5, 0.10, "ACT/ACT", 100, ytm=0.123673)
-    # fwd_rates = [.05, .058, .064, .068]
-    # cf = [cf[0] for cf in bond._cash_flows]
-    # fwd_rates = list(zip(cf,fwd_rates))
-    # print(bond.calcParYield(fwd_rates,cont_comp=True))
+    fwd_rates = [.05, .058, .064, .068]
+    cf = [cf[0] for cf in bond._cash_flows]
+    fwd_rates = list(zip(cf,fwd_rates))
+    print(bond.calcParYield(fwd_rates,cont_comp=True))
     # print(bond._conv_factor)
     # print(bond._pv)
     # print(bond._dur_mod)
