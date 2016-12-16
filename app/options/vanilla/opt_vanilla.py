@@ -1,3 +1,5 @@
+import sys
+sys.path.append("/home/ubuntu/workspace/finance")
 import numpy as np
 import scipy.stats as ss
 import time, sys
@@ -61,6 +63,7 @@ class OptionVanilla:
     
     def calcDelta(self):
         # adjustment for if underlying pays a dividend
+        import pdb; pdb.set_trace()
         dfq = e ** (-self.div * self.tenor)
         if self.otype == "C":
             return dfq * ss.norm.cdf(self.d1())
@@ -82,7 +85,7 @@ class OptionVanilla:
     def calcGamma(self):
         dfq = e ** (-self.div * self.tenor)
         num = self.prob_dens_func(self.d1()) * dfq
-        return mun /  (self.underlying * self.vol * np.sqrt(self.tenor))
+        return num /  (self.underlying * self.vol * np.sqrt(self.tenor))
     
     def calcVega(self):
         dfq = e ** (-self.div * self.tenor)
@@ -96,7 +99,7 @@ class OptionVanilla:
             return (-1) * self.strike * self.tenor * dfr * ss.norm.cdf((-1) * self.d2())
         
     def d1(self):
-        return ((np.log(self.underlying/self.strike) + (self.ir - self.div + 0.5 * self.vol**2)) * self.tenor) / (self.vol * np.sqrt(self.tenor))
+        return (np.log(self.underlying/self.strike) + ((self.ir - self.div + 0.5 * self.vol**2) * self.tenor)) / (self.vol * np.sqrt(self.tenor))
  
     def d2(self):
         return self.d1() - (self.vol * np.sqrt(self.tenor))
@@ -113,5 +116,5 @@ class OptionVanilla:
     
 if __name__ == "__main__":
     # import pdb; pdb.set_trace()
-    opt = OptionVanilla("C", 100, 130, 0.1, 1, 0, vol=0.3)
-    print(opt.premium)
+    opt = OptionVanilla("C", 49, 50, 0.05, 0.3846, 0, vol=0.2)
+    print(opt._delta)
