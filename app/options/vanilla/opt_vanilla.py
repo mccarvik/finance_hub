@@ -54,6 +54,10 @@ class OptionVanilla:
     
     def calcGreeks(self):
         self._delta = self.calcDelta()
+        self._gamma = self.calcGamma()
+        self._theta = self.calcTheta()
+        self._vega = self.calcVega()
+        self._rho = self.calcRho()
     
     def calcDelta(self):
         # adjustment for if underlying pays a dividend
@@ -63,17 +67,48 @@ class OptionVanilla:
         else:
             return dfq * (ss.norm.cdf(self.d1()) - 1)
     
-    def priceFromVolBS(self):
+    def calcTheta(self):
+        dfq = e ** (-self.div * self.tenor)
+        dfr = e ** (-self.ir * self.tenor)
         if self.otype == "C":
-            return self.underlying * ss.norm.cdf(self.d1()) - self.strike * np.exp(-self.ir * self.tenor) * ss.norm.cdf(self.d2())
+            front = (-1) * ((self.underlying * self.prob_dens_func(self.d1()) * self.vol * dfq) / (2 * np.sqrt(self.tenor)))
+            back = self.div * self.underlying * ss.norm.cdf(self.d1()) * dfq - self.ir * self.strike * dfr * ss.norm.cdf(self.d2())
+            return front + back
         else:
-            return self.strike * np.exp(-self.ir * self.tenor) * ss.norm.cdf(-self.d2()) - self.underlying * ss.norm.cdf(-self.d1())
+            front = (-1) * ((self.underlying * self.prob_dens_func(self.d1()) * self.vol * dfq) / (2 * np.sqrt(self.tenor)))
+            back = self.div * self.underlying * ss.norm.cdf((-1)*self.d1()) * dfq - self.ir * self.strike * dfr * ss.norm.cdf((-1)*self.d2())
+            return front - back
+    
+    def calcGamma(self):
+        dfq = e ** (-self.div * self.tenor)
+        num = self.prob_dens_func(self.d1()) * dfq
+        return mun /  (self.underlying * self.vol * np.sqrt(self.tenor))
+    
+    def calcVega(self):
+        dfq = e ** (-self.div * self.tenor)
+        return self.underlying * np.sqrt(self.tenor) * dfq * self.prob_dens_func(self.d2())
+    
+    def calcRho(self):
+        dfr = e ** (-self.ir * self.tenor)
+        if self.otype == "C":
+            return self.strike * self.tenor * dfr * ss.norm.cdf(self.d2())
+        else:
+            return (-1) * self.strike * self.tenor * dfr * ss.norm.cdf((-1) * self.d2())
         
     def d1(self):
         return ((np.log(self.underlying/self.strike) + (self.ir - self.div + 0.5 * self.vol**2)) * self.tenor) / (self.vol * np.sqrt(self.tenor))
  
     def d2(self):
         return self.d1() - (self.vol * np.sqrt(self.tenor))
+    
+    def prob_dens_func(self, x):
+        return (1 / np.sqrt(pi*2)) * e ** (((-1) * x**2)/2)
+        
+    def priceFromVolBS(self):
+        if self.otype == "C":
+            return self.underlying * ss.norm.cdf(self.d1()) - self.strike * np.exp(-self.ir * self.tenor) * ss.norm.cdf(self.d2())
+        else:
+            return self.strike * np.exp(-self.ir * self.tenor) * ss.norm.cdf(-self.d2()) - self.underlying * ss.norm.cdf(-self.d1())
  
     
 if __name__ == "__main__":
