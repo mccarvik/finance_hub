@@ -48,7 +48,7 @@ class OptionVanilla:
         self.div = float(div)                       # continuous dividend rate
         if (vol):
             self.vol = float(vol)                   # volatility (ex: 0.3 = 30%)
-            self.premium = self.priceFromVolBS()    # premium paid for the option
+            self.prem = self.priceFromVolBS()    # premium paid for the option
         elif (prem):
             self.prem = float(prem)
             #self.vol = volFromPriceBS()
@@ -63,7 +63,6 @@ class OptionVanilla:
     
     def calcDelta(self):
         # adjustment for if underlying pays a dividend
-        import pdb; pdb.set_trace()
         dfq = e ** (-self.div * self.tenor)
         if self.otype == "C":
             return dfq * ss.norm.cdf(self.d1())
@@ -116,5 +115,6 @@ class OptionVanilla:
     
 if __name__ == "__main__":
     # import pdb; pdb.set_trace()
-    opt = OptionVanilla("C", 49, 50, 0.05, 0.3846, 0, vol=0.2)
-    print(opt._delta)
+    # opt = OptionVanilla("C", 49, 50, 0.05, 0.3846, 0, vol=0.2)
+    opt = OptionVanilla("C", 11.49, 11.50, 0.00, (18/250), 0, vol=0.05)
+    print(opt.prem)
