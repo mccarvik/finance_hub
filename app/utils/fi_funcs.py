@@ -80,30 +80,26 @@ def newton_raphson(func, guess, rng=0.0001):
         nextX = lastX - newY / derivative(func, lastX, rng)  # update estimate using N-R
     return nextX
 
-def VaR(notl, conf=0.95, dist=None):
-    ###############################################################################
+def VaR(symbol='AAPL', notl=None, conf=0.95, dist=None, _d1=None, _d2=None, volwindow=50, varwindow=250):
     # Retrieve the data from Internet
-    
     # Choose a time period
-    d1 = datetime.datetime(2001, 1, 1)
-    d2 = datetime.datetime(2012, 1, 1)
-    
+    d1 = _d1 if _d1 else datetime.datetime(2001, 1, 1)
+    d2 = _d2 if _d2 else datetime.datetime(2012, 1, 1)
     #get the tickers
-    price = DataReader("AAPL", "yahoo",d1,d2)['Adj Close']
+    price = DataReader(symbol, "yahoo",d1,d2)['Adj Close']
     price = price.asfreq('B').fillna(method='pad')
     ret = price.pct_change()
     
     #choose the quantile
     quantile=1-conf
-    #the vol window
-    volwindow=50
-    #and the Var window for rolling 
-    varwindow=250
     
+    import pdb; pdb.set_trace()
     #simple VaR using all the data
+    # VaR on average accross all the data
     unnormedquantile=pd.expanding_quantile(ret,quantile)
     
-    #similar one using a rolling window 
+    # similar one using a rolling window 
+    # VaR only calculated over the varwindow, rolling
     unnormedquantileR=pd.rolling_quantile(ret,varwindow,quantile)
     
     #we can also normalize the returns by the vol
@@ -111,6 +107,8 @@ def VaR(notl, conf=0.95, dist=None):
     unitvol=ret/vol
     
     #and get the expanding or rolling quantiles
+    # Same calcs as above except normalized so show VaR in
+    # standard deviations instead of expected returns
     Var=pd.expanding_quantile(unitvol,quantile)
     VarR=pd.rolling_quantile(unitvol,varwindow,quantile)
     
@@ -118,7 +116,6 @@ def VaR(notl, conf=0.95, dist=None):
     normedquantileR=VarR*vol
     
     ret2=ret.shift(-1)
-    
     courbe=pd.DataFrame({'returns':ret2,
                   'quantiles':unnormedquantile,
                   'Rolling quantiles':unnormedquantileR,
@@ -131,9 +128,7 @@ def VaR(notl, conf=0.95, dist=None):
     courbe['UnqBreak']=np.sign(ret2-unnormedquantile)/(-2) +0.5
     courbe['UnqBreakR']=np.sign(ret2-unnormedquantileR)/(-2) +0.5
     
-    
     nbdays=price.count()
-    
     print('Number of returns worse than the VaR')
     print('Ideal Var                : ', (quantile)*nbdays)
     print('Simple VaR               : ', np.sum(courbe['UnqBreak']))
@@ -142,8 +137,6 @@ def VaR(notl, conf=0.95, dist=None):
     print('Ideal Rolling Var        : ', (quantile)*(nbdays-varwindow))
     print('Rolling VaR              : ', np.sum(courbe['UnqBreakR']))
     print('Rolling Normalized VaR   : ', np.sum(courbe['nqBreakR']))
-    # If no distribution provided, assume normal distribution
-    pass
     
     
 if __name__ == "__main__":
@@ -154,3 +147,4 @@ if __name__ == "__main__":
     # print(calcYieldToDate(100, 100, 2, 6))
     # xFound = newton_raphson(quadratic, 5, 0.01)    # call the solver
     # print("solution: x = ", xFound)
+    VaR()
