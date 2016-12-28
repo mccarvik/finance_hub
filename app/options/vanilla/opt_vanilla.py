@@ -60,6 +60,7 @@ class OptionVanilla:
         self._theta = self.calcTheta()
         self._vega = self.calcVega()
         self._rho = self.calcRho()
+        print("Done Calcing Greeks")
     
     def calcDelta(self):
         # adjustment for if underlying pays a dividend
@@ -111,10 +112,55 @@ class OptionVanilla:
             return self.underlying * ss.norm.cdf(self.d1()) - self.strike * np.exp(-self.ir * self.tenor) * ss.norm.cdf(self.d2())
         else:
             return self.strike * np.exp(-self.ir * self.tenor) * ss.norm.cdf(-self.d2()) - self.underlying * ss.norm.cdf(-self.d1())
+    
+    def priceFromVolBinTree(self, N=2000):
+        # N = number of steps of tree
+        sigma = self.vol
+        K = self.strike
+        r = self.ir
+        S0 = self.underlying
+        T = self.tenor
+        otype = self.otype
+        
+        #calculate delta T    
+        deltaT = float(T) / N
+     
+        # up and down factor will be constant for the tree so we calculate outside the loop
+        u = np.exp(sigma * np.sqrt(deltaT))
+        d = 1.0 / u
+     
+       
+        # Initialise our f_{i,j} tree with zeros
+        fs = [[0.0 for j in range(i + 1)] for i in range(N + 1)]
+        
+        #store the tree in a triangular matrix
+        #this is the closest to theory
+        
+        #no need for the stock tree
+     
+        #rates are fixed so the probability of up and down are fixed.
+        #this is used to make sure the drift is the risk free rate
+        a = np.exp(r * deltaT)
+        p = (a - d) / (u - d)
+        oneMinusP = 1.0 - p
+        
+        # Compute the leaves, f_{N, j}
+        for j in range(len(fs)):
+            if otype =="C":
+                fs[N][j] = max(S0 * u**j * d**(N - j) - K, 0.0)
+            else:
+                fs[N][j] = max(-S0 * u**j * d**(N - j) + K, 0.0)
+                
+        #calculate backward the option prices
+        for i in range(N-1, -1, -1):
+            for j in range(i + 1):
+                fs[i][j] = np.exp(-r * deltaT) * (p * fs[i + 1][j + 1] + oneMinusP * fs[i + 1][j])
+        return fs[0][0]
  
     
 if __name__ == "__main__":
     # import pdb; pdb.set_trace()
     # opt = OptionVanilla("C", 49, 50, 0.05, 0.3846, 0, vol=0.2)
     opt = OptionVanilla("C", 11.49, 11.50, 0.00, (18/250), 0, vol=0.05)
-    print(opt.prem)
+    # print(opt.priceFromVolBinTree())
+    print(opt.priceFromVolBS())
