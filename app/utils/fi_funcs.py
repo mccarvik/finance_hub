@@ -79,6 +79,10 @@ def newton_raphson(func, guess, rng=0.0001):
         lastX = nextX
         nextX = lastX - newY / derivative(func, lastX, rng)  # update estimate using N-R
     return nextX
+    
+def calcSurvivalRate(time, rate):
+    # time measured in years
+    return (e**(-1*time*rate))
 
 def VaR(symbol='AAPL', notl=None, conf=0.95, dist=None, _d1=None, _d2=None, volwindow=50, varwindow=250):
     # Retrieve the data from Internet
