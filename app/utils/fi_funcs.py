@@ -4,7 +4,7 @@ from math import sqrt, pi, log, e
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-from pandas.io.data import DataReader
+# from pandas.io.data import DataReader
 
 
 def bootstrap(first_zero_rate, first_mat, bs_rate_mats):
