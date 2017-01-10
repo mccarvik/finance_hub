@@ -49,3 +49,5 @@ DB = 'finance'
 # DBHOST = 'mccarvik-playground-2305615'
 # DBPASSWORD = 'kmac7272'
 DBHOST = 'localhost'
+
+FRED_API_KEY = '37c0d190aa9135031d213194f0930142'
