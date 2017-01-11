@@ -12,6 +12,7 @@ else:
     import urllib2 as url_error
 
 from config import FRED_API_KEY
+from datetime import datetime, timedelta
 import pandas as pd
 
 # FRED API: https://research.stlouisfed.org/docs/api/fred/?utm_campaign=data-tools&utm_medium=website&utm_source=research
@@ -431,4 +432,7 @@ class Fred(object):
 if __name__ == '__main__':
     # import pdb; pdb.set_trace()
     fred = Fred(api_key=FRED_API_KEY)
-    print(fred.get_series_as_of_date('USD12MD156N', '6/1/2014'))
+    end = datetime.today().strftime('%m/%d/%Y')
+    start = (datetime.today() - timedelta(30)).strftime('%m/%d/%Y')
+    # print(fred.get_series_as_of_date('USD12MD156N', end))
+    print(fred.get_series('USD12MD156N', start, end))
