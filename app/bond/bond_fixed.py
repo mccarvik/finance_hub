@@ -7,7 +7,8 @@ from app.utils.fi_funcs import *
 class FixedRateBond():
     """This class will hold all the variables associated with a fixed rate bond"""
     
-    def __init__(self, tenor, issue_dt, freq=None, cpn=None, dcc=None, par=None, price=None, ytm=None):
+    def __init__(self, tenor, issue_dt, freq=None, cpn=None, dcc=None, par=None, 
+                calc_date=None, price=None, ytm=None):
         self._issue_dt = issue_dt
         self._tenor = tenor
         self._mat_dt = issue_dt + datetime.timedelta(tenor)
@@ -17,6 +18,13 @@ class FixedRateBond():
         self._cpn = cpn or 0            # expressed in percent terms, ex: 0.02 = 2%
         self._pay_freq = freq or "0.5"  # expressed in fractional terms of 1 year
         self._par = par or 100
+        
+        # Not sure what to do on this
+        if calc_date:
+            self._calc_date = calc_date
+        else:
+            self._calc_date = self._trade_date
+        
         self._cash_flows = createCashFlows(self._issue_dt, self._pay_freq, self._tenor, self._cpn, self._par)
         self._pv, self._ytm = self.calcPVandYTM(price, ytm)
         
