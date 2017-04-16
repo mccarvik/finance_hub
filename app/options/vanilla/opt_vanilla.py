@@ -51,7 +51,7 @@ class OptionVanilla:
             self.prem = self.priceFromVolBS()    # premium paid for the option
         elif (prem):
             self.prem = float(prem)
-            #self.vol = volFromPriceBS()
+            self.vol = self.volFromPriceBS()
         self.calcGreeks()
     
     def calcGreeks(self):
@@ -87,7 +87,22 @@ class OptionVanilla:
         num = self.prob_dens_func(self.d1()) * dfq
         return num /  (self.underlying * self.vol * np.sqrt(self.tenor))
     
-    def calcVega(self):
+    def calcVega(self, vol_guess=None):
+        ''' Calculates the change in premium for the option per change in volatility (partial derivative)
+        
+        Paramters
+        =========
+        vol_guess : float
+            guess at the implied vol needed when calcing the vol from price
+        
+        Return
+        ======
+        float
+            change in premium per change in volatility
+        '''
+        
+        if vol_guess:
+            self.vol = vol_guess 
         dfq = e ** (-self.div * self.tenor)
         return self.underlying * np.sqrt(self.tenor) * dfq * self.prob_dens_func(self.d2())
     
@@ -107,11 +122,49 @@ class OptionVanilla:
     def prob_dens_func(self, x):
         return (1 / np.sqrt(pi*2)) * e ** (((-1) * x**2)/2)
         
-    def priceFromVolBS(self):
+    def priceFromVolBS(self, vol_guess=None):
+        ''' Calculates the price of an option given the implied volatility in BS
+        
+        Paramters
+        =========
+        vol_guess : float
+            guess at the implied vol needed when calcing the vol from price
+        
+        Return
+        ======
+        float
+            price of the option
+        '''
+                
+        if vol_guess:
+            self.vol = vol_guess  
         if self.otype == "C":
             return self.underlying * ss.norm.cdf(self.d1()) - self.strike * np.exp(-self.ir * self.tenor) * ss.norm.cdf(self.d2())
         else:
             return self.strike * np.exp(-self.ir * self.tenor) * ss.norm.cdf(-self.d2()) - self.underlying * ss.norm.cdf(-self.d1())
+    
+    def volFromPriceBS(self, imp_vol_guess=0.2, it=100):
+        ''' Calculates implied volatility when given the price of a European call option in BS
+        
+        Parameters
+        ==========
+        imp_vol_guess : float
+            estimate of implied volatility
+        it : int 
+            number of iterations of process
+            
+        Returns
+        =======
+        imp_vol_guess : float
+            estimated value for implied vol
+        '''
+        
+        for i in range(it):
+            # reusing code from the price calc to use our vol guess
+            imp_vol_guess -= ((self.priceFromVolBS(vol_guess=imp_vol_guess) - self.prem) / 
+                            self.calcVega(vol_guess=imp_vol_guess))
+        return imp_vol_guess
+
     
     def priceFromVolBinTree(self, N=2000):
         # N = number of steps of tree
@@ -161,6 +214,8 @@ class OptionVanilla:
 if __name__ == "__main__":
     # import pdb; pdb.set_trace()
     # opt = OptionVanilla("C", 49, 50, 0.05, 0.3846, 0, vol=0.2)
-    opt = OptionVanilla("C", 11.49, 11.50, 0.00, (18/250), 0, vol=0.05)
+    # opt = OptionVanilla("C", 11.49, 11.50, 0.00, (18/250), 0, vol=0.05)
+    opt = OptionVanilla("C", 11.49, 11.50, 0.00, (18/250), 0, prem=0.0566)
     # print(opt.priceFromVolBinTree())
-    print(opt.priceFromVolBS())
+    # print(opt.priceFromVolBS())
+    print(opt.volFromPriceBS())
