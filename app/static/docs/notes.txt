@@ -8,7 +8,13 @@ sys.path.append('/home/ubuntu/miniconda3/lib/python3.5/site-packages')
 
 place a python debugger breakpoint: import pdb; pdb.set_trace()
 
-load to github:
+create git repo on command line:
+    1. git init // creates repo
+    2. git add . // adds all files
+    3. git commit -m "<message>"
+    4. push to origin as descrobed below
+
+load from repo to github:
     1. git remote add origin https://github.com/mccarvik/finance_hub.git
     Sets the new remote
     2. git remote -v
@@ -16,3 +22,7 @@ load to github:
     3. git push origin master (only one you have to do after origin is set)
     Pushes the changes in your local repository up to the remote repository you specified as the origin
     username: mccarvik pw: kmac7272 for finance_hub repository
+
+add to repo:
+    1. git add <script>
+    2. git commit -m "<message>"
