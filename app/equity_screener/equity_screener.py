@@ -8,6 +8,7 @@ from threading import Thread
 from app import app
 
 def post(request):
+    import pdb; pdb.set_trace()
     if request.form['action'] == 'run_screening':
         t_filts = dict(eval(request.form['filters']))['filts']
         ES = run_screening(filters=t_filts, sim=False)
