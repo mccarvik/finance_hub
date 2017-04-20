@@ -2,11 +2,12 @@ function update_grid(d) {
     console.log("got to grid")
     var data = JSON.parse(d);
     var final_data = new Array();
-    var columns = data.shift();
+    var labels = data.shift();
+    var cols = data.shift();
     for (var i = 0; i < data.length; i++) {
         var row = {};
-        for (var j = 0; j < columns.length; j++) {
-            row[columns[j]] = data[i][j]    
+        for (var j = 0; j < cols.length; j++) {
+            row[cols[j]] = data[i][j]    
         }
         final_data[i] = row
     }
@@ -15,6 +16,14 @@ function update_grid(d) {
         localdata: final_data,
         datatype: "array"
     };
+    
+    // var grid_cols = []
+    // for (var i=0; i<cols.length; i++) {
+    //     grid_cols[i] = { text: labels[i], datafield: cols[i], width: 100 }
+    // }
+    // console.log(grid_cols)
+    console.log(final_data)
+    
     var dataAdapter = new $.jqx.dataAdapter(source, {
         loadComplete: function (final_data) { },
         loadError: function (xhr, status, error) { }    
@@ -22,24 +31,20 @@ function update_grid(d) {
     $("#jqxgrid").jqxGrid(
     {
         source: dataAdapter,
+        // columns: grid_cols,
         columns: [
             { text: 'Ticker', datafield: 'ticker', width: 100 },
             // { text: 'First Name', datafield: 'firstname', width: 100 },
-            // { text: 'Last Name', datafield: 'lastname', width: 100 },
-            // { text: 'Product', datafield: 'productname', width: 180 },
-            // { text: 'Quantity', datafield: 'quantity', width: 80, cellsalign: 'right' },
-            // { text: 'Unit Price', datafield: 'price', width: 90, cellsalign: 'right', cellsformat: 'c2' },
-            // { text: 'Total', datafield: 'total', width: 100, cellsalign: 'right', cellsformat: 'c2' }
         ],
         width: '98%',
         height: '98%',
         filterable:true,
+        sortable: true, 
         showfilterrow:true,
         columnsresize: true,
         selectionmode: 'multiplerows',
     });
 }
-
 
 function run_screening(event, num_screen_vals) {
     var overlay = $('<div id="waiting"> </div>');

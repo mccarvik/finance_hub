@@ -23,9 +23,6 @@ def equity_screener():
         cols = str.split(f.readline(), ",")[1:]
         cols_desc = str.split(f.readline(), ",")[1:]
     ns_vals = sorted(zip(cols, cols_desc))
-    # ns_vals = OrderedDict(cols)
-    
-    # ns_vals = dict(zip(cols, cols_desc))
     
     if request.method == 'POST':
         ret = eqsc_post(request)

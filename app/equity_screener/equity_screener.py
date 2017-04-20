@@ -8,14 +8,13 @@ from threading import Thread
 from app import app
 
 def post(request):
-    import pdb; pdb.set_trace()
+    # import pdb; pdb.set_trace()
     if request.form['action'] == 'run_screening':
         t_filts = dict(eval(request.form['filters']))['filts']
         ES = run_screening(filters=t_filts, sim=False)
-        return [ES._df.columns.tolist()] + ES._df.values.tolist()
+        return [list(ES._colmap.keys())] + [list(ES._colmap.values())] + ES._df.values.tolist()
     
     if request.form['action'] == 'get_data':
-        import pdb; pdb.set_trace()
         get_data(reset_ticks=False, source="API2")
         writeScreenInfo(source="API2")
         return
@@ -180,7 +179,6 @@ def run_screening(filters=None, sim=False):
     # set each val to a float
     filters = [[x[0],x[1],float(x[2])] for x in filters]
     df = ES_Dataframe(filters=filters)
-    import pdb; pdb.set_trace()
     return df
 
 
