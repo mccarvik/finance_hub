@@ -15,6 +15,7 @@ def post(request):
         return [ES._df.columns.tolist()] + ES._df.values.tolist()
     
     if request.form['action'] == 'get_data':
+        import pdb; pdb.set_trace()
         get_data(reset_ticks=False, source="API2")
         writeScreenInfo(source="API2")
         return
@@ -32,7 +33,7 @@ def get_data(reset_ticks=False, source="API2"):
         for line in f:
             tickers += line.strip() + "+"
             ct += 1
-            if ct == 5:
+            if ct == 20:
                 tickers = tickers[:-1]
                 tasks.append(tickers)
                 tickers = ""
@@ -179,6 +180,7 @@ def run_screening(filters=None, sim=False):
     # set each val to a float
     filters = [[x[0],x[1],float(x[2])] for x in filters]
     df = ES_Dataframe(filters=filters)
+    import pdb; pdb.set_trace()
     return df
 
 
