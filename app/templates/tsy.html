@@ -1,0 +1,9 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+{% block content %}
+    <link href="/static/css/tsy.css" rel="stylesheet" type="text/css">
+    <script src="/static/js/tsy.js"></script>
+    <div>
+        <button id="tsy_get_data_btn" onclick="get_data(event, '{{ SECRET_KEY }}');">Get Data</button>
+    </div>
+{% endblock %}

@@ -1020,3 +1020,89 @@ Traceback (most recent call last):
   File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/werkzeug/routing.py", line 1758, in build
     raise BuildError(endpoint, values, method, self)
 werkzeug.routing.BuildError: Could not build url for endpoint 'Treasury'. Did you mean 'treasury' instead?
+2017-04-23 15:06:46,101 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-04-23 15:06:56,835 ERROR: Exception on / [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 18, in home
+    title='Home')
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/ubuntu/workspace/finance/app/templates/home.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "/home/ubuntu/workspace/finance/app/templates/base.html", line 52, in top-level template code
+    <li><a href="{{ url_for('Treasury') }}">Treasury</a></li>
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/helpers.py", line 332, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1811, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/helpers.py", line 322, in url_for
+    force_external=external)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/werkzeug/routing.py", line 1758, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'Treasury'. Did you mean 'treasury' instead?
+2017-04-23 15:07:31,730 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-04-23 15:07:41,942 ERROR: Exception on / [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 18, in home
+    title='Home')
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/ubuntu/workspace/finance/app/templates/home.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "/home/ubuntu/workspace/finance/app/templates/base.html", line 52, in top-level template code
+    <li><a href="{{ url_for('tsy') }}">Treasury</a></li>
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/helpers.py", line 332, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1811, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/helpers.py", line 322, in url_for
+    force_external=external)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/werkzeug/routing.py", line 1758, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'tsy'. Did you mean 'treasury' instead?
+2017-04-23 15:08:16,760 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-04-23 15:09:27,025 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]

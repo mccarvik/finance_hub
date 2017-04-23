@@ -90,7 +90,7 @@ class OptionVanilla:
     def calcVega(self, vol_guess=None):
         ''' Calculates the change in premium for the option per change in volatility (partial derivative)
         
-        Paramters
+        Parameters
         =========
         vol_guess : float
             guess at the implied vol needed when calcing the vol from price

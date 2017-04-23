@@ -37,12 +37,13 @@ def equity_screener():
                             data=None)
                            
 
-@app.route('/treasury', methods=['GET', 'POST'])
-def treasury():
+@app.route('/tsy', methods=['GET', 'POST'])
+def tsy():
+    import pdb; pdb.set_trace()
     if request.method == 'POST':
         tsy_post(request)
-    return render_template('bond.html',
-                           title='Treasury Calculator')
+    return render_template('tsy.html',
+                           title='Treasuries')
 
 @app.route('/bond', methods=['GET', 'POST'])
 def bond():
