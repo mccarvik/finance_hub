@@ -3,11 +3,12 @@ import sys
 sys.path.append("/home/ubuntu/workspace/finance")
 
 def post(request):
-    # if request.form
-    
     # import pdb; pdb.set_trace()
-    if request.form['action'] == 'bond_calc':
-        bond_calc(request)
+    if request.form['action'] == 'get_data':
+        get_data()
+
+def get_data():
+    print("got here")
 
 def bond_calc(request):
     print("BOND CALCULATOR")

@@ -9,6 +9,7 @@ from config import POSTS_PER_PAGE, MAX_SEARCH_RESULTS, LANGUAGES, DATABASE_QUERY
 from .equity_screener.equity_screener import post as eqsc_post
 from .bond.bond import post as bond_post
 from .futures.futures import post as fut_post
+from .bond.tsy import post as tsy_post
 from .options.vanilla.opt_vanilla import post as opt_vanilla_post
 
 @app.route('/', methods=['GET', 'POST'])
@@ -35,6 +36,14 @@ def equity_screener():
                             num_screen_vals=ns_vals,
                             data=None)
                            
+
+@app.route('/treasury', methods=['GET', 'POST'])
+def treasury():
+    if request.method == 'POST':
+        tsy_post(request)
+    return render_template('bond.html',
+                           title='Treasury Calculator')
+
 @app.route('/bond', methods=['GET', 'POST'])
 def bond():
     if request.method == 'POST':
