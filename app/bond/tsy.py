@@ -3,8 +3,11 @@ import sys
 sys.path.append("/home/ubuntu/workspace/finance")
 sys.path.append("/usr/local/lib/python2.7/dist-packages")
 import pdb, requests, datetime, time
-from app import app
 import pandas as pd
+from app import app.bond
+from .bond import Bond
+from .bond.FixedRateBond import FixedRateBond
+
 
 def post(request):
     ''' Post method to receive all requests and send them to the appropriate method
@@ -21,7 +24,8 @@ def post(request):
     '''
     
     # import pdb; pdb.set_trace()
-    if request.form['action'] == 'get_data':
+    # TODO: front of this if statement used for testing
+    if not request or request.form['action'] == 'get_data':
         tsy_df = get_api_data()
         tsy_df = filter_array(tsy_df)
         tsy_df = setup_bonds(tsy_df)
@@ -54,8 +58,7 @@ def get_api_data():
     tsy_df = pd.read_json(req.content.decode('utf-8'))
     tsy_df = tsy_df[tsy_df['maturityDate'] > str(datetime.date.today())]
     t1 = time.time()
-    print("took {0} seconds".format(t1-t0))
-    
+    print("took {0} seconds to grab data from API".format(t1-t0))
     return tsy_df
     
 def filter_array(tsy_df):
@@ -71,9 +74,8 @@ def filter_array(tsy_df):
     tsy_df = pandas df
         filtered array
     '''
-    
-    tsy_df = tsy_df['cusip','issueDate','maturityDate','securityType','interestRate','callable',
-                    'firstInterestPaymentDate','averageMedianPrice','averageMedianYield']
+    tsy_df = tsy_df[['cusip','issueDate','maturityDate','securityType','interestRate','callable',
+                    'firstInterestPaymentDate','averageMedianPrice','averageMedianYield']]
     return tsy_df
 
 def setup_bonds(tsy_df):
@@ -89,8 +91,12 @@ def setup_bonds(tsy_df):
     tsy_df = pandas df
         array of bond objects, no longer just raw data
     '''
-    pass
+    import pdb; pdb.set_trace()
+    new_df = tsy_df.apply(lambda t: FixedRateBond(t.cusip, t.issueDate, t.maturityDate, t.securityType))
+    for t in tsy_df.values:
+        import pdb; pdb.set_trace()
+        new_df.append(FixedBond())
 
 # Used for testing
 if __name__ == '__main__':
-    get_api_data()
+    post(None)

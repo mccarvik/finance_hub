@@ -7,7 +7,6 @@ from .forms import EditForm, PostForm, SearchForm
 from .emails import follower_notification
 from config import POSTS_PER_PAGE, MAX_SEARCH_RESULTS, LANGUAGES, DATABASE_QUERY_TIMEOUT
 from .equity_screener.equity_screener import post as eqsc_post
-from .bond.bond import post as bond_post
 from .futures.futures import post as fut_post
 from .bond.tsy import post as tsy_post
 from .options.vanilla.opt_vanilla import post as opt_vanilla_post
