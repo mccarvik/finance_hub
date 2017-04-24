@@ -8,39 +8,59 @@ from app.utils.fi_funcs import *
 class FixedRateBond(Bond):
     """This class will hold all the variables associated with a fixed rate bond"""
     
-    def __init__(self, cusip, issue_dt, mat_dt, sec_type, freq=None, cpn=None, dcc=None, par=None, 
-                calc_date=None, price=None, ytm=None):
+    def __init__(self, cusip, issue_dt, mat_dt, sec_type, freq=0.5, cpn=0, dcc="ACT/ACT", par=100, 
+                price=None, ytm=None):
+        ''' Constructor
+        Parameters
+        ==========
+        cusip : str
+            cusip of this bond
+        issue_dt : str
+            issue date of the bond
+        mat_dt : str
+            maturity date of the bond
+        sec_type : str
+            security type of the bond
+        freq : float
+            payment frequency of the bond, expressed in fractional terms of 1 year, ex: 0.5 = 6 months
+            DEFAULT = 0.5
+        cpn : float
+            coupon rate of the bond, expressed in percent terms, ex: 0.02 = 2%, DEFAULT = 0
+        dcc : str
+            day count convention, DEFAULT = "ACT/ACT"
+        par : float
+            par value of the bond, DEFAULT = 100
+        price : float
+            current price of the bond
+        ytm : float
+            yield to maturity of the bond
+        
+        Return
+        ======
+        NONE
+        '''
         import pdb; pdb.set_trace()
-        super.__init__(cusip, issue_dt, mat_dt, sec_type)
-        self._issue_dt = issue_dt
-        self._tenor = tenor
-        self._mat_dt = issue_dt + datetime.timedelta(tenor)
-        self._trade_dt = issue_dt       # for now
-        self._settle_dt = issue_dt      # for convenience
+        super().__init__(cusip, issue_dt, mat_dt, sec_type)
+        # self._trade_dt = issue_dt       # for now
+        # self._settle_dt = issue_dt      # for convenience
         self._dcc = dcc or "ACT/ACT"
-        self._cpn = cpn or 0            # expressed in percent terms, ex: 0.02 = 2%
-        self._pay_freq = freq or "0.5"  # expressed in fractional terms of 1 year
-        self._par = par or 100
+        self._cpn = cpn           
+        self._pay_freq = freq  
+        self._par = par
         
-        # Not sure what to do on this
-        if calc_date:
-            self._calc_date = calc_date
-        else:
-            self._calc_date = self._trade_date
-        
-        self._cash_flows = createCashFlows(self._issue_dt, self._pay_freq, self._tenor, self._cpn, self._par)
+        self._cash_flows = createCashFlows(self._issue_dt, self._pay_freq, self._mat_dt, self._cpn, self._par)
         self._pv, self._ytm = self.calcPVandYTM(price, ytm)
         
         self._conv_factor = self.calcConversionFactor()
         self._dur_mod = self.calcDurationModified()
         self._dur_mac = self.calcDurationMacauley()
     
-    def calcPVandYTM(self, price, ytm):
-        if price:
-            return (price, calcYieldToDate(price, self._par, self._tenor, self._cpn, self._pay_freq))
+    def calcPVandYTM(self, pv, ytm):
+        if pv:
+            ytm = calcYieldToDate(pv, self._par, self._tenor, self._cpn, self._pay_freq)
         else:
             pv = cumPresentValue(self._trade_dt, ytm, self._cash_flows, self._pay_freq, cont=False)
-            return (pv, ytm)
+        return (pv, ytm)
     
     def calcConversionFactor(self):
         # Assumptions: 20 yrs to maturity, 6% annual disc rate, semi-annual compounding, first cpn payment in 6 months

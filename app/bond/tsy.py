@@ -4,9 +4,8 @@ sys.path.append("/home/ubuntu/workspace/finance")
 sys.path.append("/usr/local/lib/python2.7/dist-packages")
 import pdb, requests, datetime, time
 import pandas as pd
-from app import app.bond
-from .bond import Bond
-from .bond.FixedRateBond import FixedRateBond
+from app.bond.Bond import Bond
+from app.bond.FixedRateBond import FixedRateBond
 
 
 def post(request):
@@ -91,11 +90,10 @@ def setup_bonds(tsy_df):
     tsy_df = pandas df
         array of bond objects, no longer just raw data
     '''
-    import pdb; pdb.set_trace()
-    new_df = tsy_df.apply(lambda t: FixedRateBond(t.cusip, t.issueDate, t.maturityDate, t.securityType))
-    for t in tsy_df.values:
-        import pdb; pdb.set_trace()
-        new_df.append(FixedBond())
+    new_df = []
+    for idx, t in tsy_df.iterrows():
+        new_df.append(FixedRateBond(t['cusip'], t['issueDate'], t['maturityDate'], t['securityType']))
+    return new_df
 
 # Used for testing
 if __name__ == '__main__':

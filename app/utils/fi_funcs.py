@@ -4,6 +4,7 @@ from math import sqrt, pi, log, e
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+from dateutil.relativedelta import relativedelta
 # from pandas.io.data import DataReader
 
 
@@ -44,12 +45,32 @@ def calcPVContinuous(cf, ir, period):
     return cf * e**((-1) * ir * period)
 
 
-def createCashFlows(start_date, freq, tenor, cpn, par):
+def createCashFlows(start_date, freq, mat_date, cpn, par):
+    ''' Creats a list of tuple pairs where each pair is the date and amount of a cash flow
+    Parameters
+    ==========
+    start_date : date
+        start_date of the calculation, usually today
+    freq : float
+        payment frequency
+    mat_date : date
+        date of maturity of the bond
+    cpn : float
+        amount of coupon payment
+    par : float
+        par amount of the bond at expiration
+    
+    Return
+    ======
+    cfs : list of tuples
+        date, amount tuple pairs for each cash flow
+    '''
+    tenor = (mat_date - start_date).days / 365.25 # assumes 365.25 days in a year
     num_cfs = (1 / freq) * tenor
     days_from_issue = [int((365 * freq)*(i+1)) for i in range(int(num_cfs))]
     dates = [start_date + datetime.timedelta(i) for i in days_from_issue]
     cfs = [(dates[i], cpn * par * freq) for i in range(len(dates))]
-    cfs[-1] = (cfs[-1][0], cfs[-1][-1] + par)
+    cfs.append((mat_date, par))
     return cfs
 
 def calcYieldToDate(price, par, tenor, cpn, freq=0.5, guess=None, start_date=datetime.datetime.today()):
