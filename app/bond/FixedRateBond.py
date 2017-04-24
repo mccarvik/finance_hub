@@ -8,8 +8,8 @@ from app.utils.fi_funcs import *
 class FixedRateBond(Bond):
     """This class will hold all the variables associated with a fixed rate bond"""
     
-    def __init__(self, cusip, issue_dt, mat_dt, sec_type, freq=0.5, cpn=0, dcc="ACT/ACT", par=100, 
-                price=None, ytm=None):
+    def __init__(self, cusip, issue_dt, mat_dt, sec_type, first_pay_dt=None, freq=0.5, 
+                cpn=0, dcc="ACT/ACT", par=100, price=None, ytm=None):
         ''' Constructor
         Parameters
         ==========
@@ -21,6 +21,9 @@ class FixedRateBond(Bond):
             maturity date of the bond
         sec_type : str
             security type of the bond
+        first_pay_dt : str
+            first payment date, need this as some bonds have a short stub period before first payment
+            instead of a full accrual period, DEFAULT = None
         freq : float
             payment frequency of the bond, expressed in fractional terms of 1 year, ex: 0.5 = 6 months
             DEFAULT = 0.5
@@ -39,7 +42,6 @@ class FixedRateBond(Bond):
         ======
         NONE
         '''
-        import pdb; pdb.set_trace()
         super().__init__(cusip, issue_dt, mat_dt, sec_type)
         # self._trade_dt = issue_dt       # for now
         # self._settle_dt = issue_dt      # for convenience
@@ -47,15 +49,20 @@ class FixedRateBond(Bond):
         self._cpn = cpn           
         self._pay_freq = freq  
         self._par = par
-        
-        self._cash_flows = createCashFlows(self._issue_dt, self._pay_freq, self._mat_dt, self._cpn, self._par)
+        if first_pay_dt:
+            self._first_pay_dt = datetime.date(int(first_pay_dt[0:4]), int(first_pay_dt[5:7]), int(first_pay_dt[8:10]))
+            self._cash_flows = createCashFlows(self._first_pay_dt, self._pay_freq, self._mat_dt, self._cpn, self._par)
+            self._cash_flows.insert(0, (self._first_pay_dt, cpn))
+        else:
+            self._cash_flows = createCashFlows(self._issue_dt, self._pay_freq, self._mat_dt, self._cpn, self._par)
+        import pdb; pdb.set_trace()
         self._pv, self._ytm = self.calcPVandYTM(price, ytm)
-        
         self._conv_factor = self.calcConversionFactor()
         self._dur_mod = self.calcDurationModified()
         self._dur_mac = self.calcDurationMacauley()
     
     def calcPVandYTM(self, pv, ytm):
+        import pdb; pdb.set_trace()
         if pv:
             ytm = calcYieldToDate(pv, self._par, self._tenor, self._cpn, self._pay_freq)
         else:

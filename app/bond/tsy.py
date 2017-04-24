@@ -4,8 +4,10 @@ sys.path.append("/home/ubuntu/workspace/finance")
 sys.path.append("/usr/local/lib/python2.7/dist-packages")
 import pdb, requests, datetime, time
 import pandas as pd
+from app.utils.fi_funcs import FREQ_MAP
 from app.bond.Bond import Bond
 from app.bond.FixedRateBond import FixedRateBond
+
 
 
 def post(request):
@@ -74,7 +76,8 @@ def filter_array(tsy_df):
         filtered array
     '''
     tsy_df = tsy_df[['cusip','issueDate','maturityDate','securityType','interestRate','callable',
-                    'firstInterestPaymentDate','averageMedianPrice','averageMedianYield']]
+                    'firstInterestPaymentDate','averageMedianPrice','averageMedianYield',
+                    'interestPaymentFrequency']]
     return tsy_df
 
 def setup_bonds(tsy_df):
@@ -92,7 +95,11 @@ def setup_bonds(tsy_df):
     '''
     new_df = []
     for idx, t in tsy_df.iterrows():
-        new_df.append(FixedRateBond(t['cusip'], t['issueDate'], t['maturityDate'], t['securityType']))
+        import pdb; pdb.set_trace()
+        new_df.append(FixedRateBond(t['cusip'], t['issueDate'], t['maturityDate'], t['securityType'],
+                    freq=FREQ_MAP[t['interestPaymentFrequency']],first_pay_dt=t['firstInterestPaymentDate'],
+                    cpn=t['interestRate'], price=t['averageMedianPrice'], ytm=t['averageMedianYield']
+                    ))
     return new_df
 
 # Used for testing

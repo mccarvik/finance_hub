@@ -8,6 +8,10 @@ from dateutil.relativedelta import relativedelta
 # from pandas.io.data import DataReader
 
 
+FREQ_MAP = {
+    'Semi-Annual' : 0.5
+}
+
 def bootstrap(first_zero_rate, first_mat, bs_rate_mats):
     """
     bs_rate_mats = list of tuples in the format (fwd_rate, maturity)
