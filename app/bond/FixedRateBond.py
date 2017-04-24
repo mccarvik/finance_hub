@@ -9,7 +9,7 @@ class FixedRateBond(Bond):
     """This class will hold all the variables associated with a fixed rate bond"""
     
     def __init__(self, cusip, issue_dt, mat_dt, sec_type, first_pay_dt=None, freq=0.5, 
-                cpn=0, dcc="ACT/ACT", par=100, price=None, ytm=None):
+                cpn=0, dcc="ACT/ACT", par=100, price=None, ytm=None, trade_dt=datetime.date.today()):
         ''' Constructor
         Parameters
         ==========
@@ -37,6 +37,8 @@ class FixedRateBond(Bond):
             current price of the bond
         ytm : float
             yield to maturity of the bond
+        trade_dt : date
+            day the calculation is done from, DEFAULT = today
         
         Return
         ======
@@ -49,6 +51,7 @@ class FixedRateBond(Bond):
         self._cpn = cpn           
         self._pay_freq = freq  
         self._par = par
+        self._trade_dt = trade_dt
         if first_pay_dt:
             self._first_pay_dt = datetime.date(int(first_pay_dt[0:4]), int(first_pay_dt[5:7]), int(first_pay_dt[8:10]))
             self._cash_flows = createCashFlows(self._first_pay_dt, self._pay_freq, self._mat_dt, self._cpn, self._par)
