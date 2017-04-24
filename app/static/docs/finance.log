@@ -1106,3 +1106,46 @@ Traceback (most recent call last):
 werkzeug.routing.BuildError: Could not build url for endpoint 'tsy'. Did you mean 'treasury' instead?
 2017-04-23 15:08:16,760 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
 2017-04-23 15:09:27,025 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-04-23 19:25:50,337 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-04-23 19:32:29,970 ERROR: Exception on /tsy [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 43, in tsy
+    if request.method == 'POST':
+  File "/home/ubuntu/workspace/finance/app/bond/tsy.py", line 23, in post
+    get_data()
+  File "/home/ubuntu/workspace/finance/app/bond/tsy.py", line 47, in get_data
+    app.logger.info("API GRAB ERROR: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
+  File "/home/ubuntu/workspace/finance/app/bond/tsy.py", line 47, in get_data
+    app.logger.info("API GRAB ERROR: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2017-04-23 19:35:34,310 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-04-23 19:45:14,083 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-04-23 19:47:55,699 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-04-23 19:51:23,130 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-04-23 19:55:49,340 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-04-23 19:56:09,053 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-04-23 19:58:54,377 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-04-23 20:02:57,679 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-04-23 20:04:25,967 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-04-24 00:12:34,385 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-04-24 00:16:52,458 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-04-24 00:17:52,099 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-04-24 00:18:10,687 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-04-24 01:14:38,192 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-04-24 01:15:31,737 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
