@@ -2,7 +2,7 @@
 import sys
 sys.path.append("/home/ubuntu/workspace/finance")
 sys.path.append("/usr/local/lib/python2.7/dist-packages")
-import pdb, requests, datetime
+import pdb, requests, datetime, time
 from app import app
 import pandas as pd
 
@@ -22,9 +22,11 @@ def post(request):
     
     # import pdb; pdb.set_trace()
     if request.form['action'] == 'get_data':
-        get_data()
+        tsy_df = get_api_data()
+        tsy_df = filter_array(tsy_df)
+        tsy_df = setup_bonds(tsy_df)
 
-def get_data():
+def get_api_data():
     ''' retrieves raw data for treasuries through api 
     
     Parameters
@@ -34,24 +36,61 @@ def get_data():
     Return
     ======
     Pandas Array
-        raw data for the treasuries
+        all raw data for the treasuries that are not matured
     '''
     
     # returns all securities with maturity date > today
+    # TODO: maturity date filter for non matured bonds not working, returns all bonds
+    t0 = time.time()
     url = 'https://www.treasurydirect.gov/TA_WS/securities/search?maturityDate >=today&format=json'
-    test_url = 'https://www.treasurydirect.gov/TA_WS/securities/TIPS?format=json'
+    test_url = 'http://www.treasurydirect.gov/TA_WS/securities/Bond?format=json'
     try:
-        req = requests.get(url)
+        req = requests.get(test_url)
     except Exception as e:
         pdb.set_trace()
         exc_type, exc_obj, exc_tb = sys.exc_info()
         app.logger.info("API GRAB ERROR: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
     
     tsy_df = pd.read_json(req.content.decode('utf-8'))
-    import pdb; pdb.set_trace()
-    print("got here")
+    tsy_df = tsy_df[tsy_df['maturityDate'] > str(datetime.date.today())]
+    t1 = time.time()
+    print("took {0} seconds".format(t1-t0))
+    
+    return tsy_df
+    
+def filter_array(tsy_df):
+    ''' removes unnecessary columns and does any other desired filtering
+    
+    Parameters
+    ==========
+    tsy_df = pandas df
+        array of raw data from api
+        
+    Return
+    ======
+    tsy_df = pandas df
+        filtered array
+    '''
+    
+    tsy_df = tsy_df['cusip','issueDate','maturityDate','securityType','interestRate','callable',
+                    'firstInterestPaymentDate','averageMedianPrice','averageMedianYield']
+    return tsy_df
 
+def setup_bonds(tsy_df):
+    ''' Take the filtered array and setup bond based on type
+    
+    Parameters
+    ==========
+    tsy_df = pandas df
+        array of filtered bond data
+    
+    Return
+    ======
+    tsy_df = pandas df
+        array of bond objects, no longer just raw data
+    '''
+    pass
 
 # Used for testing
 if __name__ == '__main__':
-    get_data()
+    get_api_data()
