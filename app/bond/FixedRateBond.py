@@ -81,7 +81,6 @@ class FixedRateBond(Bond):
         tuple
             pair of pv and ytm
         '''
-        import pdb; pdb.set_trace()
         if pv:
             ytm = calcYieldToDate(pv, self._par, self._tenor, self._cpn, self._pay_freq)
         else:
