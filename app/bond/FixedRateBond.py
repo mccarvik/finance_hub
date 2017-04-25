@@ -50,25 +50,31 @@ class FixedRateBond(Bond):
         '''
         super().__init__(cusip, issue_dt, mat_dt, sec_type)
         ytm = ytm / 100 if ytm else None
-        # self._trade_dt = issue_dt       # for now
-        # self._settle_dt = issue_dt      # for convenience
         self._dcc = dcc or "ACT/ACT"
-        self._cpn = cpn / 100
+        self._cpn = cpn / 100 if cpn else 0
         self._pay_freq = freq  
         self._par = par
         self._trade_dt = trade_dt
+        
+        if self._cpn==0:
+            import pdb; pdb.set_trace()
+            print()
+        
         if first_pay_dt:
             self._first_pay_dt = datetime.date(int(first_pay_dt[0:4]), int(first_pay_dt[5:7]), int(first_pay_dt[8:10]))
             self._cash_flows = createCashFlows(self._first_pay_dt, self._pay_freq, self._mat_dt, self._cpn, self._par)
-            self._cash_flows.insert(0, (self._first_pay_dt, cpn*freq))
+            self._cash_flows.insert(0, (self._first_pay_dt, self._cpn*freq))
         else:
             self._cash_flows = createCashFlows(self._issue_dt, self._pay_freq, self._mat_dt, self._cpn, self._par)
-        
-        import pdb; pdb.set_trace()
-        self._pv, self._ytm = self.calcPVandYTM(price, ytm)
-        self._conv_factor = self.calcConversionFactor()
-        self._dur_mod = self.calcDurationModified()
-        self._dur_mac = self.calcDurationMacauley()
+
+        try:
+            self._pv, self._ytm = self.calcPVandYTM(price, ytm)
+            self._conv_factor = self.calcConversionFactor()
+            self._dur_mod = self.calcDurationModified()
+            self._dur_mac = self.calcDurationMacauley()
+        except:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            app.logger.info("ISSUE Calculating bond for cusip: {3}: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj, self._cusip))
     
     def calcPVandYTM(self, pv, ytm):
         ''' Will calculate PV from YTM or YTM from pv depending on what is provided

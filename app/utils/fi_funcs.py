@@ -165,9 +165,6 @@ def calcYieldToDate(price, par, mat_date, cpn, freq=0.5, start_date=datetime.dat
     cfs = [c for c in cfs if c[0] > start_date]
     cpn_dts = [((i[0] - start_date).days / 365, i[1]) for i in cfs]
     
-    # ytm_func = lambda y: \
-    #     sum([coupon/(1+y*freq)**(t/freq) for t in cpn_dts]) + \
-    #     par/(1+y*freq)**(tenor/freq) - price
     ytm_func = lambda y: \
         sum([c/(1+y*freq)**(t/freq) for t,c in cpn_dts]) - price
         
@@ -178,14 +175,18 @@ def derivative(f, x, h):
     return (f(x+h) - f(x-h)) / (2.0*h)  # might want to return a small non-zero if ==0
 
 def newton_raphson(func, guess, rng=0.00001):
-    lastX = guess
-    nextX = lastX + 10* rng  # "different than lastX so loop starts OK
-    while (abs(lastX - nextX) > rng):  # this is how you terminate the loop - note use of abs()
-        newY = func(nextX)                     # just for debug... see what happens
-        print("f(", nextX, ") = ", newY)     # print out progress... again just debug
-        lastX = nextX
-        nextX = lastX - newY / derivative(func, lastX, rng)  # update estimate using N-R
-    return nextX
+    try:
+        lastX = guess
+        nextX = lastX + 10* rng  # "different than lastX so loop starts OK
+        while (abs(lastX - nextX) > rng):  # this is how you terminate the loop - note use of abs()
+            newY = func(nextX)                     # just for debug... see what happens
+            print("f(", nextX, ") = ", newY)     # print out progress... again just debug
+            lastX = nextX
+            nextX = lastX - newY / derivative(func, lastX, rng)  # update estimate using N-R
+        return nextX
+    except:
+        import pdb; pdb.set_trace()
+        print()
     
 def calcSurvivalRate(time, rate):
     # time measured in years
