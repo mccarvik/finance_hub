@@ -1,8 +1,9 @@
 import sys
 sys.path.append("/home/ubuntu/workspace/finance")
+sys.path.append("/usr/local/lib/python2.7/dist-packages")
 import datetime
-from .Bond import Bond
 from app import app
+from app.bond.Bond import Bond
 from app.utils.fi_funcs import *
 
 class FixedRateBond(Bond):
@@ -38,7 +39,7 @@ class FixedRateBond(Bond):
             current price of the bond
         ytm : float
             yield to maturity of the bond
-            NOTE - will come in as percent value and divided by 100, ex 2% / 100 = 0.02
+            NOTE - will come in as percent value and divided by 100, ex come in as 2(%) and become / 100 = 0.02
         trade_dt : date
             day the calculation is done from, DEFAULT = today
         
@@ -80,8 +81,8 @@ class FixedRateBond(Bond):
         tuple
             pair of pv and ytm
         '''
+        import pdb; pdb.set_trace()
         if pv:
-            import pdb; pdb.set_trace()
             ytm = calcYieldToDate(pv, self._par, self._mat_dt, self._cpn, freq=self._pay_freq, start_date=self._trade_dt)
         else:
             pv = cumPresentValue(self._trade_dt, ytm, self._cash_flows, self._pay_freq, cont=False)
@@ -146,14 +147,15 @@ class FixedRateBond(Bond):
         
 
 if __name__ == "__main__":
-    # import pdb; pdb.set_trace()
-    bond = FixedRateBond(3, datetime.date(2016,12,13), 0.5, 0.10, "ACT/ACT", 100, ytm=0.123673)
-    fwd_rates = [.05, .058, .064, .068]
-    cf = [cf[0] for cf in bond._cash_flows]
-    fwd_rates = list(zip(cf,fwd_rates))
-    print(bond.calcParYield(fwd_rates,cont_comp=True))
+    import pdb; pdb.set_trace()
+    bond = FixedRateBond("TEST", "2017-01-01", "2020-01-01", "Bond", freq=1, cpn=10, dcc="ACT/ACT", 
+                        par=100, ytm=10.405, trade_dt=datetime.date(2017,1,1))
+    # fwd_rates = [.05, .058, .064, .068]
+    # cf = [cf[0] for cf in bond._cash_flows]
+    # fwd_rates = list(zip(cf,fwd_rates))
+    # print(bond.calcParYield(fwd_rates,cont_comp=True))
     # print(bond._conv_factor)
-    # print(bond._pv)
+    print(bond._pv)
     # print(bond._dur_mod)
     # print(bond._dur_mac)
     

@@ -122,7 +122,7 @@ def createCashFlows(start_date, freq, mat_date, cpn, par):
     '''
     tenor = (mat_date - start_date).days / 365.25 # assumes 365.25 days in a year
     num_cfs = (1 / freq) * tenor
-    days_from_issue = [int((365 * freq)*(i+1)) for i in range(int(num_cfs))]
+    days_from_issue = [int((365 * freq)*(i+1)) for i in range(round(num_cfs))]
     dates = [start_date + datetime.timedelta(i) for i in days_from_issue]
     cfs = [(dates[i], cpn * par * freq) for i in range(len(dates))]
     cfs.append((mat_date, par))
@@ -163,11 +163,14 @@ def calcYieldToDate(price, par, mat_date, cpn, freq=0.5, start_date=datetime.dat
     cfs = createCashFlows(start_date, freq, mat_date, cpn, par)
     # filters for only cash flows that haven't occurred yet
     cfs = [c for c in cfs if c[0] > start_date]
+    import pdb; pdb.set_trace()
+    cpn_dts = [((i[0] - start_date).days / 365, i[1]) for i in cfs]
     
-    dts = [(i[0] - start_date).days / 365 for i in cfs]
+    # ytm_func = lambda y: \
+    #     sum([coupon/(1+y*freq)**(t/freq) for t in cpn_dts]) + \
+    #     par/(1+y*freq)**(tenor/freq) - price
     ytm_func = lambda y: \
-        sum([coupon/(1+y*freq)**(t/freq) for t in dts]) + \
-        par/(1+y*freq)**(tenor/freq) - price
+        sum([c/(1+y*freq)**(t/freq) for t,c in cpn_dts]) - price
         
     # return optimize.newton(ytm_func, guess)
     return newton_raphson(ytm_func, guess)
