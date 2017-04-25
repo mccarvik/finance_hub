@@ -65,6 +65,19 @@ class FixedRateBond(Bond):
         self._dur_mac = self.calcDurationMacauley()
     
     def calcPVandYTM(self, pv, ytm):
+        ''' Will calculate PV from YTM or YTM from pv depending on what is provided
+        Parameters
+        ==========
+        pv : float
+            present value of the bond
+        ytm : float
+            yield to maturity of the bond
+        
+        Return
+        ======
+        tuple
+            pair of pv and ytm
+        '''
         import pdb; pdb.set_trace()
         if pv:
             ytm = calcYieldToDate(pv, self._par, self._tenor, self._cpn, self._pay_freq)
