@@ -29,7 +29,6 @@ def bootstrap(first_zero_rate, first_mat, bs_rate_mats):
         new_bs_rate_mats.append(tuple([bs_rate_mats[i][1] + new_bs_rate_mats[-1][0], next_bs_zero_rate]))
     return new_bs_rate_mats
 
-
 def cumPresentValue(today, annual_disc_rate, cfs, freq=1, cont=True):
     ''' calculates the sum of the present value of all discounted cash flows
     Parameters

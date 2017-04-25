@@ -7,6 +7,7 @@ import pandas as pd
 from app.utils.fi_funcs import FREQ_MAP
 from app.bond.Bond import Bond
 from app.bond.FixedRateBond import FixedRateBond
+from app.bond.Bill import Bill
 
 
 
@@ -78,10 +79,9 @@ def filter_clean_array(tsy_df):
     '''
     tsy_df = tsy_df[tsy_df['maturityDate'] > str(datetime.date.today())] # remove any matured bonds
     tsy_df = tsy_df[tsy_df['issueDate'] < str(datetime.date.today())] # remove any bonds not yet issued
-    
     tsy_df = tsy_df[['cusip','issueDate','maturityDate','securityType','interestRate','callable',
                     'firstInterestPaymentDate','averageMedianPrice','averageMedianYield',
-                    'interestPaymentFrequency']]
+                    'interestPaymentFrequency','averageMedianDiscountRate','pricePer100']]
     tsy_df['averageMedianPrice'] = pd.to_numeric(tsy_df['averageMedianPrice'], errors='ignore')
     tsy_df['averageMedianYield'] = pd.to_numeric(tsy_df['averageMedianYield'], errors='ignore')
     tsy_df['interestRate'] = pd.to_numeric(tsy_df['interestRate'], errors='ignore')
@@ -101,13 +101,19 @@ def setup_bonds(tsy_df):
     tsy_df = pandas df
         array of bond objects, no longer just raw data
     '''
-    import pdb; pdb.set_trace()
     new_tsy = []
+    import pdb; pdb.set_trace()
+    # tsy_df[tsy_df.apply(lambda x: x['securityType'] in ['Bond', 'Note'], axis=1)]
     for idx, t in tsy_df.iterrows():
-        new_tsy.append(FixedRateBond(t['cusip'], t['issueDate'], t['maturityDate'], t['securityType'],
-                    freq=FREQ_MAP[t['interestPaymentFrequency']],first_pay_dt=t['firstInterestPaymentDate'],
-                    cpn=t['interestRate'], price=t['averageMedianPrice'], ytm=t['averageMedianYield']
-                    ))
+        if t['securityType'] in ['Bond', 'Note']:
+            new_tsy.append(FixedRateBond(t['cusip'], t['issueDate'], t['maturityDate'], t['securityType'],
+                        freq=FREQ_MAP[t['interestPaymentFrequency']],first_pay_dt=t['firstInterestPaymentDate'],
+                        cpn=t['interestRate'], price=t['averageMedianPrice'], ytm=t['averageMedianYield']
+                        ))
+        elif t['securityType'] in ['Bill']:
+            new_tsy.append(Bill(t['cusip'], t['issueDate'], t['maturityDate'], t['securityType'],
+                        disc_rate=t['averageMedianDiscountRate'], price=t['pricePer100']
+                        ))
     import pdb; pdb.set_trace()
     return new_tsy
 
