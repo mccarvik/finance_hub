@@ -31,6 +31,28 @@ def bootstrap(first_zero_rate, first_mat, bs_rate_mats):
 
 
 def cumPresentValue(today, annual_disc_rate, cfs, freq=1, cont=True):
+    ''' calculates the sum of the present value of all discounted cash flows
+    Parameters
+    ==========
+    today : date
+        trade date
+    annual_disc_rate : float
+        current annualized discount rate
+    cfs : dataframe of tuples
+        tuple pairs of amount and date for each cash flow
+    freq : float
+        frequency of payments
+    cont : bool
+        if the compounding is continuous or not
+    
+    Return
+    ======
+    cum_pv : float
+        the cumulative present value of the cash flows
+    '''
+    # filters for only cash flows that haven't occurred yet
+    cfs = [c for c in cfs if c[0] > today]
+    
     cum_pv = 0
     # freq if rate passed in is not annual, ex: 0.5 = semiannual
     ir = annual_disc_rate * freq
@@ -43,11 +65,40 @@ def cumPresentValue(today, annual_disc_rate, cfs, freq=1, cont=True):
     return cum_pv
 
 def calcPV(cf, ir, period):
+    ''' discounts the cash flow for the interest rate and period
+    Parameters
+    ==========
+    cf : float
+        amount of the cash flow
+    ir : float
+        current discount rate expressed in decimal terms
+    period : float
+        length of discount period
+    
+    Return
+    ======
+    cf : float
+        discounted cash flow
+    '''
     return (cf / (1+ir)**period)
 
 def calcPVContinuous(cf, ir, period):
+    ''' discounts the cash flow for the interest rate and period with continuous compounding
+    Parameters
+    ==========
+    cf : float
+        amount of the cash flow
+    ir : float
+        current discount rate
+    period : float
+        length of discount period
+    
+    Return
+    ======
+    cf : float
+        discounted cash flow
+    '''
     return cf * e**((-1) * ir * period)
-
 
 def createCashFlows(start_date, freq, mat_date, cpn, par):
     ''' Creats a list of tuple pairs where each pair is the date and amount of a cash flow

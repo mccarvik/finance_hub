@@ -28,7 +28,8 @@ class FixedRateBond(Bond):
             payment frequency of the bond, expressed in fractional terms of 1 year, ex: 0.5 = 6 months
             DEFAULT = 0.5
         cpn : float
-            coupon rate of the bond, expressed in percent terms, ex: 0.02 = 2%, DEFAULT = 0
+            coupon rate of the bond, expressed in percent terms not dollar amount, DEFAULT = 0
+            NOTE - will come in as percent value and divided by 100, ex 2% / 100 = 0.02
         dcc : str
             day count convention, DEFAULT = "ACT/ACT"
         par : float
@@ -37,6 +38,7 @@ class FixedRateBond(Bond):
             current price of the bond
         ytm : float
             yield to maturity of the bond
+            NOTE - will come in as percent value and divided by 100, ex 2% / 100 = 0.02
         trade_dt : date
             day the calculation is done from, DEFAULT = today
         
@@ -45,10 +47,11 @@ class FixedRateBond(Bond):
         NONE
         '''
         super().__init__(cusip, issue_dt, mat_dt, sec_type)
+        ytm = ytm / 100 if ytm else None
         # self._trade_dt = issue_dt       # for now
         # self._settle_dt = issue_dt      # for convenience
         self._dcc = dcc or "ACT/ACT"
-        self._cpn = cpn           
+        self._cpn = cpn / 100
         self._pay_freq = freq  
         self._par = par
         self._trade_dt = trade_dt
@@ -58,8 +61,8 @@ class FixedRateBond(Bond):
             self._cash_flows.insert(0, (self._first_pay_dt, cpn))
         else:
             self._cash_flows = createCashFlows(self._issue_dt, self._pay_freq, self._mat_dt, self._cpn, self._par)
-        import pdb; pdb.set_trace()
         self._pv, self._ytm = self.calcPVandYTM(price, ytm)
+        import pdb; pdb.set_trace()
         self._conv_factor = self.calcConversionFactor()
         self._dur_mod = self.calcDurationModified()
         self._dur_mac = self.calcDurationMacauley()
