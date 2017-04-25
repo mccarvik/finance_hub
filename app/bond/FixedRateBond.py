@@ -5,6 +5,7 @@ import datetime
 from app import app
 from app.bond.Bond import Bond
 from app.utils.fi_funcs import *
+from dateutil.relativedelta import relativedelta
 
 class FixedRateBond(Bond):
     """This class will hold all the variables associated with a fixed rate bond"""
@@ -62,6 +63,8 @@ class FixedRateBond(Bond):
             self._cash_flows.insert(0, (self._first_pay_dt, cpn*freq))
         else:
             self._cash_flows = createCashFlows(self._issue_dt, self._pay_freq, self._mat_dt, self._cpn, self._par)
+        
+        import pdb; pdb.set_trace()
         self._pv, self._ytm = self.calcPVandYTM(price, ytm)
         self._conv_factor = self.calcConversionFactor()
         self._dur_mod = self.calcDurationModified()
@@ -81,7 +84,6 @@ class FixedRateBond(Bond):
         tuple
             pair of pv and ytm
         '''
-        import pdb; pdb.set_trace()
         if pv:
             ytm = calcYieldToDate(pv, self._par, self._mat_dt, self._cpn, freq=self._pay_freq, start_date=self._trade_dt)
         else:
@@ -89,8 +91,20 @@ class FixedRateBond(Bond):
         return (pv, ytm)
     
     def calcConversionFactor(self):
-        # Assumptions: 20 yrs to maturity, 6% annual disc rate, semi-annual compounding, first cpn payment in 6 months
-        cfs = createCashFlows(self._issue_dt, 0.5, 20, self._cpn, 100)
+        ''' Calculates the conversion factor for his bond in relation to bond futures baskets
+            Assumptions: 20 yrs to maturity, 6% annual disc rate, semi-annual compounding, first cpn payment in 6 months
+        Parameters
+        ==========
+        self : Object
+            self instance that has all the variables needed
+        
+        Return
+        ======
+        convFactor : float
+            uses the cumulative present value function to calculate the bond conversion factor with the above assumptions
+        '''
+        assumed_mat_date = self._issue_dt + relativedelta(years=20)
+        cfs = createCashFlows(self._issue_dt, 0.5, assumed_mat_date, self._cpn, 100)
         return cumPresentValue(self._trade_dt, 0.06, cfs, 0.5) / self._par
     
     def calcDurationModified(self):
@@ -147,7 +161,7 @@ class FixedRateBond(Bond):
         
 
 if __name__ == "__main__":
-    import pdb; pdb.set_trace()
+    # import pdb; pdb.set_trace()
     bond = FixedRateBond("TEST", "2017-01-01", "2020-01-01", "Bond", freq=1, cpn=10, dcc="ACT/ACT", 
                         par=100, ytm=10.405, trade_dt=datetime.date(2017,1,1))
     # fwd_rates = [.05, .058, .064, .068]

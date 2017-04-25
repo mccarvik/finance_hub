@@ -163,7 +163,6 @@ def calcYieldToDate(price, par, mat_date, cpn, freq=0.5, start_date=datetime.dat
     cfs = createCashFlows(start_date, freq, mat_date, cpn, par)
     # filters for only cash flows that haven't occurred yet
     cfs = [c for c in cfs if c[0] > start_date]
-    import pdb; pdb.set_trace()
     cpn_dts = [((i[0] - start_date).days / 365, i[1]) for i in cfs]
     
     # ytm_func = lambda y: \
