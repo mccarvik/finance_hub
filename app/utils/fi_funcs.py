@@ -111,7 +111,7 @@ def createCashFlows(start_date, freq, mat_date, cpn, par):
     mat_date : date
         date of maturity of the bond
     cpn : float
-        amount of coupon payment
+        coupon rate, will be converted to dollar amount later
     par : float
         par amount of the bond at expiration
     
@@ -129,15 +129,42 @@ def createCashFlows(start_date, freq, mat_date, cpn, par):
     return cfs
 
 def calcYieldToDate(price, par, mat_date, cpn, freq=0.5, start_date=datetime.datetime.today(), guess=None):
+    ''' Takes a price and a cpn rate and then uses a newton-raphson approximation to
+        zero in on the interest rate (i.e. YTM) that resolves the equation of all the discounted
+        cash flows within and reasonable range
+    Parameters
+    ==========
+    start_date : date
+        start_date of the calculation, usually today
+    freq : float
+        payment frequency
+    mat_date : date
+        date of maturity of the bond
+    cpn : float
+        coupon rate
+    par : float
+        par amount of the bond at expiration
+    price : float
+        given price of the bond
+    guess : float
+        used for newton raphson approximation so the equation conforms quicker, defaults to the cpn rate
+    
+    Return
+    ======
+    ytm : float
+        returns the calculated approximate YTM
+    '''
     tenor = (mat_date - start_date).days / 365.25 # assumes 365.25 days in a year
     freq = float(freq)
     # guess ytm = coupon rate, will get us in the ball park
     guess = cpn
+    # convert cpn from annual rate to actual coupon value recieved
+    coupon = cpn * freq * par
     cfs = createCashFlows(start_date, freq, mat_date, cpn, par)
-    # convert cpn from annual rate to actual coupon
-    coupon = cpn * freq
+    # filters for only cash flows that haven't occurred yet
+    cfs = [c for c in cfs if c[0] > start_date]
+    
     dts = [(i[0] - start_date).days / 365 for i in cfs]
-    import pdb; pdb.set_trace()
     ytm_func = lambda y: \
         sum([coupon/(1+y*freq)**(t/freq) for t in dts]) + \
         par/(1+y*freq)**(tenor/freq) - price
@@ -146,10 +173,9 @@ def calcYieldToDate(price, par, mat_date, cpn, freq=0.5, start_date=datetime.dat
     return newton_raphson(ytm_func, guess)
 
 def derivative(f, x, h):
-    import pdb; pdb.set_trace()
     return (f(x+h) - f(x-h)) / (2.0*h)  # might want to return a small non-zero if ==0
 
-def newton_raphson(func, guess, rng=0.0001):
+def newton_raphson(func, guess, rng=0.00001):
     lastX = guess
     nextX = lastX + 10* rng  # "different than lastX so loop starts OK
     while (abs(lastX - nextX) > rng):  # this is how you terminate the loop - note use of abs()

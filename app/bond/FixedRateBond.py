@@ -58,12 +58,10 @@ class FixedRateBond(Bond):
         if first_pay_dt:
             self._first_pay_dt = datetime.date(int(first_pay_dt[0:4]), int(first_pay_dt[5:7]), int(first_pay_dt[8:10]))
             self._cash_flows = createCashFlows(self._first_pay_dt, self._pay_freq, self._mat_dt, self._cpn, self._par)
-            self._cash_flows.insert(0, (self._first_pay_dt, cpn))
+            self._cash_flows.insert(0, (self._first_pay_dt, cpn*freq))
         else:
             self._cash_flows = createCashFlows(self._issue_dt, self._pay_freq, self._mat_dt, self._cpn, self._par)
-        price = 100; ytm = None; self._cpn=0.02
         self._pv, self._ytm = self.calcPVandYTM(price, ytm)
-        import pdb; pdb.set_trace()
         self._conv_factor = self.calcConversionFactor()
         self._dur_mod = self.calcDurationModified()
         self._dur_mac = self.calcDurationMacauley()
