@@ -61,6 +61,7 @@ class FixedRateBond(Bond):
             self._cash_flows.insert(0, (self._first_pay_dt, cpn))
         else:
             self._cash_flows = createCashFlows(self._issue_dt, self._pay_freq, self._mat_dt, self._cpn, self._par)
+        price = 100; ytm = None; self._cpn=0.02
         self._pv, self._ytm = self.calcPVandYTM(price, ytm)
         import pdb; pdb.set_trace()
         self._conv_factor = self.calcConversionFactor()
@@ -82,7 +83,8 @@ class FixedRateBond(Bond):
             pair of pv and ytm
         '''
         if pv:
-            ytm = calcYieldToDate(pv, self._par, self._tenor, self._cpn, self._pay_freq)
+            import pdb; pdb.set_trace()
+            ytm = calcYieldToDate(pv, self._par, self._mat_dt, self._cpn, freq=self._pay_freq, start_date=self._trade_dt)
         else:
             pv = cumPresentValue(self._trade_dt, ytm, self._cash_flows, self._pay_freq, cont=False)
         return (pv, ytm)
