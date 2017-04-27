@@ -105,6 +105,7 @@ def setup_bonds(tsy_df):
     import pdb; pdb.set_trace()
     # tsy_df[tsy_df.apply(lambda x: x['securityType'] in ['Bond', 'Note'], axis=1)]
     for idx, t in tsy_df.iterrows():
+        # Not passing in price as that price is from auction date, price will be calculated from market rate
         if t['securityType'] in ['Bond', 'Note']:
             new_tsy.append(FixedRateBond(t['cusip'], t['issueDate'], t['maturityDate'], t['securityType'],
                         freq=FREQ_MAP[t['interestPaymentFrequency']],first_pay_dt=t['firstInterestPaymentDate'],
