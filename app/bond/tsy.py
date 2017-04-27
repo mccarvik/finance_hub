@@ -108,7 +108,7 @@ def setup_bonds(tsy_df):
         if t['securityType'] in ['Bond', 'Note']:
             new_tsy.append(FixedRateBond(t['cusip'], t['issueDate'], t['maturityDate'], t['securityType'],
                         freq=FREQ_MAP[t['interestPaymentFrequency']],first_pay_dt=t['firstInterestPaymentDate'],
-                        cpn=t['interestRate'], price=t['averageMedianPrice'], ytm=t['averageMedianYield']
+                        cpn=t['interestRate'], ytm=t['averageMedianYield']
                         ))
         elif t['securityType'] in ['Bill']:
             new_tsy.append(Bill(t['cusip'], t['issueDate'], t['maturityDate'], t['securityType'],
