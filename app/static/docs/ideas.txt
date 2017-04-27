@@ -1,3 +1,7 @@
 1. machine learning on financial stock picking
 2. calculator for fixed income products
 3. Poker odds calculator
+
+resources:
+fred api - may be useful later for economic data: https://research.stlouisfed.org/docs/api/fred/#API
+"from fredapi import Fred"
