@@ -5,9 +5,9 @@ sys.path.append("/usr/local/lib/python2.7/dist-packages")
 import pdb, requests, datetime, time
 import pandas as pd
 from app.utils.fi_funcs import FREQ_MAP
-from app.bond.Bond import Bond
-from app.bond.FixedRateBond import FixedRateBond
-from app.bond.Bill import Bill
+from app.bond.bond import Bond
+from app.bond.fixed_rate_bond import FixedRateBond
+from app.bond.bill import Bill
 
 
 

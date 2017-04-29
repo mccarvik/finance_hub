@@ -27,3 +27,6 @@ load from repo to github:
 add to repo:
     1. git add <script>
     2. git commit -m "<message>"
+    
+add a directory to PATH:
+"export PATH=$PATH:/path/to/add"

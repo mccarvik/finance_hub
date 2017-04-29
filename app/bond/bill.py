@@ -3,7 +3,7 @@ sys.path.append("/home/ubuntu/workspace/finance")
 sys.path.append("/usr/local/lib/python2.7/dist-packages")
 import datetime
 from app import app
-from app.bond.Bond import Bond
+from app.bond.bond import Bond
 from app.utils.fi_funcs import *
 
 class Bill(Bond):

@@ -3,7 +3,7 @@ sys.path.append("/home/ubuntu/workspace/finance")
 sys.path.append("/usr/local/lib/python2.7/dist-packages")
 import datetime
 from app import app
-from app.bond.Bond import Bond
+from app.bond.bond import Bond
 from app.utils.fi_funcs import *
 from dateutil.relativedelta import relativedelta
 
@@ -168,14 +168,17 @@ class FixedRateBond(Bond):
 
 if __name__ == "__main__":
     # import pdb; pdb.set_trace()
+    # bond = FixedRateBond("TEST", "2017-01-01", "2020-01-01", "Bond", freq=1, cpn=10, dcc="ACT/ACT", 
+    #                     par=100, ytm=10.405, trade_dt=datetime.date(2017,1,1))
     bond = FixedRateBond("TEST", "2017-01-01", "2020-01-01", "Bond", freq=1, cpn=10, dcc="ACT/ACT", 
-                        par=100, ytm=10.405, trade_dt=datetime.date(2017,1,1))
+                        par=100, price=99, trade_dt=datetime.date(2017,1,1))
     # fwd_rates = [.05, .058, .064, .068]
     # cf = [cf[0] for cf in bond._cash_flows]
     # fwd_rates = list(zip(cf,fwd_rates))
     # print(bond.calcParYield(fwd_rates,cont_comp=True))
     # print(bond._conv_factor)
     print(bond._pv)
+    print(bond._ytm)
     # print(bond._dur_mod)
     # print(bond._dur_mac)
     

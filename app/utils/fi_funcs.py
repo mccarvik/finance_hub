@@ -179,7 +179,7 @@ def newton_raphson(func, guess, rng=0.00001):
         nextX = lastX + 10* rng  # "different than lastX so loop starts OK
         while (abs(lastX - nextX) > rng):  # this is how you terminate the loop - note use of abs()
             newY = func(nextX)                     # just for debug... see what happens
-            print("f(", nextX, ") = ", newY)     # print out progress... again just debug
+            # print("f(", nextX, ") = ", newY)     # print out progress... again just debug
             lastX = nextX
             nextX = lastX - newY / derivative(func, lastX, rng)  # update estimate using N-R
         return nextX
