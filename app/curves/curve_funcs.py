@@ -50,7 +50,7 @@ def loadTreasuryCurve(dflt=False):
     import pdb; pdb.set_trace()
     xml = bytes(bytearray(data, encoding='utf-8'))
     root = etree.XML(xml)
-    time.sleep((0.5))
+    # time.sleep((0.5))
     # weird funky thing with the format, will try to solve later
     # xml adds an xmlns namespace thing that latches on to each elements
     ns = ["{"+n+"}" for n in list(root.nsmap.values())]
@@ -69,6 +69,25 @@ def loadTreasuryCurve(dflt=False):
     today = datetime.date.today()
     rate_list = [[today + datetime.timedelta(days=TSY_CURVE_MAP[r[0]]), float(r[1])/100] for r in rate_list]
     return Curve([r[0] for r in rate_list], [r[1] for r in rate_list])
-    
+
+
+def flatInterp(mat_dt, crv):
+    below = 0
+    for i in crv._curve:
+        if i[0] > mat_dt:
+            above = i
+            break
+        else:
+            below = i
+            above = None
+    if not above:
+        return below
+    if not below:
+        return above
+    if (abs(above[0] - mat_dt) < abs(below[0] - mat_dt)):
+        return above
+    else:
+        return below
+
 if __name__ == "__main__":
     loadTreasuryCurve(dflt=True)

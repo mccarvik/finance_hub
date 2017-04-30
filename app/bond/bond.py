@@ -1,4 +1,5 @@
 import datetime
+from app.curves import curve_funcs
 
 class Bond():
     '''Parent class for Bonds, holds all the generic information'''
@@ -24,3 +25,25 @@ class Bond():
         self._issue_dt = datetime.date(int(issueDate[0:4]), int(issueDate[5:7]), int(issueDate[8:10]))
         self._mat_dt = datetime.date(int(matDate[0:4]), int(matDate[5:7]), int(matDate[8:10]))
         self._sec_type = secType
+    
+    def findBenchmarkRate(self, crv_type='tsy', interp='flat'):
+        ''' method to find the benchmark bond for a given curve
+        Parameters
+        ==========
+        crv : string
+            type of curve to load
+        interp : string
+            the interpolation method to find the benchmark rate
+            flat = finds the closest point and takes that value
+        
+        Return
+        ======
+        rate : float
+            the benchmark rate for this bond
+        '''
+        if crv_type == 'tsy':
+            crv = curve_funcs.loadTreasuryCurve(dflt=True)
+        
+        if interp == 'flat':
+            return curve_funcs.flatInterp(self._mat_dt, crv)
+    

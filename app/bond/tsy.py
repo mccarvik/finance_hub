@@ -49,9 +49,9 @@ def get_api_data():
     # TODO: maturity date filter for non matured bonds not working, returns all bonds
     t0 = time.time()
     url = 'https://www.treasurydirect.gov/TA_WS/securities/search?maturityDate >=today&format=json'
-    # test_url = 'http://www.treasurydirect.gov/TA_WS/securities/Bond?format=json'
+    test_url = 'http://www.treasurydirect.gov/TA_WS/securities/Bond?format=json'
     # test_url = 'http://www.treasurydirect.gov/TA_WS/securities/Note?format=json'
-    test_url = 'http://www.treasurydirect.gov/TA_WS/securities/Bill?format=json'
+    # test_url = 'http://www.treasurydirect.gov/TA_WS/securities/Bill?format=json'
     try:
         req = requests.get(test_url)
     except Exception as e:
@@ -106,10 +106,11 @@ def setup_bonds(tsy_df):
     # tsy_df[tsy_df.apply(lambda x: x['securityType'] in ['Bond', 'Note'], axis=1)]
     for idx, t in tsy_df.iterrows():
         # Not passing in price as that price is from auction date, price will be calculated from market rate
+        # Not passing in ytm as we will assume it is equal to market rate
         if t['securityType'] in ['Bond', 'Note']:
             new_tsy.append(FixedRateBond(t['cusip'], t['issueDate'], t['maturityDate'], t['securityType'],
                         freq=FREQ_MAP[t['interestPaymentFrequency']],first_pay_dt=t['firstInterestPaymentDate'],
-                        cpn=t['interestRate'], ytm=t['averageMedianYield']
+                        cpn=t['interestRate'],
                         ))
         elif t['securityType'] in ['Bill']:
             new_tsy.append(Bill(t['cusip'], t['issueDate'], t['maturityDate'], t['securityType'],

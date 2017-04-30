@@ -16,6 +16,6 @@ class Curve():
         ======
         NONE
         '''
-        self._curve = zip(dts,rates)
+        self._curve = list(zip(dts,rates))
         # https://www.treasury.gov/resource-center/data-chart-center/digitalstrategy/pages/developer.aspx
         # https://www.treasury.gov/resource-center/data-chart-center/interest-rates/Pages/TextView.aspx?data=yield

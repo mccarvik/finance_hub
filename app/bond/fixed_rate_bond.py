@@ -1,7 +1,7 @@
 import sys
 sys.path.append("/home/ubuntu/workspace/finance")
 sys.path.append("/usr/local/lib/python2.7/dist-packages")
-import datetime
+import datetime, pdb
 from app import app
 from app.bond.bond import Bond
 from app.curves.curve_funcs import loadTreasuryCurve
@@ -57,28 +57,27 @@ class FixedRateBond(Bond):
         self._par = par
         self._trade_dt = trade_dt
         
-        if self._cpn==0:
-            import pdb; pdb.set_trace()
-            print()
-        
         if first_pay_dt:
             self._first_pay_dt = datetime.date(int(first_pay_dt[0:4]), int(first_pay_dt[5:7]), int(first_pay_dt[8:10]))
             self._cash_flows = createCashFlows(self._first_pay_dt, self._pay_freq, self._mat_dt, self._cpn, self._par)
-            self._cash_flows.insert(0, (self._first_pay_dt, self._cpn*freq))
+            self._cash_flows.insert(0, (self._first_pay_dt, self._cpn * self._par * freq))
         else:
             self._cash_flows = createCashFlows(self._issue_dt, self._pay_freq, self._mat_dt, self._cpn, self._par)
 
         try:
+            self._bm = self.findBenchmarkRate()
             self._pv, self._ytm = self.calcPVandYTM(price, ytm)
             self._conv_factor = self.calcConversionFactor()
             self._dur_mod = self.calcDurationModified()
             self._dur_mac = self.calcDurationMacauley()
         except:
+            pdb.set_trace()
             exc_type, exc_obj, exc_tb = sys.exc_info()
             app.logger.info("ISSUE Calculating bond for cusip: {3}: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj, self._cusip))
     
     def calcPVandYTM(self, pv, ytm):
         ''' Will calculate PV from YTM or YTM from pv depending on what is provided
+            if neither pv or ytm is provided, assume ytm = benchmark rate and calc pv from there
         Parameters
         ==========
         pv : float
@@ -96,7 +95,10 @@ class FixedRateBond(Bond):
         elif ytm:
             pv = cumPresentValue(self._trade_dt, ytm, self._cash_flows, self._pay_freq, cont=False)
         else:
-            crv = loadTreasuryCurve(dflt=True)
+            # pdb.set_trace()
+            ytm = self._bm[1]
+            pv = cumPresentValue(self._trade_dt, ytm, self._cash_flows, self._pay_freq, cont=False)
+        pdb.set_trace()
         return (pv, ytm)
     
     def calcConversionFactor(self):
@@ -172,7 +174,7 @@ class FixedRateBond(Bond):
 if __name__ == "__main__":
     # import pdb; pdb.set_trace()
     # bond = FixedRateBond("TEST", "2017-01-01", "2020-01-01", "Bond", freq=1, cpn=10, dcc="ACT/ACT", 
-    #                     par=100, ytm=10.405, trade_dt=datetime.date(2017,1,1))
+    #                     par=100, price=99 ytm=10.405, trade_dt=datetime.date(2017,1,1))
     bond = FixedRateBond("TEST", "2017-01-01", "2020-01-01", "Bond", freq=1, cpn=10, dcc="ACT/ACT", 
                         par=100, trade_dt=datetime.date(2017,1,1))
     # fwd_rates = [.05, .058, .064, .068]
