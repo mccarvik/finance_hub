@@ -26,7 +26,7 @@ class Bond():
         self._mat_dt = datetime.date(int(matDate[0:4]), int(matDate[5:7]), int(matDate[8:10]))
         self._sec_type = secType
     
-    def findBenchmarkRate(self, crv_type='tsy', interp='flat'):
+    def findBenchmarkRate(self, crv_type='tsy', interp='linear'):
         ''' method to find the benchmark bond for a given curve
         Parameters
         ==========
