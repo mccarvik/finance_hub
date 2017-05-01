@@ -2,6 +2,7 @@ import sys
 sys.path.append("/home/ubuntu/workspace/finance")
 sys.path.append("/usr/local/lib/python2.7/dist-packages")
 import requests, re, time, datetime
+import numpy as np
 from app import app
 from bs4 import BeautifulSoup as bs
 # import xml.etree.ElementTree as ET
@@ -88,6 +89,26 @@ def flatInterp(mat_dt, crv):
         return above
     else:
         return below
+
+def linearInterp(mat_dt, crv)
+    below = 0
+    for i in crv._curve:
+        if i[0] > mat_dt:
+            above = i
+            break
+        else:
+            below = i
+            above = None
+    if not above:
+        return below
+    if not below:
+        # assume a bottom point of 0 and time of right now
+        # Not a perfect assumption but its an edge case for the real short end
+        below = (datetime.date.today(), 0)
+    pdb.set_trace()
+    interp = np.interp([below[0], above[0]], [below[1], above[1]], mat_dt)
+    
+    
 
 if __name__ == "__main__":
     loadTreasuryCurve(dflt=True)

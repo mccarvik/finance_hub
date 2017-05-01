@@ -1,7 +1,7 @@
 import sys
 sys.path.append("/home/ubuntu/workspace/finance")
 sys.path.append("/usr/local/lib/python2.7/dist-packages")
-import datetime
+import datetime, pdb
 from app import app
 from app.bond.bond import Bond
 from app.utils.fi_funcs import *
@@ -40,11 +40,14 @@ class Bill(Bond):
         NONE
         '''
         super().__init__(cusip, issue_dt, mat_dt, sec_type)
-        ytm = ytm / 100 if ytm else None
+        pdb.set_trace()
         self._dcc = dcc or "ACT/ACT"
         self._par = par
         self._price = price
         self._trade_dt = trade_dt
+        pdb.set_trace()
+        self._bm = self.findBenchmarkRate()
+        self._ytm = ytm / 100 if ytm else self._bm[1]
     
     def calcDiscountYield(self):
         disc = (self._par - self._price) / self._par
@@ -54,7 +57,7 @@ class Bill(Bond):
     def calcPresentValue(self):
         # http://www.investopedia.com/exam-guide/series-7/debt-securities/compute-treasury-discount-yield.asp
         days_to_mat = (mat_date - self._trade_dt).days
-        val = (self._disc_yld * days_to_mat) / 360
+        val = (self._ytm * days_to_mat) / 360
         val = (1 - val) * self._par
         
     

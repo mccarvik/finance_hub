@@ -49,9 +49,9 @@ def get_api_data():
     # TODO: maturity date filter for non matured bonds not working, returns all bonds
     t0 = time.time()
     url = 'https://www.treasurydirect.gov/TA_WS/securities/search?maturityDate >=today&format=json'
-    test_url = 'http://www.treasurydirect.gov/TA_WS/securities/Bond?format=json'
+    # test_url = 'http://www.treasurydirect.gov/TA_WS/securities/Bond?format=json'
     # test_url = 'http://www.treasurydirect.gov/TA_WS/securities/Note?format=json'
-    # test_url = 'http://www.treasurydirect.gov/TA_WS/securities/Bill?format=json'
+    test_url = 'http://www.treasurydirect.gov/TA_WS/securities/Bill?format=json'
     try:
         req = requests.get(test_url)
     except Exception as e:
@@ -113,8 +113,7 @@ def setup_bonds(tsy_df):
                         cpn=t['interestRate'],
                         ))
         elif t['securityType'] in ['Bill']:
-            new_tsy.append(Bill(t['cusip'], t['issueDate'], t['maturityDate'], t['securityType'],
-                        disc_rate=t['averageMedianDiscountRate'], price=t['pricePer100']
+            new_tsy.append(Bill(t['cusip'], t['issueDate'], t['maturityDate'], t['securityType']
                         ))
     import pdb; pdb.set_trace()
     return new_tsy
