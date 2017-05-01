@@ -51,3 +51,4 @@ DB = 'finance'
 DBHOST = 'localhost'
 
 FRED_API_KEY = '37c0d190aa9135031d213194f0930142'
+IMG_PATH = "/home/ubuntu/workspace/finance/app/static/img/"

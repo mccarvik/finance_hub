@@ -1,9 +1,13 @@
 import sys
 sys.path.append("/home/ubuntu/workspace/finance")
 sys.path.append("/usr/local/lib/python2.7/dist-packages")
+import matplotlib as mpl
+mpl.use('Agg')
 import requests, re, time, datetime, pdb
 import numpy as np
+import matplotlib.pyplot as plt
 from app import app
+from config import IMG_PATH
 from bs4 import BeautifulSoup as bs
 # import xml.etree.ElementTree as ET
 from lxml import etree
@@ -24,7 +28,7 @@ TSY_CURVE_MAP = {
     'BC_30YEAR' : 10950,
 }
 
-def loadTreasuryCurve(dflt=False):
+def loadTreasuryCurve(dflt=False, disp=True):
     ''' uses beautiful soup to scrape treasury xml for curve points
     
     Parameters
@@ -32,6 +36,8 @@ def loadTreasuryCurve(dflt=False):
     dflt : bool
         when set to true, loads a default curve that has the right format
         but rates might be out of date
+    disp : bool
+        when true, will save the matplotlib image
     
     Return
     ======
@@ -44,6 +50,8 @@ def loadTreasuryCurve(dflt=False):
                     [datetime.date(2018, 4, 30), 0.0107], [datetime.date(2019, 4, 30), 0.0128], [datetime.date(2020, 4, 29), 0.0145], 
                     [datetime.date(2022, 4, 29), 0.0181], [datetime.date(2024, 4, 28), 0.021], [datetime.date(2027, 4, 28), 0.0229], 
                     [datetime.date(2037, 4, 25), 0.0267], [datetime.date(2047, 4, 23), 0.0296]]
+        if disp:
+            saveCurveImg(rate_list)
         return Curve([r[0] for r in rate_list], [r[1] for r in rate_list])
     
     url = 'http://data.treasury.gov/feed.svc/DailyTreasuryYieldCurveRateData?$filter=month(NEW_DATE)%20eq%204%20and%20year(NEW_DATE)%20eq%202017'
@@ -69,8 +77,20 @@ def loadTreasuryCurve(dflt=False):
     # divide by 100 to get it in decimal form
     today = datetime.date.today()
     rate_list = [[today + datetime.timedelta(days=TSY_CURVE_MAP[r[0]]), float(r[1])/100] for r in rate_list]
+    
+    if disp:
+        saveCurveImg(rate_list)
+        
     return Curve([r[0] for r in rate_list], [r[1] for r in rate_list])
 
+def saveCurveImg(rate_list):
+    x = [r[0] for r in rate_list]
+    y = [r[1] for r in rate_list]
+    plt.plot(x, y)
+    plt.xlabel('Date')
+    plt.ylabel('Rate')
+    plt.tight_layout()
+    plt.savefig(IMG_PATH + 'tsy_curve.png', dpi=300)
 
 def flatInterp(mat_dt, crv):
     below = 0
