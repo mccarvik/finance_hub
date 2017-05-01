@@ -35,6 +35,7 @@ class Bond():
         interp : string
             the interpolation method to find the benchmark rate
             flat = finds the closest point and takes that value
+            linear = linear interpolate between nearest two points
         
         Return
         ======
@@ -46,4 +47,7 @@ class Bond():
         
         if interp == 'flat':
             return curve_funcs.flatInterp(self._mat_dt, crv)
+        elif interp == 'linear':
+            return curve_funcs.linearInterp(self._mat_dt, crv)
+            
     

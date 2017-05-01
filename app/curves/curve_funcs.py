@@ -1,7 +1,7 @@
 import sys
 sys.path.append("/home/ubuntu/workspace/finance")
 sys.path.append("/usr/local/lib/python2.7/dist-packages")
-import requests, re, time, datetime
+import requests, re, time, datetime, pdb
 import numpy as np
 from app import app
 from bs4 import BeautifulSoup as bs
@@ -90,7 +90,7 @@ def flatInterp(mat_dt, crv):
     else:
         return below
 
-def linearInterp(mat_dt, crv)
+def linearInterp(mat_dt, crv):
     below = 0
     for i in crv._curve:
         if i[0] > mat_dt:

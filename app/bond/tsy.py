@@ -50,8 +50,8 @@ def get_api_data():
     t0 = time.time()
     url = 'https://www.treasurydirect.gov/TA_WS/securities/search?maturityDate >=today&format=json'
     # test_url = 'http://www.treasurydirect.gov/TA_WS/securities/Bond?format=json'
-    # test_url = 'http://www.treasurydirect.gov/TA_WS/securities/Note?format=json'
-    test_url = 'http://www.treasurydirect.gov/TA_WS/securities/Bill?format=json'
+    test_url = 'http://www.treasurydirect.gov/TA_WS/securities/Note?format=json'
+    # test_url = 'http://www.treasurydirect.gov/TA_WS/securities/Bill?format=json'
     try:
         req = requests.get(test_url)
     except Exception as e:

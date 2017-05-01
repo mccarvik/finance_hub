@@ -65,7 +65,8 @@ class FixedRateBond(Bond):
             self._cash_flows = createCashFlows(self._issue_dt, self._pay_freq, self._mat_dt, self._cpn, self._par)
 
         try:
-            self._bm = self.findBenchmarkRate()
+            pdb.set_trace()
+            self._bm = self.findBenchmarkRate(interp='linear')
             self._pv, self._ytm = self.calcPVandYTM(price, ytm)
             self._conv_factor = self.calcConversionFactor()
             self._dur_mod = self.calcDurationModified()
@@ -95,7 +96,6 @@ class FixedRateBond(Bond):
         elif ytm:
             pv = cumPresentValue(self._trade_dt, ytm, self._cash_flows, self._pay_freq, cont=False)
         else:
-            # pdb.set_trace()
             ytm = self._bm[1]
             pv = cumPresentValue(self._trade_dt, ytm, self._cash_flows, self._pay_freq, cont=False)
         pdb.set_trace()
