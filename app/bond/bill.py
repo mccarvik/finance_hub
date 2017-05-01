@@ -40,25 +40,35 @@ class Bill(Bond):
         NONE
         '''
         super().__init__(cusip, issue_dt, mat_dt, sec_type)
-        pdb.set_trace()
         self._dcc = dcc or "ACT/ACT"
         self._par = par
-        self._price = price
         self._trade_dt = trade_dt
-        pdb.set_trace()
         self._bm = self.findBenchmarkRate()
-        self._ytm = ytm / 100 if ytm else self._bm[1]
+        self._pv = price
+        if self._pv:
+            self._disc_yld = self.calcDiscountYield()
+        else:
+            self._disc_yld = ytm / 100 if ytm else self._bm[1]
+            self._pv = self.calcPresentValue()
     
     def calcDiscountYield(self):
-        disc = (self._par - self._price) / self._par
-        days_to_mat = (mat_date - self._trade_dt).days
+        pdb.set_trace()
+        disc = (self._par - self._pv) / self._par
+        days_to_mat = (self._mat_dt - self._trade_dt).days
         return ((360 / days_to_mat) * disc)
     
     def calcPresentValue(self):
         # http://www.investopedia.com/exam-guide/series-7/debt-securities/compute-treasury-discount-yield.asp
-        days_to_mat = (mat_date - self._trade_dt).days
-        val = (self._ytm * days_to_mat) / 360
+        days_to_mat = (self._mat_dt - self._trade_dt).days
+        val = (self._disc_yld * days_to_mat) / 360
         val = (1 - val) * self._par
-        
+        return val
+
+if __name__ == "__main__":
+    # import pdb; pdb.set_trace()
+    bond = Bill("TEST", "2017-01-01", "2017-01-29", "Bill", ytm=0.7971428571428265,
+                trade_dt=datetime.date(2017,1,1))
+    print(bond._pv)
+    print(bond._disc_yld)
     
     

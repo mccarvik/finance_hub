@@ -105,9 +105,8 @@ def linearInterp(mat_dt, crv):
         # assume a bottom point of 0 and time of right now
         # Not a perfect assumption but its an edge case for the real short end
         below = (datetime.date.today(), 0)
-    pdb.set_trace()
     interp = ((mat_dt - below[0]) / (above[0] - below[0])) * (above[1] - below[1]) + below[1]
-    return interp
+    return [mat_dt, interp]
     
 
 if __name__ == "__main__":
