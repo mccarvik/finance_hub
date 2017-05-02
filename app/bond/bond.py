@@ -26,7 +26,7 @@ class Bond():
         self._mat_dt = datetime.date(int(matDate[0:4]), int(matDate[5:7]), int(matDate[8:10]))
         self._sec_type = secType
     
-    def findBenchmarkRate(self, crv_type='tsy', interp='linear'):
+    def findBenchmarkRate(self, crv_type='tsy', interp='linear', ref_dt=None):
         ''' method to find the benchmark bond for a given curve
         Parameters
         ==========
@@ -42,12 +42,13 @@ class Bond():
         rate : float
             the benchmark rate for this bond
         '''
+        ref_dt = self._mat_dt if not ref_dt else ref_dt
         if crv_type == 'tsy':
             crv = curve_funcs.loadTreasuryCurve(dflt=True)
         
         if interp == 'flat':
-            return curve_funcs.flatInterp(self._mat_dt, crv)
+            return curve_funcs.flatInterp(ref_dt, crv)
         elif interp == 'linear':
-            return curve_funcs.linearInterp(self._mat_dt, crv)
+            return curve_funcs.linearInterp(ref_dt, crv)
             
     
