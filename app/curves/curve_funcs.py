@@ -3,9 +3,9 @@ sys.path.append("/home/ubuntu/workspace/finance")
 sys.path.append("/usr/local/lib/python2.7/dist-packages")
 import matplotlib as mpl
 mpl.use('Agg')
+import matplotlib.pyplot as plt
 import requests, re, time, datetime, pdb
 import numpy as np
-import matplotlib.pyplot as plt
 from app import app
 from config import IMG_PATH
 from bs4 import BeautifulSoup as bs

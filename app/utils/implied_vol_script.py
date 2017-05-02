@@ -11,6 +11,8 @@ try:
     import os,sys
     import pandas
     import numpy
+    import matplotlib as mpl
+    mpl.use('Agg')
     import matplotlib.pylab as plt
     from matplotlib import cm
     from mpl_toolkits.mplot3d import axes3d 

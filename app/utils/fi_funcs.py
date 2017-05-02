@@ -1,6 +1,8 @@
 import datetime, sys, pdb
 from scipy import optimize
 from math import sqrt, pi, log, e
+import matplotlib as mpl
+mpl.use('Agg')
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
@@ -9,7 +11,8 @@ from dateutil.relativedelta import relativedelta
 
 
 FREQ_MAP = {
-    'Semi-Annual' : 0.5
+    'Semi-Annual' : 0.5,
+    'Quarterly' : 0.25
 }
 
 def bootstrap(first_zero_rate, first_mat, bs_rate_mats):

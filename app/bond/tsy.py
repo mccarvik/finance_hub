@@ -8,6 +8,7 @@ from app.utils.fi_funcs import FREQ_MAP
 from app.bond.bond import Bond
 from app.bond.fixed_rate_bond import FixedRateBond
 from app.bond.bill import Bill
+from app.bond.frn import FRN
 
 
 
@@ -54,7 +55,7 @@ def get_api_data():
     # test_url = 'http://www.treasurydirect.gov/TA_WS/securities/Bill?format=json'
     # test_url = 'http://www.treasurydirect.gov/TA_WS/securities/CMB?format=json'
     test_url = 'http://www.treasurydirect.gov/TA_WS/securities/FRN?format=json'
-    test_url = 'http://www.treasurydirect.gov/TA_WS/securities/TIPS?format=json'
+    # test_url = 'http://www.treasurydirect.gov/TA_WS/securities/TIPS?format=json'
     try:
         req = requests.get(test_url)
     except Exception as e:
@@ -82,11 +83,13 @@ def filter_clean_array(tsy_df):
     '''
     tsy_df = tsy_df[tsy_df['maturityDate'] > str(datetime.date.today())] # remove any matured bonds
     tsy_df = tsy_df[tsy_df['issueDate'] < str(datetime.date.today())] # remove any bonds not yet issued
-    tsy_df = tsy_df[['cusip','issueDate','maturityDate','securityType','interestRate','callable',
+    tsy_df = tsy_df[['cusip','issueDate','maturityDate','type','interestRate','callable',
                     'firstInterestPaymentDate','averageMedianPrice','averageMedianYield',
-                    'interestPaymentFrequency','averageMedianDiscountRate','pricePer100']]
+                    'interestPaymentFrequency','averageMedianDiscountRate','pricePer100',
+                    'frnIndexDeterminationRate']]
     tsy_df['averageMedianPrice'] = pd.to_numeric(tsy_df['averageMedianPrice'], errors='ignore')
     tsy_df['averageMedianYield'] = pd.to_numeric(tsy_df['averageMedianYield'], errors='ignore')
+    tsy_df['frnIndexDeterminationRate'] = pd.to_numeric(tsy_df['frnIndexDeterminationRate'], errors='ignore')
     tsy_df['interestRate'] = pd.to_numeric(tsy_df['interestRate'], errors='ignore')
     tsy_df = tsy_df.where((pd.notnull(tsy_df)), None)
     return tsy_df
@@ -110,13 +113,17 @@ def setup_bonds(tsy_df):
     for idx, t in tsy_df.iterrows():
         # Not passing in price as that price is from auction date, price will be calculated from market rate
         # Not passing in ytm as we will assume it is equal to market rate
-        if t['securityType'] in ['Bond', 'Note']:
-            new_tsy.append(FixedRateBond(t['cusip'], t['issueDate'], t['maturityDate'], t['securityType'],
+        if t['type'] in ['Bond', 'Note']:
+            new_tsy.append(FixedRateBond(t['cusip'], t['issueDate'], t['maturityDate'], t['type'],
                         freq=FREQ_MAP[t['interestPaymentFrequency']],first_pay_dt=t['firstInterestPaymentDate'],
                         cpn=t['interestRate'],
                         ))
-        elif t['securityType'] in ['Bill']:
-            new_tsy.append(Bill(t['cusip'], t['issueDate'], t['maturityDate'], t['securityType']
+        elif t['type'] in ['Bill']:
+            new_tsy.append(Bill(t['cusip'], t['issueDate'], t['maturityDate'], t['type']))
+        elif t['type'] in ['FRN']:
+            new_tsy.append(FRN(t['cusip'], t['issueDate'], t['maturityDate'], t['type'],
+                        pay_freq=FREQ_MAP[t['interestPaymentFrequency']],first_pay_dt=t['firstInterestPaymentDate'],
+                        cpn=t['frnIndexDeterminationRate']
                         ))
     import pdb; pdb.set_trace()
     return new_tsy

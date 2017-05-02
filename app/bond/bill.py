@@ -11,7 +11,7 @@ class Bill(Bond):
     Bills do not have coupons and are sold at a discount to par"""
     
     def __init__(self, cusip, issue_dt, mat_dt, sec_type, trade_dt=datetime.date.today(),
-                dcc="ACT/ACT", par=100, price=None, ytm=None):
+                dcc="ACT/ACT", par=100, price=None, ytm=None, first_pay_dt=None):
         ''' Constructor
         Parameters
         ==========
@@ -40,6 +40,7 @@ class Bill(Bond):
         NONE
         '''
         super().__init__(cusip, issue_dt, mat_dt, sec_type)
+        pdb.set_trace()
         self._dcc = dcc or "ACT/ACT"
         self._par = par
         self._trade_dt = trade_dt
