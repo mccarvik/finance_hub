@@ -4,11 +4,13 @@ sys.path.append("/home/ubuntu/workspace/finance")
 sys.path.append("/usr/local/lib/python2.7/dist-packages")
 import pdb, requests, datetime, time
 import pandas as pd
+from app import app
 from app.utils.fi_funcs import FREQ_MAP
 from app.bond.bond import Bond
 from app.bond.fixed_rate_bond import FixedRateBond
 from app.bond.bill import Bill
 from app.bond.frn import FRN
+from app.bond.tips import TIPS
 
 
 
@@ -54,8 +56,8 @@ def get_api_data():
     # test_url = 'http://www.treasurydirect.gov/TA_WS/securities/Note?format=json'
     # test_url = 'http://www.treasurydirect.gov/TA_WS/securities/Bill?format=json'
     # test_url = 'http://www.treasurydirect.gov/TA_WS/securities/CMB?format=json'
-    test_url = 'http://www.treasurydirect.gov/TA_WS/securities/FRN?format=json'
-    # test_url = 'http://www.treasurydirect.gov/TA_WS/securities/TIPS?format=json'
+    # test_url = 'http://www.treasurydirect.gov/TA_WS/securities/FRN?format=json'
+    test_url = 'http://www.treasurydirect.gov/TA_WS/securities/TIPS?format=json'
     try:
         req = requests.get(test_url)
     except Exception as e:
@@ -125,6 +127,15 @@ def setup_bonds(tsy_df):
                         pay_freq=FREQ_MAP[t['interestPaymentFrequency']],first_pay_dt=t['firstInterestPaymentDate'],
                         cpn=t['frnIndexDeterminationRate']
                         ))
+        elif t['type'] in ['TIPS']:
+            new_tsy.append(TIPS(t['cusip'], t['issueDate'], t['maturityDate'], t['type'],
+                        pay_freq=FREQ_MAP[t['interestPaymentFrequency']],first_pay_dt=t['firstInterestPaymentDate'],
+                        cpn_sprd=t['interestRate']
+                        ))
+        else:
+            pdb.set_trace()
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            app.logger.info("UNKNOWN TSY TYPE: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
     import pdb; pdb.set_trace()
     return new_tsy
 

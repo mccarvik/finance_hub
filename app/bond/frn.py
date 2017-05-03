@@ -63,7 +63,6 @@ class FRN(Bond):
         NONE
         '''
         super().__init__(cusip, issue_dt, mat_dt, sec_type)
-        pdb.set_trace()
         reset_freq = pay_freq if not reset_freq else reset_freq
         index = pay_freq if not index else index
         self._dcc = dcc or "ACT/ACT"
@@ -85,6 +84,7 @@ class FRN(Bond):
             self._cash_flows = createCashFlows(self._issue_dt, self._pay_freq, self._mat_dt, self._cpn, self._par)
         
         if self._pv:
+            # Need to code this up
             self._disc_yld = self.calcDiscountYield()
         else:
             self._disc_yld = ytm / 100 if ytm else self._bm[1]
@@ -94,7 +94,6 @@ class FRN(Bond):
         # Not sure how correct this is
         pdb.set_trace()
         r_adj = self._disc_yld * self._pay_freq
-        # http://finance.zacks.com/price-bonds-floating-rates-11553.html
         # used to figure out how far into the pay period we are
         days_to_payment_ratio = (((self._cash_flows[0][0] - self._trade_dt).days)/365) / self._pay_freq
         return ((self._par * self._cpn * self._pay_freq) / (1 + r_adj)**(days_to_payment_ratio) + 
