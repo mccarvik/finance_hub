@@ -170,6 +170,9 @@ class FixedRateBond(Bond):
         # need to divide by freq to get the annual coupon rate
         return newton_raphson(py_func, guess) / freq
         
+    def calcEffectiveAnnualRate():
+        # CFA 1, reading 54, p 416
+        # pass
 
 if __name__ == "__main__":
     # import pdb; pdb.set_trace()
