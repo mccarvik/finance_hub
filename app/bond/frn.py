@@ -100,6 +100,11 @@ class FRN(Bond):
                 (self._par / (1 + r_adj)**(days_to_payment_ratio)))
     
     def calcDiscountMargin(self):
+        # http://help.derivativepricing.com/1707.htm
+        pass
+    
+    def calcSimpleMargin(self):
+        # https://en.wikipedia.org/wiki/Floating_rate_note
         pass
 
 if __name__ == "__main__":
