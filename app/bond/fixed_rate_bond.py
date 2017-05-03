@@ -65,7 +65,6 @@ class FixedRateBond(Bond):
             self._cash_flows = createCashFlows(self._issue_dt, self._pay_freq, self._mat_dt, self._cpn, self._par)
 
         try:
-            pdb.set_trace()
             self._bm = self.findBenchmarkRate(interp='linear')
             self._pv, self._ytm = self.calcPVandYTM(price, ytm)
             self._conv_factor = self.calcConversionFactor()
@@ -98,7 +97,6 @@ class FixedRateBond(Bond):
         else:
             ytm = self._bm[1]
             pv = cumPresentValue(self._trade_dt, ytm, self._cash_flows, self._pay_freq, cont=False)
-        pdb.set_trace()
         return (pv, ytm)
     
     def calcConversionFactor(self):
@@ -170,16 +168,38 @@ class FixedRateBond(Bond):
         # need to divide by freq to get the annual coupon rate
         return newton_raphson(py_func, guess) / freq
         
-    def calcEffectiveAnnualRate():
-        # CFA 1, reading 54, p 416
-        # pass
+    def calcCurrentYield(self):
+        ''' Calculates the current yield which is just the coupon rate divided by the current price
+        Parameters
+        ==========
+        NONE
+        
+        Return
+        ======
+        current yield : float
+            the calculated current yield
+        '''
+        return (self._cpn / self._pv)
+    
+    def calcEffectiveAnnualRate(self):
+        ''' Calculates the equivalent yield on the bond as if it were paid annually
+        Parameters
+        ==========
+        NONE
+        
+        Return
+        ======
+        effective annual rate : float
+            calculated rate, converts the ytm to an annual rate
+        '''
+        return (1+(self._ytm * self._pay_freq))**(1 / self._pay_freq) - 1
 
 if __name__ == "__main__":
     # import pdb; pdb.set_trace()
     # bond = FixedRateBond("TEST", "2017-01-01", "2020-01-01", "Bond", freq=1, cpn=10, dcc="ACT/ACT", 
     #                     par=100, price=99 ytm=10.405, trade_dt=datetime.date(2017,1,1))
-    bond = FixedRateBond("TEST", "2017-01-01", "2020-01-01", "Bond", freq=1, cpn=10, dcc="ACT/ACT", 
-                        par=100, trade_dt=datetime.date(2017,1,1))
+    bond = FixedRateBond("TEST", "2017-01-01", "2020-01-01", "Bond", freq=0.5, cpn=5, dcc="ACT/ACT", 
+                        par=100, price=104, trade_dt=datetime.date(2017,1,1))
     # fwd_rates = [.05, .058, .064, .068]
     # cf = [cf[0] for cf in bond._cash_flows]
     # fwd_rates = list(zip(cf,fwd_rates))
@@ -187,6 +207,7 @@ if __name__ == "__main__":
     # print(bond._conv_factor)
     print(bond._pv)
     print(bond._ytm)
+    # print(bond.calcEffectiveAnnualRate())
     # print(bond._dur_mod)
     # print(bond._dur_mac)
     

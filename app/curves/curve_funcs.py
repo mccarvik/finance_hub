@@ -124,7 +124,6 @@ def readCurve(crv_str):
     file_name = crv_str + "_recent.csv"
     file_path = "/home/ubuntu/workspace/finance/app/curves/curve_files/"
     with open(file_path + file_name, 'r') as file:
-        pdb.set_trace()
         content = file.readlines()
         content = content[1:]
         rate_list = []
