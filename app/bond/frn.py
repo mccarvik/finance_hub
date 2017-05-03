@@ -74,6 +74,7 @@ class FRN(Bond):
         self._reset_freq = reset_freq
         self._index = index
         self._bm = self.findBenchmarkRate(ref_dt=self._trade_dt+datetime.timedelta(365*self._index))
+        self._quoted_sprd = self._cpn - self._bm[1]     # I think this is right need to check
         self._pv = price
         
         if first_pay_dt:
@@ -90,6 +91,8 @@ class FRN(Bond):
             self._disc_yld = ytm / 100 if ytm else self._bm[1]
             self._pv = self.calcPresentValue()
         
+        self._eff_sprd = self.calcEffectiveSprd()
+        
     def calcPresentValue(self):
         # Not sure how correct this is
         pdb.set_trace()
@@ -103,8 +106,12 @@ class FRN(Bond):
         # http://help.derivativepricing.com/1707.htm
         pass
     
+    def calcEffectiveSprd(self):
+        pass
+    
     def calcSimpleMargin(self):
         # https://en.wikipedia.org/wiki/Floating_rate_note
+        val = (100 / self._pv) * (((100-self._pv) / years) + self._quoted_sprd)
         pass
 
 if __name__ == "__main__":

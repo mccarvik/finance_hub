@@ -1,3 +1,6 @@
-api for loading treasury curve
-interpolation techniques on the curve
+CURRENT - simple and discount margin of an FRN and effective spread
+TIPS analytics
+interpolation techniques on the curve - spline
 options and volatility calcs
+equity analytics
+equity machine learning
