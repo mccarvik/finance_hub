@@ -103,6 +103,7 @@ class FRN(Bond):
                 (self._par / (1 + r_adj)**(days_to_payment_ratio)))
     
     def calcDiscountMargin(self):
+        # also known as effective yield
         # http://help.derivativepricing.com/1707.htm
         pass
     
@@ -112,7 +113,6 @@ class FRN(Bond):
     def calcSimpleMargin(self):
         # https://en.wikipedia.org/wiki/Floating_rate_note
         val = (100 / self._pv) * (((100-self._pv) / years) + self._quoted_sprd)
-        pass
 
 if __name__ == "__main__":
     # import pdb; pdb.set_trace()

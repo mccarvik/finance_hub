@@ -1,4 +1,9 @@
 CURRENT - simple and discount margin of an FRN and effective spread
+    NOTE: great analytics available in CFA 1 https://bookshelf.vitalsource.com/ 
+    user name: mccarviks@gmail.com
+    pw: Kmac7272!
+    p 415 for fixed bonds, p 421 for floating
+    
 TIPS analytics
 interpolation techniques on the curve - spline
 options and volatility calcs
