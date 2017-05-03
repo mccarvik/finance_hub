@@ -46,32 +46,48 @@ def loadTreasuryCurve(dflt=False, disp=True):
     '''
     
     if dflt:
-        rate_list = [[datetime.date(2017, 5, 30), 0.0068], [datetime.date(2017, 7, 30), 0.008], [datetime.date(2017, 10, 29), 0.0099],
-                    [datetime.date(2018, 4, 30), 0.0107], [datetime.date(2019, 4, 30), 0.0128], [datetime.date(2020, 4, 29), 0.0145], 
-                    [datetime.date(2022, 4, 29), 0.0181], [datetime.date(2024, 4, 28), 0.021], [datetime.date(2027, 4, 28), 0.0229], 
-                    [datetime.date(2037, 4, 25), 0.0267], [datetime.date(2047, 4, 23), 0.0296]]
+        rate_list = readCurve('tsy')
         if disp:
             saveCurveImg(rate_list)
         return Curve([r[0] for r in rate_list], [r[1] for r in rate_list])
     
     url = 'http://data.treasury.gov/feed.svc/DailyTreasuryYieldCurveRateData?$filter=month(NEW_DATE)%20eq%204%20and%20year(NEW_DATE)%20eq%202017'
-    data = requests.get(url).text
-    import pdb; pdb.set_trace()
-    xml = bytes(bytearray(data, encoding='utf-8'))
-    root = etree.XML(xml)
+    
     # time.sleep((0.5))
     # weird funky thing with the format, will try to solve later
     # xml adds an xmlns namespace thing that latches on to each elements
+    el_list = None
+    data = requests.get(url).text
+    xml = bytes(bytearray(data, encoding='utf-8'))
+    root = etree.XML(xml)
     ns = ["{"+n+"}" for n in list(root.nsmap.values())]
-    most_rec_curve = root.findall(ns[0] + "entry")[-1].find(ns[0]+'content')
-    most_rec_curve = most_rec_curve.find(ns[1]+'properties')
-    el_list = most_rec_curve.getchildren()
+    for j in range(len(ns)):
+        try:
+            most_rec_curve = root.findall(ns[j] + "entry")[-1].find(ns[j]+'content')
+            for k in range(len(ns)):
+                try:
+                    most_rec_curve_t = most_rec_curve.find(ns[k]+'properties')
+                    el_list = most_rec_curve_t.getchildren()
+                    if el_list:
+                        break
+                except:
+                    print("not " + ns[k])
+            if el_list:
+                break
+        except:
+            print("not " + ns[j])
+        
+    
+    if not el_list:
+        raise "XML ERROR"
     
     id = el_list.pop(0).text
     dt = el_list.pop(0).text
     rate_list = []
     for el in el_list:
-        rate_list.append([el.tag.replace(ns[2],""), el.text])
+        for n in ns:
+            el.tag = el.tag.replace(n,"")
+        rate_list.append([el.tag, el.text])
     # remove double 30 yr in data
     rate_list.pop(-1)
     # divide by 100 to get it in decimal form
@@ -80,8 +96,10 @@ def loadTreasuryCurve(dflt=False, disp=True):
     
     if disp:
         saveCurveImg(rate_list)
-        
-    return Curve([r[0] for r in rate_list], [r[1] for r in rate_list])
+    
+    crv = Curve([r[0] for r in rate_list], [r[1] for r in rate_list])
+    saveCurve(crv, "tsy")
+    return crv
 
 def saveCurveImg(rate_list):
     x = [r[0] for r in rate_list]
@@ -91,6 +109,30 @@ def saveCurveImg(rate_list):
     plt.ylabel('Rate')
     plt.tight_layout()
     plt.savefig(IMG_PATH + 'tsy_curve.png', dpi=300)
+
+def saveCurve(curve, crv_str):
+    today = datetime.date.today()
+    file_name = crv_str + "_recent.csv"
+    file_path = "/home/ubuntu/workspace/finance/app/curves/curve_files/"
+    
+    with open(file_path + file_name, 'w') as file:
+        file.write(crv_str + ", " + today.strftime('%Y%m%d') + "\n")
+        for i in curve._curve:
+            file.write(str((i[0] - today).days) + ", " + str(i[1]) + "\n")
+
+def readCurve(crv_str):
+    file_name = crv_str + "_recent.csv"
+    file_path = "/home/ubuntu/workspace/finance/app/curves/curve_files/"
+    with open(file_path + file_name, 'r') as file:
+        pdb.set_trace()
+        content = file.readlines()
+        content = content[1:]
+        rate_list = []
+        today = datetime.date.today()
+        for c in content:
+            data = c.split(",")
+            rate_list.append([today + datetime.timedelta(float(data[0])), float(data[1])])
+    return rate_list
 
 def flatInterp(mat_dt, crv):
     below = 0
