@@ -12,7 +12,7 @@ class FRN(Bond):
     
     def __init__(self, cusip, issue_dt, mat_dt, sec_type, cpn=0, trade_dt=datetime.date.today(),
                 dcc="ACT/ACT", par=100, price=None, ytm=None, pay_freq=0.5, reset_freq=None,
-                reset='arrears', first_pay_dt=None, index=None):
+                reset='arrears', first_pay_dt=None, index_freq=None, index="tsy", quoted_sprd=0):
         ''' Constructor
         Parameters
         ==========
@@ -52,10 +52,16 @@ class FRN(Bond):
         first_pay_dt : str
             first payment date, need this as some bonds have a short stub period before first payment
             instead of a full accrual period, DEFAULT = None
-        index : float
+        index_freq : float
             what reference on the curve the payment resets to, important as it defines the
             reference rate for the discount yield
             DEFAULT = pay_freq
+        index : str
+            index the bond uses, i.e. what curve to go to
+            DEFAULT = "tsy"
+        quoted_sprd : float
+            the spread over the reference rate provided to the bond, set at the issue of the bond
+            DEFAULT = 0, makes sense for trasury floaters
             
         
         Return
@@ -64,7 +70,7 @@ class FRN(Bond):
         '''
         super().__init__(cusip, issue_dt, mat_dt, sec_type)
         reset_freq = pay_freq if not reset_freq else reset_freq
-        index = pay_freq if not index else index
+        index_freq = pay_freq if not index_freq else index_freq
         self._dcc = dcc or "ACT/ACT"
         self._cpn = cpn / 100 if cpn else 0
         self._par = par
@@ -72,9 +78,12 @@ class FRN(Bond):
         self._reset = reset
         self._pay_freq = pay_freq
         self._reset_freq = reset_freq
+        self._index_freq = index_freq
         self._index = index
-        self._bm = self.findBenchmarkRate(ref_dt=self._trade_dt+datetime.timedelta(365*self._index))
-        self._quoted_sprd = self._cpn - self._bm[1]     # I think this is right need to check
+        self._quoted_sprd = quoted_sprd
+        self._ref_rate = self._cpn - self._quoted_sprd      # This is the rate of the index at last reset
+        self._bm = self.findBenchmarkRate(ref_dt=self._trade_dt+datetime.timedelta(365*self._index_freq))
+        
         self._pv = price
         
         if first_pay_dt:
