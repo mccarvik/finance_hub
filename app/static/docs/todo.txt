@@ -4,6 +4,16 @@ CURRENT - simple and discount margin of an FRN and effective spread
     pw: Kmac7272!
     p 415 for fixed bonds, p 421 for floating
     
+notes from Hull book:
+add grid for eq screener
+something for vol smiles
+monte carlo
+convertible bonds
+bond options
+price vol to yield vol calc
+caps floors swaps
+swaptions
+    
 TIPS analytics
 interpolation techniques on the curve - spline
 options and volatility calcs
