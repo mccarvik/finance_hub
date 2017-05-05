@@ -61,6 +61,7 @@ class FRN(Bond):
             DEFAULT = "tsy"
         quoted_sprd : float
             the spread over the reference rate provided to the bond, set at the issue of the bond
+            NOTE - will come in as percent value and divided by 100, ex 2% / 100 = 0.02
             DEFAULT = 0, makes sense for trasury floaters
             
         
@@ -72,7 +73,7 @@ class FRN(Bond):
         reset_freq = pay_freq if not reset_freq else reset_freq
         index_freq = pay_freq if not index_freq else index_freq
         self._dcc = dcc or "ACT/ACT"
-        self._cpn = cpn / 100 if cpn else 0
+        
         self._par = par
         self._trade_dt = trade_dt
         self._reset = reset
@@ -81,8 +82,10 @@ class FRN(Bond):
         self._index_freq = index_freq
         self._index = index
         self._quoted_sprd = quoted_sprd
-        self._ref_rate = self._cpn - self._quoted_sprd      # This is the rate of the index at last reset
         self._bm = self.findBenchmarkRate(ref_dt=self._trade_dt+datetime.timedelta(365*self._index_freq))
+        self._cpn = cpn / 100 if cpn else (self._bm[1] + self._quoted_sprd) / 100
+        self._ref_rate = self._cpn - self._quoted_sprd      # This is the rate of the index at last reset
+        
         
         self._pv = price
         
@@ -127,5 +130,6 @@ if __name__ == "__main__":
     # import pdb; pdb.set_trace()
     bond = FRN("TEST", "2017-01-01", "2020-01-29", "FRN", cpn=3.5, trade_dt=datetime.date(2017,6,1),
                 pay_freq=0.5)
+    bond = FRN("CFA", "2017-01-01", "2019-01-01", "FRN", quoted_sprd=0.50)
     print(bond._pv)
     print(bond._disc_yld)
