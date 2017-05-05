@@ -128,8 +128,9 @@ class FRN(Bond):
 
 if __name__ == "__main__":
     # import pdb; pdb.set_trace()
-    bond = FRN("TEST", "2017-01-01", "2020-01-29", "FRN", cpn=3.5, trade_dt=datetime.date(2017,6,1),
-                pay_freq=0.5)
+    # bond = FRN("TEST", "2017-01-01", "2020-01-29", "FRN", cpn=3.5, trade_dt=datetime.date(2017,6,1),
+    #             pay_freq=0.5)
+    # CFA1 reading 54 - p 422
     bond = FRN("CFA", "2017-01-01", "2019-01-01", "FRN", quoted_sprd=0.50)
     print(bond._pv)
     print(bond._disc_yld)
