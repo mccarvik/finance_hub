@@ -11,8 +11,8 @@ class FRN(Bond):
     
     
     def __init__(self, cusip, issue_dt, mat_dt, sec_type, cpn=0, trade_dt=datetime.date.today(),
-                dcc="ACT/ACT", par=100, price=None, ytm=None, pay_freq=0.5, reset_freq=None,
-                reset='arrears', first_pay_dt=None, index_freq=None, index="tsy", quoted_sprd=0):
+                dcc="ACT/ACT", par=100, price=None, ytm=None, pay_freq=0.5,  quoted_sprd=0,
+                reset='arrears', first_pay_dt=None, index_freq=None, index="tsy"):
         ''' Constructor
         Parameters
         ==========
@@ -41,10 +41,6 @@ class FRN(Bond):
         pay_freq : float
             payment frequency of the bond, expressed in fractional terms of 1 year, ex: 0.5 = 6 months
             DEFAULT = 0.5
-        reset_freq : float
-            reset frequency of the bond, expressed in fractional terms of 1 year, ex: 0.5 = 6 months
-            how often the coupon of the floating rate bond will be reset
-            DEFAULT = NONE, but set equal to pay_freq
         reset : str
             when the reset will take place: "now" or "arrears", arrears meaning the coupon was set at the end
             of the previous period, now meaning the coupon is set on the coupon date
@@ -70,18 +66,16 @@ class FRN(Bond):
         NONE
         '''
         super().__init__(cusip, issue_dt, mat_dt, sec_type)
-        reset_freq = pay_freq if not reset_freq else reset_freq
         index_freq = pay_freq if not index_freq else index_freq
         self._dcc = dcc or "ACT/ACT"
-        
         self._par = par
         self._trade_dt = trade_dt
         self._reset = reset
         self._pay_freq = pay_freq
-        self._reset_freq = reset_freq
         self._index_freq = index_freq
         self._index = index
-        self._quoted_sprd = quoted_sprd
+        self._quoted_sprd = quoted_sprd / 100
+        pdb.set_trace()
         self._bm = self.findBenchmarkRate(ref_dt=self._trade_dt+datetime.timedelta(365*self._index_freq))
         self._cpn = cpn / 100 if cpn else (self._bm[1] + self._quoted_sprd) / 100
         self._ref_rate = self._cpn - self._quoted_sprd      # This is the rate of the index at last reset
@@ -98,7 +92,8 @@ class FRN(Bond):
         
         if self._pv:
             # Need to code this up
-            self._disc_yld = self.calcDiscountYield()
+            # self._disc_yld = self.calcDiscountYield()
+            pass
         else:
             self._disc_yld = ytm / 100 if ytm else self._bm[1]
             self._pv = self.calcPresentValue()
@@ -115,9 +110,28 @@ class FRN(Bond):
                 (self._par / (1 + r_adj)**(days_to_payment_ratio)))
     
     def calcDiscountMargin(self):
-        # also known as effective yield
-        # http://help.derivativepricing.com/1707.htm
-        pass
+        ytm = calcYieldToDate(self._pv, self._par, self._mat_dt, self._cpn, freq=self._pay_freq, start_date=self._trade_dt)
+        dm = ytm - self._ref_rate
+        #     # also known as effective yield
+        #     # http://help.derivativepricing.com/1707.htm
+        #     tenor = (self._mat_dt - self._trade_dt).days / 365.25 # assumes 365.25 days in a year
+        #     freq = float(self._pay_freq)
+        #     # guess ytm = coupon rate, will get us in the ball park
+        #     guess = self._cpn
+        #     # convert cpn from annual rate to actual coupon value recieved
+        #     coupon = self._cpn * self._freq * self._par
+        #     cfs = fi_funcs.createCashFlows(self._trade_dt, freq, self._mat_dt, self._cpn, self._par)
+        #     # filters for only cash flows that haven't occurred yet
+        #     cfs = [c for c in cfs if c[0] > self._trade_dt]
+        #     cpn_dts = [((i[0] - self._trade_dt).days / 365, i[1]) for i in cfs]
+        
+        #     ytm_func = lambda y: \
+        #     sum([c/(1+y*freq)**(t/freq) for t,c in cpn_dts]) - self._pv
+            
+        # # return optimize.newton(ytm_func, guess)
+        # return newton_raphson(ytm_func, guess)
+        pdb.set_trace()
+        return dm
     
     def calcEffectiveSprd(self):
         pass
@@ -131,6 +145,6 @@ if __name__ == "__main__":
     # bond = FRN("TEST", "2017-01-01", "2020-01-29", "FRN", cpn=3.5, trade_dt=datetime.date(2017,6,1),
     #             pay_freq=0.5)
     # CFA1 reading 54 - p 422
-    bond = FRN("CFA", "2017-01-01", "2019-01-01", "FRN", quoted_sprd=0.50)
-    print(bond._pv)
-    print(bond._disc_yld)
+    bond = FRN("CFA", "2017-01-01", "2022-01-01", "FRN", trade_dt=datetime.date(2017,1,1),
+                pay_freq=0.25, quoted_sprd=0.75, cpn=1.85, price=100)
+    print(bond.calcDiscountMargin())
