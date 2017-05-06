@@ -1,7 +1,8 @@
 import sys
 sys.path.append("/home/ubuntu/workspace/finance")
+sys.path.append("/usr/local/lib/python2.7/dist-packages")
 import datetime
-import re, os, string, json, types
+import re, os, string, json, types, pdb
 import pandas as pd
 import numpy as np
 import requests
@@ -50,9 +51,9 @@ class EquityStats():
         # TODO set the columns and set the favorites here from the file, lets get them out of the code
         column_map = {}
         if source == "API1":
-            file = "/home/ubuntu/workspace/finance/app/equity_screener/yahoo_api1_notes.txt"
+            file = "/home/ubuntu/workspace/finance/app/equity/screener_eqs/yahoo_api1_notes.txt"
         elif source == "API2":
-            file = "/home/ubuntu/workspace/finance/app/equity_screener/yahoo_api2_notes.txt"
+            file = "/home/ubuntu/workspace/finance/app/equity/screener_eqs/yahoo_api2_notes.txt"
         with open(file, "r") as f:
             for line in f:
                 if line.strip() == 'EOF':
@@ -74,6 +75,7 @@ class ES_Dataframe:
         self._filters = filters or ES_Dataframe.test_filters
         self._colmap = self.setColumns()
         self._date = date or datetime.datetime.now().strftime('%Y-%m-%d')
+        pdb.set_trace()
         self._df = self.read_from_db(table='eq_screener2')
         self.readOther()
         self.clean_data()
@@ -111,7 +113,7 @@ class ES_Dataframe:
     @staticmethod
     def setColumns():
         column_map = {}
-        with open("/home/ubuntu/workspace/finance/app/equity_screener/screen_info.csv", "r") as f:
+        with open("/home/ubuntu/workspace/finance/app/equity/screener_eqs/screen_info.csv", "r") as f:
             cols = str.split(f.readline(), ",")[1:]
             cols_desc = str.split(f.readline(), ",")[1:]
         return dict(zip(cols, cols_desc))    

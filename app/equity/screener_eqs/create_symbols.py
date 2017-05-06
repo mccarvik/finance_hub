@@ -15,7 +15,7 @@ logger.addHandler(db)
 
 def download_file(download_url):
     response = urllib.request.urlopen(download_url)
-    file = open("memb_list.pdf", 'wb')
+    file = open("/finance/app/equity/screener_eqs/memb_list.pdf", 'wb')
     logger.debug("File Downloaded")
     file.write(response.read())
     logger.debug("File Written")
@@ -25,7 +25,7 @@ def download_file(download_url):
 def write_tickers_to_file():
     tickers = []
     try:
-        f = open('./memb_list_pdf.txt', 'rb')
+        f = open('/finance/app/equity/screener_eqs/memb_list_pdf.txt', 'rb')
         readFile = f.read().decode('utf8', 'ignore')
         splitFile = readFile.split('\n')
         for eachLine in splitFile:

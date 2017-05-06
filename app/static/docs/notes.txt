@@ -30,3 +30,7 @@ add to repo:
     
 add a directory to PATH:
 "export PATH=$PATH:/path/to/add"
+
+
+info on yahoo api - 
+http://stackoverflow.com/questions/38567661/how-to-get-key-statistics-for-yahoo-finance-web-search-api 

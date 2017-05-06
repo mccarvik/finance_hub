@@ -1,9 +1,9 @@
 import sys
 sys.path.append("/home/ubuntu/workspace/finance")
-from app.equity_screener.create_symbols import create_symbols
-from app.equity_screener.equity_stats import EquityStats, ES_Dataframe
+from app.equity.screener_eqs.create_symbols import create_symbols
+from app.equity.screener_eqs.equity_stats import EquityStats, ES_Dataframe
 import pandas as pd
-import os, csv, requests, asyncio, time, json
+import os, csv, requests, asyncio, time, json, pdb
 from threading import Thread
 from app import app
 
@@ -22,11 +22,11 @@ def post(request):
 
 def get_data(reset_ticks=False, source="API2"):
     if reset_ticks:
-        create_symbols.create_symbols()
+        create_symbols()
     tasks = []
     EquityStats.setColumns(source)
-    cwd = os.path.dirname(os.path.realpath(__file__))
-    with open(cwd + "/memb_list.txt", "r") as f:
+
+    with open("/home/ubuntu/workspace/finance/app/equity/screener_eqs/memb_list.txt", "r") as f:
         ct = 0
         tickers = ""
         for line in f:
@@ -40,7 +40,8 @@ def get_data(reset_ticks=False, source="API2"):
         else:
             tickers = tickers[:-1]
             tasks.append(tickers)
-            
+    
+    import pdb; pdb.set_trace()
     t0 = time.time()
     threads = []
     try:
@@ -163,7 +164,7 @@ def writeScreenInfo(source,favorites=True):
                     break
                 if line.strip() == 'favorites':
                     fav = True
-        file_screen_info = "/home/ubuntu/workspace/finance/app/equity_screener/screen_info.csv"
+        file_screen_info = "/home/ubuntu/workspace/finance/app/equity/screener_eqs/screen_info.csv"
         with open(file_screen_info, 'w') as f:
             f.write("cols,"+wr)
             f.write("\n")
