@@ -104,10 +104,13 @@ def loadTreasuryCurve(dflt=False, disp=True):
 def saveCurveImg(rate_list):
     x = [r[0] for r in rate_list]
     y = [r[1] for r in rate_list]
-    plt.plot(x, y)
+    # lw = line width, b = blue line, ro = red points
+    plt.plot(x, y, 'b', lw=1.5)
+    plt.plot(x, y, 'ro')
     plt.xlabel('Date')
     plt.ylabel('Rate')
-    plt.tight_layout()
+    plt.axis('tight')
+    plt.grid(True)
     plt.savefig(IMG_PATH + 'tsy_curve.png', dpi=300)
 
 def saveCurve(curve, crv_str):
