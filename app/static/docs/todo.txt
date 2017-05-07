@@ -1,4 +1,7 @@
-CURRENT - simple of an FRN and effective spread
+CURRENT - par / zero / forward curve in curve funcs, p 432 reading 54, CFA 1
+        simple of an FRN and effective spread
+        tips calcs
+        
     NOTE: great analytics available in CFA 1 https://bookshelf.vitalsource.com/ 
     user name: mccarviks@gmail.com
     pw: Kmac7272!

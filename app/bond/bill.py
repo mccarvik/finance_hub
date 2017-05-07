@@ -62,7 +62,7 @@ class Bill(Bond):
     
     def calcAddOnRate(self):
         ''' Add on rate uses DCC of ACT/ACT'''
-        disc = (self._pv - self._par) / self._pv
+        disc = (self._par - self._pv) / self._pv
         days_to_mat = (self._mat_dt - self._trade_dt).days
         return ((365 / days_to_mat) * disc)
         
