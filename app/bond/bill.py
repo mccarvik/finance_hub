@@ -54,14 +54,36 @@ class Bill(Bond):
             self._addon_rate = self.calcAddOnRate()
     
     def calcDiscountRate(self):
-        ''' Discount Rate --> interest rate used to calculate a present value'''
+        ''' Discount Rate --> interest rate used to calculate a present value
+            Uses a 30/360 calendar by convention, note: (FV - PV) / FV
+            FV = future value, PV = present value
+            
+            Parameters
+            ==========
+            NONE
+            
+            Return
+            ======
+            the calculated discount rate in decimal terms 
+        '''
         disc = (self._par - self._pv) / self._par
         days_to_mat = (self._mat_dt - self._trade_dt).days
         pdb.set_trace()
         return ((360 / days_to_mat) * disc)
     
     def calcAddOnRate(self):
-        ''' Add on rate uses DCC of ACT/ACT'''
+        ''' Add on rate 
+            Uses a ACT/365 calendar by convention, note: (FV - PV) / PV
+            FV = future value, PV = present value
+            
+            Parameters
+            ==========
+            NONE
+            
+            Return
+            ======
+            the calculated add on rate in decimal terms
+        '''
         disc = (self._par - self._pv) / self._pv
         days_to_mat = (self._mat_dt - self._trade_dt).days
         return ((365 / days_to_mat) * disc)

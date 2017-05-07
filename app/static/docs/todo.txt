@@ -1,4 +1,4 @@
-CURRENT - par / zero / forward curve in curve funcs, p 432 reading 54, CFA 1
+CURRENT - par / zero / forward curve in curve funcs, p 429 reading 54, CFA 1
         simple of an FRN and effective spread
         tips calcs
         
