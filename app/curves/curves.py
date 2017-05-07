@@ -1,7 +1,12 @@
 
 
 class Curve():
-    ''' Parent curve class representing any type of rate curve'''
+    ''' Parent curve class representing any type of rate curve
+        Types of curves supported:
+        Zero Curve - aka spot curve or strip curve, sequence of ytm's on zero 
+                    coupon bonds (or coupon bearing gov bonds)
+        Par Curve - sequence of ytm's such that each bond is priced at par value.
+    '''
     
     def __init__(self, dts, rates):
         ''' Constructor

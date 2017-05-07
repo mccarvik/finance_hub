@@ -168,7 +168,9 @@ def linearInterp(mat_dt, crv):
         below = (datetime.date.today(), 0)
     interp = ((mat_dt - below[0]) / (above[0] - below[0])) * (above[1] - below[1]) + below[1]
     return [mat_dt, interp]
-    
+
+def convertSpotToParCurve(crv):
+    pass
 
 if __name__ == "__main__":
     loadTreasuryCurve(dflt=True)
