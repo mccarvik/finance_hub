@@ -301,8 +301,8 @@ if __name__ == "__main__":
                 (datetime.date(2020,5,7), 0.06359), (datetime.date(2021,5,7), 0.0700)]
     # t_curve = [(datetime.date(2018,5,7), 0.02548), (datetime.date(2019,5,7), 0.02983), 
     #             (datetime.date(2020,5,7), 0.02891)]
-    # tsy_crv = Curve(rates=[r[1] for r in t_curve], dts = [r[0] for r in t_curve])
-    # convertSpotToParCurve(tsy_crv, datetime.date(2017,5,7))
+    tsy_crv = Curve(rates=[r[1] for r in t_curve], dts = [r[0] for r in t_curve])
+    print(convertSpotToParCurve(tsy_crv, datetime.date(2017,5,7)))
     # convertSpotToForwardCurve(tsy_crv, datetime.date(2017,5,7))
     
     
