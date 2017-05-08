@@ -102,12 +102,40 @@ def loadTreasuryCurve(dflt=False, disp=True):
     saveCurve(crv, "tsy")
     return crv
 
-def saveCurveImg(rate_list):
-    x = [r[0] for r in rate_list]
-    y = [r[1] for r in rate_list]
+def saveCurveImg(crv, trade_date=datetime.date.today()):
+    ''' Will save a graph with spot (aka zero) rates, par rates, and forward rates
+        Will calc the par rates and fwd rates from the spot rates
+    
+    Parameters
+    ==========
+    crv : Curve Object
+        has a list of tuples holding maturity and spot rate pairs
+        
+    Return
+    ======
+    NONE
+    '''
+    pdb.set_trace()
+    # x = [(r[0] - trade_date).days for r in crv._curve]
+    x = [r[0] for r in crv._curve]
+    y1 = [r[1] for r in crv._curve]                                     # spot rates
+    y2 = [r[1] for r in convertSpotToParCurve(crv, trade_date)]         # par rates
+    y3 = [r[2] for r in convertSpotToForwardCurve(crv, trade_date)]     # fwd rates
+    
+    # To anchor curve at 0
+    x = [trade_date] + x
+    y1 = [0] + y1
+    y2 = [0] + y2
+    y3 = [0] + y3
+    
     # lw = line width, b = blue line, ro = red points
-    plt.plot(x, y, 'b', lw=1.5)
-    plt.plot(x, y, 'ro')
+    plt.plot(x, y1, 'b', lw=1.5, label='SPOT')
+    plt.plot(x, y1, 'ro')
+    plt.plot(x, y2, 'g', lw=1.5, label='PAR')
+    plt.plot(x, y2, 'ro')
+    plt.plot(x, y3, 'k', lw=1.5, label='FWD')
+    plt.plot(x, y3, 'ro')
+    plt.legend(loc='upper left')
     plt.xlabel('Date')
     plt.ylabel('Rate')
     plt.axis('tight')
@@ -181,6 +209,10 @@ def convertSpotToParCurve(crv, trade_date=datetime.date.today(), par=100):
     ==========
     crv : Curve object
         holds a list of maturity date and rate pairs in a tuple
+    trade_date : date
+        the date from when the calculation is being made
+    par : float
+        the theoretical par value of the bond
 
     Return
     ======
@@ -196,31 +228,82 @@ def convertSpotToParCurve(crv, trade_date=datetime.date.today(), par=100):
         
         par_crv_func = lambda y: \
             sum([y/(1+r)**(t/365) for t,r in crv[:i]]) + (y+par)/(1+crv[i][1])**(crv[i][0]/365)  - par
-            # sum([y/(1+r)**(t/365) for t,r in crv[:i]].append((y+par)/(1+crv[i][1])**(crv[i][0]/365))) - par
         guess = crv[i][1]
         rate = newton_raphson(par_crv_func, guess)
-        # par_curve.append((trade_date+datetime.timedelta(crv[i][0]),rate))
         par_curve.append((crv[i][0], rate/100))
     
     par_curve = [(trade_date + datetime.timedelta(crv[0]), crv[1]) for crv in par_curve]
     return par_curve
+
+def convertSpotsToForward(spot1, spot2, trade_date=datetime.date.today(), p=1):
+    """ Takes two spot rates and calculates the implied forward rate between them
     
+    Parameters
+    ==========
+    spot1, spot2 : tuple(date, float)
+        maturity, rate tuple
+    trade_date : date
+        the date from when the calculation is being made
+    p : float
+        the periodicity of the bond --> aka how many times a year there is a theoretical coupon
+        Ex: 2 = semiannual bond basis
+
+    Return
+    ======
+    tuple
+        tuple --> 3 components, first is the start date of the implied forward, next is the end date
+        and 3rd is the rate
+        Ex: today is 2017-01-01, a 2y1y imp fwd with a rate of 4.5% will be: 
+        (2019-01-01, 2020-01-01, 0.045)
+    """
+    A = round((spot1[0]-trade_date).days * p/365, 4)
+    B = round((spot2[0]-trade_date).days * p/365, 4)
+    dem = (1+spot1[1] / p) 
+    num = (1+spot2[1] / p)
+    fr = ((num**B) / (dem**A))**(1/(B-A)) - 1
     
-    return par_crv
+    # This gets it back annualized
+    fr *= p
+    return (spot1[0], spot2[0], fr)
+
+def convertSpotToForwardCurve(crv, trade_date=datetime.date.today(), p=1):
+    """ Will bootstrap use the spot rates to calculate the forward rates to get from one
+        spot rate to another
     
-def convertSpotToForwardCurve(crv):
+    Parameters
+    ==========
+    crv : Curve object
+        holds a list of maturity date and rate pairs in a tuple
+    trade_date : date
+        the date from when the calculation is being made
+    p : float
+        the periodicity of the bond --> aka how many times a year there is a theoretical coupon
+        Ex: 2 = semiannual bond basis
+
+    Return
+    ======
+    list of tuples representing the forward curve
+    tuple --> 3 components, first is the start date of the implied forward, next is the end date
+    and 3rd is the rate
+    Ex: if today is 2017-01-01, a 2y1y imp fwd with a rate of 4.5% will be: (2019-01-01, 2020-01-01, 0.045)
+    """
     crv = crv._curve
-    crv = [((c[0]-trade_date).days, c[1]) for c in crv]
     fwd_rates = []
-    for i in len(crv):
+    for i in range(len(crv)):
         if i == 0:
-            fwd_rates.append(i)
+            fwd_rates.append((trade_date, crv[i][0], crv[i][1]))
             continue
-        # still working on this guy
-        fr = ((1+crv[i][1])**(crv[i][0]/365)) / ((1+crv[i-1][1])**(crv[i][1]/365))**(1/B-A from equation in vitalsource)
+        fwd_rates.append((convertSpotsToForward(crv[i-1], crv[i], trade_date, 2)))
+    return fwd_rates
 
 if __name__ == "__main__":
-    curve_temp = [(datetime.date(2018,5,7), 0.05263), (datetime.date(2019,5,7), 0.05616),
+    t_curve = [(datetime.date(2018,5,7), 0.05263), (datetime.date(2019,5,7), 0.05616),
                 (datetime.date(2020,5,7), 0.06359), (datetime.date(2021,5,7), 0.0700)]
-    tsy_crv = Curve(rates=[r[1] for r in curve_temp], dts = [r[0] for r in curve_temp])
-    convertSpotToParCurve(tsy_crv, datetime.date(2017,5,7))
+    # t_curve = [(datetime.date(2018,5,7), 0.02548), (datetime.date(2019,5,7), 0.02983), 
+    #             (datetime.date(2020,5,7), 0.02891)]
+    # tsy_crv = Curve(rates=[r[1] for r in t_curve], dts = [r[0] for r in t_curve])
+    # convertSpotToParCurve(tsy_crv, datetime.date(2017,5,7))
+    # convertSpotToForwardCurve(tsy_crv, datetime.date(2017,5,7))
+    
+    
+    # saveCurveImg(loadTreasuryCurve(dflt=True, disp=False), trade_date=datetime.date(2017,5,7))
