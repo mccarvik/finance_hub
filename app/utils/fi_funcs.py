@@ -34,7 +34,6 @@ def bootstrap(first_zero_rate, first_mat, bs_rate_mats):
     ======
     list of tuples representing the par curve
     """
-    pdb.set_trace()
     new_bs_rate_mats = []
     next_bs_zero_rate = ((bs_rate_mats[0][0] * bs_rate_mats[0][1]) + (first_zero_rate * first_mat)) / (bs_rate_mats[0][1] + first_mat)
     new_bs_rate_mats.append(tuple([bs_rate_mats[0][1] + first_mat, next_bs_zero_rate]))

@@ -173,14 +173,54 @@ def linearInterp(mat_dt, crv):
     interp = ((mat_dt - below[0]) / (above[0] - below[0])) * (above[1] - below[1]) + below[1]
     return [mat_dt, interp]
 
-def convertSpotToParCurve(crv):
-    first_pair = crv._curve.pop(0)
-    par_crv = bootstrap(first_pair[0], first_pair[0], crv._curve)
-    pdb.set_trace()
+def convertSpotToParCurve(crv, trade_date=datetime.date.today(), par=100):
+    """ Will bootstrap the spot rates given together to calculate the par rates. Using
+    the previously calculated rate to discount for the next rate
+    
+    Parameters
+    ==========
+    crv : Curve object
+        holds a list of maturity date and rate pairs in a tuple
+
+    Return
+    ======
+    list of tuples representing the par curve
+    """
+    crv = crv._curve
+    crv = [((c[0]-trade_date).days, c[1]) for c in crv]
+    par_curve = []
+    for i in range(len(crv)):
+        if i == 0:
+            par_curve.append(crv[i])
+            continue
+        
+        par_crv_func = lambda y: \
+            sum([y/(1+r)**(t/365) for t,r in crv[:i]]) + (y+par)/(1+crv[i][1])**(crv[i][0]/365)  - par
+            # sum([y/(1+r)**(t/365) for t,r in crv[:i]].append((y+par)/(1+crv[i][1])**(crv[i][0]/365))) - par
+        guess = crv[i][1]
+        rate = newton_raphson(par_crv_func, guess)
+        # par_curve.append((trade_date+datetime.timedelta(crv[i][0]),rate))
+        par_curve.append((crv[i][0], rate/100))
+    
+    par_curve = [(trade_date + datetime.timedelta(crv[0]), crv[1]) for crv in par_curve]
+    return par_curve
+    
+    
     return par_crv
+    
+def convertSpotToForwardCurve(crv):
+    crv = crv._curve
+    crv = [((c[0]-trade_date).days, c[1]) for c in crv]
+    fwd_rates = []
+    for i in len(crv):
+        if i == 0:
+            fwd_rates.append(i)
+            continue
+        # still working on this guy
+        fr = ((1+crv[i][1])**(crv[i][0]/365)) / ((1+crv[i-1][1])**(crv[i][1]/365))**(1/B-A from equation in vitalsource)
 
 if __name__ == "__main__":
     curve_temp = [(datetime.date(2018,5,7), 0.05263), (datetime.date(2019,5,7), 0.05616),
                 (datetime.date(2020,5,7), 0.06359), (datetime.date(2021,5,7), 0.0700)]
     tsy_crv = Curve(rates=[r[1] for r in curve_temp], dts = [r[0] for r in curve_temp])
-    convertSpotToParCurve(tsy_crv)
+    convertSpotToParCurve(tsy_crv, datetime.date(2017,5,7))
