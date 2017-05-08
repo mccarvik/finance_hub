@@ -16,9 +16,25 @@ FREQ_MAP = {
 }
 
 def bootstrap(first_zero_rate, first_mat, bs_rate_mats):
+    """ Will bootstrap the forward rates together to calculate the par rates. Using
+    the previously calculated rate to discount for the next rate
+    
+    Parameters
+    ==========
+    first_zero_rate : float
+        The first zero rate on the curve
+    
+    first_mat : date
+        The maturity date of the first rate on the curve
+    
+    bs_rate_mats : list of tuples
+        The rest of the rate, maturity pairs on the curve in the format (fwd_rate, maturity)
+
+    Return
+    ======
+    list of tuples representing the par curve
     """
-    bs_rate_mats = list of tuples in the format (fwd_rate, maturity)
-    """
+    pdb.set_trace()
     new_bs_rate_mats = []
     next_bs_zero_rate = ((bs_rate_mats[0][0] * bs_rate_mats[0][1]) + (first_zero_rate * first_mat)) / (bs_rate_mats[0][1] + first_mat)
     new_bs_rate_mats.append(tuple([bs_rate_mats[0][1] + first_mat, next_bs_zero_rate]))
@@ -172,7 +188,6 @@ def calcYieldToDate(price, par, mat_date, cpn, freq=0.5, start_date=datetime.dat
         
     # return optimize.newton(ytm_func, guess)
     return newton_raphson(ytm_func, guess)
-
 
 def derivative(f, x, h):
     return (f(x+h) - f(x-h)) / (2.0*h)  # might want to return a small non-zero if ==0

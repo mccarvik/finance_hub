@@ -12,6 +12,7 @@ from bs4 import BeautifulSoup as bs
 # import xml.etree.ElementTree as ET
 from lxml import etree
 from app.curves.curves import Curve
+from app.utils.fi_funcs import *
 
 
 TSY_CURVE_MAP = {
@@ -29,7 +30,7 @@ TSY_CURVE_MAP = {
 }
 
 def loadTreasuryCurve(dflt=False, disp=True):
-    ''' uses beautiful soup to scrape treasury xml for curve points
+    ''' uses lxml / etree to scrape treasury xml for curve points
     
     Parameters
     ==========
@@ -173,7 +174,13 @@ def linearInterp(mat_dt, crv):
     return [mat_dt, interp]
 
 def convertSpotToParCurve(crv):
-    pass
+    first_pair = crv._curve.pop(0)
+    par_crv = bootstrap(first_pair[0], first_pair[0], crv._curve)
+    pdb.set_trace()
+    return par_crv
 
 if __name__ == "__main__":
-    loadTreasuryCurve(dflt=True)
+    curve_temp = [(datetime.date(2018,5,7), 0.05263), (datetime.date(2019,5,7), 0.05616),
+                (datetime.date(2020,5,7), 0.06359), (datetime.date(2021,5,7), 0.0700)]
+    tsy_crv = Curve(rates=[r[1] for r in curve_temp], dts = [r[0] for r in curve_temp])
+    convertSpotToParCurve(tsy_crv)
