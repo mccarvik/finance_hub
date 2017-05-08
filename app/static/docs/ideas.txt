@@ -1,3 +1,5 @@
+FRONT END AND DB LEARNING - Javascript, CSS, HTML, SQL freeCodeCamp.com
+
 1. machine learning on financial stock picking
 2. calculator for fixed income products
 3. Poker odds calculator
