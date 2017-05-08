@@ -1,4 +1,4 @@
-CURRENT - forward rate calcs in curve funcs, p 429 reading 54, CFA 1
+CURRENT - calculate z sprd, p 441 reading 54, CFA 1
         simple of an FRN and effective spread
         tips calcs
         
