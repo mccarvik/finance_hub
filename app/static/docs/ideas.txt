@@ -1,4 +1,5 @@
 FRONT END AND DB LEARNING - Javascript, CSS, HTML, SQL freeCodeCamp.com
+Can start prettying up option --> vanilla option tab
 
 1. machine learning on financial stock picking
 2. calculator for fixed income products
