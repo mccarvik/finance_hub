@@ -1,16 +1,17 @@
 #option_vanilla_calc_button {
-    margin: 10px;
+    margin : 10px;
 }
 
 label.opt_labels { 
-    display:inline-block;
+    display : inline-block;
+    font : sans-serif, Helvetica;
 }
 
 div.opt_inputs {
-    width: 900px;
+    width : 900px;
 }
 
 .vanilla_buttons {
-    margin-bottom: 20px;
+    margin-bottom : 20px;
 }
 

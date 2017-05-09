@@ -15,6 +15,7 @@ from app.curves.curves import Curve
 from app.utils.fi_funcs import *
 
 
+
 TSY_CURVE_MAP = {
     'BC_1MONTH' : 30,
     'BC_3MONTH' : 91,
@@ -31,6 +32,7 @@ TSY_CURVE_MAP = {
 
 def loadTreasuryCurve(dflt=False, disp=True):
     ''' uses lxml / etree to scrape treasury xml for curve points
+        This is the treasury spot / zero curve
     
     Parameters
     ==========
@@ -48,9 +50,10 @@ def loadTreasuryCurve(dflt=False, disp=True):
     
     if dflt:
         rate_list = readCurve('tsy')
+        crv = Curve([r[0] for r in rate_list], [r[1] for r in rate_list])
         if disp:
-            saveCurveImg(rate_list)
-        return Curve([r[0] for r in rate_list], [r[1] for r in rate_list])
+            saveCurveImg(crv)
+        return crv
     
     url = 'http://data.treasury.gov/feed.svc/DailyTreasuryYieldCurveRateData?$filter=month(NEW_DATE)%20eq%204%20and%20year(NEW_DATE)%20eq%202017'
     
@@ -115,7 +118,6 @@ def saveCurveImg(crv, trade_date=datetime.date.today()):
     ======
     NONE
     '''
-    pdb.set_trace()
     # x = [(r[0] - trade_date).days for r in crv._curve]
     x = [r[0] for r in crv._curve]
     y1 = [r[1] for r in crv._curve]                                     # spot rates
