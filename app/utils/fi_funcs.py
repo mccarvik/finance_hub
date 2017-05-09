@@ -1,13 +1,17 @@
+import sys
+sys.path.append("/home/ubuntu/workspace/finance")
+sys.path.append("/usr/local/lib/python2.7/dist-packages")
+import matplotlib as mpl
+mpl.use('Agg')
 import datetime, sys, pdb
 from scipy import optimize
 from math import sqrt, pi, log, e
-import matplotlib as mpl
-mpl.use('Agg')
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 from dateutil.relativedelta import relativedelta
-# from pandas.io.data import DataReader
+from app.curves.curves import Curve
+from app.curves.curve_funcs import linearInterp
 
 
 FREQ_MAP = {
@@ -188,6 +192,27 @@ def calcYieldToDate(price, par, mat_date, cpn, freq=0.5, start_date=datetime.dat
     # return optimize.newton(ytm_func, guess)
     return newton_raphson(ytm_func, guess)
 
+
+def calcZSpread(crv, price, par, mat_date, cpn, freq=0.5, start_date=datetime.date.today(), guess=None):
+    tenor = (mat_date - start_date).days / 365.25
+    freq = float(freq)
+    # guess ytm = coupon rate, will get us in the ball park
+    guess = cpn
+    cfs = createCashFlows(start_date, freq, mat_date, cpn, par)
+    # filters for only cash flows that haven't occurred yet
+    cfs = [c for c in cfs if c[0] > start_date]
+
+    # adding a third item to the tuple for interpolation of rate
+    cpn_dts = [((i[0] - start_date).days / 365, i[1], linearInterp(i[0],crv)[1]) for i in cfs]
+    
+    # TODO write up function to optimize thru newton rafson
+    
+    pdb.set_trace()
+    zsprd_func = lambda y: \
+        sum([c/(1+r*freq+y)**(t/freq) for t,c,r in cpn_dts]) - price
+    zsprd = newton_raphson(zsprd_func, guess)
+    return zsprd
+
 def derivative(f, x, h):
     return (f(x+h) - f(x-h)) / (2.0*h)  # might want to return a small non-zero if ==0
 
@@ -269,11 +294,13 @@ def VaR(symbol='AAPL', notl=None, conf=0.95, dist=None, _d1=None, _d2=None, volw
     
     
 if __name__ == "__main__":
-    # import pdb; pdb.set_trace()
-    pass
     # print(bootstrap(0.048, 400, [(0.053, 91), (0.055, 98)]))
     # print(calcYieldToDate(95.0428, 100, 1.5, 5.75))
     # print(calcYieldToDate(100, 100, 2, 6))
     # xFound = newton_raphson(quadratic, 5, 0.01)    # call the solver
     # print("solution: x = ", xFound)
-    VaR()
+    # VaR()
+    t_curve = [(datetime.date(2018,1,1), 0.021), (datetime.date(2019,1,1), 0.03635)]
+    crv = Curve(rates=[r[1] for r in t_curve], dts = [r[0] for r in t_curve])
+    calcZSpread(crv, 100.125, 100, datetime.date(2019,1,1), 0.04, freq=1,
+                start_date=datetime.date(2017,1,1))
