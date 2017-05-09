@@ -1,11 +1,12 @@
-CURRENT - calculate z sprd, p 441 reading 54, CFA 1
-        simple of an FRN and effective spread
-        tips calcs
+CURRENT - z sprd and g sprd from fixed_rate_bond
+        tips calcs (ex: breakevens)
+        option --> vanilla option pretty up
         
-    NOTE: great analytics available in CFA 1 https://bookshelf.vitalsource.com/ 
-    user name: mccarviks@gmail.com
-    pw: Kmac7272!
-    p 415 for fixed bonds, p 421 for floating
+        
+NOTE: great analytics available in CFA 1 https://bookshelf.vitalsource.com/ 
+user name: mccarviks@gmail.com
+pw: Kmac7272!
+p 415 for fixed bonds, p 421 for floating
     
 notes from Hull book:
 add grid for eq screener

@@ -139,6 +139,12 @@ class FixedRateBond(Bond):
             dur += (d_temp / self._pv)
         return dur
     
+    def calcZSpread(self):
+        pass
+    
+    def calcGSprd(self):
+        pass
+    
     def calcParYield(self, fwd_rates, guess=None, start_date=datetime.datetime.today().date(), cont_comp=False):
         """
         This means that given a list of forward rates, we can calculate what the coupon rate 
