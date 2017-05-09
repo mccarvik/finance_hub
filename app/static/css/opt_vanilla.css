@@ -7,8 +7,12 @@ label.opt_labels {
     font : sans-serif, Helvetica;
 }
 
-div.opt_inputs {
-    width : 900px;
+div.opt_input_div {
+    width : 500px;
+    border-color : maroon;
+    border-width : 5%;
+    border-style : solid;
+    border-radius : 4px;
 }
 
 .vanilla_buttons {
@@ -18,4 +22,5 @@ div.opt_inputs {
 .opt_img {
     width : 300px;
 }
+
 

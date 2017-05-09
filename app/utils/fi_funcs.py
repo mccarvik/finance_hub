@@ -191,7 +191,6 @@ def calcYieldToDate(price, par, mat_date, cpn, freq=0.5, start_date=datetime.dat
     # return optimize.newton(ytm_func, guess)
     return newton_raphson(ytm_func, guess)
 
-
 def derivative(f, x, h):
     return (f(x+h) - f(x-h)) / (2.0*h)  # might want to return a small non-zero if ==0
 

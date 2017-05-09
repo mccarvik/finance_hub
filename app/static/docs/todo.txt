@@ -1,4 +1,4 @@
-CURRENT - check out reading 46, see if anything worth doing in CFA 1
+CURRENT - check out reading 51, make equity class
         tips calcs (ex: breakevens)
         option --> vanilla option pretty up
         
