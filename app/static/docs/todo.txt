@@ -1,4 +1,4 @@
-CURRENT - z sprd and g sprd from fixed_rate_bond
+CURRENT - check out reading 46, see if anything worth doing in CFA 1
         tips calcs (ex: breakevens)
         option --> vanilla option pretty up
         
