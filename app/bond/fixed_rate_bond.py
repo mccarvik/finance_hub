@@ -184,14 +184,14 @@ class FixedRateBond(Bond):
         
         # TODO write up function to optimize thru newton rafson
         
-        pdb.set_trace()
         zsprd_func = lambda y: \
             sum([c/(1+r*freq+y)**(t/freq) for t,c,r in cpn_dts]) - self._pv
         zsprd = newton_raphson(zsprd_func, guess)
         return zsprd
     
-    def calcGSprd(self):
-        pass
+    def calcGSpread(self):
+        ''' Simply the spread between the benchmark rate and the YTM'''
+        return self._ytm - self._bm[1]
     
     def calcParYield(self, fwd_rates, guess=None, start_date=datetime.datetime.today().date(), cont_comp=False):
         """
@@ -260,6 +260,7 @@ if __name__ == "__main__":
     # print(bond.calcParYield(fwd_rates,cont_comp=True))
     # print(bond._conv_factor)
     print(bond.calcZSpread())
+    print(bond.calcGSpread())
     print(bond._pv)
     print(bond._ytm)
     # print(bond.calcEffectiveAnnualRate())
