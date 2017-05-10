@@ -8,3 +8,6 @@ class Equity():
         
         self._div_yld = div_yld
 
+    
+    def calcDividendDiscountModel(self, r_req):
+        return 0
