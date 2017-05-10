@@ -1,4 +1,4 @@
-FRONT END AND DB LEARNING - Javascript, CSS, HTML, SQL freeCodeCamp.com
+freeCodeCamp.com
 Can start prettying up option --> vanilla option tab
 
 1. machine learning on financial stock picking
