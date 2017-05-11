@@ -1,4 +1,4 @@
-CURRENT - continue reading 51, make equity class
+CURRENT - continue reading 51, preferred equity class
         tips calcs (ex: breakevens)
         option --> vanilla option pretty up
         
