@@ -27,5 +27,4 @@ class PreferredStock(Equity):
 if __name__ == "__main__":
     p = PreferredStock(0.05, div_freq=0.25, par=25, trade_dt=datetime.date(2017,1,1))
     print(p.calcPresentValue(r_req=0.075))
-    pdb.set_trace()
     print(p.calcDividendDiscountModel(8.5, 25, 0.155))

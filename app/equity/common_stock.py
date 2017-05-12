@@ -57,7 +57,6 @@ class CommonStock(Equity):
         pv += calcPV(sale_px, r_req*self._div_freq, hold_per/self._div_freq)
         return pv 
     
-    
     def calcCAPM(self, r_f=None, r_market=0.08):
         ''' Will calculate the Capital Asset Pricing Model require rate of return
             given the following parameter assumptions
@@ -80,11 +79,24 @@ class CommonStock(Equity):
         if not r_f:
             r_f = linearInterp(self._trade_dt + datetime.timedelta(3650), loadTreasuryCurve(dflt=True, disp=False))[1]
         return r_f + self._beta * (r_market - r_f)
-        
+    
+    def calcGordonGrowthModel(self, growth=None, r_f=None, D0=None):
+        if not D0:
+            D0 = self._cur_px * self._div_yld
+        if not r_f:
+            r_f = linearInterp(self._trade_dt + datetime.timedelta(3650), loadTreasuryCurve(dflt=True, disp=False))[1]
+        if not growth:
+            growth = calcGrowthEstimate()
+        return (D0 * (1 + growth)) / (r_f - growth)
+    
+    def calcGrowthEstimage(self):
+        b = (1 - div_payout_ratio)
+        ROE = 1
+        return (b * ROE)
 
 if __name__ == "__main__":
-    pdb.set_trace()
     e = CommonStock(div_yld=0.02, div_freq=1, trade_dt=datetime.date(2017,1,1))
     divs = [2, 2.1, 2.2]
-    print(e.calcDividendDiscountModel(3, 20, 0.10, divs=divs))
-    print(e.calcCAPM())
+    # print(e.calcDividendDiscountModel(3, 20, 0.10, divs=divs))
+    # print(e.calcCAPM())
+    print(e.calcGordonGrowthModel(growth=0.14, r_f=0.19, D0=2.28))
