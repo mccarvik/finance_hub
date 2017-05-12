@@ -1,4 +1,4 @@
-CURRENT - continue reading 51, preferred equity class
+CURRENT - continue reading 51, p 263, multistage DDM
         tips calcs (ex: breakevens)
         option --> vanilla option pretty up
         

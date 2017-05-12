@@ -120,7 +120,7 @@ def calcPVContinuous(cf, ir, period):
     '''
     return cf * e**((-1) * ir * period)
 
-def createCashFlows(start_date, freq, mat_date, cpn, par):
+def createCashFlows(start_date, freq, mat_date, cpn, par, par_cf=True):
     ''' Creats a list of tuple pairs where each pair is the date and amount of a cash flow
     Parameters
     ==========
@@ -145,7 +145,8 @@ def createCashFlows(start_date, freq, mat_date, cpn, par):
     days_from_issue = [int((365 * freq)*(i+1)) for i in range(round(num_cfs))]
     dates = [start_date + datetime.timedelta(i) for i in days_from_issue]
     cfs = [(dates[i], cpn * par * freq) for i in range(len(dates))]
-    cfs.append((mat_date, par))
+    if par_cf:
+        cfs.append((mat_date, par))
     return cfs
 
 def calcYieldToDate(price, par, mat_date, cpn, freq=0.5, start_date=datetime.datetime.today(), guess=None):

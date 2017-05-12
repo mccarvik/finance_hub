@@ -41,6 +41,7 @@ class Equity():
             div_flows = np.array([[(d[0]-self._trade_dt).days/365, d[1]] for d in div_flows])
         else:
             div_flows = divs
+            div_flows.append([hold_per, sale_px])
         pv = 0
         for d in div_flows:
             pv += calcPV(d[1], r_req*self._div_freq, d[0]/self._div_freq)
