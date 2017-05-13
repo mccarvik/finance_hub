@@ -127,6 +127,7 @@ class CommonStock(Equity):
         ==========
         growth : float
             estimate of growth of the dividends
+            DEFAULT = (1 - dividend payout ratio) * Return on equity
         r_req : float
             The required rate of return
             DEFAULT = Use the CAPM model and all its assumptions
@@ -141,16 +142,38 @@ class CommonStock(Equity):
         if not D0:
             D0 = self._cur_px * self._div_yld
         if not r_req:
-            r_req = calcCAPM()
+            r_req = self.calcCAPM()
         if not growth:
             growth = calcGrowthEstimate()
         return (D0 * (1 + growth)) / (r_req - growth)
     
     def calcGrowthEstimate(self):
-        b = (1 - div_payout_ratio)
+        b = (1 - self.calcDividendPayoutRatio())
         ROE = 1
         return (b * ROE)
     
+    def retentionRate(self):
+        # represented by "b" in a lot of equations
+        return 1 - self.calcDividendPayoutRatio()
+    
+    def dividendPayoutRatio(self):
+        return 0.45
+        return (self._div_yld * self._cur_px) / self._EPS
+    
+    def calcJustifiedPE(self, growth=None, r_req=None, trailing=False):
+        pdb.set_trace()
+        if not r_req:
+            r_req = self.calcCAPM()
+        if not growth:
+            growth = calcGrowthEstimate()
+
+        if trailing:
+            return self.dividendPayoutRatio() / (r_req - growth)
+        else:
+            return (self.dividendPayoutRatio() * (1 + growth)) / (r_req - growth)
+    
+    """ Load in P/S, P/E, P/B. P/CF """   
+        
 
 if __name__ == "__main__":
     e = CommonStock(div_yld=0.0108, cur_px=100, div_freq=1, trade_dt=datetime.date(2017,1,1))
@@ -158,4 +181,6 @@ if __name__ == "__main__":
     # print(e.calcDividendDiscountModel(3, 20, 0.10, divs=divs))
     # print(e.calcCAPM())
     # print(e.calcGordonGrowthModel(growth=0.14, r_f=0.19, D0=2.28))
-    print(e.calc2StageDDM(0.065, 2, 0.04, r_req=0.066))
+    # print(e.calc2StageDDM(0.065, 2, 0.04, r_req=0.066))
+    print(e.calcJustifiedPE(growth=0.088, r_req=0.12, trailing=True))
+    
