@@ -41,7 +41,6 @@ def get_data(reset_ticks=False, source="API2"):
             tickers = tickers[:-1]
             tasks.append(tickers)
     
-    import pdb; pdb.set_trace()
     t0 = time.time()
     threads = []
     try:
@@ -186,5 +185,5 @@ def run_screening(filters=None, sim=False):
 if __name__ == '__main__':
     # import pdb; pdb.set_trace()
     # run_screening(sim=True)
-    # get_data()
-    writeScreenInfo(source="API2")
+    get_data()
+    # writeScreenInfo(source="API2")

@@ -3,15 +3,19 @@ sys.path.append("/home/ubuntu/workspace/finance")
 sys.path.append("/usr/local/lib/python2.7/dist-packages")
 import datetime, pdb
 from app.utils.fi_funcs import *
+from app.equity.screener_eqs import *
 
 class Equity():
     '''Parent class of all stock and other equity products'''
     
-    def __init__(self, div_yld=0, div_freq=1, cur_px=100):
+    def __init__(self, ticker, div_yld=0, div_freq=1, cur_px=100, load_data=False):
         '''Constructor'''
+        self._ticker = ticker
         self._div_yld = div_yld
         self._div_freq = div_freq
         self._cur_px = cur_px
+        if load_data:
+            self.load_data_to_db()
     
     def calcDividendDiscountModel(self, hold_per, sale_px, r_req=0.04, divs=False):
         ''' Calculates the value of the stock based on the Dividend
@@ -46,3 +50,6 @@ class Equity():
         for d in div_flows:
             pv += calcPV(d[1], r_req*self._div_freq, d[0]/self._div_freq)
         return pv 
+        
+    def load_data_to_db(self):
+        screener_eqs.get_data()

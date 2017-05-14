@@ -5,19 +5,26 @@ sys.path.append("/usr/local/lib/python2.7/dist-packages")
 import datetime, pdb
 from app.equity.equity import Equity
 from app.utils.fi_funcs import *
+from app.utils.db_utils import *
 from app.curves.curve_funcs import *
 
 
 class CommonStock(Equity):
     '''This class will represent an individual stock'''
     
-    def __init__(self, div_yld=0.0, div_freq=0.25, cur_px=100, beta=1,
+    def __init__(self, ticker, div_yld=0.0, div_freq=0.25, cur_px=100,
                 trade_dt=datetime.date.today()):
         '''Constructor'''
-        super().__init__(div_yld, div_freq, cur_px)
+        super().__init__(ticker, div_yld, div_freq, cur_px)
         self._trade_dt = trade_dt
-        self._beta = beta
+        pdb.set_trace()
+        self._stats_df = loadFinancialStats()
         
+    def loadFinancialStats(self):
+        with DBHelper() as db:
+            db.connect()
+            return db.select(table, where="date='{0}' and ticker={1}".format(self._date, self._ticker))
+    
     def calcDividendDiscountModel(self, hold_per, sale_px, r_req=None, divs=False):
         ''' Calculates the value of the stock based on the Dividend
         Discount Model
@@ -176,7 +183,7 @@ class CommonStock(Equity):
         
 
 if __name__ == "__main__":
-    e = CommonStock(div_yld=0.0108, cur_px=100, div_freq=1, trade_dt=datetime.date(2017,1,1))
+    e = CommonStock('MSFT', div_yld=0.0108, cur_px=100, div_freq=1, trade_dt=datetime.date(2017,1,1))
     # divs = [[1,2], [2,2.1], [3,2.2]]
     # print(e.calcDividendDiscountModel(3, 20, 0.10, divs=divs))
     # print(e.calcCAPM())
