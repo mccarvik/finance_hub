@@ -41,7 +41,7 @@ class EquityStats():
                 self._stats['n'] = self._stats['n'].replace("'", "''")
                 prim_keys = ['date', 's']
             elif self._source == "API2":
-                table = 'eq_screener2'
+                table = 'key_stats_yahoo'
                 self._stats['ticker'] = self._stats['ticker'].replace("'", "''")
                 prim_keys = ['date', 'ticker']
             db.upsert(table, self._stats, prim_keys)
@@ -76,7 +76,7 @@ class ES_Dataframe:
         self._colmap = self.setColumns()
         self._date = date or datetime.datetime.now().strftime('%Y-%m-%d')
         pdb.set_trace()
-        self._df = self.read_from_db(table='eq_screener2')
+        self._df = self.read_from_db(table='key_stats_yahoo')
         self.readOther()
         self.clean_data()
         self.apply_filters()

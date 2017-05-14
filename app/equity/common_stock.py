@@ -17,13 +17,17 @@ class CommonStock(Equity):
         '''Constructor'''
         super().__init__(ticker, div_yld, div_freq, cur_px)
         self._trade_dt = trade_dt
+        # self._stats_df = loadFinancialStats(self._trade_dt)
+        self._stats_df = self.loadFinancialStats(datetime.date(2017,5,14).strftime('%Y-%m-%d'))
         pdb.set_trace()
-        self._stats_df = loadFinancialStats()
+        print()
         
-    def loadFinancialStats(self):
+    def loadFinancialStats(self, date):
+        table = 'key_stats_yahoo'
+        pdb.set_trace()
         with DBHelper() as db:
             db.connect()
-            return db.select(table, where="date='{0}' and ticker={1}".format(self._date, self._ticker))
+            return db.select(table, where="date='{0}' and ticker='{1}'".format(date, self._ticker))
     
     def calcDividendDiscountModel(self, hold_per, sale_px, r_req=None, divs=False):
         ''' Calculates the value of the stock based on the Dividend
@@ -125,7 +129,7 @@ class CommonStock(Equity):
         '''
         if not r_f:
             r_f = linearInterp(self._trade_dt + datetime.timedelta(3650), loadTreasuryCurve(dflt=True, disp=False))[1]
-        return r_f + self._beta * (r_market - r_f)
+        return r_f + self._stats_df['beta'] * (r_market - r_f)
     
     def calcGordonGrowthModel(self, growth=None, r_req=None, D0=None):
         ''' Calculatesthe intrinsic value of the stock based on the GGM
@@ -164,7 +168,6 @@ class CommonStock(Equity):
         return 1 - self.calcDividendPayoutRatio()
     
     def dividendPayoutRatio(self):
-        return 0.45
         return (self._div_yld * self._cur_px) / self._EPS
     
     def calcJustifiedPE(self, growth=None, r_req=None, trailing=False):
