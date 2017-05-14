@@ -1,54 +1,60 @@
 <!-- extend base layout -->
 {% extends "base.html" %}
 {% block content %}
+    <!--link to boot strap responsive design-->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
     <link href="/static/css/opt_vanilla.css" rel="stylesheet" type="text/css">
     <script src="/static/js/opt_vanilla.js"></script>
     <img class='opt_img' src="/static/img/vol_smile.png">
-    <div>
-        <button id="opt_vanilla_calc" class='vanilla_buttons' onclick="opt_vanilla_calc(event, '{{ SECRET_KEY }}');">Calculate</button>
-    </div>
-    <div id=opt_input_field_div>
+    
+    <!--Need this to use responsive design with bootstrap-->
+    <div class='container-fluid'>
         <div>
-            <label><a href='https://www.amazon.com/Options-Futures-Other-Derivatives-6th/dp/0131499084'>Hull Book for reference</a></label>
+            <button id="opt_vanilla_calc" class='vanilla_buttons' onclick="opt_vanilla_calc(event, '{{ SECRET_KEY }}');">Calculate</button>
         </div>
-        <div class='opt_input_div'>
-            <input type="radio" name="calc" value="prem" checked> Calc Prem<br>
-            <input type="radio" name="calc" value="vol"> Calc Vol<br>
-        </div>
-        <div class='opt_input_div'>
-            <label class='opt_labels'>Option Type</label>
-            <select class='opt_fields' id='call_put'>
-                <option value="C">Call</option>
-                <option value="P">Put</option>
-            </select>
-        </div>
-        <div class='opt_input_div'>
-            <label class='opt_labels'>Underlying</label>
-            <input class='opt_fields' type="text" required id='underlying_val' value ="100"/>    
-        </div>
-        <div class='opt_input_div'>
-            <label class='opt_labels'>Strike</label>
-            <input class='opt_fields' type="text" required id='strike_val' value ="100"/>
-        </div>
-        <div class='opt_input_div'>
-            <label class='opt_labels'>Interest Rate</label>
-            <input class='opt_fields' type="text" id='ir_val' value ="0.02"/>
-        </div>
-        <div class='opt_input_div'>
-            <label class='opt_labels'>Continuous Dividend Rate</label>
-            <input class='opt_fields' type="text" id='div_val' value ="0"/>
-        </div>
-        <div class='opt_input_div'>
-            <label class='opt_labels'>Tenor</label>
-            <input class='opt_fields' type="text" required id='tenor_val' value ="1"/>
-        </div>
-        <div class='opt_input_div'>
-            <label class='opt_labels'>Volatility</label>
-            <input class='opt_fields' type="text" id='vol_val' value ="0.3"/>
-        </div>
-        <div class='opt_input_div'>
-            <label class='opt_labels'>Premium</label>
-            <input class='opt_fields' type="text" id=prem_val />
+        <div id=opt_input_field_div>
+            <div>
+                <label><a href='https://www.amazon.com/Options-Futures-Other-Derivatives-6th/dp/0131499084'>Hull Book for reference</a></label>
+            </div>
+            <div class='opt_input_div'>
+                <input type="radio" name="calc" value="prem" checked> Calc Prem<br>
+                <input type="radio" name="calc" value="vol"> Calc Vol<br>
+            </div>
+            <div class='opt_input_div'>
+                <label class='opt_labels'>Option Type</label>
+                <select class='opt_fields' id='call_put'>
+                    <option value="C">Call</option>
+                    <option value="P">Put</option>
+                </select>
+            </div>
+            <div class='opt_input_div'>
+                <label class='opt_labels'>Underlying</label>
+                <input class='opt_fields' type="text" required id='underlying_val' value ="100"/>    
+            </div>
+            <div class='opt_input_div'>
+                <label class='opt_labels'>Strike</label>
+                <input class='opt_fields' type="text" required id='strike_val' value ="100"/>
+            </div>
+            <div class='opt_input_div'>
+                <label class='opt_labels'>Interest Rate</label>
+                <input class='opt_fields' type="text" id='ir_val' value ="0.02"/>
+            </div>
+            <div class='opt_input_div'>
+                <label class='opt_labels'>Continuous Dividend Rate</label>
+                <input class='opt_fields' type="text" id='div_val' value ="0"/>
+            </div>
+            <div class='opt_input_div'>
+                <label class='opt_labels'>Tenor</label>
+                <input class='opt_fields' type="text" required id='tenor_val' value ="1"/>
+            </div>
+            <div class='opt_input_div'>
+                <label class='opt_labels'>Volatility</label>
+                <input class='opt_fields' type="text" id='vol_val' value ="0.3"/>
+            </div>
+            <div class='opt_input_div'>
+                <label class='opt_labels'>Premium</label>
+                <input class='opt_fields' type="text" id=prem_val />
+            </div>
         </div>
     </div>
     

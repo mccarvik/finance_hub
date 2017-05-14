@@ -1,6 +1,9 @@
 /* All elements inherit attributes from body unless overwritten */
 body {
     background-color: LightSteelBlue;
+    /*background-color: #000000; (aka black) --> can use hex for colors*/
+    /*background-color: #F00; (aka red) --> or short hex*/
+    /*background-color: rgb(255, 255, 255); (aka white) --> or rgb*/
 }
 
 label.opt_labels { 
@@ -13,6 +16,9 @@ div.opt_input_div {
     color: white;
 }
 
+/* This will override anything inherited from class or body
+Inheritance:  1. "important!' 2. Inline  3. ID  4. Class  
+5. Inherited Value from element above */
 #opt_input_field_div {
     background-color: navy;
     border-color : black;
