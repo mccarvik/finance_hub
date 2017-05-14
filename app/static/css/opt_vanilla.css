@@ -9,14 +9,20 @@ label.opt_labels {
 
 div.opt_input_div {
     width : 500px;
-    border-color : maroon;
+    border-color : black;
     border-width : 5%;
     border-style : solid;
     border-radius : 4px;
+    background-color: navy;
+    color: white;
 }
 
 .vanilla_buttons {
     margin-bottom : 20px;
+}
+
+.navy-background {
+    background-color: navy;
 }
 
 .opt_img {

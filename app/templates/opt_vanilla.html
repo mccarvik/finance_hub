@@ -7,47 +7,49 @@
     <div>
         <button id="opt_vanilla_calc" class='vanilla_buttons' onclick="opt_vanilla_calc(event, '{{ SECRET_KEY }}');">Calculate</button>
     </div>
-    <div>
-        <label><a href='https://www.amazon.com/Options-Futures-Other-Derivatives-6th/dp/0131499084'>Hull Book for reference</a></label>
-    </div>
-    <div>
-        <input type="radio" name="calc" value="prem" checked> Calc Prem<br>
-        <input type="radio" name="calc" value="vol"> Calc Vol<br>
-    </div>
-    <div class='opt_input_div'>
-        <label class='opt_labels'>Option Type</label>
-        <select class='opt_fields' id='call_put'>
-            <option value="C">Call</option>
-            <option value="P">Put</option>
-        </select>
-    </div>
-    <div class='opt_input_div'>
-        <label class='opt_labels'>Underlying</label>
-        <input class='opt_fields' type="text" required id='underlying_val' value ="100"/>    
-    </div>
-    <div class='opt_input_div'>
-        <label class='opt_labels'>Strike</label>
-        <input class='opt_fields' type="text" required id='strike_val' value ="100"/>
-    </div>
-    <div class='opt_input_div'>
-        <label class='opt_labels'>Interest Rate</label>
-        <input class='opt_fields' type="text" id='ir_val' value ="0.02"/>
-    </div>
-    <div class='opt_input_div'>
-        <label class='opt_labels'>Continuous Dividend Rate</label>
-        <input class='opt_fields' type="text" id='div_val' value ="0"/>
-    </div>
-    <div class='opt_input_div'>
-        <label class='opt_labels'>Tenor</label>
-        <input class='opt_fields' type="text" required id='tenor_val' value ="1"/>
-    </div>
-    <div class='opt_input_div'>
-        <label class='opt_labels'>Volatility</label>
-        <input class='opt_fields' type="text" id='vol_val' value ="0.3"/>
-    </div>
-    <div class='opt_input_div'>
-        <label class='opt_labels'>Premium</label>
-        <input class='opt_fields' type="text" id=prem_val />
+    <div name=opt_input_field_div>
+        <div>
+            <label><a href='https://www.amazon.com/Options-Futures-Other-Derivatives-6th/dp/0131499084'>Hull Book for reference</a></label>
+        </div>
+        <div>
+            <input type="radio" name="calc" value="prem" checked> Calc Prem<br>
+            <input type="radio" name="calc" value="vol"> Calc Vol<br>
+        </div>
+        <div class='opt_input_div'>
+            <label class='opt_labels'>Option Type</label>
+            <select class='opt_fields' id='call_put'>
+                <option value="C">Call</option>
+                <option value="P">Put</option>
+            </select>
+        </div>
+        <div class='opt_input_div'>
+            <label class='opt_labels'>Underlying</label>
+            <input class='opt_fields' type="text" required id='underlying_val' value ="100"/>    
+        </div>
+        <div class='opt_input_div'>
+            <label class='opt_labels'>Strike</label>
+            <input class='opt_fields' type="text" required id='strike_val' value ="100"/>
+        </div>
+        <div class='opt_input_div'>
+            <label class='opt_labels'>Interest Rate</label>
+            <input class='opt_fields' type="text" id='ir_val' value ="0.02"/>
+        </div>
+        <div class='opt_input_div'>
+            <label class='opt_labels'>Continuous Dividend Rate</label>
+            <input class='opt_fields' type="text" id='div_val' value ="0"/>
+        </div>
+        <div class='opt_input_div'>
+            <label class='opt_labels'>Tenor</label>
+            <input class='opt_fields' type="text" required id='tenor_val' value ="1"/>
+        </div>
+        <div class='opt_input_div'>
+            <label class='opt_labels'>Volatility</label>
+            <input class='opt_fields' type="text" id='vol_val' value ="0.3"/>
+        </div>
+        <div class='opt_input_div'>
+            <label class='opt_labels'>Premium</label>
+            <input class='opt_fields' type="text" id=prem_val />
+        </div>
     </div>
     
 {% endblock %}
