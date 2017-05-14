@@ -7,11 +7,11 @@
     <div>
         <button id="opt_vanilla_calc" class='vanilla_buttons' onclick="opt_vanilla_calc(event, '{{ SECRET_KEY }}');">Calculate</button>
     </div>
-    <div name=opt_input_field_div>
+    <div id=opt_input_field_div>
         <div>
             <label><a href='https://www.amazon.com/Options-Futures-Other-Derivatives-6th/dp/0131499084'>Hull Book for reference</a></label>
         </div>
-        <div>
+        <div class='opt_input_div'>
             <input type="radio" name="calc" value="prem" checked> Calc Prem<br>
             <input type="radio" name="calc" value="vol"> Calc Vol<br>
         </div>

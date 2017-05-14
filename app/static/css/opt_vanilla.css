@@ -1,5 +1,6 @@
-#option_vanilla_calc_button {
-    margin : 10px;
+/* All elements inherit attributes from body unless overwritten */
+body {
+    background-color: LightSteelBlue;
 }
 
 label.opt_labels { 
@@ -9,12 +10,18 @@ label.opt_labels {
 
 div.opt_input_div {
     width : 500px;
+    color: white;
+}
+
+#opt_input_field_div {
+    background-color: navy;
     border-color : black;
     border-width : 5%;
     border-style : solid;
     border-radius : 4px;
-    background-color: navy;
-    color: white;
+    padding : 15px;          /* distance between the text and the border */
+    margin : 20px;          /* distance between border and surrounding elements */
+    margin-bottom : 40px;   /* padding / margin : 10px 20px 10px 20px; --> Can do it like this to specify for each side */
 }
 
 .vanilla_buttons {
