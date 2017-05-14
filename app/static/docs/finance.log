@@ -4744,3 +4744,7 @@ FileNotFoundError: [Errno 2] No such file or directory: '/home/ubuntu/workspace/
 2017-05-14 23:33:41,966 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
 2017-05-14 23:35:57,796 INFO: DB SELECT ERROR: <class 'bdb.BdbQuit'>, 45,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:54]
 2017-05-14 23:36:01,130 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-14 23:49:25,429 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-14 23:51:38,735 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-14 23:54:52,704 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-14 23:56:39,580 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
