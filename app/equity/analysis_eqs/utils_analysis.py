@@ -136,6 +136,10 @@ def addOtherAPIColumns(df):
     df : dataframe
         The augmented dataframe
     '''
+    pdb.set_trace()
+    date = df['date']
+    tickers = df['tickers']
+    df_new = getKeyStatsDataFrame(date, tickers, table='eq_screener')
     return df
 
 def addCustomColumns(df):

@@ -5101,3 +5101,6 @@ FileNotFoundError: [Errno 2] No such file or directory: '/home/ubuntu/workspace/
 2017-05-15 15:11:03,247 INFO: finished XPO+XYL+YDKN+YHOO+YELP+YDLE+YORW+YRCW+YUM+ZFGN+ZAGG+ZAIS+ZAYO+ZBRA+ZLTQ+ZEN+Z+ZMH+ZION+ZIOP [in equity_screener.py:93]
 2017-05-15 15:11:03,563 INFO: finished ZIXI+ZOES+ZTS+ZGNX+ZSPH+ZU+ZUMZ+ZNGA+ICB.+FTSE+EMEA [in equity_screener.py:93]
 2017-05-15 15:11:03,563 INFO: Done Retrieving data, took 53.61873936653137 seconds [in equity_screener.py:67]
+2017-05-15 15:20:25,866 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-15 15:20:47,102 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-15 15:21:38,946 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
