@@ -7,7 +7,7 @@ from app.utils.db_utils import *
 from app.equity.screener_eqs.equity_screener import get_data
 from app.equity.screener_eqs.equity_stats import EquityStats, ES_Dataframe
 
-RATIOS = ['forwardPE', 'priceToBook', 'priceToSales', 'enterpriseToRevenue',
+RATIOS = ['forwardPE', 'trailingPE', 'priceToBook', 'priceToSales', 'enterpriseToRevenue',
         'enterpriseToEbitda', 'quickRatio', 'currentRatio', 'debtToEquity', 'returnOnAssets',
         'returnOnEquity']
 OTHER_KEY_STATS = ['shortRatio', 'beta', 'beta3Year', 'yield', 'trailingEps', 'forwardEps',
@@ -110,6 +110,11 @@ def cleanDF(df, date, tickers):
     df = renameColumns(df)
     df = addOtherAPIColumns(df, date, tickers)
     df = addCustomColumns(df)
+    pdb.set_trace()
+    df['yield'] = df['yield'].replace('N/A', 0)
+    # removes all without a price
+    df = df[np.isfinite(df['currentPrice'])]
+    df = df[df['currentPrice'] > 0]
     return df
 
 def renameColumns(df):
@@ -164,6 +169,7 @@ def addCustomColumns(df):
         The augmented dataframe
     '''
     df['priceToSales'] = df['currentPrice'] / df['revenuePerShare']
+    df['trailingPE'] = df['currentPrice'] / df['trailingEps']
     return df
 
 if __name__ == "__main__":
