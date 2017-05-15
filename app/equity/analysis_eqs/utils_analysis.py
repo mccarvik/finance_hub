@@ -12,8 +12,9 @@ RATIOS = ['forwardPE', 'priceToBook', 'priceToSales', 'enterpriseToRevenue',
         'returnOnEquity']
 OTHER_KEY_STATS = ['shortRatio', 'beta', 'beta3Year', 'yield', 'trailingEps', 'forwardEps',
                 'pegRatio', 'lastDividendValue', 'currentPrice', 'totalCashPerShare', 
-                'revenuePerShare', 'bookValuePerShare', '52WeekChange']
-RETURNS = ['ytdReturn', 'threeYearAverageReturn', 'fiveYearAverageReturn']
+                'dividendPerShare', 'revenuePerShare', 'bookValuePerShare', '52WeekChange']
+RETURNS = ['ytdReturn', 'threeYearAverageReturn', 'fiveYearAverageReturn', '52WeekLow',
+            '52WeekHigh', '50DayMvgAvg', '200DayMvgAvg']
 GROWTH = ['earningsQuarterlyGrowth', 'revenueQuarterlyGrowth', 'earningsGrowth', 'revenueGrowth']
 MARGINS = ['profitMargins', 'grossMargins', 'ebitdaMargins', 'operatingMargins']
 GROSS_VALUES = ['enterpriseValue', 'totalAssets', 'totalRevenue', 'totalDebt', 'totalCash',
@@ -41,11 +42,11 @@ COLS_EMPTY_FROM_API = ['priceToSalesTrailing12Months', 'revenueQuarterlyGrowth'
 
 def getFinalDataFrame(date=datetime.date.today().strftime('%Y-%m-%d'), tickers=None):
     df = getKeyStatsDataFrame(date, tickers)
-    df = cleanDF(df)
+    df = cleanDF(df, date, tickers)
     return df
     
 
-def getKeyStatsDataFrame(date=datetime.date.today().strftime('%Y-%m-%d'), tickers=None, table='key_stats_yahoo'):
+def getKeyStatsDataFrame(date=datetime.date.today().strftime('%Y-%m-%d'), tickers=None, table='key_stats_yahoo'):    
     ''' Will retrieve the key financial stats from the DB for a given day and tickers
         Will also clean the dataframe data and add any custom columns
     Parameters
@@ -66,15 +67,16 @@ def getKeyStatsDataFrame(date=datetime.date.today().strftime('%Y-%m-%d'), ticker
         The stats for the given day and tickers
     '''
     where_ticks = "(\""
-    for t in tickers:
-        where_ticks += t + "\",\""
+    if tickers:
+        for t in tickers:
+            where_ticks += t + "\",\""
     where_ticks = where_ticks[:-2] + ")"
     with DBHelper() as db:
         db.connect()
         if tickers:
-            df = db.select(table, where="date='{0}' and ticker in {1}".format(date, where_ticks)).set_index(['ticker', 'date'])
+            df = db.select(table, where="date='{0}' and ticker in {1}".format(date, where_ticks))
         else:
-            df = db.select(table, where="date='{0}'".format(date)).set_index(['ticker', 'date'])
+            df = db.select(table, where="date='{0}'".format(date))
     return df
 
 def loadDataToDB():
@@ -90,8 +92,8 @@ def loadDataToDB():
     get_data()
     # Need this to load data from the other API
     get_data(source='API1')
-    
-def cleanDF(df):
+
+def cleanDF(df, date, tickers):
     ''' Cleans the dataframe, numberfy certain columns, rename columns, etc
     Parameters
     ==========
@@ -103,9 +105,10 @@ def cleanDF(df):
     df : dataframe
         The cleaned dataframe
     '''
+    df = df.set_index(['ticker', 'date'])
     df = df.apply(pd.to_numeric, errors='ignore')
     df = renameColumns(df)
-    df = addOtherAPIColumns(df)
+    df = addOtherAPIColumns(df, date, tickers)
     df = addCustomColumns(df)
     return df
 
@@ -124,7 +127,7 @@ def renameColumns(df):
     df = df.rename(index=str, columns={"bookValue": "bookValuePerShare"})
     return df
 
-def addOtherAPIColumns(df):
+def addOtherAPIColumns(df, date, tickers):
     '''Will retrive selected columns from other API, most notably div_yield
     Parameters
     ==========
@@ -136,10 +139,16 @@ def addOtherAPIColumns(df):
     df : dataframe
         The augmented dataframe
     '''
-    pdb.set_trace()
-    date = df['date']
-    tickers = df['tickers']
+    additional_cols = ['dividendPerShare', '52WeekLow', '52WeekHigh', '50DayMvgAvg', '200DayMvgAvg']
     df_new = getKeyStatsDataFrame(date, tickers, table='eq_screener')
+    df_new = df_new.set_index(['ticker', 'date'])
+    df_new = df_new.rename(index=str, columns={"d":"dividendPerShare", "j":"52WeekLow",
+            "k":"52WeekHigh", "m3":"50DayMvgAvg", "m4":"200DayMvgAvg", "y":"yield"})
+    df_new = df_new.apply(pd.to_numeric, errors='ignore')
+    df_yld = pd.DataFrame(df_new['yield'])
+    df_new = df_new[additional_cols]
+    df = pd.concat([df, df_new], axis=1)
+    df['yield'] = df_yld['yield']
     return df
 
 def addCustomColumns(df):
@@ -158,4 +167,5 @@ def addCustomColumns(df):
     return df
 
 if __name__ == "__main__":
-    loadDataToDB()
+    # loadDataToDB()
+    pass

@@ -1,8 +1,7 @@
 import pymysql.cursors
 import pymysql
-import datetime
+import datetime, sys, pdb
 import pandas as pd
-import sys
 sys.path.append("/home/ubuntu/workspace/finance")
 from app import app
 from app.utils.helper_funcs import stringify

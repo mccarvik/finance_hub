@@ -25,6 +25,9 @@ class EquityStats():
             self._stats = dict(zip(col_list, stats))
             self._ticker = self._stats['s']
             self._stats['date'] = self._date
+            # Change the name of the column
+            self._stats['ticker'] = self._stats['s']
+            del self._stats['s']
         elif self._source == "API2":
             self._stats = stats
             self._ticker = self._stats['ticker']
@@ -39,7 +42,7 @@ class EquityStats():
             if self._source == "API1":
                 table = 'eq_screener'
                 self._stats['n'] = self._stats['n'].replace("'", "''")
-                prim_keys = ['date', 's']
+                prim_keys = ['date', 'ticker']
             elif self._source == "API2":
                 table = 'key_stats_yahoo'
                 self._stats['ticker'] = self._stats['ticker'].replace("'", "''")
