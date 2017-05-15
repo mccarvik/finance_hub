@@ -1,11 +1,10 @@
 $(document).ready(function () {
-    console.log('h1')
     if (window.jQuery) {  
         // jQuery is loaded
-        console.log('jq')
+        console.log('jquery found')
     } else {
         // jQuery is not loaded
-        console.log('no jq')
+        console.log('no jquery')
     }
 });
 

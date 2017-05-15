@@ -7,11 +7,12 @@ from app.utils.db_utils import *
 from app.equity.screener_eqs.equity_screener import get_data
 from app.equity.screener_eqs.equity_stats import EquityStats, ES_Dataframe
 
+PATH = '/workspace/finance/app/static/img'
 RATIOS = ['forwardPE', 'trailingPE', 'priceToBook', 'priceToSales', 'enterpriseToRevenue',
         'enterpriseToEbitda', 'quickRatio', 'currentRatio', 'debtToEquity', 'returnOnAssets',
-        'returnOnEquity']
+        'returnOnEquity', 'pegRatio',]
 OTHER_KEY_STATS = ['shortRatio', 'beta', 'beta3Year', 'yield', 'trailingEps', 'forwardEps',
-                'pegRatio', 'lastDividendValue', 'currentPrice', 'totalCashPerShare', 
+                'lastDividendValue', 'currentPrice', 'totalCashPerShare', 
                 'dividendPerShare', 'revenuePerShare', 'bookValuePerShare', '52WeekChange']
 RETURNS = ['ytdReturn', 'threeYearAverageReturn', 'fiveYearAverageReturn', '52WeekLow',
             '52WeekHigh', '50DayMvgAvg', '200DayMvgAvg']
