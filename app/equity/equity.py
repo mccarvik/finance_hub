@@ -51,5 +51,6 @@ class Equity():
             pv += calcPV(d[1], r_req*self._div_freq, d[0]/self._div_freq)
         return pv 
         
+
     def load_data_to_db(self):
         screener_eqs.get_data()

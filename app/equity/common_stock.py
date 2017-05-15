@@ -20,8 +20,6 @@ class CommonStock(Equity):
         self._trade_dt = trade_dt
         # self._stats_df = loadFinancialStats(self._trade_dt)
         self._stats_df = self.getKeyStatsDataFrame(datetime.date(2017,5,14).strftime('%Y-%m-%d'), self._ticker)
-        pdb.set_trace()
-        print()
     
     def calcDividendDiscountModel(self, hold_per, sale_px, r_req=None, divs=False):
         ''' Calculates the value of the stock based on the Dividend

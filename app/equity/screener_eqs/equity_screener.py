@@ -3,12 +3,11 @@ sys.path.append("/home/ubuntu/workspace/finance")
 from app.equity.screener_eqs.create_symbols import create_symbols
 from app.equity.screener_eqs.equity_stats import EquityStats, ES_Dataframe
 import pandas as pd
-import os, csv, requests, asyncio, time, json, pdb
+import os, csv, requests, asyncio, time, json
 from threading import Thread
 from app import app
 
 def post(request):
-    # import pdb; pdb.set_trace()
     if request.form['action'] == 'run_screening':
         t_filts = dict(eval(request.form['filters']))['filts']
         ES = run_screening(filters=t_filts, sim=False)
@@ -43,22 +42,23 @@ def get_data(reset_ticks=False, source="API2"):
     
     t0 = time.time()
     threads = []
+    # import pdb; pdb.set_trace()
     try:
         # for running multithreaded: starts the thread and 'joins it' so we will wait for all to finish
-        for t in tasks:
-            if source == "API1":
-                threads.append(Thread(target=makeAPICall, args=(t,source,)))
-            elif source == "API2":
-                threads.append(Thread(target=makeScrapeAPICall, args=(t,source,)))
-        [t.start() for t in threads]
-        [t.join() for t in threads]
-        
-        # for running single threaded
         # for t in tasks:
         #     if source == "API1":
-        #         makeAPICall(t, source)
+        #         threads.append(Thread(target=makeAPICall, args=(t,source,)))
         #     elif source == "API2":
-        #         makeScrapeAPICall(t, source)
+        #         threads.append(Thread(target=makeScrapeAPICall, args=(t,source,)))
+        # [t.start() for t in threads]
+        # [t.join() for t in threads]
+        
+        # for running single threaded
+        for t in tasks:
+            if source == "API1":
+                makeAPICall(t, source)
+            elif source == "API2":
+                makeScrapeAPICall(t, source)
     except Exception as e:
         import pdb; pdb.set_trace()
         exc_type, exc_obj, exc_tb = sys.exc_info()
@@ -68,6 +68,7 @@ def get_data(reset_ticks=False, source="API2"):
     
 
 def makeAPICall(tickers, source):
+    # import pdb; pdb.set_trace()
     col_list = list(EquityStats.cols.keys())
     cols = "".join(col_list)
     url = "http://finance.yahoo.com/d/quotes.csv?s=" + tickers + "&f=" + cols
@@ -185,5 +186,5 @@ def run_screening(filters=None, sim=False):
 if __name__ == '__main__':
     # import pdb; pdb.set_trace()
     # run_screening(sim=True)
-    get_data()
+    get_data(source='API1')
     # writeScreenInfo(source="API2")
