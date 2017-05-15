@@ -7,6 +7,7 @@ from app.equity.equity import Equity
 from app.utils.fi_funcs import *
 from app.utils.db_utils import *
 from app.curves.curve_funcs import *
+from app.equity.analysis_eqs.utils_analysis import *
 
 
 class CommonStock(Equity):
@@ -18,16 +19,9 @@ class CommonStock(Equity):
         super().__init__(ticker, div_yld, div_freq, cur_px)
         self._trade_dt = trade_dt
         # self._stats_df = loadFinancialStats(self._trade_dt)
-        self._stats_df = self.loadFinancialStats(datetime.date(2017,5,14).strftime('%Y-%m-%d'))
+        self._stats_df = self.getKeyStatsDataFrame(datetime.date(2017,5,14).strftime('%Y-%m-%d'), self._ticker)
         pdb.set_trace()
         print()
-        
-    def loadFinancialStats(self, date):
-        table = 'key_stats_yahoo'
-        pdb.set_trace()
-        with DBHelper() as db:
-            db.connect()
-            return db.select(table, where="date='{0}' and ticker='{1}'".format(date, self._ticker))
     
     def calcDividendDiscountModel(self, hold_per, sale_px, r_req=None, divs=False):
         ''' Calculates the value of the stock based on the Dividend
