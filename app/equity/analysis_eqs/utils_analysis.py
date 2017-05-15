@@ -110,8 +110,6 @@ def cleanDF(df, date, tickers):
     df = renameColumns(df)
     df = addOtherAPIColumns(df, date, tickers)
     df = addCustomColumns(df)
-    pdb.set_trace()
-    df['yield'] = df['yield'].replace('N/A', 0)
     # removes all without a price
     df = df[np.isfinite(df['currentPrice'])]
     df = df[df['currentPrice'] > 0]
@@ -149,6 +147,7 @@ def addOtherAPIColumns(df, date, tickers):
     df_new = df_new.set_index(['ticker', 'date'])
     df_new = df_new.rename(index=str, columns={"d":"dividendPerShare", "j":"52WeekLow",
             "k":"52WeekHigh", "m3":"50DayMvgAvg", "m4":"200DayMvgAvg", "y":"yield"})
+    df_new['yield'] = df_new['yield'].replace('N/A', 0)
     df_new = df_new.apply(pd.to_numeric, errors='ignore')
     df_yld = pd.DataFrame(df_new['yield'])
     df_new = df_new[additional_cols]
