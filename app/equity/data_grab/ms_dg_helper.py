@@ -11,13 +11,13 @@ COL_MAP = {
     "SG&A" : "sg&a",                                                # Margin
     "R&D" : "r&d",                                                  # Margin
     "Other" : "other",                                              # Margin
-    "Net Int Inc & Other" : "netIncomeMargin",              
-    "EBT Margin" : "EBTMargin",
-    "Operating Income USD Mil" : "operatingIncome",
-    "Current Ratio" : "currentRatio",
-    "Quick Ratio" : "quickRatio",
-    "Financial Leverage" : "financialLeverage",
-    "Debt/Equity" : "debtToEquity",
+    "Net Int Inc & Other" : "netIncomeMargin",                      # Margin
+    "EBT Margin" : "EBTMargin",                                     # Margin
+    "Operating Income USD Mil" : "operatingIncome",                 # Gross
+    "Current Ratio" : "currentRatio",                               # Ratio
+    "Quick Ratio" : "quickRatio",                                   # Ratio    
+    "Financial Leverage" : "financialLeverage",                     # Ratio    
+    "Debt/Equity" : "debtToEquity",                                 # Ratio    
     "Net Income USD Mil" : "netIncomeMargin",                       # Margin
     "Earnings Per Share USD" : "EPS",                               # Gross
     "Payout Ratio % *" : "payoutRatio",                             # Ratio
@@ -67,6 +67,11 @@ COL_MAP = {
     "Inventory Turnover" : "invTurnover",                           # Gross
     "Fixed Assets Turnover" : "fixedAssetsTurnover",                # Gross
 }
+
+DAY_COUNTS = ["daysSalesOutstanding", "daysInv", "payablesPeriod", "cashConvCycle", 
+            "recievablesTurnover", 'invTurnover', 'fixedAssetsTurnover']
+
+
 
 # NOTES:
 ''' COLUMNS NOT USED:

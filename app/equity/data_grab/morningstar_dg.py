@@ -67,12 +67,57 @@ def pruneData(df, dates, tick):
     df['tickers'] = tick
     import pdb; pdb.set_trace()
     df = df.set_index(['tickers', 'date'])
-    # cleanData()
-    # addCustomColumns()
-    # sendToDB()
-    
+    df = cleanData(df)
+    addCustomColumns(df)
+    sendToDB(df)
     return df
 
+def cleanData(df):
+    df = df.apply(pd.to_numeric, errors='ignore')
+    return df
+
+def addCustomColumns(df):
+    '''
+    'sharpe'
+    'Treynor'
+    'forwardPE'
+    'trailingPE'
+    'priceToBook'
+    'priceToSales'
+    'enterpriseToRevenue'
+    'enterpriseToEbitda'
+    'pegRatio'
+    'shortRatio'
+    'beta'
+    'yield'
+    'trailingEps'
+    'forwardEps'
+    'currentPrice'
+    'totalCashPerShare', 
+    'dividendPerShare'
+    'revenuePerShare'
+    '52WeekChange'
+    'ytdReturn'
+    'threeYearAverageReturn'
+    'fiveYearAverageReturn'
+    '52WeekLow'
+    '52WeekHigh'
+    '50DayMvgAvg'
+    '200DayMvgAvg'
+    'earningsGrowth'
+    'revenueGrowth'
+    'earningsGrowth'
+    'revenueGrowth'
+    'ebitdaMargins'
+    'enterpriseValue',
+    'ebitda', 
+    'grossProfits'
+    'netIncomeToCommon'
+    '''    
+    return df
+    
+def sendToDB(df):
+    pass
 
 if __name__ == "__main__":
     getData()
