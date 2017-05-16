@@ -7,7 +7,9 @@ from app.utils.db_utils import *
 from app.equity.screener_eqs.equity_screener import get_data
 from app.equity.screener_eqs.equity_stats import EquityStats, ES_Dataframe
 
-PATH = '/workspace/finance/app/static/img'
+PATH = '/home/ubuntu/workspace/finance/app/static/img/'
+
+
 RATIOS = ['forwardPE', 'trailingPE', 'priceToBook', 'priceToSales', 'enterpriseToRevenue',
         'enterpriseToEbitda', 'quickRatio', 'currentRatio', 'debtToEquity', 'returnOnAssets',
         'returnOnEquity', 'pegRatio',]
@@ -128,7 +130,7 @@ def renameColumns(df):
     df : dataframe
         the dataframe with columns to be renamed
     '''
-    df = df.rename(index=str, columns={"bookValue": "bookValuePerShare"})
+    df = df.rename(columns={"bookValue": "bookValuePerShare"})
     return df
 
 def addOtherAPIColumns(df, date, tickers):
@@ -146,7 +148,7 @@ def addOtherAPIColumns(df, date, tickers):
     additional_cols = ['dividendPerShare', '52WeekLow', '52WeekHigh', '50DayMvgAvg', '200DayMvgAvg']
     df_new = getKeyStatsDataFrame(date, tickers, table='eq_screener')
     df_new = df_new.set_index(['ticker', 'date'])
-    df_new = df_new.rename(index=str, columns={"d":"dividendPerShare", "j":"52WeekLow",
+    df_new = df_new.rename(columns={"d":"dividendPerShare", "j":"52WeekLow",
             "k":"52WeekHigh", "m3":"50DayMvgAvg", "m4":"200DayMvgAvg", "y":"yield"})
     df_new['yield'] = df_new['yield'].replace('N/A', 0)
     df_new = df_new.apply(pd.to_numeric, errors='ignore')
@@ -171,8 +173,8 @@ def addCustomColumns(df):
     df['priceToSales'] = df['currentPrice'] / df['revenuePerShare']
     df['trailingPE'] = df['currentPrice'] / df['trailingEps']
     # will need to calculate volatility for sharpeRatio
-    df['treynorRatio']
-    df['sharpeRatio']
+    # df['treynorRatio']
+    # df['sharpeRatio']
     return df
 
 if __name__ == "__main__":

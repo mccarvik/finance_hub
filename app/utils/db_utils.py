@@ -118,9 +118,12 @@ class DBHelper:
                 app.logger.info("DB UPSERT ERROR: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
                 return {'status': 500}
                 
-            
+def restart():
+    import os
+    os.system("sudo /etc/init.d/mysql restart")
             
 if __name__ == '__main__':
-    a = DBHelper()
-    a.connect(db_host='localhost')
-    a.upsert('eq_screener', {'date':'2015-10-20', 's':'test2', 'n':'test22'}, ['date', 's'])
+    # a = DBHelper()
+    # a.connect(db_host='localhost')
+    # a.upsert('eq_screener', {'date':'2015-10-20', 's':'test2', 'n':'test22'}, ['date', 's'])
+    restart()
