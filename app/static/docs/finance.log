@@ -5544,3 +5544,8 @@ FileNotFoundError: [Errno 2] No such file or directory: '/home/ubuntu/workspace/
 2017-05-16 13:32:23,517 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
 2017-05-16 14:03:02,203 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
 2017-05-16 14:03:59,616 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-16 14:28:10,025 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-16 14:28:51,465 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-16 14:29:18,051 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-16 14:33:09,206 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-16 14:33:27,004 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]

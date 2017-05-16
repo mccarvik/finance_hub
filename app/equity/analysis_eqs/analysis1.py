@@ -42,7 +42,7 @@ def fundamentalsBar(tickers, date='2017-05-15'):
 
     fig, ax = plt.subplots()
     index = np.arange(n_groups)
-    bar_width = 0.35
+    bar_width = 0.9 / len(tickers)
     shift = 0.0
     opacity = 0.4
     error_config = {'ecolor': '0.3'}
@@ -71,4 +71,4 @@ def fundamentalsBar(tickers, date='2017-05-15'):
 
 if __name__ == "__main__":
     # customfilters(['MSFT', 'AAPL'])
-    fundamentalsBar(['MSFT', 'AAPL'])
+    fundamentalsBar(['MSFT', 'AAPL', 'CSCO'])
