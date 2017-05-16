@@ -170,6 +170,9 @@ def addCustomColumns(df):
     '''
     df['priceToSales'] = df['currentPrice'] / df['revenuePerShare']
     df['trailingPE'] = df['currentPrice'] / df['trailingEps']
+    # will need to calculate volatility for sharpeRatio
+    df['treynorRatio']
+    df['sharpeRatio']
     return df
 
 if __name__ == "__main__":
