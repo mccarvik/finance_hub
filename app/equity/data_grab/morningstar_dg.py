@@ -1,10 +1,12 @@
 import sys
 sys.path.append("/home/ubuntu/workspace/finance")
-from app.equity.screener_eqs.create_symbols import create_symbols
+sys.path.append("/usr/local/lib/python2.7/dist-packages")
 import pandas as pd
-import os, csv, requests, asyncio, time, json
+import os, csv, requests, asyncio, time, json, io
 from threading import Thread
 from app import app
+from app.equity.screener_eqs.create_symbols import create_symbols
+from app.equity.data_grab import ms_dg_helper
 
 def getData():
     # Getting all the tickers from text file
@@ -13,6 +15,7 @@ def getData():
         for line in f:
             tasks.append(line.strip())
     
+    t0 = time.time()
     threads = []
     try:
         # for running multithreaded: starts the thread and 'joins it' so we will wait for all to finish
@@ -34,14 +37,23 @@ def getData():
 
 def makeAPICall(tick):
     url = 'http://financials.morningstar.com/ajax/exportKR2CSV.html?t=' + tick
-    req = requests.get(url)
-    # df = pd.read_csv(req.content.decode('utf-8'))
-    content = req.content.decode('utf-8')
-    import pdb; pdb.set_trace()
-    cr = csv.reader(content.splitlines(), delimiter=',')
-    print("")
+    urlData = requests.get(url).content.decode('utf-8')
+    # Remove 2 header lines
+    dates = urlData.splitlines()[2]
+    lines = urlData.splitlines()[3:]
+    data = pd.DataFrame([l.split(",") for l in lines])
+    data = pruneData(data, dates)
+    return data
+    
+    
     
 
+def pruneData(df, dates):
+    import pdb; pdb.set_trace()
+    df['header'] = df.apply(lambda x: ms_dg_helper.COL_MAP[x[0].strip()])
+    df['header'] = df.apply(lambda x: x)
+    df = df.transpose()
+    return df
 
 
 if __name__ == "__main__":
