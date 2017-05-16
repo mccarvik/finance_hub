@@ -36,23 +36,41 @@ def getData():
     app.logger.info("Done Retrieving data, took {0} seconds".format(t1-t0))
 
 def makeAPICall(tick):
+    
     url = 'http://financials.morningstar.com/ajax/exportKR2CSV.html?t=' + tick
     urlData = requests.get(url).content.decode('utf-8')
-    # Remove 2 header lines
-    dates = urlData.splitlines()[2]
-    lines = urlData.splitlines()[3:]
-    data = pd.DataFrame([l.split(",") for l in lines])
-    data = pruneData(data, dates)
+    cr = csv.reader(urlData.splitlines(), delimiter=',')
+    data = []
+    for row in list(cr):
+        data.append(row)
+    # Remove dates
+    dates = data[2][1:]
+    lines = data[3:]
+    # Issue here for certain values with a comma in them
+    data = pd.DataFrame(data)
+    data = pruneData(data, dates, tick)
     return data
     
     
     
 
-def pruneData(df, dates):
-    import pdb; pdb.set_trace()
-    df['header'] = df.apply(lambda x: ms_dg_helper.COL_MAP[x[0].strip()])
-    df['header'] = df.apply(lambda x: x)
+def pruneData(df, dates, tick):
+    df = df.set_index(0)
     df = df.transpose()
+    # rename columns and throw away random extra columns
+    df = df.rename(columns=ms_dg_helper.COL_MAP)
+    df = df[list(ms_dg_helper.COL_MAP.values())]
+    years = [d.split("-")[0] for d in dates]
+    months = [d.split("-")[1] for d in dates[:-1]] + ['TTM']
+    df['date'] = years
+    df['month'] = months
+    df['tickers'] = tick
+    import pdb; pdb.set_trace()
+    df = df.set_index(['tickers', 'date'])
+    # cleanData()
+    # addCustomColumns()
+    # sendToDB()
+    
     return df
 
 
