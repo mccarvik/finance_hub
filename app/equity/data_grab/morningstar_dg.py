@@ -1,12 +1,17 @@
 import sys
 sys.path.append("/home/ubuntu/workspace/finance")
 sys.path.append("/usr/local/lib/python2.7/dist-packages")
+import matplotlib as mpl
+mpl.use('Agg')
+import matplotlib.finance as mpf
 import pandas as pd
-import os, csv, requests, asyncio, time, json, io
+import os, csv, requests, asyncio, time, json, io, datetime
 from threading import Thread
+from pandas.io.data import DataReader
 from app import app
 from app.equity.screener_eqs.create_symbols import create_symbols
 from app.equity.data_grab import ms_dg_helper
+
 
 def getData():
     # Getting all the tickers from text file
@@ -64,9 +69,8 @@ def pruneData(df, dates, tick):
     months = [d.split("-")[1] for d in dates[:-1]] + ['TTM']
     df['date'] = years
     df['month'] = months
-    df['tickers'] = tick
-    import pdb; pdb.set_trace()
-    df = df.set_index(['tickers', 'date'])
+    df['ticker'] = tick
+    df = df.set_index(['ticker', 'date'])
     df = cleanData(df)
     addCustomColumns(df)
     sendToDB(df)
@@ -113,7 +117,13 @@ def addCustomColumns(df):
     'ebitda', 
     'grossProfits'
     'netIncomeToCommon'
-    '''    
+    '''
+    start = (int(df.index.get_level_values('date')[-2]), int(df['month'][0]), 1)
+    end = tuple([int(d) for d in datetime.date.today().strftime('%Y-%m-%d').split("-")])
+    import pdb; pdb.set_trace()
+    quotes = DataReader(df.index.get_level_values('ticker')[0],  'yahoo', datetime.date(start), datetime.date(end))
+    quotes = mpf.quotes_historical_yahoo_ohlc(df.index.get_level_values('ticker')[0], start, end)
+    # df['cur_px'] = df.apply
     return df
     
 def sendToDB(df):
