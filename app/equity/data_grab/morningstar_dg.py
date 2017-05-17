@@ -7,7 +7,7 @@ import matplotlib.finance as mpf
 import pandas as pd
 import os, csv, requests, asyncio, time, json, io, datetime
 from threading import Thread
-from pandas.io.data import DataReader
+from pandas_datareader.data import DataReader
 from app import app
 from app.equity.screener_eqs.create_symbols import create_symbols
 from app.equity.data_grab import ms_dg_helper
@@ -118,10 +118,12 @@ def addCustomColumns(df):
     'grossProfits'
     'netIncomeToCommon'
     '''
-    start = (int(df.index.get_level_values('date')[-2]), int(df['month'][0]), 1)
-    end = tuple([int(d) for d in datetime.date.today().strftime('%Y-%m-%d').split("-")])
+    start = datetime.date(int(df.index.get_level_values('date')[-2]), int(df['month'][0]), 1)
+    end_date_ls = [int(d) for d in datetime.date.today().strftime('%Y-%m-%d').split("-")]
+    end = datetime.date(end_date_ls[0], end_date_ls[1], end_date_ls[2])
     import pdb; pdb.set_trace()
-    quotes = DataReader(df.index.get_level_values('ticker')[0],  'yahoo', datetime.date(start), datetime.date(end))
+    # quotes = DataReader(df.index.get_level_values('ticker')[0],  'yahoo', start, end)
+    quotes = DataReader('AAPL', 'yahoo', start, end)
     quotes = mpf.quotes_historical_yahoo_ohlc(df.index.get_level_values('ticker')[0], start, end)
     # df['cur_px'] = df.apply
     return df
