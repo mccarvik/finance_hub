@@ -83,27 +83,13 @@ def cleanData(df):
     return df
 
 def addCustomColumns(df):
-    start = datetime.date(int(df.index.get_level_values('date')[0]), int(df['month'][0]), 1)
+    start = datetime.date(int(df.index.get_level_values('date')[0])-10, int(df['month'][0]), 1)
     end_date_ls = [int(d) for d in datetime.date.today().strftime('%Y-%m-%d').split("-")]
     end = datetime.date(end_date_ls[0], end_date_ls[1], end_date_ls[2])
     quotes = DataReader(df.index.get_level_values('ticker')[0],  'google', start, end)['Close']
     qr = quotes.reset_index()
     '''
-    'sharpe'
-    'Treynor'
-    'sortino'
-    
-    'earningsGrowth'
-    'revenueGrowth'
-    'pegRatio = trailingPE / earningsgrowth'
-    'shortRatio'
-    'beta'
-    '52WeekChange'
     'ytdReturn'
-    'threeYearAverageReturn'
-    'fiveYearAverageReturn'
-    '52WeekLow'
-    '52WeekHigh'
     '50DayMvgAvg'
     '200DayMvgAvg'
     
@@ -114,6 +100,12 @@ def addCustomColumns(df):
     'ebitda', 
     'grossProfits'
     'netIncomeToCommon'
+    
+    'sharpe'
+    'Treynor'
+    'sortino'
+    'shortRatio'
+    'beta'
     '''
     df['currentPrice'] = df.apply(lambda x: qr[qr['Date'] >= datetime.date(int(x.name[1]),int(x['month']),1)].iloc[0]['Close'], axis=1)
     df['revenuePerShare'] = df['revenue'] / df['shares']  
@@ -124,14 +116,59 @@ def addCustomColumns(df):
     df['priceToBook'] = df['currentPrice'] / df['bookValuePerShare']
     df['priceToSales'] = df['currentPrice'] / df['revenuePerShare']
     
-    import pdb; pdb.set_trace()
     rev_growth = []; eps_growth = []
     for ind, vals in df.iterrows():
-        print(ind)
-    # returns
+        try:
+            last = df.loc[(df.index.get_level_values('date') == str(int(ind[1])-1))]
+            if last.empty:
+                rev_growth.append(0)
+                eps_growth.append(0)
+            else:
+                rev_growth.append(float((vals['revenue'] / last['revenue'] - 1) * 100))
+                eps_growth.append(float((vals['trailingEPS'] / last['trailingEPS'] - 1) * 100))
+        except:
+            rev_growth.append(0)
+            eps_growth.append(0)
     
+    df['revenueGrowth'] = rev_growth
+    df['epsGrowth'] = eps_growth
+    df['pegRatio'] = df['trailingPE'] / df['epsGrowth']
     
-    # growth rates
+    yr1_ret = []; yr3_ret = []; yr5_ret = []; yr10_ret = []; min52 = []; max52 = []
+    for ind, vals in df.iterrows():
+        try:
+            yr1q = qr[qr['Date'] >= datetime.date(int(ind[1])-1,int(vals['month']),1)].iloc[0]['Close']
+            yr1_ret.append(((vals['currentPrice'] / yr1q - 1) * 100))
+        except:
+            yr1_ret.append(0)
+        try:
+            yr3q = qr[qr['Date'] >= datetime.date(int(ind[1])-3,int(vals['month']),1)].iloc[0]['Close']
+            yr3_ret.append(((vals['currentPrice'] / yr3q - 1) * 100)**(1/3))
+        except:
+            yr3_ret.append(0)
+        try:
+            yr5q = qr[qr['Date'] >= datetime.date(int(ind[1])-5,int(vals['month']),1)].iloc[0]['Close']
+            yr5_ret.append(((vals['currentPrice'] / yr5q - 1) * 100)**(1/5))
+        except:
+            yr5_ret.append(0)
+        try:
+            yr10q = qr[qr['Date'] >= datetime.date(int(ind[1])-10,int(vals['month']),1)].iloc[0]['Close']
+            yr10_ret.append(((vals['currentPrice'] / yr10q - 1) * 100)**(1/10))
+        except:
+            yr10_ret.append(0)
+        try:
+            min52.append(min(qr[(qr['Date'] >= datetime.date(int(ind[1])-1,int(vals['month']),1)) & (qr['Date'] <= datetime.date(int(ind[1]),int(vals['month']),1))]['Close']))
+            max52.append(max(qr[(qr['Date'] >= datetime.date(int(ind[1])-1,int(vals['month']),1)) & (qr['Date'] <= datetime.date(int(ind[1]),int(vals['month']),1))]['Close']))
+        except:
+            min52.append(0)
+            max52.append(0)
+
+    df['1yrReturn'] = yr1_ret
+    df['3yrReturn'] = yr3_ret
+    df['5yrReturn'] = yr5_ret
+    df['10yrReturn'] = yr10_ret
+    df['52WeekLow'] = min52
+    df['52WeekHigh'] = max52
     
     return df
     

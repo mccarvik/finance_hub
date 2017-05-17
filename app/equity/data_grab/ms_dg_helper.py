@@ -76,6 +76,15 @@ CUSTOM_COL_MAP = {
     "Trailing PE" : "trailingPE",                                   # Ratio
     "Price to Book" : "priceToBook",                                # Ratio
     "Price to Sales" : "priceToSales",                              # Ratio
+    "Revenue Growth" : "revenueGrowth",                             # Ratio
+    "EPS Growth" : "epsGrowth",                                     # Ratio
+    "PEG Ratio" : "pegRatio",                                       # Ratio
+    "1 Year Return" : "1yrReturn",                                  # Percent
+    "3 Year Return" : "3yrReturn",                                  # Percent
+    "5 Year Return" : "5yrReturn",                                  # Percent
+    "10 Year Return" : "10yrReturn",                                # Percent
+    "52 Week High" : "52WeekHigh",                                  # Gross
+    "52 Week Low" : "52WeekLow",                                  # Gross
 }
 
 
@@ -94,11 +103,12 @@ PER_SHARE = ["bookValuePerShare", "freeCashFlowPerShare", "revenuePerShare", "to
             "dividendPerShare"]
 RATIOS = ["currentRatio", "quickRatio", "financialLeverage", "debtToEquity", "assetTurnoverRatio",
         "interestCoverage", "capExToSales", "freeCashFlowToSales" "freeCashFLowToNetIncome",
-        "trailingPE", "priceToBook", "priceToSales"]
+        "trailingPE", "priceToBook", "priceToSales", "pegRatio"]
 MARGINS = ["grossMargin", "operatingMargin", "netIncomeIncOtherMargin", "EBTMargin",
             "netIncomeMargin"]
-RETURNS = ["returnOnAssets", "returnOnEquity", "returnOnCapital"]
-GROWTH = ["operatingCashFlowGrowth", "freeCashFlowGrowth"]
+RETURNS = ["returnOnAssets", "returnOnEquity", "returnOnCapital", "1yrReturn",
+            "3yrReturn", "5yrReturn", "10yrReturn", "52WeekLow", "52WeekHigh"]
+GROWTH = ["operatingCashFlowGrowth", "freeCashFlowGrowth", "revenueGrowth", "epsGrowth"]
 OTHER = ['shares', "payoutRatio", "taxRate"]
 
 KEY_STATS = ['currentPrice', "divYield"]
