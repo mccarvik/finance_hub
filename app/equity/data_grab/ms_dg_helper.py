@@ -5,21 +5,21 @@ from collections import defaultdict
 COL_MAP = {
     "Gross Margin %" : "grossMargin",                               # Margin
     "Operating Margin %" : "operatingMargin",                       # Margin
-    "Dividends USD" : 'dividends',                                  # Gross
+    "Dividends USD" : 'dividend',                                  # Gross
     "Revenue USD Mil" : 'revenue',                                  # Gross
     "COGS" : "cogs",                                                # Margin
     "SG&A" : "sg&a",                                                # Margin
     "R&D" : "r&d",                                                  # Margin
     "Other" : "other",                                              # Margin
-    "Net Int Inc & Other" : "netIncomeMargin",                      # Margin
+    "Net Int Inc & Other" : "netIncomeIncOtherMargin",              # Margin
     "EBT Margin" : "EBTMargin",                                     # Margin
     "Operating Income USD Mil" : "operatingIncome",                 # Gross
     "Current Ratio" : "currentRatio",                               # Ratio
     "Quick Ratio" : "quickRatio",                                   # Ratio    
     "Financial Leverage" : "financialLeverage",                     # Ratio    
     "Debt/Equity" : "debtToEquity",                                 # Ratio    
-    "Net Income USD Mil" : "netIncomeMargin",                       # Margin
-    "Earnings Per Share USD" : "EPS",                               # Gross
+    "Net Income USD Mil" : "netIncome",                             # Gross
+    "Earnings Per Share USD" : "trailingEPS",                       # Gross
     "Payout Ratio % *" : "payoutRatio",                             # Ratio
     "Shares Mil" : "shares",                                        # Gross
     "Book Value Per Share * USD" : "bookValuePerShare",             # Per Share
@@ -30,15 +30,14 @@ COL_MAP = {
     "Working Capital USD Mil" : "workingCapital",                   # Gross
     "Tax Rate %" : "taxRate",                                       # Ratio
     "Net Margin %" : "netIncomeMargin",                             # Margin
-    "Asset Turnover (Average)" : "assetTurnover",                   # Ratio
+    "Asset Turnover (Average)" : "assetTurnoverRatio",              # Ratio
     "Return on Assets %" : "returnOnAssets",                        # Ratio
-    "Financial Leverage (Average)" : "financialLeverage",           # Ratio
     "Return on Equity %" : "returnOnEquity",                        # Ratio
     "Return on Invested Capital %" : "returnOnCapital",             # Ratio
     "Interest Coverage" : "interestCoverage",                       # Ratio
     "Operating Cash Flow Growth % YOY" : "operatingCashFlowGrowth", # Ratio
     "Free Cash Flow Growth % YOY" : "freeCashFlowGrowth",           # Ratio
-    "Cap Ex as a % of Sales" : "capExtoSales",                      # Ratio
+    "Cap Ex as a % of Sales" : "capExToSales",                      # Ratio
     "Free Cash Flow/Sales %" : "freeCashFlowToSales",               # Ratio
     "Free Cash Flow/Net Income" : "freeCashFLowToNetIncome",        # Ratio
     "Cash & Short-Term Investments" : "cashAndShortTermInv",        # Ratio
@@ -68,10 +67,41 @@ COL_MAP = {
     "Fixed Assets Turnover" : "fixedAssetsTurnover",                # Gross
 }
 
+CUSTOM_COL_MAP = {
+    "Current Price" : "currentPrice",                               # Gross
+    "Revenue Per Share" : "revenuePerShare",                        # Per Share
+    "Total Cash Per Share" : "totalCashPerShare",                   # Per Share
+    "Dividend Per Share" : "dividendPerShare",                      # Per Share
+    "Dividend Yield" : "divYield",                                  # Ratio
+    "Trailing PE" : "trailingPE",                                   # Ratio
+    "Price to Book" : "priceToBook",                                # Ratio
+    "Price to Sales" : "priceToSales",                              # Ratio
+}
+
+
+
 DAY_COUNTS = ["daysSalesOutstanding", "daysInv", "payablesPeriod", "cashConvCycle", 
             "recievablesTurnover", 'invTurnover', 'fixedAssetsTurnover']
+BALANCE_SHEET = ["cashAndShortTermInv", "accountsRecievable", "inventory", "otherCurrentAssets",
+                "totalCurrentAssets", "netPPE", "intangibles", "otherLongTermAssets", 
+                "accountsPayable", "shortTermDebt", "taxesPayable", "accruedLiabilities",
+                "otherShortTermLiabilities", "totalCurentLiabilities", "longTermDebt", 
+                "otherLongTermLiabilities", "totalLiabilities", "totalEquity"
+                "dividend", "revenue", "netIncome", "trailingEPS"]
+INCOME_AND_CASH_FLOW = ["cogs", "sg&a", "r&d", "other", "operatingIncome", "operatingCashFlow",
+                    "capSpending", "freeCashFlow", "workingCapital"]
+PER_SHARE = ["bookValuePerShare", "freeCashFlowPerShare", "revenuePerShare", "totalCashPerShare",
+            "dividendPerShare"]
+RATIOS = ["currentRatio", "quickRatio", "financialLeverage", "debtToEquity", "assetTurnoverRatio",
+        "interestCoverage", "capExToSales", "freeCashFlowToSales" "freeCashFLowToNetIncome",
+        "trailingPE", "priceToBook", "priceToSales"]
+MARGINS = ["grossMargin", "operatingMargin", "netIncomeIncOtherMargin", "EBTMargin",
+            "netIncomeMargin"]
+RETURNS = ["returnOnAssets", "returnOnEquity", "returnOnCapital"]
+GROWTH = ["operatingCashFlowGrowth", "freeCashFlowGrowth"]
+OTHER = ['shares', "payoutRatio", "taxRate"]
 
-
+KEY_STATS = ['currentPrice', "divYield"]
 
 # NOTES:
 ''' COLUMNS NOT USED:

@@ -41,7 +41,6 @@ def getData():
     app.logger.info("Done Retrieving data, took {0} seconds".format(t1-t0))
 
 def makeAPICall(tick):
-    
     url = 'http://financials.morningstar.com/ajax/exportKR2CSV.html?t=' + tick
     urlData = requests.get(url).content.decode('utf-8')
     cr = csv.reader(urlData.splitlines(), delimiter=',')
@@ -65,8 +64,9 @@ def pruneData(df, dates, tick):
     # rename columns and throw away random extra columns
     df = df.rename(columns=ms_dg_helper.COL_MAP)
     df = df[list(ms_dg_helper.COL_MAP.values())]
-    years = [d.split("-")[0] for d in dates]
-    months = [d.split("-")[1] for d in dates[:-1]] + ['TTM']
+    # The TTM data may be off as that last column has different time windows
+    years = [d.split("-")[0] for d in dates[:-1]] + [str(datetime.date.today().year)]
+    months = [d.split("-")[1] for d in dates[:-1]] + [str(datetime.date.today().month)]
     df['date'] = years
     df['month'] = months
     df['ticker'] = tick
@@ -77,29 +77,27 @@ def pruneData(df, dates, tick):
     return df
 
 def cleanData(df):
-    df = df.apply(pd.to_numeric, errors='ignore')
+    # Need this for commas
+    df = df.apply(lambda x: pd.to_numeric(x.astype(str).str.replace(',',''), errors='ignore'))
+    df = df.fillna(0)
     return df
 
 def addCustomColumns(df):
+    start = datetime.date(int(df.index.get_level_values('date')[0]), int(df['month'][0]), 1)
+    end_date_ls = [int(d) for d in datetime.date.today().strftime('%Y-%m-%d').split("-")]
+    end = datetime.date(end_date_ls[0], end_date_ls[1], end_date_ls[2])
+    quotes = DataReader(df.index.get_level_values('ticker')[0],  'google', start, end)['Close']
+    qr = quotes.reset_index()
     '''
     'sharpe'
     'Treynor'
-    'forwardPE'
-    'trailingPE'
-    'priceToBook'
-    'priceToSales'
-    'enterpriseToRevenue'
-    'enterpriseToEbitda'
-    'pegRatio'
+    'sortino'
+    
+    'earningsGrowth'
+    'revenueGrowth'
+    'pegRatio = trailingPE / earningsgrowth'
     'shortRatio'
     'beta'
-    'yield'
-    'trailingEps'
-    'forwardEps'
-    'currentPrice'
-    'totalCashPerShare', 
-    'dividendPerShare'
-    'revenuePerShare'
     '52WeekChange'
     'ytdReturn'
     'threeYearAverageReturn'
@@ -108,25 +106,39 @@ def addCustomColumns(df):
     '52WeekHigh'
     '50DayMvgAvg'
     '200DayMvgAvg'
-    'earningsGrowth'
-    'revenueGrowth'
-    'earningsGrowth'
-    'revenueGrowth'
+    
+    'enterpriseToRevenue'
+    'enterpriseToEbitda'
     'ebitdaMargins'
     'enterpriseValue',
     'ebitda', 
     'grossProfits'
     'netIncomeToCommon'
     '''
-    start = datetime.date(int(df.index.get_level_values('date')[-2]), int(df['month'][0]), 1)
-    end_date_ls = [int(d) for d in datetime.date.today().strftime('%Y-%m-%d').split("-")]
-    end = datetime.date(end_date_ls[0], end_date_ls[1], end_date_ls[2])
+    df['currentPrice'] = df.apply(lambda x: qr[qr['Date'] >= datetime.date(int(x.name[1]),int(x['month']),1)].iloc[0]['Close'], axis=1)
+    df['revenuePerShare'] = df['revenue'] / df['shares']  
+    df['totalCashPerShare'] = df['cashAndShortTermInv'] / df['shares']
+    df['dividendPerShare'] = df['dividend'] / df['shares']
+    df['divYield'] = df['dividendPerShare'] / df['currentPrice']
+    df['trailingPE'] = df['currentPrice'] / df['trailingEPS']
+    df['priceToBook'] = df['currentPrice'] / df['bookValuePerShare']
+    df['priceToSales'] = df['currentPrice'] / df['revenuePerShare']
+    
     import pdb; pdb.set_trace()
-    # quotes = DataReader(df.index.get_level_values('ticker')[0],  'yahoo', start, end)
-    quotes = DataReader('AAPL', 'yahoo', start, end)
-    quotes = mpf.quotes_historical_yahoo_ohlc(df.index.get_level_values('ticker')[0], start, end)
-    # df['cur_px'] = df.apply
+    rev_growth = []; eps_growth = []
+    for ind, vals in df.iterrows():
+        print(ind)
+    # returns
+    
+    
+    # growth rates
+    
     return df
+    
+    
+
+def getFirstofMonth():
+    pass
     
 def sendToDB(df):
     pass
