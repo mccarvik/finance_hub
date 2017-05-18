@@ -2,24 +2,27 @@ body {
     background-color: LightSteelBlue;
 }
 
-input.num_screen, select.num_screen_conds {
-    width: 50px;
-    /*float: right;*/
+label.eqanal {
+    font-size : 13px;
+    padding : 2px;          /* distance between the text and the border */
+    margin : 3px;          /* distance between border and surrounding elements */
+    color : white;
+    width : 200px;
 }
 
-select.num_screen_opts {
-    width: 150px;
-    /*float: right;*/
+#input_div {
+    background-color: navy;
+    border-color : black;
+    border-width : 5%;
+    border-style : solid;
+    border-radius : 4px;
+    padding : 15px;     
+    margin : 20px;      
+    margin-bottom : 40px;
+    width : 300px;
 }
 
-label.num_screen {
-    display:inline-block;
+.opt_fields {
+    margin : 3px;
+    width : 150px;
 }
-
-#num_screen_buts {
-    vertical-align:top;
-    margin: 10px;
-}
-
-
-
