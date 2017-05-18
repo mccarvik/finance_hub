@@ -10,6 +10,9 @@ label.eqanal {
     width : 200px;
 }
 
+button.eqanal {
+}
+
 #input_div {
     background-color: navy;
     border-color : black;
@@ -19,7 +22,7 @@ label.eqanal {
     padding : 15px;     
     margin : 20px;      
     margin-bottom : 40px;
-    width : 300px;
+    width : 350px;
 }
 
 .opt_fields {
