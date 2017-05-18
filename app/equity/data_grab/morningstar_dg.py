@@ -99,9 +99,8 @@ def addCustomColumns(df):
     'ebitda',
     'shortRatio'
     
-    'Treynor'
-    'sortino'
-    'beta'
+    'Treynor / beta'
+    'sortino / downside vol'
     '''
     return df
     
