@@ -96,7 +96,9 @@ CUSTOM_COL_MAP = {
     "Enterprise To Revenue" : "enterpriseToRevenue",                # Margin
     "EBT" : "EBT",                                                  # Gross
     "50 Day Moving Average" : "50DayMvgAvg",                        # Gross
-    "200 Day Moving Average" : "200DayMvgAvg",                        # Gross
+    "200 Day Moving Average" : "200DayMvgAvg",                      # Gross
+    "sortinoRatio" : "Sortino Ratio",                               # Ratio
+    "Downside Volatility" : "downsideVol",                          # Gross
 }
 
 

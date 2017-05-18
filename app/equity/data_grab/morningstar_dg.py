@@ -87,7 +87,11 @@ def addCustomColumns(df):
     start = datetime.date(int(df.index.get_level_values('date')[0])-10, int(df['month'][0]), 1)
     end_date_ls = [int(d) for d in datetime.date.today().strftime('%Y-%m-%d').split("-")]
     end = datetime.date(end_date_ls[0], end_date_ls[1], end_date_ls[2])
-    quotes = DataReader(df.index.get_level_values('ticker')[0],  'google', start, end)['Close']
+    import pdb; pdb.set_trace()
+    market = DataReader(".INX", 'google', start, end)['Close']
+    quotes = DataReader(df.index.get_level_values('ticker')[0], 'google', start, end)['Close']
+    quotes['market'] = market
+    import pdb; pdb.set_trace()
     qr = quotes.reset_index()
     df = addBasicCustomCols(df, qr)
     df = addGrowthCustomCols(df, qr)
@@ -107,25 +111,37 @@ def addCustomColumns(df):
 def addTimelineCustomCols(df, qr, quotes):
     mv_avg_50 = quotes.rolling(center=False,window=50).mean().reset_index()
     mv_avg_200 = quotes.rolling(center=False,window=200).mean().reset_index()
-    df['50DayMvgAvg'] = df.apply(lambda x: mv_avg_50[mv_avg_50['Date'] >= datetime.date(int(x.name[1]),int(x['month']),1)].iloc[0]['Close'], axis=1)
-    df['200DayMvgAvg'] = df.apply(lambda x: mv_avg_50[mv_avg_50['Date'] >= datetime.date(int(x.name[1]),int(x['month']),1)].iloc[0]['Close'], axis=1)
+    df['50DayMvgAvg'] = df.apply(lambda x: mv_avg_50[mv_avg_50['Date'] >= datetime.date(int(x.name[1]), \
+                        int(x['month']),1)].iloc[0]['Close'], axis=1)
+    df['200DayMvgAvg'] = df.apply(lambda x: mv_avg_50[mv_avg_50['Date'] >= datetime.date(int(x.name[1]), \
+                        int(x['month']),1)].iloc[0]['Close'], axis=1)
     vol_stdev = quotes.rolling(window=252, center=False).std().reset_index()  # using one year window
-    df['volatility'] = df.apply(lambda x: vol_stdev[vol_stdev['Date'] >= datetime.date(int(x.name[1]),int(x['month']),1)].iloc[0]['Close'], axis=1)
+    df['volatility'] = (df.apply(lambda x: vol_stdev[vol_stdev['Date'] >= datetime.date(int(x.name[1]), \
+                        int(x['month']),1)].iloc[0]['Close'], axis=1)) / df['currentPrice']
     import pdb; pdb.set_trace()
     df['sharpeRatio'] = df['1yrReturn'] / df['volatility']
-
+    df['downsideVol'] = downside_vol(df, vol_stdev, qr) / df['currentPrice']
+    df['sortinoRatio'] = df['1yrReturn'] / df['downside_vol']
     # df['treynorRatio'] = df['1yrReturn'] / df['beta']
     # Need to loop through and remove all pos st_devs then calc vol for each year window
-    # df['downside_vol'] 
-    # df['sortinoRatio'] = df['1yrReturn'] / df['downside_vol']
+    
     return df
 
 def beta(df, qr):
     pass
+    # http://stackoverflow.com/questions/21515357/python-script-to-calculate-asset-beta-giving-incorrect-result
+    # covariance = numpy.cov(a,b)[0][1]
+    # variance = numpy.var(a)
+    # beta = covariance / variance
 
 def downside_vol(df, vol_stdev, qr):
-    pass
-    
+    qr['change'] = qr['Close'].pct_change(1)
+    neg = qr[qr['Close']<0]
+    dv = []
+    for ind, vals in df.iterrows():
+        dv.append(neg[(neg['Date'] >= datetime.date(int(ind[1])-1,int(vals['month']),1)) \
+                                    & (qr['Date'] <= datetime.date(int(ind[1]),int(vals['month']),1))]['Close'].std())
+    return dv  
 
 def addBasicCustomCols(df, qr):
     df['currentPrice'] = df.apply(lambda x: qr[qr['Date'] >= datetime.date(int(x.name[1]),int(x['month']),1)].iloc[0]['Close'], axis=1)
