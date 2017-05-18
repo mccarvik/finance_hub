@@ -98,7 +98,6 @@ def addCustomColumns(df):
     'ebitdaMargins'
     'enterpriseValue',
     'ebitda', 
-    'grossProfits'
     'netIncomeToCommon'
     
     'sharpe'
@@ -115,6 +114,7 @@ def addCustomColumns(df):
     df['trailingPE'] = df['currentPrice'] / df['trailingEPS']
     df['priceToBook'] = df['currentPrice'] / df['bookValuePerShare']
     df['priceToSales'] = df['currentPrice'] / df['revenuePerShare']
+    df['grossProfit'] = (1-df['cogs']) * df['revenue']
     
     rev_growth = []; eps_growth = []
     for ind, vals in df.iterrows():

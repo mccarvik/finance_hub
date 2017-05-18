@@ -84,7 +84,8 @@ CUSTOM_COL_MAP = {
     "5 Year Return" : "5yrReturn",                                  # Percent
     "10 Year Return" : "10yrReturn",                                # Percent
     "52 Week High" : "52WeekHigh",                                  # Gross
-    "52 Week Low" : "52WeekLow",                                  # Gross
+    "52 Week Low" : "52WeekLow",                                    # Gross
+    "Gross Profit" : "grossProfit",                                 # Gross
 }
 
 

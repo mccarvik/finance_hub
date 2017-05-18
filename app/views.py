@@ -1,4 +1,4 @@
-import json
+import json, pdb
 from collections import OrderedDict
 from flask import render_template, flash, redirect, session, url_for, request, g, jsonify
 from datetime import datetime
@@ -7,6 +7,7 @@ from .forms import EditForm, PostForm, SearchForm
 from .emails import follower_notification
 from config import POSTS_PER_PAGE, MAX_SEARCH_RESULTS, LANGUAGES, DATABASE_QUERY_TIMEOUT
 from .equity.screener_eqs.equity_screener import post as eqsc_post
+from .equity.analysis_eqs.equity_analysis_http import post as eqanal_post
 from .futures.futures import post as fut_post
 from .bond.tsy import post as tsy_post
 from .options.vanilla.opt_vanilla import post as opt_vanilla_post
@@ -35,6 +36,14 @@ def equity_screener():
                             num_screen_vals=ns_vals,
                             data=None)
                            
+
+@app.route('/equity_analysis', methods=['GET', 'POST'])
+def equity_analysis():
+    pdb.set_trace()
+    if request.method == 'POST':
+        eqanal_post(request)
+    return render_template('equity_analysis.html',
+                           title='Equity Analysis')
 
 @app.route('/tsy', methods=['GET', 'POST'])
 def tsy():

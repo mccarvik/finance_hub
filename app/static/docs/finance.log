@@ -5717,3 +5717,172 @@ FileNotFoundError: [Errno 2] No such file or directory: '/home/ubuntu/workspace/
 2017-05-17 20:08:29,201 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
 2017-05-17 20:10:07,652 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
 2017-05-17 20:19:51,001 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-18 13:01:03,427 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-18 13:05:17,085 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-18 13:05:26,029 ERROR: Exception on / [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 17, in home
+    title='Home')
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/ubuntu/workspace/finance/app/templates/home.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "/home/ubuntu/workspace/finance/app/templates/base.html", line 46, in top-level template code
+    <li><a href="{{ url_for('equity_analysis') }}">Equity Analysis</a></li>
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/helpers.py", line 332, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1811, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/helpers.py", line 322, in url_for
+    force_external=external)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/werkzeug/routing.py", line 1758, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'equity_analysis'. Did you mean 'equity_screener' instead?
+2017-05-18 13:10:01,766 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-18 13:10:15,888 ERROR: Exception on /equity_analysis [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 45, in equity_analysis
+    title='Equity Analysis')
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 133, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 851, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 812, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 786, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 565, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/ubuntu/workspace/finance/app/templates/equity_analysis.html", line 4, in template
+    {% block content %}
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 470, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/parser.py", line 897, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/parser.py", line 879, in subparse
+    rv = self.parse_statement()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/parser.py", line 121, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/parser.py", line 231, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/parser.py", line 161, in parse_statements
+    self.fail_eof(end_tokens)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/parser.py", line 95, in fail_eof
+    return self._fail_ut_eof(None, stack, lineno)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/parser.py", line 81, in _fail_ut_eof
+    self.fail(' '.join(message), lineno)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/parser.py", line 50, in fail
+    raise exc(msg, lineno, self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: Unexpected end of template. Jinja was looking for the following tags: 'endblock'. The innermost block that needs to be closed is 'block'.
+2017-05-18 13:10:47,947 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-18 13:11:20,129 ERROR: Exception on /equity_analysis [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 46, in equity_analysis
+    title='Equity Analysis')
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 133, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 851, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 812, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 786, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 565, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/ubuntu/workspace/finance/app/templates/equity_analysis.html", line 4, in template
+    {% block content %}
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 470, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/parser.py", line 897, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/parser.py", line 879, in subparse
+    rv = self.parse_statement()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/parser.py", line 121, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/parser.py", line 231, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/parser.py", line 161, in parse_statements
+    self.fail_eof(end_tokens)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/parser.py", line 95, in fail_eof
+    return self._fail_ut_eof(None, stack, lineno)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/parser.py", line 81, in _fail_ut_eof
+    self.fail(' '.join(message), lineno)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/parser.py", line 50, in fail
+    raise exc(msg, lineno, self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: Unexpected end of template. Jinja was looking for the following tags: 'endblock'. The innermost block that needs to be closed is 'block'.
+2017-05-18 13:12:28,346 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-18 13:13:24,364 ERROR: Exception on /equity_screener [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 23, in equity_screener
+    with open("/home/ubuntu/workspace/finance/app/equity_screener/screen_info.csv", "r") as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/ubuntu/workspace/finance/app/equity_screener/screen_info.csv'
