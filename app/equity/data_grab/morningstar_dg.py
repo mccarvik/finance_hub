@@ -5,6 +5,7 @@ import matplotlib as mpl
 mpl.use('Agg')
 import matplotlib.finance as mpf
 import pandas as pd
+import numpy as np
 import os, csv, requests, asyncio, time, json, io, datetime
 from threading import Thread
 from pandas_datareader.data import DataReader
@@ -88,34 +89,62 @@ def addCustomColumns(df):
     end = datetime.date(end_date_ls[0], end_date_ls[1], end_date_ls[2])
     quotes = DataReader(df.index.get_level_values('ticker')[0],  'google', start, end)['Close']
     qr = quotes.reset_index()
+    df = addBasicCustomCols(df, qr)
+    df = addGrowthCustomCols(df, qr)
+    df = addTimelineCustomCols(df, qr, quotes)
     '''
-    'ytdReturn'
-    '50DayMvgAvg'
-    '200DayMvgAvg'
-    
-    'enterpriseToRevenue'
+    Still need to do:
     'enterpriseToEbitda'
     'ebitdaMargins'
-    'enterpriseValue',
-    'ebitda', 
-    'netIncomeToCommon'
+    'ebitda',
+    'shortRatio'
     
-    'sharpe'
     'Treynor'
     'sortino'
-    'shortRatio'
     'beta'
     '''
+    return df
+    
+def addTimelineCustomCols(df, qr, quotes):
+    mv_avg_50 = quotes.rolling(center=False,window=50).mean().reset_index()
+    mv_avg_200 = quotes.rolling(center=False,window=200).mean().reset_index()
+    df['50DayMvgAvg'] = df.apply(lambda x: mv_avg_50[mv_avg_50['Date'] >= datetime.date(int(x.name[1]),int(x['month']),1)].iloc[0]['Close'], axis=1)
+    df['200DayMvgAvg'] = df.apply(lambda x: mv_avg_50[mv_avg_50['Date'] >= datetime.date(int(x.name[1]),int(x['month']),1)].iloc[0]['Close'], axis=1)
+    vol_stdev = quotes.rolling(window=252, center=False).std().reset_index()  # using one year window
+    df['volatility'] = df.apply(lambda x: vol_stdev[vol_stdev['Date'] >= datetime.date(int(x.name[1]),int(x['month']),1)].iloc[0]['Close'], axis=1)
+    import pdb; pdb.set_trace()
+    df['sharpeRatio'] = df['1yrReturn'] / df['volatility']
+
+    # df['treynorRatio'] = df['1yrReturn'] / df['beta']
+    # Need to loop through and remove all pos st_devs then calc vol for each year window
+    # df['downside_vol'] 
+    # df['sortinoRatio'] = df['1yrReturn'] / df['downside_vol']
+    return df
+
+def beta(df, qr):
+    pass
+
+def downside_vol(df, vol_stdev, qr):
+    pass
+    
+
+def addBasicCustomCols(df, qr):
     df['currentPrice'] = df.apply(lambda x: qr[qr['Date'] >= datetime.date(int(x.name[1]),int(x['month']),1)].iloc[0]['Close'], axis=1)
     df['revenuePerShare'] = df['revenue'] / df['shares']  
-    df['totalCashPerShare'] = df['cashAndShortTermInv'] / df['shares']
     df['dividendPerShare'] = df['dividend'] / df['shares']
     df['divYield'] = df['dividendPerShare'] / df['currentPrice']
     df['trailingPE'] = df['currentPrice'] / df['trailingEPS']
     df['priceToBook'] = df['currentPrice'] / df['bookValuePerShare']
     df['priceToSales'] = df['currentPrice'] / df['revenuePerShare']
     df['grossProfit'] = (1-df['cogs']) * df['revenue']
+    df['marketCapital'] = df['shares'] * df['currentPrice']
+    df['totalAssets'] = df['bookValuePerShare'] / df['totalEquity']
+    df['enterpriseValue'] = df['marketCapital'] + (df['totalLiabilities'] * df['totalAssets']) - (df['cashAndShortTermInv'] * df['totalAssets'])
+    df['enterpriseToRevenue'] = df['enterpriseValue'] / df['revenue']
+    df['EBT'] = (df['operatingIncome'] - df['netInterestOtherMargin']) * df['totalAssets']
+    return df
     
+def addGrowthCustomCols(df, qr):
     rev_growth = []; eps_growth = []
     for ind, vals in df.iterrows():
         try:
@@ -134,7 +163,7 @@ def addCustomColumns(df):
     df['epsGrowth'] = eps_growth
     df['pegRatio'] = df['trailingPE'] / df['epsGrowth']
     
-    yr1_ret = []; yr3_ret = []; yr5_ret = []; yr10_ret = []; min52 = []; max52 = []
+    yr1_ret = []; yr3_ret = []; yr5_ret = []; yr10_ret = []; ytd_ret =[]; min52 = []; max52 = []
     for ind, vals in df.iterrows():
         try:
             yr1q = qr[qr['Date'] >= datetime.date(int(ind[1])-1,int(vals['month']),1)].iloc[0]['Close']
@@ -157,21 +186,25 @@ def addCustomColumns(df):
         except:
             yr10_ret.append(0)
         try:
+            yrytd = qr[qr['Date'] >= datetime.date(int(ind[1])-10,1,1)].iloc[0]['Close']
+            ytd_ret.append(((vals['currentPrice'] / yrytd - 1) * 100))
+        except:
+            ytd_ret.append(0)
+        try:
             min52.append(min(qr[(qr['Date'] >= datetime.date(int(ind[1])-1,int(vals['month']),1)) & (qr['Date'] <= datetime.date(int(ind[1]),int(vals['month']),1))]['Close']))
             max52.append(max(qr[(qr['Date'] >= datetime.date(int(ind[1])-1,int(vals['month']),1)) & (qr['Date'] <= datetime.date(int(ind[1]),int(vals['month']),1))]['Close']))
         except:
             min52.append(0)
             max52.append(0)
 
+    df['ytdReturn'] = ytd_ret
     df['1yrReturn'] = yr1_ret
     df['3yrReturn'] = yr3_ret
     df['5yrReturn'] = yr5_ret
     df['10yrReturn'] = yr10_ret
     df['52WeekLow'] = min52
     df['52WeekHigh'] = max52
-    
     return df
-    
     
 
 def getFirstofMonth():
