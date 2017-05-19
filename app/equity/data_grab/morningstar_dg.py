@@ -56,8 +56,6 @@ def makeAPICall(tick):
     data = pruneData(data, dates, tick)
     return data
     
-    
-    
 
 def pruneData(df, dates, tick):
     df = df.set_index(0)
@@ -88,14 +86,13 @@ def addCustomColumns(df):
     end_date_ls = [int(d) for d in datetime.date.today().strftime('%Y-%m-%d').split("-")]
     end = datetime.date(end_date_ls[0], end_date_ls[1], end_date_ls[2])
     import pdb; pdb.set_trace()
-    market = DataReader(".INX", 'google', start, end)['Close']
-    quotes = DataReader(df.index.get_level_values('ticker')[0], 'google', start, end)['Close']
-    quotes['market'] = market
-    import pdb; pdb.set_trace()
+    quotes = DataReader(df.index.get_level_values('ticker')[0], 'google', start, end, pause=1)['Close']
     qr = quotes.reset_index()
     df = addBasicCustomCols(df, qr)
     df = addGrowthCustomCols(df, qr)
     df = addTimelineCustomCols(df, qr, quotes)
+    market = DataReader("^GSPC", 'yahoo', start, end, pause=1)['Close']
+    quotes['market'] = market
     '''
     Still need to do:
     'enterpriseToEbitda'
@@ -104,7 +101,6 @@ def addCustomColumns(df):
     'shortRatio'
     
     'Treynor / beta'
-    'sortino / downside vol'
     '''
     return df
     
@@ -115,16 +111,13 @@ def addTimelineCustomCols(df, qr, quotes):
                         int(x['month']),1)].iloc[0]['Close'], axis=1)
     df['200DayMvgAvg'] = df.apply(lambda x: mv_avg_50[mv_avg_50['Date'] >= datetime.date(int(x.name[1]), \
                         int(x['month']),1)].iloc[0]['Close'], axis=1)
-    vol_stdev = quotes.rolling(window=252, center=False).std().reset_index()  # using one year window
+    vol_stdev = quotes.rolling(window=1260, center=False).std().reset_index()   # using 5 year window
     df['volatility'] = (df.apply(lambda x: vol_stdev[vol_stdev['Date'] >= datetime.date(int(x.name[1]), \
                         int(x['month']),1)].iloc[0]['Close'], axis=1)) / df['currentPrice']
-    import pdb; pdb.set_trace()
-    df['sharpeRatio'] = df['1yrReturn'] / df['volatility']
-    df['downsideVol'] = downside_vol(df, vol_stdev, qr) / df['currentPrice']
-    df['sortinoRatio'] = df['1yrReturn'] / df['downside_vol']
-    # df['treynorRatio'] = df['1yrReturn'] / df['beta']
-    # Need to loop through and remove all pos st_devs then calc vol for each year window
-    
+    df['sharpeRatio'] = df['5yrReturn'] / df['volatility']                      # using 5 year window
+    df['downsideVol'] = downside_vol(df, vol_stdev, qr) / df['currentPrice']    # using 5 year window
+    df['sortinoRatio'] = df['5yrReturn'] / df['downsideVol']                   # using 5 year window
+    # df['treynorRatio'] = df['5yrReturn'] / df['beta']
     return df
 
 def beta(df, qr):
@@ -139,7 +132,7 @@ def downside_vol(df, vol_stdev, qr):
     neg = qr[qr['Close']<0]
     dv = []
     for ind, vals in df.iterrows():
-        dv.append(neg[(neg['Date'] >= datetime.date(int(ind[1])-1,int(vals['month']),1)) \
+        dv.append(neg[(neg['Date'] >= datetime.date(int(ind[1])-5,int(vals['month']),1)) \
                                     & (qr['Date'] <= datetime.date(int(ind[1]),int(vals['month']),1))]['Close'].std())
     return dv  
 
@@ -220,11 +213,7 @@ def addGrowthCustomCols(df, qr):
     df['52WeekLow'] = min52
     df['52WeekHigh'] = max52
     return df
-    
 
-def getFirstofMonth():
-    pass
-    
 def sendToDB(df):
     pass
 
