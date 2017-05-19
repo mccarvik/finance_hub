@@ -72,4 +72,4 @@ def fundamentalsBar(tickers, date='2017-05-15'):
 if __name__ == "__main__":
     # customfilters(['MSFT', 'AAPL'])
     # fundamentalsBar(['MSFT', 'AAPL', 'CSCO'])
-    fundamentalsBar(['TSLA', 'F'])
+    fundamentalsBar(['NBR', 'HP'])

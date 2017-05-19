@@ -56,7 +56,7 @@ COL_MAP = {
     "Taxes Payable" : "taxesPayable",                               # Ratio
     "Accrued Liabilities" : "accruedLiabilities",                   # Ratio
     "Other Short-Term Liabilities" : "otherShortTermLiabilities",   # Ratio
-    "Total Current Liabilities" : "totalCurentLiabilities",         # Ratio
+    "Total Current Liabilities" : "totalCurrentLiabilities",         # Ratio
     "Long-Term Debt" : "longTermDebt",                              # Ratio
     "Other Long-Term Liabilities" : "otherLongTermLiabilities",     # Ratio
     "Total Liabilities" : "totalLiabilities",                       # Ratio
@@ -97,8 +97,11 @@ CUSTOM_COL_MAP = {
     "EBT" : "EBT",                                                  # Gross
     "50 Day Moving Average" : "50DayMvgAvg",                        # Gross
     "200 Day Moving Average" : "200DayMvgAvg",                      # Gross
-    "sortinoRatio" : "Sortino Ratio",                               # Ratio
+    "Sortino Ratio" : "sortinoRatio",                               # Ratio
     "Downside Volatility" : "downsideVol",                          # Gross
+    "Treynor Ratio" : "treynorRatio",                               # Ratio
+    "Beta" : "beta",                                                # Gross
+    "Market Correlation" : "marketCorr",                            # Gross
 }
 
 
@@ -108,7 +111,7 @@ DAY_COUNTS = ["daysSalesOutstanding", "daysInv", "payablesPeriod", "cashConvCycl
 BALANCE_SHEET = ["EBT", "totalAssets", "cashAndShortTermInv", "accountsRecievable", "inventory", "otherCurrentAssets",
                 "totalCurrentAssets", "netPPE", "intangibles", "otherLongTermAssets", 
                 "accountsPayable", "shortTermDebt", "taxesPayable", "accruedLiabilities",
-                "otherShortTermLiabilities", "totalCurentLiabilities", "longTermDebt", 
+                "otherShortTermLiabilities", "totalCurrentLiabilities", "longTermDebt", 
                 "otherLongTermLiabilities", "totalLiabilities", "totalEquity"
                 "dividend", "revenue", "netIncome", "trailingEPS"]
 INCOME_AND_CASH_FLOW = ["grossProfit", "enterpriseValue", "cogs", "sg&a", "r&d", "other", "operatingIncome", "operatingCashFlow",
@@ -117,7 +120,8 @@ PER_SHARE = ["bookValuePerShare", "freeCashFlowPerShare", "revenuePerShare",
             "dividendPerShare"]
 RATIOS = ["sharpeRatio", "currentRatio", "quickRatio", "financialLeverage", "debtToEquity", 
         "interestCoverage", "capExToSales", "freeCashFlowToSales" "freeCashFLowToNetIncome",
-        "trailingPE", "priceToBook", "priceToSales", "pegRatio", "assetTurnoverRatio"]
+        "trailingPE", "priceToBook", "priceToSales", "pegRatio", "assetTurnoverRatio",
+        "treynorRatio"]
 MARGINS = ["grossMargin", "operatingMargin", "netInterestOtherMargin", "EBTMargin",
             "netIncomeMargin", "enterpriseToRevenue"]
 RETURNS = ["returnOnAssets", "returnOnEquity", "returnOnCapital", "1yrReturn",
@@ -126,7 +130,7 @@ RETURNS = ["returnOnAssets", "returnOnEquity", "returnOnCapital", "1yrReturn",
 GROWTH = ["operatingCashFlowGrowth", "freeCashFlowGrowth", "revenueGrowth", "epsGrowth"]
 OTHER = ['shares', "payoutRatio", "taxRate", "marketCapital"]
 
-KEY_STATS = ['currentPrice', "divYield", 'volatility']
+KEY_STATS = ['currentPrice', "divYield", 'volatility', 'beta', 'marketCorr']
 
 # NOTES:
 ''' COLUMNS NOT USED:

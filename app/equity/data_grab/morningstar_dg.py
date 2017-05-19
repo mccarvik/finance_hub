@@ -6,6 +6,7 @@ mpl.use('Agg')
 import matplotlib.finance as mpf
 import pandas as pd
 import numpy as np
+import scipy.stats
 import os, csv, requests, asyncio, time, json, io, datetime
 from threading import Thread
 from pandas_datareader.data import DataReader
@@ -81,26 +82,38 @@ def cleanData(df):
     df = df.fillna(0)
     return df
 
-def addCustomColumns(df):
+def addCustomColumns(df, market_upd=False):
     start = datetime.date(int(df.index.get_level_values('date')[0])-10, int(df['month'][0]), 1)
     end_date_ls = [int(d) for d in datetime.date.today().strftime('%Y-%m-%d').split("-")]
     end = datetime.date(end_date_ls[0], end_date_ls[1], end_date_ls[2])
-    import pdb; pdb.set_trace()
     quotes = DataReader(df.index.get_level_values('ticker')[0], 'google', start, end, pause=1)['Close']
     qr = quotes.reset_index()
     df = addBasicCustomCols(df, qr)
     df = addGrowthCustomCols(df, qr)
     df = addTimelineCustomCols(df, qr, quotes)
-    market = DataReader("^GSPC", 'yahoo', start, end, pause=1)['Close']
-    quotes['market'] = market
+    
+    if market_upd:
+        # market = DataReader(".INX", 'google', start, end, pause=1)['Close']
+        market = DataReader('^GSPC','yahoo', sdate, edate,pause=1)['Close']
+        market.to_csv('/home/ubuntu/workspace/finance/app/static/docs/market.csv')
+        quotes = pd.DataFrame(quotes)
+        market.columns = ['Date', 'market']
+        market.set_index('Date')
+        quotes['market'] = market
+    else:
+        market = pd.read_csv('/home/ubuntu/workspace/finance/app/static/docs/market.csv')
+        market.columns = ['Date', 'market']
+        market['Date'] = market['Date'].apply(pd.to_datetime)
+        market = market.set_index('Date')
+        quotes = pd.DataFrame(quotes)
+        quotes = pd.concat([market, quotes], axis=1)
+    df = calcBetas(df, quotes)
     '''
     Still need to do:
     'enterpriseToEbitda'
     'ebitdaMargins'
     'ebitda',
     'shortRatio'
-    
-    'Treynor / beta'
     '''
     return df
     
@@ -117,15 +130,30 @@ def addTimelineCustomCols(df, qr, quotes):
     df['sharpeRatio'] = df['5yrReturn'] / df['volatility']                      # using 5 year window
     df['downsideVol'] = downside_vol(df, vol_stdev, qr) / df['currentPrice']    # using 5 year window
     df['sortinoRatio'] = df['5yrReturn'] / df['downsideVol']                   # using 5 year window
-    # df['treynorRatio'] = df['5yrReturn'] / df['beta']
     return df
 
-def beta(df, qr):
-    pass
-    # http://stackoverflow.com/questions/21515357/python-script-to-calculate-asset-beta-giving-incorrect-result
-    # covariance = numpy.cov(a,b)[0][1]
-    # variance = numpy.var(a)
-    # beta = covariance / variance
+def calcBetas(df, quotes):
+    # TODO: Need to pick a smaller volatility range to fine tune the beta here
+    qs = quotes.dropna().reset_index()
+    betas = []; corrs = []
+    import pdb; pdb.set_trace()
+    for ind, vals in df.iterrows():
+        try:
+            # Taking a 1 year vol
+            np_array = qs[(qs['Date'] >= datetime.date(int(ind[1])-1,int(vals['month']),1)) & (qs['Date'] <= datetime.date(int(ind[1]),int(vals['month']),1))].values
+            market = np_array[:,1]                      # market returns are column zero from numpy array
+            stock = np_array[:,2]                       # stock returns are column one from numpy array
+            corr = scipy.stats.pearsonr(stock, market)[0]
+            covariance = np.cov(stock,market)           # Calculate covariance between stock and market
+            beta = covariance[0,1]/covariance[1,1]
+            corrs.append(corr)
+            betas.append(beta)
+        except:
+            betas.append(0)
+    df['beta'] = betas
+    df['marketCorr'] = corrs
+    df['treynorRatio'] = df['5yrReturn'] / df['beta']
+    return df
 
 def downside_vol(df, vol_stdev, qr):
     qr['change'] = qr['Close'].pct_change(1)
