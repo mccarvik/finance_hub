@@ -6,13 +6,13 @@ mpl.use('Agg')
 import matplotlib.finance as mpf
 import pandas as pd
 import numpy as np
-import scipy.stats
-import os, csv, requests, asyncio, time, json, io, datetime
+import os, csv, requests, asyncio, time, json, io, datetime, scipy.stats
+from app import app
 from threading import Thread
 from pandas_datareader.data import DataReader
-from app import app
 from app.equity.screener_eqs.create_symbols import create_symbols
 from app.equity.data_grab import ms_dg_helper
+from app.utils.db_utils import DBHelper
 
 
 def getData():
@@ -32,8 +32,11 @@ def getData():
         # [t.join() for t in threads]
         
         # for running single threaded
+        print("Finished:")
         for t in tasks:
+            # import pdb; pdb.set_trace()
             makeAPICall(t)
+            print(t + "\t",)
             
     except Exception as e:
         import pdb; pdb.set_trace()
@@ -71,10 +74,16 @@ def pruneData(df, dates, tick):
     df['month'] = months
     df['ticker'] = tick
     df = df.set_index(['ticker', 'date'])
+    if tick == 'ACE':
+        import pdb; pdb.set_trace()
     df = cleanData(df)
-    addCustomColumns(df)
-    sendToDB(df)
-    return df
+    try:
+        addCustomColumns(df)
+        sendToDB(df)
+    except:
+        exc_type, exc_obj, exc_tb = sys.exc_info()
+        app.logger.info("Did not load data for {3}: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj, tick))
+        return False
 
 def cleanData(df):
     # Need this for commas
@@ -83,10 +92,16 @@ def cleanData(df):
     return df
 
 def addCustomColumns(df, market_upd=False):
-    start = datetime.date(int(df.index.get_level_values('date')[0])-10, int(df['month'][0]), 1)
+    start = datetime.date(int(df.index.get_level_values('date')[0])-10, int(df['month'].values[0]), 1)
     end_date_ls = [int(d) for d in datetime.date.today().strftime('%Y-%m-%d').split("-")]
     end = datetime.date(end_date_ls[0], end_date_ls[1], end_date_ls[2])
-    quotes = DataReader(df.index.get_level_values('ticker')[0], 'google', start, end, pause=1)['Close']
+    try:
+        quotes = DataReader(df.index.get_level_values('ticker')[0], 'google', start, end, pause=1)['Close']
+    except:
+        print("Error with %s" % df.index.get_level_values('ticker')[0])
+        exc_type, exc_obj, exc_tb = sys.exc_info()
+        app.logger.info("Error accessing  {3}: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj, df.index.get_level_values('ticker')[0]))
+        raise
     qr = quotes.reset_index()
     df = addBasicCustomCols(df, qr)
     df = addGrowthCustomCols(df, qr)
@@ -136,7 +151,6 @@ def calcBetas(df, quotes):
     # TODO: Need to pick a smaller volatility range to fine tune the beta here
     qs = quotes.dropna().reset_index()
     betas = []; corrs = []
-    import pdb; pdb.set_trace()
     for ind, vals in df.iterrows():
         try:
             # Taking a 1 year vol
@@ -149,6 +163,7 @@ def calcBetas(df, quotes):
             corrs.append(corr)
             betas.append(beta)
         except:
+            corrs.append(0)
             betas.append(0)
     df['beta'] = betas
     df['marketCorr'] = corrs
@@ -167,8 +182,7 @@ def downside_vol(df, vol_stdev, qr):
 def addBasicCustomCols(df, qr):
     df['currentPrice'] = df.apply(lambda x: qr[qr['Date'] >= datetime.date(int(x.name[1]),int(x['month']),1)].iloc[0]['Close'], axis=1)
     df['revenuePerShare'] = df['revenue'] / df['shares']  
-    df['dividendPerShare'] = df['dividend'] / df['shares']
-    df['divYield'] = df['dividendPerShare'] / df['currentPrice']
+    df['divYield'] = df['dividendPerShare'] / df['currentPrice'] * 100
     df['trailingPE'] = df['currentPrice'] / df['trailingEPS']
     df['priceToBook'] = df['currentPrice'] / df['bookValuePerShare']
     df['priceToSales'] = df['currentPrice'] / df['revenuePerShare']
@@ -243,7 +257,13 @@ def addGrowthCustomCols(df, qr):
     return df
 
 def sendToDB(df):
-    pass
+    with DBHelper() as db:
+        db.connect()
+        table = 'morningstar'
+        prim_keys = ['date', 'ticker']
+        for ind, vals in df.reset_index().iterrows():
+            val_dict = vals.to_dict()
+            db.upsert(table, val_dict, prim_keys)
 
 if __name__ == "__main__":
     getData()

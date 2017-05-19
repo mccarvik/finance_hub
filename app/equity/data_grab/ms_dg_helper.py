@@ -5,12 +5,12 @@ from collections import defaultdict
 COL_MAP = {
     "Gross Margin %" : "grossMargin",                               # Margin
     "Operating Margin %" : "operatingMargin",                       # Margin
-    "Dividends USD" : 'dividend',                                   # Gross
+    "Dividends USD" : 'dividendPerShare',                           # Per Share
     "Revenue USD Mil" : 'revenue',                                  # Gross
     # Here to "EBT Margin" is represented as % of Sales
     "COGS" : "cogs",                                                # Margin
-    "SG&A" : "sg&a",                                                # Margin
-    "R&D" : "r&d",                                                  # Margin
+    "SG&A" : "sga",                                                # Margin
+    "R&D" : "rd",                                                  # Margin
     "Other" : "other",                                              # Margin
     "Net Int Inc & Other" : "netInterestOtherMargin",               # Margin
     "EBT Margin" : "EBTMargin",                                     # Margin
@@ -61,6 +61,7 @@ COL_MAP = {
     "Other Long-Term Liabilities" : "otherLongTermLiabilities",     # Ratio
     "Total Liabilities" : "totalLiabilities",                       # Ratio
     "Total Stockholders' Equity" : "totalEquity",                   # Ratio
+    #
     "Days Sales Outstanding" : "daysSalesOutstanding",              # Gross
     "Days Inventory" : "daysInv",                                   # Gross
     "Payables Period" : "payablesPeriod",                           # Gross
@@ -74,7 +75,6 @@ CUSTOM_COL_MAP = {
     "Current Price" : "currentPrice",                               # Gross
     "Revenue Per Share" : "revenuePerShare",                        # Per Share
     "Total Cash Per Share" : "totalCashPerShare",                   # Per Share
-    "Dividend Per Share" : "dividendPerShare",                      # Per Share
     "Dividend Yield" : "divYield",                                  # Ratio
     "Trailing PE" : "trailingPE",                                   # Ratio
     "Price to Book" : "priceToBook",                                # Ratio
@@ -112,9 +112,9 @@ BALANCE_SHEET = ["EBT", "totalAssets", "cashAndShortTermInv", "accountsRecievabl
                 "totalCurrentAssets", "netPPE", "intangibles", "otherLongTermAssets", 
                 "accountsPayable", "shortTermDebt", "taxesPayable", "accruedLiabilities",
                 "otherShortTermLiabilities", "totalCurrentLiabilities", "longTermDebt", 
-                "otherLongTermLiabilities", "totalLiabilities", "totalEquity"
-                "dividend", "revenue", "netIncome", "trailingEPS"]
-INCOME_AND_CASH_FLOW = ["grossProfit", "enterpriseValue", "cogs", "sg&a", "r&d", "other", "operatingIncome", "operatingCashFlow",
+                "otherLongTermLiabilities", "totalLiabilities", "totalEquity",
+                "revenue", "netIncome", "trailingEPS"]
+INCOME_AND_CASH_FLOW = ["grossProfit", "enterpriseValue", "cogs", "sga", "rd", "other", "operatingIncome", "operatingCashFlow",
                     "capSpending", "freeCashFlow", "workingCapital"]
 PER_SHARE = ["bookValuePerShare", "freeCashFlowPerShare", "revenuePerShare",
             "dividendPerShare"]
