@@ -55,7 +55,13 @@ def makeAPICall(tick):
     # Remove dates
     dates = data[2][1:]
     lines = data[3:]
-    # Issue here for certain values with a comma in them
+    # Remove empty rows
+    data = [x for x in data if x != []]
+    # Remove certain strings from headers (USD, Mil, etc)
+    headers = [d[0] for d in data]
+    for repl in ms_dg_helper.remove_strs:
+        headers = [h.replace(repl,"").strip() for h in headers]
+    data = [[h] + d[1:] for h, d in zip(headers, data)]
     data = pd.DataFrame(data)
     data = pruneData(data, dates, tick)
     return data

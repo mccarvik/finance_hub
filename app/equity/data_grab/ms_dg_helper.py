@@ -1,12 +1,10 @@
 from collections import defaultdict
 
-# NOTES:
-# 'Revenue' not included as its always 100
 COL_MAP = {
     "Gross Margin %" : "grossMargin",                               # Margin
     "Operating Margin %" : "operatingMargin",                       # Margin
-    "Dividends USD" : 'dividendPerShare',                           # Per Share
-    "Revenue USD Mil" : 'revenue',                                  # Gross
+    "Dividends" : 'dividendPerShare',                           # Per Share
+    "Revenue" : 'revenue',                                  # Gross
     # Here to "EBT Margin" is represented as % of Sales
     "COGS" : "cogs",                                                # Margin
     "SG&A" : "sga",                                                # Margin
@@ -15,21 +13,21 @@ COL_MAP = {
     "Net Int Inc & Other" : "netInterestOtherMargin",               # Margin
     "EBT Margin" : "EBTMargin",                                     # Margin
     # 
-    "Operating Income USD Mil" : "operatingIncome",                 # Gross
+    "Operating Income" : "operatingIncome",                 # Gross
     "Current Ratio" : "currentRatio",                               # Ratio
     "Quick Ratio" : "quickRatio",                                   # Ratio    
     "Financial Leverage" : "financialLeverage",                     # Ratio    
     "Debt/Equity" : "debtToEquity",                                 # Ratio    
-    "Net Income USD Mil" : "netIncome",                             # Gross
-    "Earnings Per Share USD" : "trailingEPS",                       # Gross
+    "Net Income" : "netIncome",                             # Gross
+    "Earnings Per Share" : "trailingEPS",                       # Gross
     "Payout Ratio % *" : "payoutRatio",                             # Ratio
-    "Shares Mil" : "shares",                                        # Gross
-    "Book Value Per Share * USD" : "bookValuePerShare",             # Per Share
-    "Operating Cash Flow USD Mil" : "operatingCashFlow",            # Gross
-    "Cap Spending USD Mil" : "capSpending",                         # Gross
-    "Free Cash Flow USD Mil" : "freeCashFlow",                      # Gross
-    "Free Cash Flow Per Share * USD" : "freeCashFlowPerShare",      # Per Share
-    "Working Capital USD Mil" : "workingCapital",                   # Gross
+    "Shares" : "shares",                                        # Gross
+    "Book Value Per Share *" : "bookValuePerShare",             # Per Share
+    "Operating Cash Flow" : "operatingCashFlow",            # Gross
+    "Cap Spending" : "capSpending",                         # Gross
+    "Free Cash Flow" : "freeCashFlow",                      # Gross
+    "Free Cash Flow Per Share *" : "freeCashFlowPerShare",      # Per Share
+    "Working Capital" : "workingCapital",                   # Gross
     "Tax Rate %" : "taxRate",                                       # Ratio
     "Net Margin %" : "netIncomeMargin",                             # Margin
     "Asset Turnover (Average)" : "assetTurnoverRatio",              # Ratio
@@ -133,6 +131,9 @@ OTHER = ['shares', "payoutRatio", "taxRate", "marketCapital"]
 KEY_STATS = ['currentPrice', "divYield", 'volatility', 'beta', 'marketCorr']
 
 # NOTES:
+# Below columns in Mil of local currency (usually USD)
+# revenue, operatingIncome, dividendPerShare, bookValuePerShare,
+# operatingCashFlow, capSpending, freeCashFlow, workingCapital
 ''' COLUMNS NOT USED:
 Revenue %
 Year over Year
@@ -155,3 +156,6 @@ Year over Year
 5-Year Average
 10-Year Average
 '''
+
+
+remove_strs = ['Mil', 'ZAR', 'USD']
