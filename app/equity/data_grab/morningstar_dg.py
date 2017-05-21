@@ -5,6 +5,8 @@ import matplotlib as mpl
 mpl.use('Agg')
 import matplotlib.finance as mpf
 import pandas as pd
+# Gets rid of annoying "A value is trying to be set on a copy of a slice from a DataFrame." Warning
+pd.options.mode.chained_assignment = None
 import numpy as np
 import os, csv, requests, asyncio, time, json, io, datetime, scipy.stats
 from app import app
@@ -14,6 +16,8 @@ from app.equity.screener_eqs.create_symbols import create_symbols
 from app.equity.data_grab import ms_dg_helper
 from app.utils.db_utils import DBHelper
 
+success = []
+failure = []
 
 def getData():
     # Getting all the tickers from text file
@@ -21,58 +25,97 @@ def getData():
     with open("/home/ubuntu/workspace/finance/app/equity/screener_eqs/memb_list.txt", "r") as f:
         for line in f:
             tasks.append(line.strip())
-    
     t0 = time.time()
     threads = []
+    tasks = [t for t in tasks if t not in ms_dg_helper.remove_ticks_ms]
+    tasks = [t for t in tasks if t not in ms_dg_helper.remove_ticks_dr]
     try:
+        # tasks = ['RSTI', 'SWC']
         # for running multithreaded: starts the thread and 'joins it' so we will wait for all to finish
-        # for t in tasks:
-        #     threads.append(Thread(target=makeAPICall, args=(t,)))
-        # [t.start() for t in threads]
-        # [t.join() for t in threads]
+        # API ACTING WEIRD WITH MULTITHREADING
+        # ct = 0
+        # chunks = 30
+        # while ct < len(tasks):
+        #     if ct+chunks > len(tasks):
+        #         add = len(tasks - chunks)
+        #     sub_tasks = tasks[ct:ct+chunks]
+        #     for t in sub_tasks:
+        #         threads.append(Thread(target=makeAPICall, args=(t,)))
+        #     [t.start() for t in threads]
+        #     [t.join() for t in threads]
+        #     ct += chunks
+        #     threads = []
+        #     print(str(ct) + " stocks completed so far")
+            
+            
         
         # for running single threaded
-        print("Finished:")
+        ct = 0
         for t in tasks:
-            # import pdb; pdb.set_trace()
-            makeAPICall(t)
-            print(t + "\t",)
-            
+            if ct % 25 == 0:
+                print(str(ct) + " stocks completed so far")
+            try:
+                makeAPICall(t)
+                success.append(t)
+            except:
+                failure.append(t)
+                app.logger.info("Failure for  %s \t" % t)
+            ct+=1
     except Exception as e:
-        import pdb; pdb.set_trace()
         exc_type, exc_obj, exc_tb = sys.exc_info()
         app.logger.info("Error in async loop: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
     t1 = time.time()
+    text_file = open("Failures.txt", "w")
+    text_file.write(("\t").join(failure))
+    print("\t".join(success))
     app.logger.info("Done Retrieving data, took {0} seconds".format(t1-t0))
 
 def makeAPICall(tick):
-    url = 'http://financials.morningstar.com/ajax/exportKR2CSV.html?t=' + tick
-    urlData = requests.get(url).content.decode('utf-8')
-    cr = csv.reader(urlData.splitlines(), delimiter=',')
-    data = []
-    for row in list(cr):
-        data.append(row)
-    # Remove dates
-    dates = data[2][1:]
-    lines = data[3:]
-    # Remove empty rows
-    data = [x for x in data if x != []]
-    # Remove certain strings from headers (USD, Mil, etc)
-    headers = [d[0] for d in data]
-    for repl in ms_dg_helper.remove_strs:
-        headers = [h.replace(repl,"").strip() for h in headers]
-    data = [[h] + d[1:] for h, d in zip(headers, data)]
-    data = pd.DataFrame(data)
-    data = pruneData(data, dates, tick)
+    # print("Trying " + tick + "\t")
+    try:
+        url = 'http://financials.morningstar.com/ajax/exportKR2CSV.html?t=' + tick
+        urlData = requests.get(url).content.decode('utf-8')
+        cr = csv.reader(urlData.splitlines(), delimiter=',')
+        data = []
+        for row in list(cr):
+            data.append(row)
+        # Remove dates
+        import pdb; pdb.set_trace()
+        dates = data[2][1:]
+        # Remove empty rows
+        data = [x for x in data if x != []]
+        # Remove certain strings from headers (USD, Mil, etc)
+        headers = [d[0] for d in data]
+        for repl in ms_dg_helper.remove_strs:
+            headers = [h.replace(repl,"").strip() for h in headers]
+        data = [[h] + d[1:] for h, d in zip(headers, data)]
+        data = pd.DataFrame(data)
+        data = pruneData(data, dates, tick)
+    except:
+        exc_type, exc_obj, exc_tb = sys.exc_info()
+        # Chance Company Not published on Morningstar
+        app.logger.info("Error in API Call for {3}  {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj, tick))
+        failure.append(tick)
+        return
+    print("Succeeded " + tick + "\t")
+    success.append(tick)
     return data
     
-
 def pruneData(df, dates, tick):
     df = df.set_index(0)
     df = df.transpose()
+    # if tick == "AHS":
+    #     print("")
     # rename columns and throw away random extra columns
     df = df.rename(columns=ms_dg_helper.COL_MAP)
-    df = df[list(ms_dg_helper.COL_MAP.values())]
+    try:
+        col_list = [c for c in ms_dg_helper.COL_MAP.values() if c in df.columns]
+        df = df[col_list]
+    except:
+        exc_type, exc_obj, exc_tb = sys.exc_info()
+        # import pdb; pdb.set_trace()
+        app.logger.info("Error with column mapping for {3}: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj, tick))
+    
     # The TTM data may be off as that last column has different time windows
     years = [d.split("-")[0] for d in dates[:-1]] + [str(datetime.date.today().year)]
     months = [d.split("-")[1] for d in dates[:-1]] + [str(datetime.date.today().month)]
@@ -80,8 +123,6 @@ def pruneData(df, dates, tick):
     df['month'] = months
     df['ticker'] = tick
     df = df.set_index(['ticker', 'date'])
-    if tick == 'ACE':
-        import pdb; pdb.set_trace()
     df = cleanData(df)
     try:
         addCustomColumns(df)
@@ -89,12 +130,16 @@ def pruneData(df, dates, tick):
     except:
         exc_type, exc_obj, exc_tb = sys.exc_info()
         app.logger.info("Did not load data for {3}: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj, tick))
-        return False
+        raise
 
 def cleanData(df):
     # Need this for commas
     df = df.apply(lambda x: pd.to_numeric(x.astype(str).str.replace(',',''), errors='ignore'))
     df = df.fillna(0)
+    # Need this as the API returns two rows for "Revenue", one we dont need
+    revenue = df['revenue'].ix[:,0]
+    df = df.drop('revenue', 1)
+    df['revenue'] = pd.Series(revenue)
     return df
 
 def addCustomColumns(df, market_upd=False):
@@ -104,10 +149,14 @@ def addCustomColumns(df, market_upd=False):
     try:
         quotes = DataReader(df.index.get_level_values('ticker')[0], 'google', start, end, pause=1)['Close']
     except:
-        print("Error with %s" % df.index.get_level_values('ticker')[0])
-        exc_type, exc_obj, exc_tb = sys.exc_info()
-        app.logger.info("Error accessing  {3}: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj, df.index.get_level_values('ticker')[0]))
-        raise
+        try:
+            quotes = DataReader(df.index.get_level_values('ticker')[0], 'yahoo', start, end, pause=1)['Close']
+        except:
+            print("Could not read time series data for %s" % df.index.get_level_values('ticker')[0])
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            app.logger.info("Could not read time series data for {3}: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj, df.index.get_level_values('ticker')[0]))
+            import pdb; pdb.set_trace()
+            raise
     qr = quotes.reset_index()
     df = addBasicCustomCols(df, qr)
     df = addGrowthCustomCols(df, qr)
@@ -186,8 +235,18 @@ def downside_vol(df, vol_stdev, qr):
     return dv  
 
 def addBasicCustomCols(df, qr):
-    df['currentPrice'] = df.apply(lambda x: qr[qr['Date'] >= datetime.date(int(x.name[1]),int(x['month']),1)].iloc[0]['Close'], axis=1)
-    df['revenuePerShare'] = df['revenue'] / df['shares']  
+    # Need this for times where no prices available
+    curPrices = []
+    for ind, x in df.iterrows():
+        y = qr[qr['Date'] >= datetime.date(int(x.name[1]),int(x['month']),1)]
+        if not y.empty:
+            curPrices.append(y.iloc[0]['Close'])
+        else:
+            curPrices.append(0)
+    df['currentPrice'] = curPrices
+    # Remove all periods with 0 price, aka no price data for that area (company probabyl didnt exist)
+    df = df[df['currentPrice'] != 0]
+    df['revenuePerShare'] = df['revenue'] / df['shares'] 
     df['divYield'] = df['dividendPerShare'] / df['currentPrice'] * 100
     df['trailingPE'] = df['currentPrice'] / df['trailingEPS']
     df['priceToBook'] = df['currentPrice'] / df['bookValuePerShare']

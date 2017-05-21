@@ -39,7 +39,7 @@ COL_MAP = {
     "Free Cash Flow Growth % YOY" : "freeCashFlowGrowth",           # Ratio
     "Cap Ex as a % of Sales" : "capExToSales",                      # Ratio
     "Free Cash Flow/Sales %" : "freeCashFlowToSales",               # Ratio
-    "Free Cash Flow/Net Income" : "freeCashFLowToNetIncome",        # Ratio
+    "Free Cash Flow/Net Income" : "freeCashFlowToNetIncome",        # Ratio
     # Here to "totalEquity" is represented as % of Total Assets
     "Cash & Short-Term Investments" : "cashAndShortTermInv",        # Ratio
     "Accounts Receivable" : "accountsRecievable",                   # Ratio
@@ -117,7 +117,7 @@ INCOME_AND_CASH_FLOW = ["grossProfit", "enterpriseValue", "cogs", "sga", "rd", "
 PER_SHARE = ["bookValuePerShare", "freeCashFlowPerShare", "revenuePerShare",
             "dividendPerShare"]
 RATIOS = ["sharpeRatio", "currentRatio", "quickRatio", "financialLeverage", "debtToEquity", 
-        "interestCoverage", "capExToSales", "freeCashFlowToSales" "freeCashFLowToNetIncome",
+        "interestCoverage", "capExToSales", "freeCashFlowToSales" "freeCashFlowToNetIncome",
         "trailingPE", "priceToBook", "priceToSales", "pegRatio", "assetTurnoverRatio",
         "treynorRatio"]
 MARGINS = ["grossMargin", "operatingMargin", "netInterestOtherMargin", "EBTMargin",
@@ -158,4 +158,14 @@ Year over Year
 '''
 
 
-remove_strs = ['Mil', 'ZAR', 'USD']
+remove_strs = ['Mil', 'ZAR', 'USD', 'AUD', 'CAD', 'EUR', 'GBP', 'RUB', 'THB']
+# Not provided by morningstar
+remove_ticks_ms = ['ADPT', 'AMSG', 'BBCN', 'CMN', 'CLNY', 'CSAL', 'CSC', 'FNBC', 
+                    'FTI', 'GMT', 'HWAY', 'HMPR', 'IMS', 'ISLE', 'IILG', 'LMCA',
+                    'LMCK', 'MBVT', 'PCCC', 'PSG', 'SWHC', 'SSS', 'TASR', 'TCB', 
+                    'SYRG', 'SYUT', 'TSRA', 'TKAI', 'UA.C,', 'USMD', 'MESG', 'TMX.']
+# Can't get from yahoo / google datareader
+remove_ticks_dr = ['AVG', 'AHS', 'BTX', 'CARO', 'CCF', 'CDK', 'CIX', 'EPM', 'FSP',
+                    'HALO', 'IDI', 'IMH', 'LTS', 'LBY', 'LMT', 'MFS', 'NERV', 'NHC',
+                    'NWL', 'NUS', 'NBL', 'TIS', 'PRL', 'REI', 'PIP', 'SGA', 'SEB',
+                    'FLOW', 'SYN', 'WEX']

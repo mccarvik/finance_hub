@@ -15,7 +15,7 @@ logger.addHandler(db)
 
 def download_file(download_url):
     response = urllib.request.urlopen(download_url)
-    file = open("/finance/app/equity/screener_eqs/memb_list.pdf", 'wb')
+    file = open("/home/ubuntu/workspace/finance/app/equity/screener_eqs/memb_list.pdf", 'wb')
     logger.debug("File Downloaded")
     file.write(response.read())
     logger.debug("File Written")
@@ -25,7 +25,7 @@ def download_file(download_url):
 def write_tickers_to_file():
     tickers = []
     try:
-        f = open('/finance/app/equity/screener_eqs/memb_list_pdf.txt', 'rb')
+        f = open("/home/ubuntu/workspace/finance/app/equity/screener_eqs/memb_list_pdf.txt", 'rb')
         readFile = f.read().decode('utf8', 'ignore')
         splitFile = readFile.split('\n')
         for eachLine in splitFile:
@@ -53,6 +53,10 @@ def convert_file():
     logger.debug("File Converted")
 
 def create_symbols():
-    #download_file(memb_list)
-    #convert_file()
+    download_file(memb_list)
+    convert_file()
     write_tickers_to_file()
+    
+
+if __name__ == "__main__":
+    create_symbols()
