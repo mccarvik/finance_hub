@@ -43,7 +43,7 @@ def equity_analysis():
     if request.method == 'POST':
         eqanal_post(request)
     return render_template('equity_analysis.html',
-                           title='Equity Analysis')
+                           title='Equity Analysis'), 200
 
 @app.route('/tsy', methods=['GET', 'POST'])
 def tsy():

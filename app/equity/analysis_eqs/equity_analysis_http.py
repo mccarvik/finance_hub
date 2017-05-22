@@ -14,8 +14,10 @@ def post(request):
         print("Done loading data")
         app.logger.info("Finished retrieving Data from api")
         
-    if request.form['action'] == 'generate_charts':
-        pass
+    if request.form['action'] == 'gen_charts':
+        pdb.set_trace()
+        data = json.loads(request.form['data'])
+        # chartpacks(data)
     
     return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
 
