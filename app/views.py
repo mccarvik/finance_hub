@@ -39,6 +39,7 @@ def equity_screener():
 
 @app.route('/equity_analysis', methods=['GET', 'POST'])
 def equity_analysis():
+    # if request.method == 'POST' or request.method=='GET':
     if request.method == 'POST':
         eqanal_post(request)
     return render_template('equity_analysis.html',
@@ -46,7 +47,6 @@ def equity_analysis():
 
 @app.route('/tsy', methods=['GET', 'POST'])
 def tsy():
-    import pdb; pdb.set_trace()
     if request.method == 'POST':
         tsy_post(request)
     return render_template('tsy.html',
