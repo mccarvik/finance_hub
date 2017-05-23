@@ -33,7 +33,6 @@ function eqanal_get_data(event, token) {
             $('#loader').addClass("hide-loader");
         },
     });
-    return;
 }
 
 function eqanal_gen_charts(event, token) {

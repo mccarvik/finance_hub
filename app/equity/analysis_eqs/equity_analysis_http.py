@@ -4,6 +4,7 @@ import pandas as pd
 import os, csv, requests, asyncio, time, json, pdb
 from app import app
 from app.equity.analysis_eqs import utils_analysis
+from app.equity.analysis_eqs import chartpacks
 
 def post(request):
     
@@ -15,10 +16,9 @@ def post(request):
         app.logger.info("Finished retrieving Data from api")
         
     if request.form['action'] == 'gen_charts':
-        pdb.set_trace()
         data = json.loads(request.form['data'])
-        # chartpacks(data)
-    
+        tickers = [data['t']]
+        chartpacks.run(tickers, data['d'], data['c'])
     return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
 
 def get(request):
