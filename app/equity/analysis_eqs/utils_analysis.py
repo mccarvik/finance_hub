@@ -82,7 +82,10 @@ def getKeyStatsDataFrame(date=datetime.date.today().strftime('%Y-%m-%d'), ticker
             else:
                 df = db.select(table, where="date='{0}'".format(date))
         else:
-            df = db.select(table)
+            if tickers:
+                df = db.select(table, where="ticker in {0}".format(where_ticks))
+            else:
+                df = db.select(table)
     return df
 
 def loadDataToDB():
