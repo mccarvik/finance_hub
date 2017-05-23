@@ -183,6 +183,10 @@ def addCustomColumns(df):
     # df['sharpeRatio']
     return df
 
+def stringToDate(date):
+    new_date = [int(d) for d in date.split("-")]
+    return datetime.date(new_date[0], new_date[1], new_date[2])
+
 if __name__ == "__main__":
     # loadDataToDB()
     pass

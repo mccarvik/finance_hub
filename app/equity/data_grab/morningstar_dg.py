@@ -19,18 +19,20 @@ from app.utils.db_utils import DBHelper
 success = []
 failure = []
 
-def getData():
+def getData(tickers=None):
     # Getting all the tickers from text file
     tasks = []
-    with open("/home/ubuntu/workspace/finance/app/equity/screener_eqs/memb_list.txt", "r") as f:
-        for line in f:
-            tasks.append(line.strip())
+    if not tickers:
+        with open("/home/ubuntu/workspace/finance/app/equity/screener_eqs/memb_list.txt", "r") as f:
+            for line in f:
+                tasks.append(line.strip())
+    else:
+        tasks = tickers
     t0 = time.time()
     threads = []
     tasks = [t for t in tasks if t not in ms_dg_helper.remove_ticks_ms]
     tasks = [t for t in tasks if t not in ms_dg_helper.remove_ticks_dr]
     try:
-        # tasks = ['RSTI', 'SWC']
         # for running multithreaded: starts the thread and 'joins it' so we will wait for all to finish
         # API ACTING WEIRD WITH MULTITHREADING
         # ct = 0
@@ -46,7 +48,6 @@ def getData():
         #     ct += chunks
         #     threads = []
         #     print(str(ct) + " stocks completed so far")
-            
             
         
         # for running single threaded
@@ -80,7 +81,6 @@ def makeAPICall(tick):
         for row in list(cr):
             data.append(row)
         # Remove dates
-        import pdb; pdb.set_trace()
         dates = data[2][1:]
         # Remove empty rows
         data = [x for x in data if x != []]
@@ -90,7 +90,7 @@ def makeAPICall(tick):
             headers = [h.replace(repl,"").strip() for h in headers]
         data = [[h] + d[1:] for h, d in zip(headers, data)]
         data = pd.DataFrame(data)
-        data = pruneData(data, dates, tick)
+        pruneData(data, dates, tick)
     except:
         exc_type, exc_obj, exc_tb = sys.exc_info()
         # Chance Company Not published on Morningstar
@@ -99,7 +99,6 @@ def makeAPICall(tick):
         return
     print("Succeeded " + tick + "\t")
     success.append(tick)
-    return data
     
 def pruneData(df, dates, tick):
     df = df.set_index(0)
@@ -125,7 +124,7 @@ def pruneData(df, dates, tick):
     df = df.set_index(['ticker', 'date'])
     df = cleanData(df)
     try:
-        addCustomColumns(df)
+        df = addCustomColumns(df)
         sendToDB(df)
     except:
         exc_type, exc_obj, exc_tb = sys.exc_info()
@@ -164,7 +163,7 @@ def addCustomColumns(df, market_upd=False):
     
     if market_upd:
         # market = DataReader(".INX", 'google', start, end, pause=1)['Close']
-        market = DataReader('^GSPC','yahoo', sdate, edate,pause=1)['Close']
+        market = DataReader('^GSPC','yahoo', start, end,pause=1)['Close']
         market.to_csv('/home/ubuntu/workspace/finance/app/static/docs/market.csv')
         quotes = pd.DataFrame(quotes)
         market.columns = ['Date', 'market']
@@ -331,4 +330,4 @@ def sendToDB(df):
             db.upsert(table, val_dict, prim_keys)
 
 if __name__ == "__main__":
-    getData()
+    getData(['MSFT'])

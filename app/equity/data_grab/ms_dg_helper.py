@@ -117,7 +117,7 @@ INCOME_AND_CASH_FLOW = ["grossProfit", "enterpriseValue", "cogs", "sga", "rd", "
 PER_SHARE = ["bookValuePerShare", "freeCashFlowPerShare", "revenuePerShare",
             "dividendPerShare"]
 RATIOS = ["sharpeRatio", "currentRatio", "quickRatio", "financialLeverage", "debtToEquity", 
-        "interestCoverage", "capExToSales", "freeCashFlowToSales" "freeCashFlowToNetIncome",
+        "interestCoverage", "capExToSales", "freeCashFlowToSales", "freeCashFlowToNetIncome",
         "trailingPE", "priceToBook", "priceToSales", "pegRatio", "assetTurnoverRatio",
         "treynorRatio"]
 MARGINS = ["grossMargin", "operatingMargin", "netInterestOtherMargin", "EBTMargin",

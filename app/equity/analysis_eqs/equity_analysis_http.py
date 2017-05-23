@@ -18,7 +18,8 @@ def post(request):
     if request.form['action'] == 'gen_charts':
         data = json.loads(request.form['data'])
         tickers = [data['t']]
-        chartpacks.run(tickers, data['d'], data['c'])
+        pngs = chartpacks.run(tickers, data['d'], data['c'])
+        return json.dumps({'success':True}), 200, {'ContentType':'application/json'}, pngs
     return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
 
 def get(request):
