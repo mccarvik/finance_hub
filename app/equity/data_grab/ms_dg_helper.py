@@ -100,6 +100,7 @@ CUSTOM_COL_MAP = {
     "Treynor Ratio" : "treynorRatio",                               # Ratio
     "Beta" : "beta",                                                # Gross
     "Market Correlation" : "marketCorr",                            # Gross
+    "Price To Free Cash Flow" : "priceToCashFlow"                   # Ratio
 }
 
 
@@ -119,7 +120,7 @@ PER_SHARE = ["bookValuePerShare", "freeCashFlowPerShare", "revenuePerShare",
 RATIOS = ["sharpeRatio", "currentRatio", "quickRatio", "financialLeverage", "debtToEquity", 
         "interestCoverage", "capExToSales", "freeCashFlowToSales", "freeCashFlowToNetIncome",
         "trailingPE", "priceToBook", "priceToSales", "pegRatio", "assetTurnoverRatio",
-        "treynorRatio"]
+        "treynorRatio", 'priceToCashFlow']
 MARGINS = ["grossMargin", "operatingMargin", "netInterestOtherMargin", "EBTMargin",
             "netIncomeMargin", "enterpriseToRevenue"]
 RETURNS = ["returnOnAssets", "returnOnEquity", "returnOnCapital", "1yrReturn",

@@ -66,6 +66,14 @@ def futures_calc():
     return render_template('futures_calc.html',
                            title='Futures Calculator')
 
+@app.route('/opt_analysis', methods=['GET', 'POST'])
+def opt_analysis():
+    # if request.method == 'POST' or request.method=='GET':
+    if request.method == 'POST':
+        eqanal_post(request)
+    return render_template('opt_analysis.html',
+                           title='Option Analysis'), 200
+
 @app.route('/option/vanilla', methods=['GET', 'POST'])
 def opt_vanilla():
     if request.method == 'POST':

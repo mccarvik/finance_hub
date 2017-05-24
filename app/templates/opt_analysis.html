@@ -1,0 +1,61 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+    <link href="/static/css/equity_analysis.css" rel="stylesheet" type="text/css">
+    <script src="/static/js/equity_analysis.js"></script>
+    
+    <div class="container-fluid">
+        <h1 class="text-primary text-center">Equity Analysis</h1>
+        <div id=input_div>
+            <div class="row">
+                <div class="col-xs-3">
+                    <label class="optanal">Status: </label>
+                </div>
+                <div class="col-xs-3">
+                    <label id="optanal_status" class="optanal">Ready </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">
+                    <label class="optanal">Ticker:</label>
+                </div>
+                <div class="col-xs-3">
+                    <input id="optanal_ticker" type="text" class='opt_fields' required id='ticker' value=""/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">
+                    <label class="optanal">Chart Set:</label>
+                </div>
+                <div class="col-xs-3">
+                    <select id="optanal_charts" class='opt_fields' required id='chart' value="">
+                        <option value="CP1">Chart Pack 1</option>
+                        <option value="CP2">Chart Pack 2</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">
+                    <label class="optanal">Date:</label>
+                </div>
+                <div class="col-xs-3">
+                    <input id="optanal_date" type="date" class='opt_fields' required id='ticker' value=""/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <button id="get_data_btn" class='optanal btn btn-primary' onclick="optanal_get_data(event, '{{ SECRET_KEY }}');">Get Data  <i class='fa fa-calculator'></i></button>
+                </div>
+                <div class="col-xs-4">
+                    <button id="optanal_charts_btn" class='optanal btn btn-info' onclick="optanal_gen_charts(event, '{{ SECRET_KEY }}');">Generate Charts  <i class='fa fa-area-chart'></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+

@@ -14,7 +14,7 @@ from threading import Thread
 from pandas_datareader.data import DataReader
 from app.equity.screener_eqs.create_symbols import create_symbols
 from app.equity.data_grab import ms_dg_helper
-from app.utils.db_utils import DBHelper
+from app.utils.db_utils import DBHelper, restart
 
 success = []
 failure = []
@@ -250,6 +250,7 @@ def addBasicCustomCols(df, qr):
     df['trailingPE'] = df['currentPrice'] / df['trailingEPS']
     df['priceToBook'] = df['currentPrice'] / df['bookValuePerShare']
     df['priceToSales'] = df['currentPrice'] / df['revenuePerShare']
+    df['priceToCashFlow'] = df['currentPrice'] / df['freeCashFlowPerShare']
     df['grossProfit'] = (1-df['cogs']) * df['revenue']
     df['marketCapital'] = df['shares'] * df['currentPrice']
     df['totalAssets'] = df['bookValuePerShare'] / df['totalEquity']
@@ -330,4 +331,6 @@ def sendToDB(df):
             db.upsert(table, val_dict, prim_keys)
 
 if __name__ == "__main__":
-    getData(['MSFT'])
+    # restart()
+    # getData(['MSFT'])
+    getData()

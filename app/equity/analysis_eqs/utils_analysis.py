@@ -3,6 +3,7 @@ sys.path.append("/home/ubuntu/workspace/finance")
 sys.path.append("/usr/local/lib/python2.7/dist-packages")
 import datetime, pdb
 import numpy as np
+from pandas_datareader.data import DataReader
 from app.utils.db_utils import *
 from app.equity.screener_eqs.equity_screener import get_data
 from app.equity.screener_eqs.equity_stats import EquityStats, ES_Dataframe
@@ -187,6 +188,17 @@ def stringToDate(date):
     new_date = [int(d) for d in date.split("-")]
     return datetime.date(new_date[0], new_date[1], new_date[2])
 
+def normalize(ms_df, years, column):
+    return ms_df[ms_df[column]].rolling(center=False,window=years).mean()
+
+def getTS(tickers, date):
+    date = stringToDate(date)
+    tickers.append('SPY')
+    df = DataReader(tickers, 'google', "1997-01-01", date)
+    return df
+    
+
 if __name__ == "__main__":
     # loadDataToDB()
-    pass
+    df = getKeyStatsDataFrame(date='', tickers=['MSFT'], table='morningstar')
+    print(normalize(df, 5, 'EPS'))

@@ -4203,3 +4203,243 @@ bdb.BdbQuit
 2017-05-23 20:19:01,364 INFO: Done Retrieving data, took 31.44181799888611 seconds [in morningstar_dg.py:72]
 2017-05-23 20:19:12,499 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
 2017-05-23 20:21:31,466 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-24 01:12:42,226 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-24 01:13:28,419 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-24 01:13:39,021 INFO: DB INSERT INTO ERROR: <class 'pymysql.err.InternalError'>, 85, (1054, "Unknown column 'priceToCashFlow' in 'field list'") [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:94]
+2017-05-24 01:13:53,965 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:14:01,676 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:14:03,731 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:14:04,977 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:14:06,246 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:14:07,206 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:14:08,334 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:14:09,276 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:14:10,008 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:14:10,676 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:14:11,158 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:14:11,159 INFO: Done Retrieving data, took 42.48234152793884 seconds [in morningstar_dg.py:59]
+2017-05-24 01:15:10,133 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-24 01:16:02,268 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:16:05,063 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:16:07,977 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:16:10,876 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:16:11,406 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:16:11,846 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:16:12,246 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:16:12,676 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:16:13,094 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:16:13,597 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:16:15,498 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:16:15,499 INFO: Done Retrieving data, took 58.66820573806763 seconds [in morningstar_dg.py:59]
+2017-05-24 01:16:25,468 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-24 01:16:52,493 INFO: Retrieving Data from api [in /home/ubuntu/workspace/finance/app/equity/analysis_eqs/equity_analysis_http.py:13]
+2017-05-24 01:16:53,110 INFO: API READ ERROR on AEPI: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:16:53,910 INFO: API READ ERROR on CPGX: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:16:54,735 INFO: API READ ERROR on ASEI: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:16:55,092 INFO: API READ ERROR on BNK: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:16:55,146 INFO: API READ ERROR on RDEN: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:16:55,482 INFO: API READ ERROR on CVT: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:16:55,937 INFO: API READ ERROR on FXCB: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:16:56,332 INFO: API READ ERROR on GHC: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:16:57,278 INFO: API READ ERROR on HUBB: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:16:57,742 INFO: API READ ERROR on CMN: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:16:59,680 INFO: API READ ERROR on LLTC: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:00,111 INFO: API READ ERROR on MFS: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:00,512 INFO: API READ ERROR on LNKD: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:00,748 INFO: API READ ERROR on NILE: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:01,118 INFO: API READ ERROR on DWA: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:01,297 INFO: API READ ERROR on EMC: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:01,325 INFO: API READ ERROR on HW: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:01,490 INFO: API READ ERROR on GB: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:01,681 INFO: API READ ERROR on CYNO: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:02,071 INFO: API READ ERROR on CPHD: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:02,097 INFO: API READ ERROR on FLTX: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:02,293 INFO: API READ ERROR on CSCD: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:02,713 INFO: API READ ERROR on AMSG: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:03,082 INFO: API READ ERROR on DW: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:03,123 INFO: API READ ERROR on APIC: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:03,275 INFO: API READ ERROR on CLC: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:04,739 INFO: API READ ERROR on MRD: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:05,926 INFO: API READ ERROR on LIOX: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:06,881 INFO: API READ ERROR on MENT: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:07,104 INFO: API READ ERROR on LGF: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:07,433 INFO: API READ ERROR on LMCA: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:08,553 INFO: API READ ERROR on LDRH: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:08,906 INFO: API READ ERROR on CSAL: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:09,140 INFO: API READ ERROR on FSB: <class 'json.decoder.JSONDecodeError'>, 105, Expecting value: line 1 column 1 (char 0) [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:09,253 INFO: API READ ERROR on FEIC: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:10,111 INFO: API READ ERROR on IMDZ: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:10,124 INFO: API READ ERROR on LMCK: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:10,503 INFO: API READ ERROR on MFRM: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:10,525 INFO: API READ ERROR on EPIQ: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:10,911 INFO: API READ ERROR on IRT: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:11,503 INFO: API READ ERROR on ACAT: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:12,350 INFO: API READ ERROR on FTNT: <class 'json.decoder.JSONDecodeError'>, 105, Expecting value: line 1 column 1 (char 0) [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:12,480 INFO: API READ ERROR on EXAM: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:13,064 INFO: API READ ERROR on CSH: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:12,717 INFO: API READ ERROR on APOL: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:12,666 INFO: API READ ERROR on RLYP: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:13,147 INFO: API READ ERROR on IM: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:13,560 INFO: API READ ERROR on SWHC: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:14,329 INFO: API READ ERROR on EXAR: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:14,339 INFO: API READ ERROR on GMT: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:14,512 INFO: API READ ERROR on AVG: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:15,144 INFO: API READ ERROR on RSE: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:15,147 INFO: API READ ERROR on RPTP: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:15,722 INFO: API READ ERROR on AMTG: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:16,328 INFO: API READ ERROR on SWC: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:17,175 INFO: API READ ERROR on PSG: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:17,685 INFO: API READ ERROR on ROVI: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:17,748 INFO: API READ ERROR on HTS: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:17,954 INFO: API READ ERROR on MFLX: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:18,674 INFO: API READ ERROR on LOCK: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:19,917 INFO: API READ ERROR on CPXX: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:20,899 INFO: API READ ERROR on ENH: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:21,098 INFO: API READ ERROR on FDML: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:21,466 INFO: API READ ERROR on DTSI: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:22,115 INFO: API READ ERROR on IQNT: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:22,911 INFO: API READ ERROR on LSBG: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:23,107 INFO: API READ ERROR on VASC: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:23,690 INFO: API READ ERROR on SSRG: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:23,935 INFO: API READ ERROR on SGNT: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:23,939 INFO: API READ ERROR on ELNK: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:24,269 INFO: API READ ERROR on EDE: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:25,284 INFO: API READ ERROR on FCS: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:25,534 INFO: API READ ERROR on HWAY: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:25,888 INFO: API READ ERROR on HAR: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:26,932 INFO: API READ ERROR on NATL: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:27,518 INFO: API READ ERROR on TCB: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:28,681 INFO: API READ ERROR on DRII: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:30,915 INFO: API READ ERROR on CEB: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:31,358 INFO: API READ ERROR on IMPR: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:31,748 INFO: API READ ERROR on PLCM: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:31,875 INFO: API READ ERROR on WFD: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:33,082 INFO: API READ ERROR on IMS: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:33,341 INFO: API READ ERROR on AGTC: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:33,735 INFO: API READ ERROR on MESG: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:33,757 INFO: API READ ERROR on SCTY: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:34,734 INFO: API READ ERROR on TMH: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:34,913 INFO: API READ ERROR on SGI: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:35,558 INFO: API READ ERROR on AVNU: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:17:35,756 INFO: API READ ERROR on VTAE: <class 'TypeError'>, 105, 'NoneType' object is not subscriptable [in /home/ubuntu/workspace/finance/app/equity/screener_eqs/equity_screener.py:108]
+2017-05-24 01:18:11,683 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-24 01:18:26,799 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-24 01:19:59,400 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:20:01,671 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:20:02,707 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:20:03,546 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:20:04,298 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:20:04,999 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:20:05,818 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:20:08,907 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:20:10,458 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:20:11,637 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:20:12,857 INFO: DB UPSERT ERROR: <class 'bdb.BdbQuit'>, 101,  [in /home/ubuntu/workspace/finance/app/utils/db_utils.py:101]
+2017-05-24 01:20:12,858 INFO: Done Retrieving data, took 105.73773574829102 seconds [in morningstar_dg.py:60]
+2017-05-24 01:20:27,324 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-24 01:20:32,096 INFO: Done Retrieving data, took 3.618100166320801 seconds [in morningstar_dg.py:73]
+2017-05-24 01:21:54,686 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-24 02:18:35,782 INFO: Could not read time series data for DW: <class 'pandas_datareader._utils.RemoteDataError'>, 152, Unable to read URL: http://ichart.finance.yahoo.com/table.csv [in morningstar_dg.py:156]
+2017-05-24 08:00:54,602 INFO: Did not load data for DW: <class 'bdb.BdbQuit'>, 127,  [in morningstar_dg.py:127]
+2017-05-24 08:00:54,609 INFO: Error in API Call for DW  <class 'bdb.BdbQuit'>, 93,  [in morningstar_dg.py:93]
+2017-05-24 08:10:12,105 INFO: Did not load data for FISV: <class 'ValueError'>, 127, Cannot set a frame with no defined index and a value that cannot be converted to a Series [in morningstar_dg.py:131]
+2017-05-24 08:10:12,107 INFO: Error in API Call for FISV  <class 'ValueError'>, 93, Cannot set a frame with no defined index and a value that cannot be converted to a Series [in morningstar_dg.py:97]
+2017-05-24 08:32:49,665 INFO: Error in API Call for HSY  <class 'KeyError'>, 93, 'revenue' [in morningstar_dg.py:97]
+2017-05-24 10:24:27,983 INFO: Could not read time series data for PRK: <class 'pandas_datareader._utils.RemoteDataError'>, 152, Unable to read URL: http://ichart.finance.yahoo.com/table.csv [in morningstar_dg.py:156]
+2017-05-24 13:06:26,557 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-24 13:06:33,205 ERROR: Exception on / [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 18, in home
+    title='Home')
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/ubuntu/workspace/finance/app/templates/home.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "/home/ubuntu/workspace/finance/app/templates/base.html", line 61, in top-level template code
+    <li><a href="{{ url_for('opt_analysis') }}">Option Analysis</a></li>
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/helpers.py", line 332, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1811, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/helpers.py", line 322, in url_for
+    force_external=external)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/werkzeug/routing.py", line 1758, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'opt_analysis'. Did you mean 'equity_analysis' instead?
+2017-05-24 13:07:42,503 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-24 13:07:50,389 ERROR: Exception on / [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 18, in home
+    title='Home')
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/ubuntu/workspace/finance/app/templates/home.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "/home/ubuntu/workspace/finance/app/templates/base.html", line 61, in top-level template code
+    <li><a href="{{ url_for('opt_analysis') }}">Option Analysis</a></li>
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/helpers.py", line 332, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1811, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/helpers.py", line 322, in url_for
+    force_external=external)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/werkzeug/routing.py", line 1758, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'opt_analysis'. Did you mean 'equity_analysis' instead?
+2017-05-24 13:33:20,915 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-24 13:33:56,001 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-24 13:34:18,392 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-24 13:35:21,584 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-24 13:40:25,863 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-24 13:42:20,753 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-24 13:42:51,935 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-24 13:43:51,707 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-24 13:44:03,959 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-24 13:44:53,464 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-24 13:50:12,231 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-24 13:55:18,632 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-24 13:56:05,195 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
