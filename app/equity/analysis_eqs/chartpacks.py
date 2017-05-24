@@ -85,7 +85,6 @@ def price_ratios(ts, ms_df, tickers, date=datetime.date.today().strftime('%Y-%m-
     plt.close()
     return(IMG_PATH + "px_ratios.png")
     
-    
 def run(tickers, date, cp):
     ts = utils_analysis.getTS(tickers, date)
     ms_df = utils_analysis.getKeyStatsDataFrame(tickers=tickers, table="morningstar", date="")

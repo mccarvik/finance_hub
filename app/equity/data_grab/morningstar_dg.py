@@ -333,4 +333,7 @@ def sendToDB(df):
 if __name__ == "__main__":
     # restart()
     # getData(['MSFT'])
-    getData()
+    # getData()
+    import pdb; pdb.set_trace()
+    amzn = get_quote_yahoo('AMZN')
+    print()
