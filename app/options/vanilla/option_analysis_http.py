@@ -3,18 +3,12 @@ sys.path.append("/home/ubuntu/workspace/finance")
 import pandas as pd
 import os, csv, requests, asyncio, time, json, pdb
 from app import app
+from pandas_datareader.data import DataReader, Options
 from app.equity.analysis_eqs import utils_analysis
-from app.equity.analysis_eqs import chartpacks
+from app.options.analysis import chartpacks
 
 def post(request):
     
-    if request.form['action'] == 'get_data':
-        print("Loading data to DB")
-        app.logger.info("Retrieving Data from api")
-        utils_analysis.loadDataToDB()
-        print("Done loading data")
-        app.logger.info("Finished retrieving Data from api")
-        
     if request.form['action'] == 'gen_charts':
         data = json.loads(request.form['data'])
         tickers = [data['t']]
