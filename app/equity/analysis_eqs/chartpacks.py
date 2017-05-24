@@ -5,6 +5,8 @@ import matplotlib as mpl
 mpl.use('Agg')
 import datetime, pdb
 import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
 from config import IMG_PATH
 from app.equity.analysis_eqs import utils_analysis
 from app.equity.data_grab import ms_dg_helper
@@ -49,11 +51,12 @@ def mvg_avgs(ts, tickers, duration, date=datetime.date.today().strftime('%Y-%m-%
 
 def price_ratios(ts, ms_df, tickers, date=datetime.date.today().strftime('%Y-%m-%d')):
     col_map = ms_dg_helper.KEY_STATS + ms_dg_helper.RETURNS + \
-            ms_dg_helper.GROWTH + ms_dg_helper.MARGINS + ms_dg_helper.RATIOS + ['date']
+            ms_dg_helper.GROWTH + ms_dg_helper.MARGINS + ms_dg_helper.RATIOS + ['date', 'month']
     col_list = [c for c in col_map if c in ms_df.columns]
     ms_df = ms_df[col_list]
-    dates = ms_df['date']
+    dates = ms_df.apply(lambda x: datetime.date(int(x['date']), int(x['month']), 1), axis=1)
     start_date = ms_df['date'].min() + '-01-01'
+    ms_df = ms_df.replace('0', np.nan)
     
     
     plt.figure(figsize=(7,4))
@@ -61,26 +64,26 @@ def price_ratios(ts, ms_df, tickers, date=datetime.date.today().strftime('%Y-%m-
     col_ct = 0
     for cat in ['trailingPE', 'priceToBook', 'priceToSales', 'priceToCashFlow']:
         ax1.plot(dates, ms_df[cat].values, mpl_utils.COLORS[col_ct], lw=1.5, label=cat)
+        ax1.plot(dates, ms_df[cat].values, mpl_utils.COLORS[col_ct]+mpl_utils.MARKERS[6])
         col_ct+=1
     # plt.plot(dates, plots[0].values, label='test')
     ax1.axis('tight')
     ax1.set_xlabel('Date')
-    ax1.set_ylabel('Price')
+    ax1.set_ylabel('Ratio')
     ax1.grid(True)
     
     # # Key line below - get a second plot that shares the x axis
     ax2 = ax1.twinx()
     ts = ts.ix[3].reset_index()
-    pdb.set_trace()
-    ax2.plot(ts[ts['Date'] > start_date][ts.columns[0]], ts[ts['Date'] > start_date][ts.columns[-1]], mpl_utils.COLORS[col_ct], lw=1.5, label="SnP")
+    ax2.plot(ts[ts['Date'] > start_date][ts.columns[0]], ts[ts['Date'] > start_date][ts.columns[1]], mpl_utils.COLORS[col_ct], lw=1.5, label="MSFT(R)")
     # to add it to the legend
-    ax1.plot(0,0, mpl_utils.COLORS[col_ct], label="SnP(R)")
+    ax1.plot(0,0, mpl_utils.COLORS[col_ct], label="MSFT(R)")
     ax1.legend(loc=0)
     ax2.set_ylabel('Index Level')
-    plt.title('Moving Averages')
-    plt.savefig(IMG_PATH + 'mvg_avgs', dpi=300)
+    plt.title('Price Ratios - ' + tickers[0])
+    plt.savefig(IMG_PATH + 'px_ratios', dpi=300)
     plt.close()
-    return(IMG_PATH + "mvg_avgs.png")
+    return(IMG_PATH + "px_ratios.png")
     
     
 def run(tickers, date, cp):
