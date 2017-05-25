@@ -159,14 +159,12 @@ class OptionVanilla:
         imp_vol_guess : float
             estimated value for implied vol
         '''
-        
-        pdb.set_trace()
         for i in range(it):
             # reusing code from the price calc to use our vol guess
             imp_vol_guess -= ((self.priceFromVolBS(vol_guess=imp_vol_guess) - self.prem) / 
                             self.calcVega(vol_guess=imp_vol_guess))
         return imp_vol_guess
-    
+        
     def priceFromVolBinTree(self, N=2000):
         # N = number of steps of tree
         sigma = self.vol
@@ -218,5 +216,5 @@ if __name__ == "__main__":
     # opt = OptionVanilla("C", 11.49, 11.50, 0.00, (18/250), 0, vol=0.05)
     opt = OptionVanilla("C", 11.49, 11.50, 0.00, (18/250), 0, prem=0.0566)
     # print(opt.priceFromVolBinTree())
-    # print(opt.priceFromVolBS())
-    print(opt.volFromPriceBS())
+    print(opt.priceFromVolBS())
+    # print(opt.volFromPriceBS())

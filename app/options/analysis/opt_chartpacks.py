@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 from functools import reduce
+from mpl_toolkits.mplot3d import Axes3D
 from config import IMG_PATH
 from app.utils import mpl_utils
 from app.options.vanilla.opt_vanilla import OptionVanilla
@@ -25,20 +26,22 @@ def vol_surface(opts, tickers, date, ot):
             premium = [o[o['strike']==s]['p'].iloc[0] for o in opts if o['expiry'].iloc[0]==e and o['opt_type'][0] == ot]
             tenor = (e - stringToDate(date)).days / 365
             # Assume 2% interest rate and 0 % dividend rate
-            pdb.set_trace()
-            iv[[e,s]] = OptionVanilla(ot, underlying_px, s, 0.02, tenor, 0, prem=premium[0])
-            
-    strike, ttm = np.meshgrid(strike, ttm)
+            c_or_p = 'C' if ot == 'call' else 'P'
+            iv[(e,s)] = OptionVanilla(c_or_p, underlying_px, s, 0.02, tenor, 0, prem=premium[0]).vol
+    iv = {k : v for k, v in iv.items() if not np.isnan(v)}
     
-    
-    fig = plt.figure(figsize=(9,6))
-    ax = fig.gca(projection='3d')
-    surf = ax.plot_surface(strike, exp, iv, rstride=2, cstride=2, 
-        cmap=plt.cm.coolwarm, linewidth=0.5, antialiased=True)
+    # strike, exp = np.meshgrid(strike, exp)
+    fig = plt.figure(figsize=(7,4))
+    ax = fig.add_subplot(111, projection='3d')
+    # surf = ax.plot_surface([float(x[1]) for x in list(iv.keys())], 
+    #             [(x[0]-stringToDate(date)).days for x in list(iv.keys())], list(iv.values()), 
+    #             rstride=2, cstride=2, cmap=plt.cm.coolwarm, linewidth=0.5, antialiased=True)
+    ax.scatter([float(x[1]) for x in list(iv.keys())], [(x[0]-stringToDate(date)).days for x in list(iv.keys())], 
+                list(iv.values()), c="b", marker="o")
     ax.set_xlabel('strike')
     ax.set_ylabel('time-to-maturity')
     ax.set_zlabel('implied volatility')
-    fig.colorbar(surf, shrink=0.5, aspect=5)
+    # fig.colorbar(surf, shrink=0.5, aspect=5)
     plt.savefig(IMG_PATH + 'vol_surface.png', dpi=300)
     plt.close()
     return IMG_PATH + 'vol_surface.png'
