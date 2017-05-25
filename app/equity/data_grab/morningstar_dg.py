@@ -60,6 +60,7 @@ def getData(tickers=None):
                 success.append(t)
             except:
                 failure.append(t)
+                print("Failed " + t + "\t")
                 app.logger.info("Failure for  %s \t" % t)
             ct+=1
     except Exception as e:
@@ -96,7 +97,7 @@ def makeAPICall(tick):
         # Chance Company Not published on Morningstar
         app.logger.info("Error in API Call for {3}  {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj, tick))
         failure.append(tick)
-        return
+        raise
     print("Succeeded " + tick + "\t")
     success.append(tick)
     
@@ -154,7 +155,7 @@ def addCustomColumns(df, market_upd=False):
             print("Could not read time series data for %s" % df.index.get_level_values('ticker')[0])
             exc_type, exc_obj, exc_tb = sys.exc_info()
             app.logger.info("Could not read time series data for {3}: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj, df.index.get_level_values('ticker')[0]))
-            import pdb; pdb.set_trace()
+            # import pdb; pdb.set_trace()
             raise
     qr = quotes.reset_index()
     df = addBasicCustomCols(df, qr)
@@ -333,7 +334,6 @@ def sendToDB(df):
 if __name__ == "__main__":
     # restart()
     # getData(['MSFT'])
-    # getData()
-    import pdb; pdb.set_trace()
-    amzn = get_quote_yahoo('AMZN')
-    print()
+    getData()
+    # amzn = get_quote_yahoo('AMZN')
+    # print()
