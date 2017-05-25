@@ -4570,3 +4570,6 @@ werkzeug.routing.BuildError: Could not build url for endpoint 'opt_analysis'. Di
 2017-05-24 20:02:05,457 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
 2017-05-24 20:03:41,561 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
 2017-05-24 20:03:56,907 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-25 01:05:06,093 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-25 01:11:09,531 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-25 01:14:33,718 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]

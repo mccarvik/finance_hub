@@ -26,6 +26,19 @@ def getAllOptionData(tickers):
     # Options(tickers[0], 'google').get_all_data()
     url = 'https://www.google.com/finance/option_chain?q=' + tickers[0] + '&output=json'
     data = requests.get(url).content.decode('utf-8')
+    data = cleanGoogleJSON(data)
+    unperlying_px = data['underlying_price']
+    expiry = data['expiry']
+    expirations = data['expirations'][1:]
+    data = {key: value for key, value in data.items() 
+             if key in ['calls', 'puts']}
+    options = []
+    # Need to add expiry and maybe C/P column to this
+    options.push(pd.Dataframe(data['calls']))
+    options.push(pd.Dataframe(data['puts']))
+    return data
+
+def cleanGoogleJSON(data):
     data = data.replace("\"", "")
     # Need to reformat JSON as google doesnt return a proper json file
     data = data.replace("+","")
@@ -38,9 +51,8 @@ def getAllOptionData(tickers):
     for d in dates:
         data = data.replace(d, '"'+d+'"')
     pdb.set_trace()
-    data = json.loads(data)
-    exprs = data['expirations']
-    return data
+    return json.loads(data)
+    
 
 if __name__ == "__main__":
     run(['AAPL'], datetime.date.today().strftime('%Y-%m-%d'), "CP1")
