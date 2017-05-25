@@ -95,6 +95,7 @@ def makeAPICall(tick):
     except:
         exc_type, exc_obj, exc_tb = sys.exc_info()
         # Chance Company Not published on Morningstar
+        # import pdb; pdb.set_trace()
         app.logger.info("Error in API Call for {3}  {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj, tick))
         failure.append(tick)
         raise

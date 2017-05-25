@@ -2,7 +2,7 @@ import sys
 sys.path.append("/home/ubuntu/workspace/finance")
 import numpy as np
 import scipy.stats as ss
-import time, sys
+import time, sys, pdb
 from app import app
 from math import sqrt, pi, log, e
 
@@ -39,7 +39,7 @@ def post(request):
 
 class OptionVanilla:
     
-    def __init__(self, otype, underlying, strike, ir, tenor, div, vol=None, prem=None):
+    def __init__(self, otype, underlying, strike, ir, tenor, div, vol=None, prem=None, greeks=False):
         self.otype = otype                          # type of option (C or P for call or put)
         self.underlying = float(underlying)         # Price of the underlying
         self.strike = float(strike)                 # strike price
@@ -48,11 +48,12 @@ class OptionVanilla:
         self.div = float(div)                       # continuous dividend rate
         if (vol):
             self.vol = float(vol)                   # volatility (ex: 0.3 = 30%)
-            self.prem = self.priceFromVolBS()    # premium paid for the option
+            self.prem = self.priceFromVolBS()       # premium paid for the option
         elif (prem):
             self.prem = float(prem)
             self.vol = self.volFromPriceBS()
-        self.calcGreeks()
+        if greeks:
+            self.calcGreeks()
     
     def calcGreeks(self):
         self._delta = self.calcDelta()
@@ -159,12 +160,12 @@ class OptionVanilla:
             estimated value for implied vol
         '''
         
+        pdb.set_trace()
         for i in range(it):
             # reusing code from the price calc to use our vol guess
             imp_vol_guess -= ((self.priceFromVolBS(vol_guess=imp_vol_guess) - self.prem) / 
                             self.calcVega(vol_guess=imp_vol_guess))
         return imp_vol_guess
-
     
     def priceFromVolBinTree(self, N=2000):
         # N = number of steps of tree
