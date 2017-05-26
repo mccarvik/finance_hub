@@ -16,17 +16,19 @@ from app.equity.analysis_eqs.utils_analysis import stringToDate
 from pandas_datareader.data import Options
 
 def vol_surface(opts, tickers, date, ot):
-    underlying_px = opts[0]['underlying_px'][0]
-    exp = [o['expiry'].loc[0] for o in opts if o['opt_type'][0] == ot]
-    strike = [o['strike'] for o in opts if o['opt_type'][0] == ot]
+    underlying_px = opts['underlying_px'].iloc[0]
+    exp = opts.expiry.unique()
+    strike = [o['strike'] for o in [opts[opts['expiry'] == e] for e in exp]]
+    # strike = [o['strike'] for o in opts if o['opt_type'][0] == ot]
     strike = list(reduce(set.intersection, [set(list(s)) for s in strike]))
     iv = {}
     for e in exp:
         for s in strike:
-            premium = [o[o['strike']==s]['p'].iloc[0] for o in opts if o['expiry'].iloc[0]==e and o['opt_type'][0] == ot]
+            # premium = [o['p'].iloc[0] for o in opts[(opts['strike']==s) & (opts['expiry']==e) & (opts['opt_type']==ot)]]
+            premium = opts[(opts['strike']==s) & (opts['expiry']==e) & (opts['opt_type']==ot)]['p'].iloc[0]
             tenor = (e - stringToDate(date)).days / 365
             # Assume 2% interest rate and 0 % dividend rate
-            c_or_p = 'C' if ot == 'call' else 'P'
+            c_or_p = 'C' if ot == 'Call' else 'P'
             iv[(e,s)] = OptionVanilla(c_or_p, underlying_px, s, 0.02, tenor, 0, prem=premium[0]).vol
     iv = {k : v for k, v in iv.items() if not np.isnan(v)}
     
@@ -41,16 +43,63 @@ def vol_surface(opts, tickers, date, ot):
     ax.set_xlabel('strike')
     ax.set_ylabel('time-to-maturity')
     ax.set_zlabel('implied volatility')
+    plt.title('Volatility Surface - ' + tickers[0] + " (" + ot + "s)")
     # fig.colorbar(surf, shrink=0.5, aspect=5)
     plt.savefig(IMG_PATH + 'vol_surface.png', dpi=300)
     plt.close()
     return IMG_PATH + 'vol_surface.png'
 
+def vol_smile(opts, tickers, date, ot):
+    underlying_px = opts['underlying_px'].iloc[0]
+    exp = opts.expiry.unique()
+    strike = [o['strike'] for o in [opts[opts['expiry'] == e] for e in exp]]
+    # strike = [o['strike'] for o in opts if o['opt_type'][0] == ot]
+    strike = list(reduce(set.intersection, [set(list(s)) for s in strike]))
+    iv = {}
+    for e in exp:
+        iv_exp = []
+        for s in strike:
+            # premium = [o['p'].iloc[0] for o in opts[(opts['strike']==s) & (opts['expiry']==e) & (opts['opt_type']==ot)]]
+            premium = opts[(opts['strike']==s) & (opts['expiry']==e) & (opts['opt_type']==ot)]['p'].iloc[0]
+            tenor = (e - stringToDate(date)).days / 365
+            # Assume 2% interest rate and 0 % dividend rate
+            c_or_p = 'C' if ot == 'Call' else 'P'
+            iv_exp.append((s, OptionVanilla(c_or_p, underlying_px, s, 0.02, tenor, 0, prem=premium[0]).vol))
+        
+        iv_exp = [i for i in iv_exp if not np.isnan(i[1])]
+        iv_exp = sorted(iv_exp, key=lambda tup: tup[0])
+        iv[e] = iv_exp
+    
+    plt.figure(figsize=(7,4))
+    fig, ax1 = plt.subplots()
+    col_ct = 0
+    for e in exp:
+        ax1.plot([v[0] for v in iv[e]], [v[1] for v in iv[e]], mpl_utils.COLORS[col_ct], lw=1.5, label=e.strftime('%Y-%m-%d'))
+        ax1.plot([v[0] for v in iv[e]], [v[1] for v in iv[e]], mpl_utils.COLORS[col_ct]+mpl_utils.MARKERS[6])
+        col_ct+=1
+    plt.axvline(x=float(underlying_px), color='r', linestyle='--')
+    ax1.plot(np.NaN, np.NaN, "r", label="ATM")
+    ax1.axis('tight')
+    ax1.set_xlabel('Strike')
+    ax1.set_ylabel('Implied Volatility')
+    ax1.grid(True)
+    
+    ax1.legend(loc=0)
+    ax1.autoscale_view(True,True,True)
+    plt.title('Volatility Smile by Expiry - ' + tickers[0] + " (" + ot + "s)")
+    # fig.colorbar(surf, shrink=0.5, aspect=5)
+    plt.savefig(IMG_PATH + 'vol_smile_exp.png', dpi=300)
+    plt.close()
+    return IMG_PATH + 'vol_smile_exp.png'
+    
+    
+
 def run(tickers, date, cp):
     all_data = getAllOptionData(tickers)
     pngs = []
     if cp == "CP1":
-        pngs.append(vol_surface(all_data, tickers, date, 'call'))
+        # pngs.append(vol_surface(all_data, tickers, date, 'Call'))
+        pngs.append(vol_smile(all_data, tickers, date, 'Call'))
     return pngs
 
 def getAllOptionData(tickers):
@@ -64,18 +113,16 @@ def getAllOptionData(tickers):
     expirations = data['expirations'][1:]
     data = {key: value for key, value in data.items() 
              if key in ['calls', 'puts']}
-    options = []
-    # Need to add expiry and maybe C/P column to this
-    options.append(addColumns(pd.DataFrame(data['calls']), 'call', expiry, underlying_px))
-    options.append(addColumns(pd.DataFrame(data['puts']), 'put', expiry, underlying_px))
+    options = addColumns(pd.DataFrame(data['calls']), 'Call', expiry, underlying_px)
+    options = options.append(addColumns(pd.DataFrame(data['puts']), 'Put', expiry, underlying_px))
     for exp in expirations:
         url = 'https://www.google.com/finance/option_chain?q=' + tickers[0] + '&expd=' + exp['d'] + '&expm=' + exp['m'] + '&expy=' + exp['y'] + '&output=json'
         data = requests.get(url).content.decode('utf-8')
         data = cleanGoogleJSON(data)
         data = {key: value for key, value in data.items() 
              if key in ['calls', 'puts']}
-        options.append(addColumns(pd.DataFrame(data['calls']), 'call', exp, underlying_px))
-        options.append(addColumns(pd.DataFrame(data['puts']), 'put', exp, underlying_px))
+        options = options.append(addColumns(pd.DataFrame(data['calls']), 'Call', exp, underlying_px))
+        options = options.append(addColumns(pd.DataFrame(data['puts']), 'Put', exp, underlying_px))
     return options
 
 def addColumns(df, opt_type, expiry, und_px):

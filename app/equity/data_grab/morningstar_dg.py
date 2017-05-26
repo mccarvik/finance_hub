@@ -114,7 +114,6 @@ def pruneData(df, dates, tick):
         df = df[col_list]
     except:
         exc_type, exc_obj, exc_tb = sys.exc_info()
-        # import pdb; pdb.set_trace()
         app.logger.info("Error with column mapping for {3}: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj, tick))
     
     # The TTM data may be off as that last column has different time windows
