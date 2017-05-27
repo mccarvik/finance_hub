@@ -128,7 +128,7 @@ RETURNS = ["returnOnAssets", "returnOnEquity", "returnOnCapital", "1yrReturn",
             "ytdReturn", "50DayMvgAvg", "200DayMvgAvg"]
 GROWTH = ["operatingCashFlowGrowth", "freeCashFlowGrowth", "revenueGrowth", "epsGrowth"]
 OTHER = ['shares', "payoutRatio", "taxRate", "marketCapital"]
-
+INDEX = ['date', 'ticker']
 KEY_STATS = ['currentPrice', "divYield", 'volatility', 'beta', 'marketCorr']
 
 # NOTES:
