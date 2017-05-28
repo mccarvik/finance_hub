@@ -13,6 +13,9 @@ from app.equity.screener_eqs.equity_stats import EquityStats, ES_Dataframe
 from app.equity.analysis_eqs.utils_analysis import loadDataToDB, getKeyStatsDataFrame
 from app.equity.data_grab import ms_dg_helper
 from app.utils.db_utils import DBHelper
+from app.equity.ml_eqs.perceptron import Perceptron
+
+IMG_PATH = '/home/ubuntu/workspace/finance/app/static/img/ml_imgs/'
 
 def run(inputs, load_data=False):
     if load_data:
@@ -28,9 +31,13 @@ def run(inputs, load_data=False):
     df = cleanData(df)
     df = selectInputs(df, inputs)
 
+    # Run Perceptron
+    run_perceptron(df)
+
+
 def selectInputs(df, inputs):
-    columns = inputs + ['target']
-    df = df[inputs]
+    columns = inputs + ['target'] + ['target_proxy']
+    df = df[columns]
     return df
 
 def addTarget(df):
@@ -39,20 +46,18 @@ def addTarget(df):
     for ind, row in df.iterrows():
         try:
             t = df[(df['ticker'] == row['ticker']) & (df['date'] == str(int(row['date']) + yr_avg_ret))]['3yrReturn'].iloc[0]
-            # pdb.set_trace()
             target.append(t)
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
             target.append(np.nan)
-    df['target'] = target
-    df = df.dropna(subset = ['target'])
-    df = df[df['target'] != 0]
-    pdb.set_trace()
-    df['target'] = df.apply(lambda x: targetToCat(x['target']), axis=1)
+    df['target_proxy'] = target
+    df = df.dropna(subset = ['target_proxy'])
+    df = df[df['target_proxy'] != 0]
+    df['target'] = df.apply(lambda x: targetToCat(x['target_proxy']), axis=1)
     return df
 
 def targetToCat(x):
-    if (x > .1):
+    if (x > 10):
         return 2
     elif (x > 0):
         return 1
@@ -66,8 +71,57 @@ def removeUnnecessaryColumns(df):
     return df
 
 def cleanData(df):
-    df = df[df['trailingPE'] > 0]
+    df = df[df['trailingPE'] != 0]
+    df = df[df['priceToBook'] != 0]
+    df = df[df['priceToSales'] != 0]
+    df = df[df['divYield'] >= 0]
+    
+    # Temp for training purposes
+    df = df[abs(df['divYield']) < 20]
+    df = df[abs(df['trailingPE']) < 100]
     return df
+
+def run_perceptron(df, eta=0.1, n_iter=10):
+    ''' Takes the pruned dataframe and runs it through the perceptron class
+    
+        Parameters
+        ==========
+        df : dataframe
+            dataframe with the inputs and target
+        eta : float
+            learning rate between 0 and 1
+        n_iter : int
+            passes over the training dataset
+        
+        Return
+        ======
+        NONE
+    '''
+    y = df['target']
+    X = df[['trailingPE','divYield']]
+    str_buy = df[df['target'] == 2][list(X.columns)].values
+    buy = df[df['target'] == 1][list(X.columns)].values
+    sell = df[df['target'] == 0][list(X.columns)].values
+    pdb.set_trace()
+    plt.figure(figsize=(7,4))
+    plt.scatter(str_buy[:, 0], str_buy[:, 1], color='red', marker='o', label='Strong Buy')
+    plt.scatter(buy[:, 0], buy[:, 1], color='blue', marker='x', label='Buy')
+    plt.scatter(sell[:, 0], sell[:, 1], color='green', marker='^', label='Sell')
+    plt.xlabel('Trailing PE')
+    plt.ylabel('Div Yield')
+    plt.legend()
+    pdb.set_trace()
+    plt.savefig(IMG_PATH + "scatter.png")
+    plt.close()
+    
+    ppn = Perceptron(eta, n_iter)
+    ppn.fit(X, y)
+    plt.plot(range(1,len(ppn.errors_) + 1), ppn.errors_,marker='o')
+    plt.xlabel('Epochs')
+    plt.ylabel('Number of misclassifications')
+    plt.savefig(IMG_PATH + "misclassifications.png")
+    plt.close()
+    
 
 if __name__ == "__main__":
     run(['trailingPE', 'priceToBook', 'priceToSales', 'divYield'])

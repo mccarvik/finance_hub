@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 COLORS = ["b", "c", "m", "g", "k", "r", "y", "w"]
 MARKERS = ['-', '--', '-.', ':', '.', ',', 'o', 'v', '^', '<', '>', '1', '2',
-            '3', '4', '5', 's', 'p', '*', 'h', 'H', 'D', 'd', '|', 'x', '+']
+            '3', '4', '5', 's', 'p', '*', 'h', 'H', 'D', 'd', '|', 'x', '+', 'o']
 
 def autolabel(rects, ax, decs=2):
     """

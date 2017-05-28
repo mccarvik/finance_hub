@@ -15,7 +15,25 @@ from app.utils import mpl_utils
 
 
 def mvg_avgs(ts, tickers, duration, date=datetime.date.today().strftime('%Y-%m-%d')):
-    pdb.set_trace()
+    ''' Creates a chart displaying the closing px data and the 50d and 200d 
+        moving averages along with SPY as a proxy for the Market
+    
+        Parameters
+        ==========
+        ts : dataframe
+            The time series data for the given tickers
+        tickers : list
+            list of strings of the tickers used
+        duration : int
+            The lenght in year of the data
+        date : date
+            The given end date of the data
+        
+        Return
+        ======
+        png_str : string
+            A sting with the location of the new png
+    '''
     ts = ts.ix[3]
     mv_avg_50 = ts[ts.columns[0]].rolling(center=False,window=50).mean()
     mv_avg_50.name = mv_avg_50.name + "_50d_mvg"
@@ -50,6 +68,25 @@ def mvg_avgs(ts, tickers, duration, date=datetime.date.today().strftime('%Y-%m-%
     return(IMG_PATH + "mvg_avgs.png")
 
 def price_ratios(ts, ms_df, tickers, date=datetime.date.today().strftime('%Y-%m-%d')):
+    ''' Creates a chart displaying the closing px data and the 50d and 200d 
+        moving averages along with SPY as a proxy for the Market
+    
+        Parameters
+        ==========
+        ts : dataframe
+            The time series data for the given tickers
+        ms_df : dataframe
+            morningstar financials data
+        tickers : list
+            list of strings of the tickers used
+        date : date
+            The given end date of the data
+        
+        Return
+        ======
+        png_str : string
+            A sting with the location of the new png
+    '''
     col_map = ms_dg_helper.KEY_STATS + ms_dg_helper.RETURNS + \
             ms_dg_helper.GROWTH + ms_dg_helper.MARGINS + ms_dg_helper.RATIOS + ['date', 'month']
     col_list = [c for c in col_map if c in ms_df.columns]
@@ -86,6 +123,22 @@ def price_ratios(ts, ms_df, tickers, date=datetime.date.today().strftime('%Y-%m-
     return(IMG_PATH + "px_ratios.png")
     
 def run(tickers, date, cp):
+    ''' Central Run / Main method for the chartpacks
+    
+        Parameters
+        ==========
+        tickers : list
+            list of the tickers used
+        date : date
+            date to be used in the charts
+        cp : string
+            tells which set of charts to create
+        
+        Return
+        ======
+        pngs : list
+            list of pngs to add to the interface
+    '''
     ts = utils_analysis.getTS(tickers, date)
     ms_df = utils_analysis.getKeyStatsDataFrame(tickers=tickers, table="morningstar", date="")
     pngs = []

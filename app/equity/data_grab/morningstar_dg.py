@@ -51,6 +51,7 @@ def getData(tickers=None):
             
         
         # for running single threaded
+        # tasks = tasks[2600:]
         ct = 0
         for t in tasks:
             if ct % 25 == 0:
@@ -97,7 +98,6 @@ def makeAPICall(tick):
         # Chance Company Not published on Morningstar
         # import pdb; pdb.set_trace()
         app.logger.info("Error in API Call for {3}  {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj, tick))
-        failure.append(tick)
         raise
     print("Succeeded " + tick + "\t")
     success.append(tick)
@@ -283,22 +283,22 @@ def addGrowthCustomCols(df, qr):
     for ind, vals in df.iterrows():
         try:
             yr1q = qr[qr['Date'] >= datetime.date(int(ind[1])-1,int(vals['month']),1)].iloc[0]['Close']
-            yr1_ret.append(((vals['currentPrice'] / yr1q - 1) * 100))
+            yr1_ret.append(((vals['currentPrice'] / yr1q) - 1) * 100)
         except:
             yr1_ret.append(0)
         try:
             yr3q = qr[qr['Date'] >= datetime.date(int(ind[1])-3,int(vals['month']),1)].iloc[0]['Close']
-            yr3_ret.append(((vals['currentPrice'] / yr3q - 1) * 100)**(1/3))
+            yr3_ret.append(((vals['currentPrice'] / yr3q)**(1/3) - 1) * 100)
         except:
             yr3_ret.append(0)
         try:
             yr5q = qr[qr['Date'] >= datetime.date(int(ind[1])-5,int(vals['month']),1)].iloc[0]['Close']
-            yr5_ret.append(((vals['currentPrice'] / yr5q - 1) * 100)**(1/5))
+            yr5_ret.append(((vals['currentPrice'] / yr5q)**(1/5) - 1) * 100)
         except:
             yr5_ret.append(0)
         try:
             yr10q = qr[qr['Date'] >= datetime.date(int(ind[1])-10,int(vals['month']),1)].iloc[0]['Close']
-            yr10_ret.append(((vals['currentPrice'] / yr10q - 1) * 100)**(1/10))
+            yr10_ret.append(((vals['currentPrice'] / yr10q)**(1/10) - 1) * 100)
         except:
             yr10_ret.append(0)
         try:
