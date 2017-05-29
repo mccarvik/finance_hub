@@ -54,7 +54,7 @@ function eqanal_gen_charts(event, token) {
             action: "gen_charts",
             data: JSON.stringify(chart_data)
         },
-        success: function()
+        success: function(data)
         {
             console.log('Finished Retrieving Data');
             $('#loader').addClass("hide-loader");

@@ -1,6 +1,6 @@
 import json, pdb
 from collections import OrderedDict
-from flask import render_template, flash, redirect, session, url_for, request, g, jsonify
+from flask import render_template, redirect, url_for, request, g, jsonify
 from datetime import datetime
 from app import app
 from .forms import EditForm, PostForm, SearchForm
@@ -39,11 +39,17 @@ def equity_screener():
 
 @app.route('/equity_analysis', methods=['GET', 'POST'])
 def equity_analysis():
+    post_ret = []
     # if request.method == 'POST' or request.method=='GET':
     if request.method == 'POST':
-        eqanal_post(request)
-    return render_template('equity_analysis.html',
-                           title='Equity Analysis'), 200
+        post_ret = eqanal_post(request)
+    if post_ret:
+        return render_template('equity_analysis.html',
+                                pngs=post_ret[1],
+                                title='Equity Analysis'), 200
+    else:
+        return render_template('equity_analysis.html',
+                                title='Equity Analysis'), 200
 
 @app.route('/tsy', methods=['GET', 'POST'])
 def tsy():

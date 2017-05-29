@@ -143,7 +143,7 @@ def run(tickers, date, cp):
     ms_df = utils_analysis.getKeyStatsDataFrame(tickers=tickers, table="morningstar", date="")
     pngs = []
     if cp == "CP1":
-        # pngs.append(mvg_avgs(ts, tickers, 5, date))
+        pngs.append(mvg_avgs(ts, tickers, 5, date))
         pngs.append(price_ratios(ts, ms_df, tickers, date))
     return pngs
 

@@ -6,6 +6,8 @@ from app import app
 from app.equity.analysis_eqs import utils_analysis
 from app.equity.analysis_eqs import chartpacks
 
+DEF_RET = json.dumps({'success':True}), 200, {'ContentType':'application/json'}
+
 def post(request):
     
     if request.form['action'] == 'get_data':
@@ -19,8 +21,8 @@ def post(request):
         data = json.loads(request.form['data'])
         tickers = [data['t']]
         pngs = chartpacks.run(tickers, data['d'], data['c'])
-        return json.dumps({'success':True}), 200, {'ContentType':'application/json'}, pngs
-    return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
+        return DEF_RET, pngs
+    return DEF_RET
 
 def get(request):
     if request.form['action'] == 'get_data':
@@ -30,4 +32,4 @@ def get(request):
         print("Done loading data")
         app.logger.info("Finished retrieving Data from api")
     
-    return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
+    return DEF_RET
