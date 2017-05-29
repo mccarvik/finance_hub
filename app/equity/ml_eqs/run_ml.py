@@ -3,7 +3,7 @@ sys.path.append("/home/ubuntu/workspace/finance")
 import matplotlib as mpl
 mpl.use('Agg')
 import matplotlib.pyplot as plt
-import datetime, pdb
+import datetime, pdb, time
 import numpy as np
 import pandas as pd
 from sklearn.cross_validation import train_test_split
@@ -14,6 +14,7 @@ from app.equity.analysis_eqs.utils_analysis import loadDataToDB, getKeyStatsData
 from app.equity.data_grab import ms_dg_helper
 from app.utils.db_utils import DBHelper
 from app.equity.ml_eqs.perceptron import Perceptron
+from app.equity.ml_eqs.ml_utils import plot_decision_regions
 
 IMG_PATH = '/home/ubuntu/workspace/finance/app/static/img/ml_imgs/'
 
@@ -21,11 +22,15 @@ def run(inputs, load_data=False):
     if load_data:
         loadDataToDB()
     # Temp to make testing quicker
+    t0 = time.time()
     with DBHelper() as db:
         db.connect()
-        df = db.select('morningstar', where = 'date in ("2010", "2013")')
+        df = db.select('morningstar', where = 'date in ("2010", "2015")')
     # Getting Dataframe
     # df = getKeyStatsDataFrame(table='morningstar', date='')
+    t1 = time.time()
+    app.logger.info("Done Retrieving data, took {0} seconds".format(t1-t0))
+    print("Done Retrieving data, took {0} seconds".format(t1-t0))
     df = removeUnnecessaryColumns(df)
     df = addTarget(df)
     df = cleanData(df)
@@ -41,11 +46,11 @@ def selectInputs(df, inputs):
     return df
 
 def addTarget(df):
-    yr_avg_ret = 3
+    yr_avg_ret = 5
     target = []
     for ind, row in df.iterrows():
         try:
-            t = df[(df['ticker'] == row['ticker']) & (df['date'] == str(int(row['date']) + yr_avg_ret))]['3yrReturn'].iloc[0]
+            t = df[(df['ticker'] == row['ticker']) & (df['date'] == str(int(row['date']) + yr_avg_ret))]['5yrReturn'].iloc[0]
             target.append(t)
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
@@ -58,11 +63,9 @@ def addTarget(df):
 
 def targetToCat(x):
     if (x > 10):
-        return 2
-    elif (x > 0):
         return 1
     else:
-        return 0
+        return -1
 
 def removeUnnecessaryColumns(df):
     df = df[ms_dg_helper.RATIOS + ms_dg_helper.KEY_STATS + ms_dg_helper.OTHER +
@@ -72,13 +75,14 @@ def removeUnnecessaryColumns(df):
 
 def cleanData(df):
     df = df[df['trailingPE'] != 0]
-    df = df[df['priceToBook'] != 0]
+    df = df[df['priceToBook'] > 0]
     df = df[df['priceToSales'] != 0]
     df = df[df['divYield'] >= 0]
     
     # Temp for training purposes
-    df = df[abs(df['divYield']) < 20]
-    df = df[abs(df['trailingPE']) < 100]
+    df = df[abs(df['trailingPE']) < 200]
+    df = df[abs(df['priceToBook']) < 10]
+    df = df[df['trailingPE'] > 0]
     return df
 
 def run_perceptron(df, eta=0.1, n_iter=10):
@@ -97,30 +101,35 @@ def run_perceptron(df, eta=0.1, n_iter=10):
         ======
         NONE
     '''
+    t0 = time.time()
     y = df['target']
-    X = df[['trailingPE','divYield']]
-    str_buy = df[df['target'] == 2][list(X.columns)].values
-    buy = df[df['target'] == 1][list(X.columns)].values
-    sell = df[df['target'] == 0][list(X.columns)].values
-    pdb.set_trace()
+    X = df[['trailingPE','priceToSales']]
+    buy = df[df['target'] > 0][list(X.columns)].values
+    sell = df[df['target'] < 0][list(X.columns)].values
     plt.figure(figsize=(7,4))
-    plt.scatter(str_buy[:, 0], str_buy[:, 1], color='red', marker='o', label='Strong Buy')
-    plt.scatter(buy[:, 0], buy[:, 1], color='blue', marker='x', label='Buy')
-    plt.scatter(sell[:, 0], sell[:, 1], color='green', marker='^', label='Sell')
+    plt.scatter(buy[:, 0], buy[:, 1], color='green', marker='o', label='Buy')
+    plt.scatter(sell[:, 0], sell[:, 1], color='red', marker='x', label='Sell')
     plt.xlabel('Trailing PE')
-    plt.ylabel('Div Yield')
+    plt.ylabel('priceToBook')
     plt.legend()
-    pdb.set_trace()
+    ppn = Perceptron(eta, n_iter)
+    ppn.fit(X.values, y.values)
+    # pdb.set_trace()
+    plot_decision_regions(X.values, y.values, classifier=ppn)
     plt.savefig(IMG_PATH + "scatter.png")
     plt.close()
     
-    ppn = Perceptron(eta, n_iter)
-    ppn.fit(X, y)
     plt.plot(range(1,len(ppn.errors_) + 1), ppn.errors_,marker='o')
-    plt.xlabel('Epochs')
+    plt.xlabel('Iterations')
     plt.ylabel('Number of misclassifications')
     plt.savefig(IMG_PATH + "misclassifications.png")
     plt.close()
+    
+    t1 = time.time()
+    app.logger.info("Done training data and creating charts, took {0} seconds".format(t1-t0))
+    print("Done training data and creating charts, took {0} seconds".format(t1-t0))
+    
+    
     
 
 if __name__ == "__main__":
