@@ -14,6 +14,7 @@ from app.equity.analysis_eqs.utils_analysis import loadDataToDB, getKeyStatsData
 from app.equity.data_grab import ms_dg_helper
 from app.utils.db_utils import DBHelper
 from app.equity.ml_eqs.perceptron import Perceptron
+from app.equity.ml_eqs.adalinegd import AdalineGD
 from app.equity.ml_eqs.ml_utils import plot_decision_regions
 
 IMG_PATH = '/home/ubuntu/workspace/finance/app/static/img/ml_imgs/'
@@ -37,7 +38,8 @@ def run(inputs, load_data=False):
     df = selectInputs(df, inputs)
 
     # Run Perceptron
-    run_perceptron(df)
+    # run_perceptron(df)
+    run_adalinegd(df)
 
 
 def selectInputs(df, inputs):
@@ -103,14 +105,14 @@ def run_perceptron(df, eta=0.1, n_iter=10):
     '''
     t0 = time.time()
     y = df['target']
-    X = df[['trailingPE','priceToSales']]
+    X = df[['divYield','priceToBook']]
     buy = df[df['target'] > 0][list(X.columns)].values
     sell = df[df['target'] < 0][list(X.columns)].values
     plt.figure(figsize=(7,4))
-    plt.scatter(buy[:, 0], buy[:, 1], color='green', marker='o', label='Buy')
-    plt.scatter(sell[:, 0], sell[:, 1], color='red', marker='x', label='Sell')
-    plt.xlabel('Trailing PE')
-    plt.ylabel('priceToBook')
+    plt.scatter(buy[:, 0], buy[:, 1], color='blue', marker='x', label='Buy')
+    plt.scatter(sell[:, 0], sell[:, 1], color='red', marker='s', label='Sell')
+    plt.xlabel(list(X.columns)[0])
+    plt.ylabel(list(X.columns)[1])
     plt.legend()
     ppn = Perceptron(eta, n_iter)
     ppn.fit(X.values, y.values)
@@ -129,8 +131,30 @@ def run_perceptron(df, eta=0.1, n_iter=10):
     app.logger.info("Done training data and creating charts, took {0} seconds".format(t1-t0))
     print("Done training data and creating charts, took {0} seconds".format(t1-t0))
     
+def run_adalinegd(df, eta=0.1, n_iter=10):
+    t0 = time.time()
+    y = df['target']
+    X = df[['divYield','priceToBook']]
+    fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(8, 4))
+    ada1 = AdalineGD(n_iter=10, eta=0.01).fit(X, y)
+    ax[0].plot(range(1, len(ada1.cost_) + 1), np.log10(ada1.cost_), marker='o')
+    ax[0].set_xlabel('Epochs')
+    ax[0].set_ylabel('log(Sum-squared-error)')
+    ax[0].set_title('Adaline - Learning rate 0.01')
     
+    ada2 = AdalineGD(n_iter=10, eta=0.0001).fit(X, y)
+    ax[1].plot(range(1, len(ada2.cost_) + 1), ada2.cost_, marker='o')
+    ax[1].set_xlabel('Epochs')
+    ax[1].set_ylabel('Sum-squared-error')
+    ax[1].set_title('Adaline - Learning rate 0.0001')
     
+    plt.tight_layout()
+    plt.savefig(IMG_PATH + "adaline_1.png", dpi=300)
+    plt.close()
+    # plt.show()
+    
+
+
 
 if __name__ == "__main__":
     run(['trailingPE', 'priceToBook', 'priceToSales', 'divYield'])
