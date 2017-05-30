@@ -153,6 +153,31 @@ def run_adalinegd(df, eta=0.1, n_iter=10):
     plt.close()
     # plt.show()
     
+    # standardize features
+    X_std = np.copy(X.values)
+    pdb.set_trace()
+    X_std[:,0] = (X.values[:,0] - X.values[:,0].mean()) / X.values[:,0].std()
+    X_std[:,1] = (X.values[:,1] - X.values[:,1].mean()) / X.values[:,1].std()
+    
+    ada = AdalineGD(n_iter=15, eta=0.01)
+    ada.fit(X_std, y)
+    
+    plot_decision_regions(X_std, y.values, classifier=ada)
+    plt.title('Adaline - Gradient Descent')
+    plt.xlabel(list(X.columns)[0])
+    plt.ylabel(list(X.columns)[1])
+    plt.legend(loc='upper left')
+    plt.tight_layout()
+    plt.savefig(IMG_PATH + 'adaline_2.png', dpi=300)
+    plt.close()
+    
+    plt.plot(range(1, len(ada.cost_) + 1), ada.cost_, marker='o')
+    plt.xlabel('Epochs')
+    plt.ylabel('Sum-squared-error')
+    plt.tight_layout()
+    plt.savefig(IMG_PATH + 'adaline_3.png', dpi=300)
+    plt.close()
+
 
 
 

@@ -5441,3 +5441,13 @@ Traceback (most recent call last):
 TypeError: 'list' object is not callable
 2017-05-30 19:46:28,853 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
 2017-05-30 19:48:47,809 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-30 19:58:59,352 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-30 19:59:01,303 INFO: Done Retrieving data, took 1.669828176498413 seconds [in run_ml.py:33]
+2017-05-30 20:00:40,196 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-30 20:00:42,122 INFO: Done Retrieving data, took 1.6949989795684814 seconds [in run_ml.py:33]
+2017-05-30 20:02:43,230 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-30 20:02:45,316 INFO: Done Retrieving data, took 1.8143625259399414 seconds [in run_ml.py:33]
+2017-05-30 20:03:00,323 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-30 20:03:03,022 INFO: Done Retrieving data, took 2.3977181911468506 seconds [in run_ml.py:33]
+2017-05-30 20:05:06,564 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-30 20:05:08,590 INFO: Done Retrieving data, took 1.7531704902648926 seconds [in run_ml.py:33]
