@@ -5370,3 +5370,74 @@ Traceback (most recent call last):
   File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/werkzeug/test.py", line 871, in run_wsgi_app
     app_rv = app(environ, start_response)
 TypeError: 'list' object is not callable
+2017-05-30 19:26:56,401 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-30 19:28:24,115 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-30 19:28:42,304 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-30 19:30:23,021 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-30 19:32:56,998 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-30 19:33:53,333 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-30 19:34:56,639 ERROR: Exception on /equity_analysis [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1642, in full_dispatch_request
+    response = self.make_response(rv)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1743, in make_response
+    status=status_or_headers)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/werkzeug/wrappers.py", line 766, in __init__
+    if mimetype is None and 'content-type' not in self.headers:
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/werkzeug/datastructures.py", line 1090, in __contains__
+    self.__getitem__(key, _get_mode=True)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/werkzeug/datastructures.py", line 920, in __getitem__
+    for k, v in self._list:
+ValueError: too many values to unpack (expected 2)
+2017-05-30 19:37:43,501 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-30 19:39:56,475 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-30 19:40:47,663 ERROR: Exception on /equity_analysis [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1642, in full_dispatch_request
+    response = self.make_response(rv)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1743, in make_response
+    status=status_or_headers)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/werkzeug/wrappers.py", line 766, in __init__
+    if mimetype is None and 'content-type' not in self.headers:
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/werkzeug/datastructures.py", line 1090, in __contains__
+    self.__getitem__(key, _get_mode=True)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/werkzeug/datastructures.py", line 920, in __getitem__
+    for k, v in self._list:
+ValueError: too many values to unpack (expected 2)
+2017-05-30 19:42:33,299 ERROR: Exception on /equity_analysis [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1642, in full_dispatch_request
+    response = self.make_response(rv)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1743, in make_response
+    status=status_or_headers)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/werkzeug/wrappers.py", line 766, in __init__
+    if mimetype is None and 'content-type' not in self.headers:
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/werkzeug/datastructures.py", line 1090, in __contains__
+    self.__getitem__(key, _get_mode=True)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/werkzeug/datastructures.py", line 920, in __getitem__
+    for k, v in self._list:
+ValueError: too many values to unpack (expected 2)
+2017-05-30 19:42:52,649 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-30 19:44:28,327 ERROR: Exception on /equity_analysis [POST] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1642, in full_dispatch_request
+    response = self.make_response(rv)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1746, in make_response
+    rv = self.response_class.force_type(rv, request.environ)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/werkzeug/wrappers.py", line 847, in force_type
+    response = BaseResponse(*_run_wsgi_app(response, environ))
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/werkzeug/wrappers.py", line 57, in _run_wsgi_app
+    return _run_wsgi_app(*args)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/werkzeug/test.py", line 871, in run_wsgi_app
+    app_rv = app(environ, start_response)
+TypeError: 'list' object is not callable
+2017-05-30 19:46:28,853 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-30 19:48:47,809 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]

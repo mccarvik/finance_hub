@@ -44,9 +44,7 @@ def equity_analysis():
     if request.method == 'POST':
         post_ret = eqanal_post(request)
     if post_ret:
-        return render_template('equity_analysis.html',
-                                pngs=post_ret[1],
-                                title='Equity Analysis'), 200
+        return json.dumps(post_ret[1])
     else:
         return render_template('equity_analysis.html',
                                 title='Equity Analysis'), 200

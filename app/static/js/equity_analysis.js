@@ -48,7 +48,7 @@ function eqanal_gen_charts(event, token) {
     var overlay = $("<div class='loader' id='loader'></div>");
     overlay.appendTo(document.body);
     $.ajax({
-        type: 'POST',
+        type: 'GET',
         url: '/equity_analysis',
         data: {
             action: "gen_charts",
@@ -56,7 +56,7 @@ function eqanal_gen_charts(event, token) {
         },
         success: function(data)
         {
-            console.log('Finished Retrieving Data');
+            console.log('Finished Generating Charts');
             $('#loader').addClass("hide-loader");
         },
         error: function(xmlhttprequest, textstatus, message) {
