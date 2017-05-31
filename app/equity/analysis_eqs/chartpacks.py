@@ -12,6 +12,7 @@ from app.equity.analysis_eqs import utils_analysis
 from app.equity.data_grab import ms_dg_helper
 from app.utils import mpl_utils
 
+LOCAL_IMG_PATH = '/static' + IMG_PATH.split('static')[1]
 
 
 def mvg_avgs(ts, tickers, duration, date=datetime.date.today().strftime('%Y-%m-%d')):
@@ -65,7 +66,7 @@ def mvg_avgs(ts, tickers, duration, date=datetime.date.today().strftime('%Y-%m-%
     plt.title('Moving Averages')
     plt.savefig(IMG_PATH + 'mvg_avgs', dpi=300)
     plt.close()
-    return(IMG_PATH + "mvg_avgs.png")
+    return(LOCAL_IMG_PATH + "mvg_avgs.png")
 
 def price_ratios(ts, ms_df, tickers, date=datetime.date.today().strftime('%Y-%m-%d')):
     ''' Creates a chart displaying the closing px data and the 50d and 200d 
@@ -120,7 +121,7 @@ def price_ratios(ts, ms_df, tickers, date=datetime.date.today().strftime('%Y-%m-
     plt.title('Price Ratios - ' + tickers[0])
     plt.savefig(IMG_PATH + 'px_ratios', dpi=300)
     plt.close()
-    return(IMG_PATH + "px_ratios.png")
+    return(LOCAL_IMG_PATH + "px_ratios.png")
     
 def run(tickers, date, cp):
     ''' Central Run / Main method for the chartpacks
@@ -145,7 +146,6 @@ def run(tickers, date, cp):
     if cp == "CP1":
         pngs.append(mvg_avgs(ts, tickers, 5, date))
         pngs.append(price_ratios(ts, ms_df, tickers, date))
-    pdb.set_trace()
     return pngs
 
 

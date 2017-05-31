@@ -40,7 +40,6 @@ def equity_screener():
 @app.route('/equity_analysis', methods=['GET', 'POST'])
 def equity_analysis():
     if request.method == 'POST':
-        pdb.set_trace()
         post_ret = eqanal_post(request)
         return json.dumps(post_ret[1])
     elif request.method == 'GET':

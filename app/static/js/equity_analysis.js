@@ -58,7 +58,7 @@ function eqanal_gen_charts(event, token) {
         {
             console.log('Finished Generating Charts');
             $('#loader').addClass("hide-loader");
-            addImgs(data)
+            addImgs(JSON.parse(data))
             
         },
         error: function(xmlhttprequest, textstatus, message) {
