@@ -39,6 +39,7 @@ def equity_screener():
 
 @app.route('/equity_analysis', methods=['GET', 'POST'])
 def equity_analysis():
+    # NOTE post method does not need to return a render
     if request.method == 'POST':
         post_ret = eqanal_post(request)
         return json.dumps(post_ret[1])
