@@ -5451,3 +5451,109 @@ TypeError: 'list' object is not callable
 2017-05-30 20:03:03,022 INFO: Done Retrieving data, took 2.3977181911468506 seconds [in run_ml.py:33]
 2017-05-30 20:05:06,564 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
 2017-05-30 20:05:08,590 INFO: Done Retrieving data, took 1.7531704902648926 seconds [in run_ml.py:33]
+2017-05-31 13:19:01,390 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-31 13:19:16,065 INFO: COULD NOT CONNECT TO finance [in db_utils.py:34]
+2017-05-31 13:19:16,065 INFO: DB ERROR:(2003, "Can't connect to MySQL server on 'localhost' ([Errno 111] Connection refused)") [in db_utils.py:35]
+2017-05-31 13:19:17,092 INFO: DB SELECT ERROR: <class 'AttributeError'>, 44, 'NoneType' object has no attribute 'execute' [in db_utils.py:53]
+2017-05-31 13:19:32,471 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-31 13:19:41,415 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-31 14:27:53,853 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-31 14:55:31,358 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-31 15:05:34,967 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-31 15:07:38,431 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-31 15:08:37,359 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-31 15:12:45,145 ERROR: Exception on /equity_analysis [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 43, in equity_analysis
+    if request.method == 'POST':
+  File "/home/ubuntu/workspace/finance/app/views.py", line 43, in equity_analysis
+    if request.method == 'POST':
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2017-05-31 15:12:47,578 ERROR: Exception on /equity_analysis [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 43, in equity_analysis
+    if request.method == 'POST':
+  File "/home/ubuntu/workspace/finance/app/views.py", line 43, in equity_analysis
+    if request.method == 'POST':
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2017-05-31 15:12:50,043 ERROR: Exception on /equity_analysis [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 43, in equity_analysis
+    if request.method == 'POST':
+  File "/home/ubuntu/workspace/finance/app/views.py", line 43, in equity_analysis
+    if request.method == 'POST':
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2017-05-31 15:12:51,893 ERROR: Exception on /equity_analysis [GET] [in /home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py:1587]
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/miniconda3/lib/python3.5/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/workspace/finance/app/views.py", line 43, in equity_analysis
+    if request.method == 'POST':
+  File "/home/ubuntu/workspace/finance/app/views.py", line 43, in equity_analysis
+    if request.method == 'POST':
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 48, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/ubuntu/miniconda3/lib/python3.5/bdb.py", line 67, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+2017-05-31 15:12:54,528 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-31 15:13:44,829 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-05-31 15:15:34,958 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]

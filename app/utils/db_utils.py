@@ -121,9 +121,18 @@ class DBHelper:
 def restart():
     import os
     os.system("sudo /etc/init.d/mysql restart")
-            
+
+def data_dump(table='morningstar'):
+    pdb.set_trace()
+    path = '/home/ubuntu/workspace/finance/app/data/' + table + ".csv"
+    with DBHelper() as db:
+        db.connect()
+        df = db.select(table)
+        df.to_csv(path)
+
 if __name__ == '__main__':
     # a = DBHelper()
     # a.connect(db_host='localhost')
     # a.upsert('eq_screener', {'date':'2015-10-20', 's':'test2', 'n':'test22'}, ['date', 's'])
     restart()
+    # data_dump()

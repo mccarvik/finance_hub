@@ -145,6 +145,7 @@ def run(tickers, date, cp):
     if cp == "CP1":
         pngs.append(mvg_avgs(ts, tickers, 5, date))
         pngs.append(price_ratios(ts, ms_df, tickers, date))
+    pdb.set_trace()
     return pngs
 
 

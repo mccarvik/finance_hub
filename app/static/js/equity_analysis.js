@@ -48,7 +48,7 @@ function eqanal_gen_charts(event, token) {
     var overlay = $("<div class='loader' id='loader'></div>");
     overlay.appendTo(document.body);
     $.ajax({
-        type: 'GET',
+        type: 'POST',
         url: '/equity_analysis',
         data: {
             action: "gen_charts",
@@ -58,6 +58,8 @@ function eqanal_gen_charts(event, token) {
         {
             console.log('Finished Generating Charts');
             $('#loader').addClass("hide-loader");
+            addImgs(data)
+            
         },
         error: function(xmlhttprequest, textstatus, message) {
             // if(textstatus==="timeout") {
@@ -71,4 +73,17 @@ function eqanal_gen_charts(event, token) {
         },
     });
 }
+
+function addImgs(pngs) {
+    // currently adds a src to an IMG, should add a full img at some point
+    $('img.eqanal_img').each(function(index,item){
+        if (index >= pngs.length) {
+            return "Success";
+        } else {
+            $(item).attr("src",pngs[index]);
+        }
+    });
+    return
+}
+    
 
