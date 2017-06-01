@@ -76,14 +76,19 @@ function eqanal_gen_charts(event, token) {
 
 function addImgs(pngs) {
     // currently adds a src to an IMG, should add a full img at some point
-    $('img.eqanal_img').each(function(index,item){
-        if (index >= pngs.length) {
-            return "Success";
-        } else {
-            $(item).attr("src",pngs[index]);
-        }
-    });
-    return
+    for (var i=0; i < pngs.length; i++) {
+        $('div#grid').append('<img class="cols-xs-3 eqanal_img" src=' + pngs[i] + ' />')
+    }
+    return "Success";
+    
+    // $('img.eqanal_img').each(function(index,item){
+    //     if (index >= pngs.length) {
+    //         return "Success";
+    //     } else {
+    //         $(item).attr("src",pngs[index]);
+    //     }
+    // });
+    // return
 }
     
 

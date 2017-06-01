@@ -9,53 +9,53 @@
     
     <div class="container-fluid">
         <h1 class="text-primary text-center">Equity Analysis</h1>
-        <div id=input_div>
-            <div class="row">
-                <div class="col-xs-3">
-                    <label class="eqanal">Status: </label>
+        <div id='grid' class="row">
+            <div id=input_div class="col-xs-3">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <label class="eqanal">Status: </label>
+                    </div>
+                    <div class="col-xs-3">
+                        <label id="eqanal_status" class="eqanal">Ready </label>
+                    </div>
                 </div>
-                <div class="col-xs-3">
-                    <label id="eqanal_status" class="eqanal">Ready </label>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <label class="eqanal">Ticker:</label>
+                    </div>
+                    <div class="col-xs-3">
+                        <input id="eqanal_ticker" type="text" class='opt_fields' required id='ticker' value=""/>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-3">
-                    <label class="eqanal">Ticker:</label>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <label class="eqanal">Chart Set:</label>
+                    </div>
+                    <div class="col-xs-3">
+                        <select id="eqanal_charts" class='opt_fields' required id='chart' value="">
+                            <option value="CP1">Chart Pack 1</option>
+                            <option value="CP2">Chart Pack 2</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="col-xs-3">
-                    <input id="eqanal_ticker" type="text" class='opt_fields' required id='ticker' value=""/>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <label class="eqanal">Date:</label>
+                    </div>
+                    <div class="col-xs-3">
+                        <input id="eqanal_date" type="date" class='opt_fields' required id='ticker' value=""/>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-3">
-                    <label class="eqanal">Chart Set:</label>
-                </div>
-                <div class="col-xs-3">
-                    <select id="eqanal_charts" class='opt_fields' required id='chart' value="">
-                        <option value="CP1">Chart Pack 1</option>
-                        <option value="CP2">Chart Pack 2</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-3">
-                    <label class="eqanal">Date:</label>
-                </div>
-                <div class="col-xs-3">
-                    <input id="eqanal_date" type="date" class='opt_fields' required id='ticker' value=""/>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-4">
-                    <button id="get_data_btn" class='eqanal btn btn-primary' onclick="eqanal_get_data(event, '{{ SECRET_KEY }}');">Get Data  <i class='fa fa-calculator'></i></button>
-                </div>
-                <div class="col-xs-4">
-                    <button id="eqanal_charts_btn" class='eqanal btn btn-info' onclick="eqanal_gen_charts(event, '{{ SECRET_KEY }}');">Generate Charts  <i class='fa fa-area-chart'></i></button>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <button id="get_data_btn" class='eqanal btn btn-primary' onclick="eqanal_get_data(event, '{{ SECRET_KEY }}');">Get Data  <i class='fa fa-calculator'></i></button>
+                    </div>
+                    <div class="col-xs-4">
+                        <button id="eqanal_charts_btn" class='eqanal btn btn-info' onclick="eqanal_gen_charts(event, '{{ SECRET_KEY }}');">Generate Charts  <i class='fa fa-area-chart'></i></button>
+                    </div>
                 </div>
             </div>
         </div>
-        <img class='eqanal_img img-responsive'>
-        <img class='eqanal_img img-responsive'>
     </div>
 
 {% endblock %}

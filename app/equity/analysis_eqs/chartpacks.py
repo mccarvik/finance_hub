@@ -115,7 +115,7 @@ def price_ratios(ts, ms_df, tickers, date=datetime.date.today().strftime('%Y-%m-
     ts = ts.ix[3].reset_index()
     ax2.plot(ts[ts['Date'] > start_date][ts.columns[0]], ts[ts['Date'] > start_date][ts.columns[1]], mpl_utils.COLORS[col_ct], lw=1.5, label="MSFT(R)")
     # to add it to the legend
-    ax1.plot(0,0, mpl_utils.COLORS[col_ct], label="MSFT(R)")
+    ax1.plot(0,0, mpl_utils.COLORS[col_ct], label=tickers[0]+"(R)")
     ax1.legend(loc=0)
     ax2.set_ylabel('Index Level')
     plt.title('Price Ratios - ' + tickers[0])
