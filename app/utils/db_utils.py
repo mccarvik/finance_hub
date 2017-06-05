@@ -10,7 +10,9 @@ from app.utils.helper_funcs import stringify
 from config import DBUSER, DBPASSWORD, DB, DBHOST
 
 class DBHelper:
-    '''Class to help with DB actions'''
+    ''' Class to help with DB actions
+        This is compatible with a mySQL DB
+    '''
     def __init__(self):
         self.cnx = None
         self.cursor = None
