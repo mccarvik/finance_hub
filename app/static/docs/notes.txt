@@ -1,0 +1,11 @@
+libraries this project uses
+
+html: bootstrap 
+    TODO: add react
+js: jquery
+python:
+    - server --> flask
+    - data --> numpy, matplotlib, pandas
+DB:
+    - SQL --> mysql
+version control: Git
