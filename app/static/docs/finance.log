@@ -5634,3 +5634,5 @@ bdb.BdbQuit
 2017-06-01 17:58:30,968 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
 2017-06-01 18:03:55,775 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
 2017-06-01 18:04:58,203 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-06-08 17:15:07,691 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-06-08 17:16:29,548 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]

@@ -47,6 +47,7 @@ class Perceptron(object):
             errors = 0
             for xi, target in zip(X, y):
                 temp = tuple(self.w_)
+                # self.predict can only be 1 0r 0 --> different than Adaline
                 update = self.eta * (target - self.predict(xi))
                 self.w_[1:] += update * xi
                 self.w_[0] += update

@@ -49,6 +49,7 @@ class AdalineGD(object):
             output = self.net_input(X)
             errors = (y - output)
             temp = tuple(self.w_)
+            # Updates weights based on how far off prediciton is, unlike perceptron
             self.w_[1:] += self.eta * X.T.dot(errors)
             self.w_[0] += self.eta * errors.sum()
             if update_check(temp, self.w_):
