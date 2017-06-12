@@ -14,9 +14,9 @@ from app.futures.data_grab.quandl_api_helper import quandl_api_dict, URL, MONTH_
 from app.futures.data_grab.quandl_api import callQuandlAPI
 
 
-def getFuturesCurve(fut, dt=None):
+def getFuturesCurve(fut, dt=None, end=None):
     # urls = getURLs(fut, dt)
-    urls = getURLs(fut)
+    urls = getURLs(fut, end=end)
     data = []
     for u in urls:
         try:
@@ -55,7 +55,7 @@ def getURLs(fut, today=None, end=None):
 def dateToStringFormat(d):
     return str(MONTH_MAP[d.month]) + str(d.year)
 
-def chartCurve(data):
+def chartCurveSameAxis(data):
     plt.figure(figsize=(7,4))
     fig, ax1 = plt.subplots()
     col_ct = 0
@@ -64,20 +64,53 @@ def chartCurve(data):
         col_ct+=1
     ax1.axis('tight')
     ax1.set_xlabel('Date')
+    ax1 = mpl_utils.format_dates(ax1, '%Y-%m')
+    
     ax1.set_ylabel('Price')
     ax1.grid(True)
     ax1.legend(loc=0)
+    
+    # rotates and right aligns the x labels, and moves the bottom of the
+    # axes up to make room for them
+    fig.autofmt_xdate()
+    # Set the limits of th y axis
+    plt.ylim(0, plt.ylim()[-1]+50)
+    plt.title('Commodity Curves')
+    plt.savefig(IMG_PATH + 'comm_curves', dpi=300)
+    plt.close()
+
+def chartCurveDiffAxis(data):
+    plt.figure(figsize=(7,4))
+    fig, ax1 = plt.subplots()
+    pdb.set_trace()
+    ax1.plot(data[0][0][0], data[0][0][1], mpl_utils.COLORS[0], lw=1.5, label=data[0][1])
+    ax1.axis('tight')
+    ax1.set_xlabel('Date')
+    ax1.set_ylabel(data[0][1])
+    ax1 = mpl_utils.format_dates(ax1, '%Y-%m')
+    
+    ax1.set_ylabel('Price')
+    ax1.grid(True)
+    ax2 = ax1.twinx()
+    ax2.plot(data[1][0][0], data[1][0][1], mpl_utils.COLORS[1], lw=1.5, label=data[1][1])
+    ax2.set_ylabel(data[1][1])
+    ax1.legend(loc=0)
+    
+    # rotates and right aligns the x labels, and moves the bottom of the
+    # axes up to make room for them
+    fig.autofmt_xdate()
+    # Set the limits of th y axis
     plt.title('Commodity Curves')
     plt.savefig(IMG_PATH + 'comm_curves', dpi=300)
     plt.close()
 
 if __name__ == '__main__':
+    end = datetime.date.today() + datetime.timedelta(1095)
     fut = ['corn', 'gold']
     curves = []
     for f in fut:
-        curves.append([getFuturesCurve(f), f])
-    pdb.set_trace()
-    chartCurve(curves)
+        curves.append([getFuturesCurve(f, end=end), f])
+    chartCurveDiffAxis(curves)
     
     
     
