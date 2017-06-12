@@ -3,20 +3,21 @@ sys.path.append("/home/ubuntu/workspace/finance")
 sys.path.append("/usr/local/lib/python2.7/dist-packages")
 import pdb, requests, datetime, csv
 import pandas as pd
-from config import QUANDL_API_KEY
+from app.futures.data_grab.quandl_api_helper import quandl_api_dict, URL
 
-URL = ['https://www.quandl.com/api/v3/datasets/', '/data.csv?api_key=' + QUANDL_API_KEY]
-
-def callQuandlAPI(db_code, ds_code):
-    url = "".join([URL[0], db_code + "/" + ds_code, URL[1]])
-    urlData = requests.get(url).content.decode('utf-8')
+def callQuandlAPI(call_url):
+    urlData = requests.get(call_url).content.decode('utf-8')
     cr = csv.reader(urlData.splitlines(), delimiter=',')
     data = []
     for row in list(cr):
         data.append(row)
     df = pd.DataFrame(data)
-    pdb.set_trace()
-    print("")
+    if df[0][0] == 'code':
+        raise Exception('No contract for this month')
+    df.columns = df.iloc[0]
+    df = df.reindex(df.index.drop(0))
+    return df
     
 if __name__ == '__main__':
-    callQuandlAPI('WIKI', 'FB')
+    # callQuandlAPI()
+    pass
