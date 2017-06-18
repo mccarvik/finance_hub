@@ -50,6 +50,8 @@ class AdalineGD(object):
             errors = (y - output)
             temp = tuple(self.w_)
             # Updates weights based on how far off prediciton is, unlike perceptron
+            # Updates the weights once for the entire iteration of data unlike perceptron
+            # which does it for each sample
             self.w_[1:] += self.eta * X.T.dot(errors)
             self.w_[0] += self.eta * errors.sum()
             if update_check(temp, self.w_):

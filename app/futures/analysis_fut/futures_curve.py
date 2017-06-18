@@ -110,7 +110,7 @@ if __name__ == '__main__':
     curves = []
     for f in fut:
         curves.append([getFuturesCurve(f, end=end), f])
-    chartCurveDiffAxis(curves)
+    chartCurveSameAxis(curves)
     
     
     
