@@ -55,7 +55,7 @@ class AdalineSGD(object):
         """
         self._initialize_weights(X.shape[1])
         self.cost_ = []
-        pdb.set_trace()
+        # pdb.set_trace()
         for i in range(self.n_iter):
             if self.shuffle:
                 X, y = self._shuffle(X, y)

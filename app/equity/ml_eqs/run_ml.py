@@ -160,7 +160,7 @@ def run_adalinegd_lr_example(df, eta=0.1, n_iter=10):
     
 def run_adalinesgd(df, eta=0.1, n_iter=10):
     y = df['target']
-    X = df[['returnOnEquity','debtToEquity']]
+    X = df[['returnOnEquity','trailingPE']]
     
     # standardize features
     X_std = np.copy(X.values)
@@ -168,8 +168,10 @@ def run_adalinesgd(df, eta=0.1, n_iter=10):
     # X_std[:,1] = (X.values[:,1] - X.values[:,1].mean()) / X.values[:,1].std()
     
     ada = AdalineSGD(n_iter=15, eta=0.001, random_state=1)
-    ada.fit(X_std, y)
-    # ada.partial_fit(X_std[0, :], y[0])
+    # pdb.set_trace()
+    # ada.fit(X_std, y.values)
+    pdb.set_trace()
+    ada.partial_fit(X_std, y.values)
     
     plot_decision_regions(X_std, y.values, classifier=ada)
     plt.title('Adaline - Gradient Descent')
