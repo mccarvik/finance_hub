@@ -6,7 +6,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 from numpy.random import seed
 from app.equity.ml_eqs.ml_utils import update_check
-    
+
+IMG_PATH = '/home/ubuntu/workspace/finance/app/static/img/ml_imgs/'
+
 class AdalineSGD(object):
     """ADAptive LInear NEuron classifier.
 
