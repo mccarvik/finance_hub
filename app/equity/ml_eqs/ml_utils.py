@@ -4,6 +4,7 @@ mpl.use('Agg')
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
+from sklearn.preprocessing import StandardScaler
 
 def update_check(list1, list2):
     for i,j in zip(list1, list2):
@@ -44,4 +45,13 @@ def plot_decision_regions(X, y, classifier, test_idx=None, resolution=0.02):
                    linewidths=1,
                    marker='o',
                    s=55, label='test set')
-                   
+
+def standardize(X_train, X_test=None):
+    sc = StandardScaler()
+    sc.fit(X_train)
+    X_train_std = sc.transform(X_train)
+    if X_test:
+        X_test_std = sc.transform(X_test)
+        return (X_test_std, X_train)
+    else:
+        return X_train_std

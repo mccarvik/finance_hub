@@ -1,18 +1,23 @@
-import sys
+import sys, datetime, pdb, time
+sys.path.append('/usr/share/doc')
+sys.path.append("/usr/lib/python3/dist-packages")
+sys.path.append("/usr/local/lib/python3.4/dist-packages")
+sys.path.append("/usr/local/lib/python2.7/dist-packages")
 sys.path.append("/home/ubuntu/workspace/finance")
 import matplotlib as mpl
 mpl.use('Agg')
 import matplotlib.pyplot as plt
-import datetime, pdb, time
 import numpy as np
 import pandas as pd
+from sklearn.metrics import accuracy_score
 from sklearn.cross_validation import train_test_split
+from sklearn.linear_model import Perceptron as perceptron_skl
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import Imputer, LabelEncoder, OneHotEncoder, MinMaxScaler, StandardScaler
 from app.equity.ml_eqs.perceptron import Perceptron
 from app.equity.ml_eqs.adalinegd import AdalineGD
 from app.equity.ml_eqs.adalinesgd import AdalineSGD
-from app.equity.ml_eqs.ml_utils import plot_decision_regions
+from app.equity.ml_eqs.ml_utils import plot_decision_regions, standardize
 
 IMG_PATH = '/home/ubuntu/workspace/finance/app/static/img/ml_imgs/'
 
@@ -35,6 +40,7 @@ def run_perceptron(df, eta=0.1, n_iter=10):
     t0 = time.time()
     y = df['target']
     X = df[['divYield','priceToBook']]
+    
     buy = df[df['target'] > 0][list(X.columns)].values
     sell = df[df['target'] < 0][list(X.columns)].values
     plt.figure(figsize=(7,4))
@@ -45,6 +51,47 @@ def run_perceptron(df, eta=0.1, n_iter=10):
     plt.legend()
     ppn = Perceptron(eta, n_iter)
     ppn.fit(X.values, y.values)
+    # pdb.set_trace()
+    plot_decision_regions(X.values, y.values, classifier=ppn)
+    plt.savefig(IMG_PATH + "scatter.png")
+    plt.close()
+    
+    plt.plot(range(1,len(ppn.errors_) + 1), ppn.errors_,marker='o')
+    plt.xlabel('Iterations')
+    plt.ylabel('Number of misclassifications')
+    plt.savefig(IMG_PATH + "misclassifications.png")
+    plt.close()
+    
+    t1 = time.time()
+    app.logger.info("Done training data and creating charts, took {0} seconds".format(t1-t0))
+    print("Done training data and creating charts, took {0} seconds".format(t1-t0))
+    
+def run_perceptron_multi(df, eta=0.1, n_iter=15):
+    pdb.set_trace()
+    y = df['target']
+    X = df[['divYield','priceToBook']]
+    X_train, X_test, y_train, y_test = \
+          train_test_split(X, y, test_size=0.3, random_state=0)
+    X_train_std, X_test_std = standardize(X_train, X_test)
+
+    strong_buy = df[df['target'] == 2][list(X_train_std.columns)].values
+    buy = df[df['target'] == 2][list(X_train_std.columns)].values
+    sell = df[df['target'] == 1][list(X_train_std.columns)].values
+    strong_sell = df[df['target'] == 0][list(X_train_std.columns)].values
+    
+    plt.figure(figsize=(7,4))
+    plt.scatter(buy[:, 0], buy[:, 1], color='blue', marker='x', label='Buy')
+    plt.scatter(sell[:, 0], sell[:, 1], color='red', marker='s', label='Sell')
+    plt.scatter(strong_buy[:, 0], strong_buy[:, 1], color='blue', marker='x', label='Buy')
+    plt.scatter(strong_sell[:, 0], strong_sell[:, 1], color='red', marker='s', label='Sell')
+    
+    plt.xlabel(list(X_train_std.columns)[0])
+    plt.ylabel(list(X_train_std.columns)[1])
+    plt.legend()
+    ppn = Perceptron(n_iter=40, eta0=0.1, random_state=0)
+    ppn.fit(X_train_std, y_train)
+    y_pred = ppn.predict(X_test_std)
+
     # pdb.set_trace()
     plot_decision_regions(X.values, y.values, classifier=ppn)
     plt.savefig(IMG_PATH + "scatter.png")
@@ -142,9 +189,12 @@ def adalineGD(df, eta=0.1, n_iter=10):
     plt.savefig(IMG_PATH + 'adaline_3.png', dpi=300)
     plt.close()
     
-def logisticRegression(df):
+def logisticRegression(df, cols):
+    # Need this in case cols is tuple for timing purposes
+    cols = list(cols)
+    pdb.set_trace()
     y = df['target']
-    X = df[['returnOnEquity','debtToEquity', 'divYield', 'freeCashFlowPerShare']]
+    X = df[cols]
     X_train, X_test, y_train, y_test = \
           train_test_split(X, y, test_size=0.3, random_state=0)
     
@@ -158,6 +208,7 @@ def logisticRegression(df):
     X_train_std = stdsc.fit_transform(X_train)
     X_test_std = stdsc.transform(X_test)
     
+    pdb.set_trace()
     lr = LogisticRegression(penalty='l1', C=0.1)
     lr.fit(X_train_std, y_train)
     print('Training accuracy:', lr.score(X_train_std, y_train))

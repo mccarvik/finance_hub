@@ -31,8 +31,9 @@ def run(inputs, load_data=False):
     df = timeme(addTarget)(df)
     df = cleanData(df)
     df = selectInputs(df, inputs)
-
-    timeme(logisticRegression)(df)
+    
+    # timeme(logisticRegression)(df, tuple(inputs))
+    timeme(run_perceptron)(df)
 
 def selectInputs(df, inputs):
     columns = inputs + ['target'] + ['target_proxy']
@@ -52,14 +53,25 @@ def addTarget(df):
     df['target_proxy'] = target
     df = df.dropna(subset = ['target_proxy'])
     df = df[df['target_proxy'] != 0]
-    df['target'] = df.apply(lambda x: targetToCat(x['target_proxy']), axis=1)
+    # med = df['target_proxy'].median()
+    # df['target'] = df.apply(lambda x: targetToCat(x['target_proxy'], med), axis=1)
+    breaks = np.percentile(df['target_proxy'], [25, 50, 75])
+    df['target'] = df.apply(lambda x: targetToCatMulti(x['target_proxy'], breaks), axis=1)
     return df
 
-def targetToCat(x):
-    if (x > 10):
+def targetToCat(x, median):
+    if (x > median):
         return 1
     else:
         return -1
+
+def targetToCatMulti(x, breaks):
+    cat = 0
+    for b in breaks:
+        if x < b:
+            return cat
+        cat += 1
+    return cat
 
 def removeUnnecessaryColumns(df):
     df = df[ms_dg_helper.RATIOS + ms_dg_helper.KEY_STATS + ms_dg_helper.OTHER +
