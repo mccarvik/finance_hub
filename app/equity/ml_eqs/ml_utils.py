@@ -1,3 +1,4 @@
+import sys, pdb
 import numpy as np
 import matplotlib as mpl
 mpl.use('Agg')
@@ -50,8 +51,8 @@ def standardize(X_train, X_test=None):
     sc = StandardScaler()
     sc.fit(X_train)
     X_train_std = sc.transform(X_train)
-    if X_test:
+    if not X_test.empty:
         X_test_std = sc.transform(X_test)
-        return (X_test_std, X_train)
+        return (X_train_std, X_test_std)
     else:
         return X_train_std

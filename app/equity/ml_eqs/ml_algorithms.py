@@ -9,6 +9,7 @@ mpl.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from app import app
 from sklearn.metrics import accuracy_score
 from sklearn.cross_validation import train_test_split
 from sklearn.linear_model import Perceptron as perceptron_skl
@@ -56,6 +57,8 @@ def run_perceptron(df, eta=0.1, n_iter=10):
     plt.savefig(IMG_PATH + "scatter.png")
     plt.close()
     
+    # print('Accuracy: %.2f' % accuracy_score(y_test, y_pred))
+    
     plt.plot(range(1,len(ppn.errors_) + 1), ppn.errors_,marker='o')
     plt.xlabel('Iterations')
     plt.ylabel('Number of misclassifications')
@@ -67,40 +70,37 @@ def run_perceptron(df, eta=0.1, n_iter=10):
     print("Done training data and creating charts, took {0} seconds".format(t1-t0))
     
 def run_perceptron_multi(df, eta=0.1, n_iter=15):
-    pdb.set_trace()
+    t0 = time.time()
     y = df['target']
-    X = df[['divYield','priceToBook']]
+    X = df[['returnOnEquity','currentRatio']]
+    
+    # Split up the training and test data and standardize inputs
     X_train, X_test, y_train, y_test = \
           train_test_split(X, y, test_size=0.3, random_state=0)
     X_train_std, X_test_std = standardize(X_train, X_test)
 
-    strong_buy = df[df['target'] == 2][list(X_train_std.columns)].values
-    buy = df[df['target'] == 2][list(X_train_std.columns)].values
-    sell = df[df['target'] == 1][list(X_train_std.columns)].values
-    strong_sell = df[df['target'] == 0][list(X_train_std.columns)].values
+    # pdb.set_trace()
+    strong_buy = df[df['target'] == 3][list(X.columns)].values
+    buy = df[df['target'] == 2][list(X.columns)].values
+    sell = df[df['target'] == 1][list(X.columns)].values
+    strong_sell = df[df['target'] == 0][list(X.columns)].values
     
     plt.figure(figsize=(7,4))
     plt.scatter(buy[:, 0], buy[:, 1], color='blue', marker='x', label='Buy')
     plt.scatter(sell[:, 0], sell[:, 1], color='red', marker='s', label='Sell')
-    plt.scatter(strong_buy[:, 0], strong_buy[:, 1], color='blue', marker='x', label='Buy')
-    plt.scatter(strong_sell[:, 0], strong_sell[:, 1], color='red', marker='s', label='Sell')
-    
-    plt.xlabel(list(X_train_std.columns)[0])
-    plt.ylabel(list(X_train_std.columns)[1])
+    plt.scatter(strong_buy[:, 0], strong_buy[:, 1], color='blue', marker='*', label='Strong Buy')
+    plt.scatter(strong_sell[:, 0], strong_sell[:, 1], color='red', marker='^', label='Strong Sell')
+    plt.xlabel(list(X.columns)[0])
+    plt.ylabel(list(X.columns)[1])
     plt.legend()
-    ppn = Perceptron(n_iter=40, eta0=0.1, random_state=0)
+    
+    ppn = perceptron_skl(n_iter=40, eta0=0.1, random_state=0)
     ppn.fit(X_train_std, y_train)
     y_pred = ppn.predict(X_test_std)
 
-    # pdb.set_trace()
+    print('Accuracy: %.2f' % accuracy_score(y_test, y_pred))
     plot_decision_regions(X.values, y.values, classifier=ppn)
     plt.savefig(IMG_PATH + "scatter.png")
-    plt.close()
-    
-    plt.plot(range(1,len(ppn.errors_) + 1), ppn.errors_,marker='o')
-    plt.xlabel('Iterations')
-    plt.ylabel('Number of misclassifications')
-    plt.savefig(IMG_PATH + "misclassifications.png")
     plt.close()
     
     t1 = time.time()

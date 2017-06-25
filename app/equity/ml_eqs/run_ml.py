@@ -32,8 +32,9 @@ def run(inputs, load_data=False):
     df = cleanData(df)
     df = selectInputs(df, inputs)
     
+    # timeme(run_perceptron)(df)
     # timeme(logisticRegression)(df, tuple(inputs))
-    timeme(run_perceptron)(df)
+    timeme(run_perceptron_multi)(df)
 
 def selectInputs(df, inputs):
     columns = inputs + ['target'] + ['target_proxy']
@@ -87,15 +88,23 @@ def cleanData(df):
     df = df[df['divYield'] >= 0]
     
     # Temp for training purposes
-    df = df[abs(df['trailingPE']) < 100]
-    df = df[abs(df['priceToBook']) < 5]
-    df = df[df['trailingPE'] > 0]
+    # df = df[abs(df['trailingPE']) < 100]
+    # df = df[abs(df['priceToBook']) < 10]
+    # df = df[df['trailingPE'] > 0]
     df = df[df['divYield'] > 0]
-    df = df[df['debtToEquity'] < 5]
-    df = df[df['freeCashFlowPerShare'] > 0]
+    # df = df[df['divYield'] < 10]
+    # df = df[df['debtToEquity'] < 5]
+    df = df[df['returnOnEquity'] > 0]
+    df = df[df['returnOnEquity'] < 50]
+    df = df[df['currentRatio'] < 10]
+    # df = df[df[''] > 0]
+    
+
+    # only look at the top 25 and bottom 25%
+    df = df[(df['target'] == 0) | (df['target'] == 3)]
     # pdb.set_trace()
     return df
 
 if __name__ == "__main__":
     run(['trailingPE', 'priceToBook', 'priceToSales', 'divYield', 'debtToEquity',
-        'returnOnEquity', 'netIncomeMargin', 'freeCashFlowPerShare'])
+        'returnOnEquity', 'netIncomeMargin', 'freeCashFlowPerShare', 'currentRatio'])
