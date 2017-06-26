@@ -530,3 +530,8 @@
 2017-06-25 23:24:17,657 INFO: Done training data and creating charts, took 0.8931779861450195 seconds [in /home/ubuntu/workspace/finance/app/equity/ml_eqs/ml_algorithms.py:107]
 2017-06-25 23:25:24,110 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
 2017-06-25 23:25:26,124 INFO: Done Retrieving data, took 1.4460370540618896 seconds [in run_ml.py:28]
+2017-06-26 13:49:27,020 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-06-26 14:06:21,305 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-06-26 14:06:56,748 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-06-26 14:32:55,633 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
+2017-06-26 14:33:31,305 INFO: finance hub startup [in /home/ubuntu/workspace/finance/app/__init__.py:49]
