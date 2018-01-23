@@ -1,9 +1,11 @@
 import sys
 sys.path.append("/home/ubuntu/workspace/finance")
+sys.path.append("/usr/local/lib/python2.7/dist-packages")
+sys.path.append("/usr/local/lib/python3.4/dist-packages")
 from app.equity.screener_eqs.create_symbols import create_symbols
 from app.equity.screener_eqs.equity_stats import EquityStats, ES_Dataframe
-import pandas as pd
 import os, csv, requests, asyncio, time, json
+import pandas as pd
 from threading import Thread
 from app import app
 
@@ -14,18 +16,19 @@ def post(request):
         return [list(ES._colmap.keys())] + [list(ES._colmap.values())] + ES._df.values.tolist()
     
     if request.form['action'] == 'get_data':
-        get_data(reset_ticks=False, source="API2")
+        get_data(source="API2")
         writeScreenInfo(source="API2")
         return
 
 
-def get_data(reset_ticks=False, source="API2"):
-    if reset_ticks:
-        create_symbols()
+def get_data(source="API2"):
+    import pdb
+    pdb.set_trace()
     tasks = []
     EquityStats.setColumns(source)
 
-    with open("/home/ubuntu/workspace/finance/app/equity/screener_eqs/memb_list.txt", "r") as f:
+    # Get tickers and break them up in efficient manner to get data
+    with open("/home/ubuntu/workspace/finance/app/equity/screener_eqs/memb_list_abbrev.txt", "r") as f:
         ct = 0
         tickers = ""
         for line in f:
@@ -42,7 +45,6 @@ def get_data(reset_ticks=False, source="API2"):
     
     t0 = time.time()
     threads = []
-    # import pdb; pdb.set_trace()
     try:
         # for running multithreaded: starts the thread and 'joins it' so we will wait for all to finish
         for t in tasks:
@@ -184,7 +186,6 @@ def run_screening(filters=None, sim=False):
 
 
 if __name__ == '__main__':
-    # import pdb; pdb.set_trace()
     # run_screening(sim=True)
     get_data(source='API1')
     # writeScreenInfo(source="API2")

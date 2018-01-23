@@ -8,11 +8,10 @@ import pandas as pd
 # Gets rid of annoying "A value is trying to be set on a copy of a slice from a DataFrame." Warning
 pd.options.mode.chained_assignment = None
 import numpy as np
-import os, csv, requests, asyncio, time, json, io, datetime, scipy.stats
+import os, csv, requests, asyncio, time, json, io, datetime, scipy.stats, pdb
 from app import app
 from threading import Thread
 from pandas_datareader.data import DataReader
-from app.equity.screener_eqs.create_symbols import create_symbols
 from app.equity.data_grab import ms_dg_helper
 from app.utils.db_utils import DBHelper, restart
 
@@ -23,7 +22,7 @@ def getData(tickers=None):
     # Getting all the tickers from text file
     tasks = []
     if not tickers:
-        with open("/home/ubuntu/workspace/finance/app/equity/screener_eqs/memb_list.txt", "r") as f:
+        with open("/home/ubuntu/workspace/finance/app/equity/screener_eqs/memb_list_abbrev.txt", "r") as f:
             for line in f:
                 tasks.append(line.strip())
     else:
@@ -32,6 +31,7 @@ def getData(tickers=None):
     threads = []
     tasks = [t for t in tasks if t not in ms_dg_helper.remove_ticks_ms]
     tasks = [t for t in tasks if t not in ms_dg_helper.remove_ticks_dr]
+    
     try:
         # for running multithreaded: starts the thread and 'joins it' so we will wait for all to finish
         # API ACTING WEIRD WITH MULTITHREADING
@@ -67,6 +67,7 @@ def getData(tickers=None):
     except Exception as e:
         exc_type, exc_obj, exc_tb = sys.exc_info()
         app.logger.info("Error in async loop: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj))
+    
     t1 = time.time()
     text_file = open("Failures.txt", "w")
     text_file.write(("\t").join(failure))
@@ -96,7 +97,6 @@ def makeAPICall(tick):
     except:
         exc_type, exc_obj, exc_tb = sys.exc_info()
         # Chance Company Not published on Morningstar
-        # import pdb; pdb.set_trace()
         app.logger.info("Error in API Call for {3}  {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj, tick))
         raise
     print("Succeeded " + tick + "\t")
@@ -332,8 +332,5 @@ def sendToDB(df):
             db.upsert(table, val_dict, prim_keys)
 
 if __name__ == "__main__":
-    # restart()
     # getData(['MSFT'])
     getData()
-    # amzn = get_quote_yahoo('AMZN')
-    # print()
