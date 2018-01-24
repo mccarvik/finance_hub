@@ -143,6 +143,7 @@ def cleanData(df):
     return df
 
 def addCustomColumns(df, market_upd=False):
+    pdb.set_trace()
     start = datetime.date(int(df.index.get_level_values('date')[0])-10, int(df['month'].values[0]), 1)
     end_date_ls = [int(d) for d in datetime.date.today().strftime('%Y-%m-%d').split("-")]
     end = datetime.date(end_date_ls[0], end_date_ls[1], end_date_ls[2])
@@ -332,5 +333,5 @@ def sendToDB(df):
             db.upsert(table, val_dict, prim_keys)
 
 if __name__ == "__main__":
-    # getData(['MSFT'])
-    getData()
+    getData(['AAPL'])
+    # getData()
