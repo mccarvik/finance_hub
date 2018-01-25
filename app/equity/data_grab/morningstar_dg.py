@@ -1,6 +1,7 @@
 import sys
 sys.path.append("/home/ubuntu/workspace/finance")
 sys.path.append("/usr/local/lib/python2.7/dist-packages")
+sys.path.append("/usr/local/lib/python3.4/dist-packages")
 import matplotlib as mpl
 mpl.use('Agg')
 import matplotlib.finance as mpf
@@ -126,6 +127,7 @@ def pruneData(df, dates, tick):
     df = cleanData(df)
     try:
         df = addCustomColumns(df)
+        pdb.set_trace()
         sendToDB(df)
     except:
         exc_type, exc_obj, exc_tb = sys.exc_info()
@@ -143,25 +145,24 @@ def cleanData(df):
     return df
 
 def addCustomColumns(df, market_upd=False):
-    pdb.set_trace()
     start = datetime.date(int(df.index.get_level_values('date')[0])-10, int(df['month'].values[0]), 1)
     end_date_ls = [int(d) for d in datetime.date.today().strftime('%Y-%m-%d').split("-")]
     end = datetime.date(end_date_ls[0], end_date_ls[1], end_date_ls[2])
     try:
-        quotes = DataReader(df.index.get_level_values('ticker')[0], 'google', start, end, pause=1)['Close']
+        url = "https://www.quandl.com/api/v1/datasets/WIKI/{0}.csv?column=4&sort_order=asc&trim_start={1}&trim_end={2}".format(df.index.get_level_values('ticker')[0], start, end)
+        qr = pd.read_csv(url)
+        qr['Date'] = qr['Date'].astype('datetime64[ns]')
+        # quotes = DataReader(df.index.get_level_values('ticker')[0], 'yahoo', start, end, pause=1)['Close']
+        # quotes = DataReader(df.index.get_level_values('ticker')[0], 'yahoo', start, end, pause=1)['Close']
     except:
-        try:
-            quotes = DataReader(df.index.get_level_values('ticker')[0], 'yahoo', start, end, pause=1)['Close']
-        except:
-            print("Could not read time series data for %s" % df.index.get_level_values('ticker')[0])
-            exc_type, exc_obj, exc_tb = sys.exc_info()
-            app.logger.info("Could not read time series data for {3}: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj, df.index.get_level_values('ticker')[0]))
-            # import pdb; pdb.set_trace()
-            raise
-    qr = quotes.reset_index()
+        print("Could not read time series data for %s" % df.index.get_level_values('ticker')[0])
+        exc_type, exc_obj, exc_tb = sys.exc_info()
+        app.logger.info("Could not read time series data for {3}: {0}, {1}, {2}".format(exc_type, exc_tb.tb_lineno, exc_obj, df.index.get_level_values('ticker')[0]))
+        raise
     df = addBasicCustomCols(df, qr)
     df = addGrowthCustomCols(df, qr)
-    df = addTimelineCustomCols(df, qr, quotes)
+    pdb.set_trace()
+    df = addTimelineCustomCols(df, qr)
     
     if market_upd:
         # market = DataReader(".INX", 'google', start, end, pause=1)['Close']
@@ -178,6 +179,7 @@ def addCustomColumns(df, market_upd=False):
         market = market.set_index('Date')
         quotes = pd.DataFrame(quotes)
         quotes = pd.concat([market, quotes], axis=1)
+    pdb.set_trace()
     df = calcBetas(df, quotes)
     '''
     Still need to do:
@@ -188,7 +190,8 @@ def addCustomColumns(df, market_upd=False):
     '''
     return df
     
-def addTimelineCustomCols(df, qr, quotes):
+def addTimelineCustomCols(df, qr):
+    pdb.set_trace()
     mv_avg_50 = quotes.rolling(center=False,window=50).mean().reset_index()
     mv_avg_200 = quotes.rolling(center=False,window=200).mean().reset_index()
     df['50DayMvgAvg'] = df.apply(lambda x: mv_avg_50[mv_avg_50['Date'] >= datetime.date(int(x.name[1]), \
@@ -239,9 +242,9 @@ def addBasicCustomCols(df, qr):
     # Need this for times where no prices available
     curPrices = []
     for ind, x in df.iterrows():
-        y = qr[qr['Date'] >= datetime.date(int(x.name[1]),int(x['month']),1)]
+        y = qr[qr['Date'] <= datetime.date(int(x.name[1]),int(x['month']),1)]
         if not y.empty:
-            curPrices.append(y.iloc[0]['Close'])
+            curPrices.append(y.iloc[-1]['Close'])
         else:
             curPrices.append(0)
     df['currentPrice'] = curPrices
@@ -333,5 +336,5 @@ def sendToDB(df):
             db.upsert(table, val_dict, prim_keys)
 
 if __name__ == "__main__":
-    getData(['AAPL'])
+    getData(['MSFT'])
     # getData()
