@@ -161,9 +161,9 @@ def addCustomColumns(df, market_upd=False):
         raise
     df = addBasicCustomCols(df, qr)
     df = addGrowthCustomCols(df, qr)
-    pdb.set_trace()
     df = addTimelineCustomCols(df, qr)
     
+    pdb.set_trace()
     if market_upd:
         # market = DataReader(".INX", 'google', start, end, pause=1)['Close']
         market = DataReader('^GSPC','yahoo', start, end,pause=1)['Close']
@@ -190,20 +190,22 @@ def addCustomColumns(df, market_upd=False):
     '''
     return df
     
-def addTimelineCustomCols(df, qr):
+def addTimelineCustomCols(df, qr, vol_window=252):
+    quotes = qr.reset_index()
+    quotes['mv_avg_50'] = quotes['Close'].rolling(center=False,window=50).mean()
+    quotes['mv_avg_200'] = quotes['Close'].rolling(center=False,window=200).mean()
+    quotes['mv_avg_for_vol'] = quotes['Close'].rolling(center=False,window=vol_window).mean()  # Need this for volatility, avg price over the period
     pdb.set_trace()
-    mv_avg_50 = quotes.rolling(center=False,window=50).mean().reset_index()
-    mv_avg_200 = quotes.rolling(center=False,window=200).mean().reset_index()
-    df['50DayMvgAvg'] = df.apply(lambda x: mv_avg_50[mv_avg_50['Date'] >= datetime.date(int(x.name[1]), \
-                        int(x['month']),1)].iloc[0]['Close'], axis=1)
-    df['200DayMvgAvg'] = df.apply(lambda x: mv_avg_50[mv_avg_50['Date'] >= datetime.date(int(x.name[1]), \
-                        int(x['month']),1)].iloc[0]['Close'], axis=1)
-    vol_stdev = quotes.rolling(window=1260, center=False).std().reset_index()   # using 5 year window
-    df['volatility'] = (df.apply(lambda x: vol_stdev[vol_stdev['Date'] >= datetime.date(int(x.name[1]), \
-                        int(x['month']),1)].iloc[0]['Close'], axis=1)) / df['currentPrice']
-    df['sharpeRatio'] = df['5yrReturn'] / df['volatility']                      # using 5 year window
-    df['downsideVol'] = downside_vol(df, vol_stdev, qr) / df['currentPrice']    # using 5 year window
-    df['sortinoRatio'] = df['5yrReturn'] / df['downsideVol']                   # using 5 year window
+    df['50DayMvgAvg'] = df.reset_index().apply(lambda x: quotes[quotes['Date'] >= datetime.date(int(x.date),int(x.month),1)].iloc[0]['mv_avg_50'], axis=1)
+    df['200DayMvgAvg'] = df.reset_index().apply(lambda x: quotes[quotes['Date'] >= datetime.date(int(x.date), int(x.month),1)].iloc[0]['mv_avg_200'], axis=1)
+    df['mv_avg_for_vol'] = df.reset_index().apply(lambda x: quotes[quotes['Date'] >= datetime.date(int(x.date), int(x.month),1)].iloc[0]['mv_avg_for_vol'], axis=1)
+    
+    quotes['vol_stdev'] = quotes['Close'].rolling(window=vol_window, center=False).std()  # using 1 year window
+    df['volatility'] = df.reset_index().apply(lambda x: quotes[quotes['Date'] >= datetime.date(int(x.date), int(x.month),1)].iloc[0]['vol_stdev'], axis=1) / df.reset_index()['mv_avg_for_vol']
+    
+    df['sharpeRatio'] = df['5yrReturn'] / df['volatility']                      # using 3 year window
+    df['downsideVol'] = downside_vol(df, quotes, qr) / df['currentPrice']    # using 3 year window
+    df['sortinoRatio'] = df['5yrReturn'] / df['downsideVol']                   # using 3 year window
     return df
 
 def calcBetas(df, quotes):
@@ -230,6 +232,7 @@ def calcBetas(df, quotes):
     return df
 
 def downside_vol(df, vol_stdev, qr):
+    pdb.set_trace()
     qr['change'] = qr['Close'].pct_change(1)
     neg = qr[qr['Close']<0]
     dv = []
