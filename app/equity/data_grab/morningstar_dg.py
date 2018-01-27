@@ -192,14 +192,22 @@ def addCustomColumns(df, market_upd=False):
     
 def addTimelineCustomCols(df, qr, vol_window=252):
     quotes = qr.reset_index()
+    
     quotes['mv_avg_50'] = quotes['Close'].rolling(center=False,window=50).mean()
     quotes['mv_avg_200'] = quotes['Close'].rolling(center=False,window=200).mean()
     quotes['mv_avg_for_vol'] = quotes['Close'].rolling(center=False,window=vol_window).mean()  # Need this for volatility, avg price over the period
+
+    df['last_day'] = ''
+    df['50DayMvgAvg'] = ''
+    df['200DayMvgAvg'] = ''
+    df['mv_avg_for_vol'] = ''
     pdb.set_trace()
-    df['50DayMvgAvg'] = df.reset_index().apply(lambda x: quotes[quotes['Date'] >= datetime.date(int(x.date),int(x.month),1)].iloc[0]['mv_avg_50'], axis=1)
-    df['200DayMvgAvg'] = df.reset_index().apply(lambda x: quotes[quotes['Date'] >= datetime.date(int(x.date), int(x.month),1)].iloc[0]['mv_avg_200'], axis=1)
-    df['mv_avg_for_vol'] = df.reset_index().apply(lambda x: quotes[quotes['Date'] >= datetime.date(int(x.date), int(x.month),1)].iloc[0]['mv_avg_for_vol'], axis=1)
-    
+    for ix, row in df.iterrows():
+        df.at[ix, 'last_day'] =  quotes[quotes['Date'] >= datetime.date(int(ix[1]),int(row.month),1)].iloc[0]['Date']
+        df.at[ix, '50DayMvgAvg'] =  float(quotes[quotes['Date'] == df.ix[ix].last_day]['mv_avg_50'])
+        df.at[ix, '200DayMvgAvg'] =  float(quotes[quotes['Date'] == df.ix[ix].last_day]['mv_avg_200'])
+        df.at[ix, 'mv_avg_for_vol'] =  float(quotes[quotes['Date'] == df.ix[ix].last_day]['mv_avg_for_vol'])
+
     quotes['vol_stdev'] = quotes['Close'].rolling(window=vol_window, center=False).std()  # using 1 year window
     df['volatility'] = df.reset_index().apply(lambda x: quotes[quotes['Date'] >= datetime.date(int(x.date), int(x.month),1)].iloc[0]['vol_stdev'], axis=1) / df.reset_index()['mv_avg_for_vol']
     
@@ -207,6 +215,10 @@ def addTimelineCustomCols(df, qr, vol_window=252):
     df['downsideVol'] = downside_vol(df, quotes, qr) / df['currentPrice']    # using 3 year window
     df['sortinoRatio'] = df['5yrReturn'] / df['downsideVol']                   # using 3 year window
     return df
+
+def grab_quote_val(quotes, row, val):
+    pdb.set_trace()
+    
 
 def calcBetas(df, quotes):
     # TODO: Need to pick a smaller volatility range to fine tune the beta here
