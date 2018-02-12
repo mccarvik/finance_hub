@@ -177,10 +177,8 @@ def addCustomColumns(df, market_upd=False):
         market.columns = ['Date', 'market']
         market['Date'] = market['Date'].apply(pd.to_datetime)
         market = market.set_index('Date')
-        quotes = pd.DataFrame(quotes)
-        quotes = pd.concat([market, quotes], axis=1)
-    pdb.set_trace()
-    df = calcBetas(df, quotes)
+        qr = pd.merge(qr.set_index('Date'), market, left_index=True, right_index=True)
+    df = calcBetas(df, qr)
     '''
     Still need to do:
     'enterpriseToEbitda'
@@ -222,6 +220,7 @@ def calcBetas(df, quotes):
     # TODO: Need to pick a smaller volatility range to fine tune the beta here
     qs = quotes.dropna().reset_index()
     betas = []; corrs = []
+    pdb.set_trace()
     for ind, vals in df.iterrows():
         try:
             # Taking a 1 year vol
